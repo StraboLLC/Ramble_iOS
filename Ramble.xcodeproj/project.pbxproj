@@ -14,7 +14,10 @@
 		96F4826F14C6243F00096933 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4826E14C6243F00096933 /* main.m */; };
 		96F4827314C6243F00096933 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4827214C6243F00096933 /* AppDelegate.m */; };
 		96F4827614C6243F00096933 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96F4827414C6243F00096933 /* MainStoryboard.storyboard */; };
-		96F4827914C6243F00096933 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4827814C6243F00096933 /* ViewController.m */; };
+		96F4827914C6243F00096933 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4827814C6243F00096933 /* RootViewController.m */; };
+		96F4828514C624C300096933 /* CaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4828414C624C300096933 /* CaptureViewController.m */; };
+		96F4828A14C624D400096933 /* LocationDataCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4828714C624D400096933 /* LocationDataCollector.m */; };
+		96F4828B14C624D400096933 /* LocalFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4828914C624D400096933 /* LocalFileManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,15 +25,21 @@
 		96F4826214C6243F00096933 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		96F4826414C6243F00096933 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		96F4826614C6243F00096933 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		96F4826A14C6243F00096933 /* Ramble-Info.plist */ = {isa = PBXFileReference; path = "Ramble-Info.plist"; sourceTree = "<group>"; };
+		96F4826A14C6243F00096933 /* Ramble-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ramble-Info.plist"; sourceTree = "<group>"; };
 		96F4826C14C6243F00096933 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		96F4826E14C6243F00096933 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		96F4827014C6243F00096933 /* Ramble-Prefix.pch */ = {isa = PBXFileReference; path = "Ramble-Prefix.pch"; sourceTree = "<group>"; };
-		96F4827114C6243F00096933 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		96F4827014C6243F00096933 /* Ramble-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ramble-Prefix.pch"; sourceTree = "<group>"; };
+		96F4827114C6243F00096933 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		96F4827214C6243F00096933 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		96F4827514C6243F00096933 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		96F4827714C6243F00096933 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
-		96F4827814C6243F00096933 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		96F4827714C6243F00096933 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		96F4827814C6243F00096933 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		96F4828314C624C300096933 /* CaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureViewController.h; sourceTree = "<group>"; };
+		96F4828414C624C300096933 /* CaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureViewController.m; sourceTree = "<group>"; };
+		96F4828614C624D400096933 /* LocationDataCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDataCollector.h; sourceTree = "<group>"; };
+		96F4828714C624D400096933 /* LocationDataCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDataCollector.m; sourceTree = "<group>"; };
+		96F4828814C624D400096933 /* LocalFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFileManager.h; sourceTree = "<group>"; };
+		96F4828914C624D400096933 /* LocalFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFileManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +88,9 @@
 			children = (
 				96F4827114C6243F00096933 /* AppDelegate.h */,
 				96F4827214C6243F00096933 /* AppDelegate.m */,
+				96F4828D14C624E600096933 /* View Controllers */,
+				96F4828C14C624DB00096933 /* Models */,
 				96F4827414C6243F00096933 /* MainStoryboard.storyboard */,
-				96F4827714C6243F00096933 /* ViewController.h */,
-				96F4827814C6243F00096933 /* ViewController.m */,
 				96F4826914C6243F00096933 /* Supporting Files */,
 			);
 			path = Ramble;
@@ -96,6 +105,28 @@
 				96F4827014C6243F00096933 /* Ramble-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		96F4828C14C624DB00096933 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				96F4828614C624D400096933 /* LocationDataCollector.h */,
+				96F4828714C624D400096933 /* LocationDataCollector.m */,
+				96F4828814C624D400096933 /* LocalFileManager.h */,
+				96F4828914C624D400096933 /* LocalFileManager.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		96F4828D14C624E600096933 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				96F4827714C6243F00096933 /* RootViewController.h */,
+				96F4827814C6243F00096933 /* RootViewController.m */,
+				96F4828314C624C300096933 /* CaptureViewController.h */,
+				96F4828414C624C300096933 /* CaptureViewController.m */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +156,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Strabo LLC";
 			};
 			buildConfigurationList = 96F4825814C6243F00096933 /* Build configuration list for PBXProject "Ramble" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -162,7 +194,10 @@
 			files = (
 				96F4826F14C6243F00096933 /* main.m in Sources */,
 				96F4827314C6243F00096933 /* AppDelegate.m in Sources */,
-				96F4827914C6243F00096933 /* ViewController.m in Sources */,
+				96F4827914C6243F00096933 /* RootViewController.m in Sources */,
+				96F4828514C624C300096933 /* CaptureViewController.m in Sources */,
+				96F4828A14C624D400096933 /* LocationDataCollector.m in Sources */,
+				96F4828B14C624D400096933 /* LocalFileManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
