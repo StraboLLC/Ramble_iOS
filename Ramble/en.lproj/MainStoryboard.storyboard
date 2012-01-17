@@ -33,6 +33,7 @@
                     </view>
                 </viewController>
             </objects>
+            <point key="canvasLocation" x="167" y="182"/>
         </scene>
         <scene sceneID="tWw-u0-Qii">
             <objects>
@@ -87,12 +88,26 @@
                                     <action selector="stopRecording:" destination="Tks-0X-fok" eventType="touchUpInside" id="lD3-E3-yaN"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Recording: " lineBreakMode="tailTruncation" minimumFontSize="10" id="yjI-an-dGX">
+                                <rect key="frame" x="32" y="293" width="88" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="MMm-X2-Hnj">
+                                <rect key="frame" x="128" y="293" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="546" y="182"/>
+            <point key="canvasLocation" x="611" y="182"/>
         </scene>
     </scenes>
     <classes>

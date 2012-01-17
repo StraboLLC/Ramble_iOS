@@ -25,17 +25,13 @@
 
 @implementation CaptureViewController
 
+//@synthesize locationManager, dataCollector, currentLocation, currentHeading;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        isRecording = NO;
-        locationManager = [[CLLocationManager alloc] init];
-        locationManager.delegate = self;
-        dataCollector = [[LocationDataCollector alloc] init];
-        dataCollector.delegate = self;
-        
     }
     return self;
 }
@@ -49,8 +45,8 @@
 }
 
 -(IBAction)startRecording:(id)sender {
+    [dataCollector clearDataPoints];
     isRecording = YES;
-    // Some changes
 }
 
 -(IBAction)stopRecording:(id)sender {
@@ -63,6 +59,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    isRecording = NO;
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    dataCollector = [[LocationDataCollector alloc] init];
+    dataCollector.delegate = self;
+    
     // Start updating the location
     [locationManager startUpdatingLocation];
     [locationManager startUpdatingHeading];
@@ -105,12 +108,14 @@
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
     if (locationAge < 5.0) {
+        currentLocation = newLocation;
         [self recordLocationIfRecording];
     }
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
-    
+    currentHeading = newHeading;
+    [self recordLocationIfRecording];
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {

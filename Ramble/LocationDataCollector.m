@@ -39,7 +39,7 @@
     NSString *accuracyStr = [NSString stringWithFormat:@"%f", accuracy];
     
     // Create arrays for the new datapoint:
-    NSArray * keys = [NSArray arrayWithObjects:@"latitude", @"longitude", @"heading", @"timestamp", @"accuracy" nil];
+    NSArray * keys = [NSArray arrayWithObjects:@"latitude", @"longitude", @"heading", @"timestamp", @"accuracy", nil];
     NSArray * values = [NSArray arrayWithObjects:latitudeStr, longitudeStr, headingStr, timestampStr, accuracyStr, nil];
     NSDictionary * dataPoint = [NSDictionary dictionaryWithObjects:values forKeys:keys];
     
@@ -62,6 +62,7 @@
     
     // Create the output stream to write the file to the temp folder
     NSOutputStream * output = [NSOutputStream outputStreamToFileAtPath:[self tempFilePath] append:NO];
+    [output open];
     
     // Write the JSON file to the temporary folder designated by the output stream
     NSError * error = nil;

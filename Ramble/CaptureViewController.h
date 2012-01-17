@@ -20,6 +20,11 @@
     
     BOOL isRecording;
 }
+/*
+@property(nonatomic, strong)CLLocationManager * locationManager;
+@property(nonatomic, strong)LocationDataCollector * dataCollector;
+@property(nonatomic, strong)CLLocation * currentLocation;
+@property(nonatomic, strong)CLHeading * currentHeading;*/
 
 /*!
  @method startRecording
