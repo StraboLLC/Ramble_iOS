@@ -1,0 +1,281 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		96F4826314C6243F00096933 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F4826214C6243F00096933 /* UIKit.framework */; };
+		96F4826514C6243F00096933 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F4826414C6243F00096933 /* Foundation.framework */; };
+		96F4826714C6243F00096933 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F4826614C6243F00096933 /* CoreGraphics.framework */; };
+		96F4826D14C6243F00096933 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96F4826B14C6243F00096933 /* InfoPlist.strings */; };
+		96F4826F14C6243F00096933 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4826E14C6243F00096933 /* main.m */; };
+		96F4827314C6243F00096933 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4827214C6243F00096933 /* AppDelegate.m */; };
+		96F4827614C6243F00096933 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96F4827414C6243F00096933 /* MainStoryboard.storyboard */; };
+		96F4827914C6243F00096933 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4827814C6243F00096933 /* ViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		96F4825E14C6243F00096933 /* Ramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		96F4826214C6243F00096933 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		96F4826414C6243F00096933 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		96F4826614C6243F00096933 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		96F4826A14C6243F00096933 /* Ramble-Info.plist */ = {isa = PBXFileReference; path = "Ramble-Info.plist"; sourceTree = "<group>"; };
+		96F4826C14C6243F00096933 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		96F4826E14C6243F00096933 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		96F4827014C6243F00096933 /* Ramble-Prefix.pch */ = {isa = PBXFileReference; path = "Ramble-Prefix.pch"; sourceTree = "<group>"; };
+		96F4827114C6243F00096933 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		96F4827214C6243F00096933 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		96F4827514C6243F00096933 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		96F4827714C6243F00096933 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		96F4827814C6243F00096933 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		96F4825B14C6243F00096933 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96F4826314C6243F00096933 /* UIKit.framework in Frameworks */,
+				96F4826514C6243F00096933 /* Foundation.framework in Frameworks */,
+				96F4826714C6243F00096933 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		96F4825314C6243F00096933 = {
+			isa = PBXGroup;
+			children = (
+				96F4826814C6243F00096933 /* Ramble */,
+				96F4826114C6243F00096933 /* Frameworks */,
+				96F4825F14C6243F00096933 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		96F4825F14C6243F00096933 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				96F4825E14C6243F00096933 /* Ramble.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		96F4826114C6243F00096933 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				96F4826214C6243F00096933 /* UIKit.framework */,
+				96F4826414C6243F00096933 /* Foundation.framework */,
+				96F4826614C6243F00096933 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		96F4826814C6243F00096933 /* Ramble */ = {
+			isa = PBXGroup;
+			children = (
+				96F4827114C6243F00096933 /* AppDelegate.h */,
+				96F4827214C6243F00096933 /* AppDelegate.m */,
+				96F4827414C6243F00096933 /* MainStoryboard.storyboard */,
+				96F4827714C6243F00096933 /* ViewController.h */,
+				96F4827814C6243F00096933 /* ViewController.m */,
+				96F4826914C6243F00096933 /* Supporting Files */,
+			);
+			path = Ramble;
+			sourceTree = "<group>";
+		};
+		96F4826914C6243F00096933 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				96F4826A14C6243F00096933 /* Ramble-Info.plist */,
+				96F4826B14C6243F00096933 /* InfoPlist.strings */,
+				96F4826E14C6243F00096933 /* main.m */,
+				96F4827014C6243F00096933 /* Ramble-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		96F4825D14C6243F00096933 /* Ramble */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96F4827C14C6243F00096933 /* Build configuration list for PBXNativeTarget "Ramble" */;
+			buildPhases = (
+				96F4825A14C6243F00096933 /* Sources */,
+				96F4825B14C6243F00096933 /* Frameworks */,
+				96F4825C14C6243F00096933 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ramble;
+			productName = Ramble;
+			productReference = 96F4825E14C6243F00096933 /* Ramble.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		96F4825514C6243F00096933 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 96F4825814C6243F00096933 /* Build configuration list for PBXProject "Ramble" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 96F4825314C6243F00096933;
+			productRefGroup = 96F4825F14C6243F00096933 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				96F4825D14C6243F00096933 /* Ramble */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		96F4825C14C6243F00096933 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96F4826D14C6243F00096933 /* InfoPlist.strings in Resources */,
+				96F4827614C6243F00096933 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		96F4825A14C6243F00096933 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96F4826F14C6243F00096933 /* main.m in Sources */,
+				96F4827314C6243F00096933 /* AppDelegate.m in Sources */,
+				96F4827914C6243F00096933 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		96F4826B14C6243F00096933 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				96F4826C14C6243F00096933 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		96F4827414C6243F00096933 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				96F4827514C6243F00096933 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		96F4827A14C6243F00096933 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		96F4827B14C6243F00096933 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		96F4827D14C6243F00096933 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Ramble/Ramble-Prefix.pch";
+				INFOPLIST_FILE = "Ramble/Ramble-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		96F4827E14C6243F00096933 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Ramble/Ramble-Prefix.pch";
+				INFOPLIST_FILE = "Ramble/Ramble-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		96F4825814C6243F00096933 /* Build configuration list for PBXProject "Ramble" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96F4827A14C6243F00096933 /* Debug */,
+				96F4827B14C6243F00096933 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		96F4827C14C6243F00096933 /* Build configuration list for PBXNativeTarget "Ramble" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96F4827D14C6243F00096933 /* Debug */,
+				96F4827E14C6243F00096933 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 96F4825514C6243F00096933 /* Project object */;
+}
