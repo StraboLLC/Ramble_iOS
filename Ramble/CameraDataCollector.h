@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
+@protocol CameraDataCollectorDelegate
+@optional
+-(void)videoRecordingFailedWithError:(NSError *)error;
+-(void)videoRecordingDidBegin;
+-(void)videoRecordingDidEnd;
+@end
+
 @interface CameraDataCollector : NSObject {
     id delegate;
     

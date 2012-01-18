@@ -55,7 +55,7 @@
     
     // Create keys and values for the main dictionary
     NSArray * keys = [NSArray arrayWithObjects:@"title", @"date", @"tracktype", @"deviceModel", @"softwareVersion", @"deviceName", @"compass", @"orientation", @"points", nil];
-    NSArray * values = [NSArray arrayWithObjects:@"", @"thedate", trackType, [myDevice model], [myDevice systemVersion], [myDevice name], compassMode, orientation, dataPoints, nil];
+    NSArray * values = [NSArray arrayWithObjects:@"", [NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]], trackType, [myDevice model], [myDevice systemVersion], [myDevice name], compassMode, orientation, dataPoints, nil];
     
     // Enter the values into a dictionary
     NSDictionary * track = [NSDictionary dictionaryWithObject:[NSDictionary dictionaryWithObjects:values forKeys:keys] forKey:@"track"];
@@ -100,8 +100,6 @@
 // Return a string containing the temporary directory of the 
 -(NSString *)tempFilePath {
     
-    // Make a unique string for the name of the file using device id and a date
-    //NSString * fileName = [NSString stringWithFormat:@"%@-%@", @"UniqueIdentifier", [NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]]];
     // Make the output path from components
     NSString *outputPath = [[NSString alloc] initWithFormat:@"%@%@%@", NSTemporaryDirectory(), @"output", @".json"];
     //NSURL *outputURL = [[NSURL alloc] initFileURLWithPath:outputPath];

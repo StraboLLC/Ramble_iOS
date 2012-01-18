@@ -323,6 +323,7 @@
 				96F4827E14C6243F00096933 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

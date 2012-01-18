@@ -19,6 +19,12 @@
 -(void)writeJSONFileFailedWithError:(NSError *)error;
 @end
 
+@interface CaptureViewController (CameraDataCollectorDelegate) <CameraDataCollectorDelegate>
+-(void)videoRecordingDidBegin;
+-(void)videoRecordingDidEnd;
+-(void)videoRecordingFailedWithError:(NSError *)error;
+@end
+
 @interface CaptureViewController (InternalMethods)
 -(void)recordLocationIfRecording;
 -(void)startRecording;
@@ -51,6 +57,7 @@
     [super viewDidLoad];
     
     isRecording = NO;
+    localFileManager = [[LocalFileManager alloc] init];
     
     // Set up the location stuff
     locationManager = [[CLLocationManager alloc] init];
@@ -71,6 +78,16 @@
     [locationManager startUpdatingHeading];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [locationManager startUpdatingLocation];
+    [locationManager startUpdatingHeading];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [locationManager stopUpdatingLocation];
+    [locationManager stopUpdatingHeading];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -78,7 +95,12 @@
     [locationManager stopUpdatingLocation];
     [locationManager stopUpdatingHeading];
     // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    videoPreviewView = nil;
+    locationManager = nil;
+    locationDataCollector = nil;
+    cameraDataCollector = nil;
+    captureVideoPreviewLayer = nil;
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -156,6 +178,22 @@
 
 -(void)writeJSONFileFailedWithError:(NSError *)error {
     NSLog(@"JSON writing failed with error: %@", error);
+}
+
+@end
+
+@implementation CaptureViewController (CameraDataCollectorDelegate)
+
+-(void)videoRecordingDidBegin {
+    
+}
+
+-(void)videoRecordingDidEnd {
+    [localFileManager saveTemporaryFiles];
+}
+
+-(void)videoRecordingFailedWithError:(NSError *)error {
+    
 }
 
 @end

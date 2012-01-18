@@ -8,8 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol LocalFileManagerDelegate
+@optional
+-(void)saveTemporaryFilesFailedWithError:(NSError *)error;
+
+@end
+
 @interface LocalFileManager : NSObject {
-    
+    id delegate;
+    NSFileManager * fileManager;
 }
+
+@property(strong)id delegate;
+
+-(id)init;
+-(void)saveTemporaryFiles;
 
 @end

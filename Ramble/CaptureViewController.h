@@ -10,12 +10,14 @@
 #import <CoreLocation/CoreLocation.h>
 #import "LocationDataCollector.h"
 #import "CameraDataCollector.h"
+#import "LocalFileManager.h"
 
 @interface CaptureViewController : UIViewController {
     CLLocationManager * locationManager;
     LocationDataCollector * locationDataCollector;
     CameraDataCollector * cameraDataCollector;
     AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
+    LocalFileManager * localFileManager;
     BOOL isRecording;
     
     // Variables to hold the current device location information

@@ -130,9 +130,9 @@
     if ([fileManager fileExistsAtPath:outputPath]) {
         NSError *error;
         if ([fileManager removeItemAtPath:outputPath error:&error] == NO) {
-//            if ([self.delegate respondsToSelector:@selector(someOtherError:)]) {
-//                [self.delegate someOtherError:error];
-//            }            
+            if ([self.delegate respondsToSelector:@selector(videoRecordingFailedWithError:)]) {
+                [self.delegate videoRecordingFailedWithError:error];
+            }            
         }
     }
     return outputURL;
@@ -143,19 +143,17 @@
 @implementation CameraDataCollector (AVCaptureFileOutputRecordingDelegate)
 
 -(void)captureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections {
-    //[delegate recordingBegan];
+    if ([self.delegate respondsToSelector:@selector(videoRecordingDidBegin)]) {
+        [self.delegate videoRecordingDidBegin];
+    }
 }
 
 -(void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error {
     
-    NSLog(@"Finished Outputting File: %@", outputFileURL);
-    
-    if (error && [delegate respondsToSelector:@selector(someOtherError:)]) {
-        //[delegate someOtherError:error];
-    }
-    
-    if ([delegate respondsToSelector:@selector(recordingFinished)]) {
-        //[delegate recordingFinished];
+    if (error && [delegate respondsToSelector:@selector(videoRecordingFailedWithError:)]) {
+        [delegate videoRecordingFailedWithError:error];
+    } else if ([delegate respondsToSelector:@selector(videoRecordingDidEnd)]) {
+        [delegate videoRecordingDidEnd];
     }
 }
 
