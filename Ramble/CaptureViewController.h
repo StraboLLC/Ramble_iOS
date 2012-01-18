@@ -9,35 +9,29 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "LocationDataCollector.h"
+#import "CameraDataCollector.h"
 
 @interface CaptureViewController : UIViewController {
     CLLocationManager * locationManager;
-    LocationDataCollector * dataCollector;
+    LocationDataCollector * locationDataCollector;
+    CameraDataCollector * cameraDataCollector;
+    AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
+    BOOL isRecording;
     
-    // Variables to hold the current device information
+    // Variables to hold the current device location information
     CLLocation * currentLocation;
     CLHeading * currentHeading;
     
-    BOOL isRecording;
+    // UI Outlets
+    IBOutlet UIBarButtonItem * recordButton;
+    IBOutlet UIView * videoPreviewView;
 }
-/*
-@property(nonatomic, strong)CLLocationManager * locationManager;
-@property(nonatomic, strong)LocationDataCollector * dataCollector;
-@property(nonatomic, strong)CLLocation * currentLocation;
-@property(nonatomic, strong)CLHeading * currentHeading;*/
 
 /*!
- @method startRecording
- @abstract Start recording both video and location data.
- @discussion 
+ @method recordButtonPressed:
+ @abstract Handler for the record button.
+ @discussion Starts or stops recording depending on the current recording state of the local isRecording boolean value.
  */
--(IBAction)startRecording:(id)sender;
-
-/*!
- @method stopRecording
- @abstract Stop recording both video and location data.
- @discussion
- */
--(IBAction)stopRecording:(id)sender;
+-(IBAction)recordButtonPressed:(id)sender;
 
 @end

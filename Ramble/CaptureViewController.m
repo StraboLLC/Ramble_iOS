@@ -21,11 +21,11 @@
 
 @interface CaptureViewController (InternalMethods)
 -(void)recordLocationIfRecording;
+-(void)startRecording;
+-(void)stopRecording;
 @end
 
 @implementation CaptureViewController
-
-//@synthesize locationManager, dataCollector, currentLocation, currentHeading;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,27 +44,27 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
--(IBAction)startRecording:(id)sender {
-    [dataCollector clearDataPoints];
-    isRecording = YES;
-}
-
--(IBAction)stopRecording:(id)sender {
-    isRecording = NO;
-    [dataCollector writeJSONFileForTracktype:@"video" withCompassMode:@"mode" withOrientation:@"vertical"];
-}
-
-#pragma mark - View lifecycle
+#pragma mark View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     isRecording = NO;
+    
+    // Set up the location stuff
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
-    dataCollector = [[LocationDataCollector alloc] init];
-    dataCollector.delegate = self;
+    locationDataCollector = [[LocationDataCollector alloc] init];
+    locationDataCollector.delegate = self;
+    
+    // Set up the camera stuff
+    cameraDataCollector = [[CameraDataCollector alloc] init];
+    cameraDataCollector.delegate = self;
+    captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:[cameraDataCollector session]];
+    captureVideoPreviewLayer.frame = videoPreviewView.bounds;
+    captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    [videoPreviewView.layer addSublayer:captureVideoPreviewLayer];
     
     // Start updating the location
     [locationManager startUpdatingLocation];
@@ -87,18 +87,42 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark Button Handling
+
+-(IBAction)recordButtonPressed:(id)sender {
+    if (isRecording) {
+        [self stopRecording];
+        recordButton.title = @"Rec";
+    } else {
+        [self startRecording];
+        recordButton.title = @"Stop";
+    }
+}
+
 @end
 
 @implementation CaptureViewController (InternalMethods)
 
 -(void)recordLocationIfRecording {
     if (isRecording) {
-        [dataCollector addDataPointWithLatitude:[currentLocation coordinate].latitude 
+        [locationDataCollector addDataPointWithLatitude:[currentLocation coordinate].latitude 
                                   withLongitude:[currentLocation coordinate].longitude 
                                     withHeading:[currentHeading trueHeading]
                                   withTimestamp:0.0
                                    withAccuracy:[currentLocation horizontalAccuracy]];
     }
+}
+
+-(void)startRecording {
+    [cameraDataCollector startRecording];
+    [locationDataCollector clearDataPoints];
+    isRecording = YES;
+}
+
+-(void)stopRecording {
+    isRecording = NO;
+    [cameraDataCollector stopRecording];
+    [locationDataCollector writeJSONFileForTracktype:@"video" withCompassMode:@"mode" withOrientation:@"vertical"];
 }
 
 @end

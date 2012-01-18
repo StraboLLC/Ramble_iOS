@@ -101,9 +101,9 @@
 -(NSString *)tempFilePath {
     
     // Make a unique string for the name of the file using device id and a date
-    NSString * fileName = [NSString stringWithFormat:@"%@-%@", @"UniqueIdentifier", [NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]]];
+    //NSString * fileName = [NSString stringWithFormat:@"%@-%@", @"UniqueIdentifier", [NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]]];
     // Make the output path from components
-    NSString *outputPath = [[NSString alloc] initWithFormat:@"%@%@%@", NSTemporaryDirectory(), fileName, @".json"];
+    NSString *outputPath = [[NSString alloc] initWithFormat:@"%@%@%@", NSTemporaryDirectory(), @"output", @".json"];
     //NSURL *outputURL = [[NSURL alloc] initFileURLWithPath:outputPath];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:outputPath]) {
