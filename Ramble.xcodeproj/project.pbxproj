@@ -19,6 +19,7 @@
 		964F746314C7D382006B5B6D /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F745314C7D382006B5B6D /* SBJsonBase.m */; };
 		964F746414C7D382006B5B6D /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F745514C7D382006B5B6D /* SBJsonParser.m */; };
 		964F746514C7D382006B5B6D /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F745714C7D382006B5B6D /* SBJsonWriter.m */; };
+		964F746B14C7D445006B5B6D /* LoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F746A14C7D444006B5B6D /* LoginManager.m */; };
 		96F4826314C6243F00096933 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F4826214C6243F00096933 /* UIKit.framework */; };
 		96F4826514C6243F00096933 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F4826414C6243F00096933 /* Foundation.framework */; };
 		96F4826714C6243F00096933 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F4826614C6243F00096933 /* CoreGraphics.framework */; };
@@ -62,6 +63,8 @@
 		964F745514C7D382006B5B6D /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		964F745614C7D382006B5B6D /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		964F745714C7D382006B5B6D /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		964F746914C7D444006B5B6D /* LoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginManager.h; sourceTree = "<group>"; };
+		964F746A14C7D444006B5B6D /* LoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginManager.m; sourceTree = "<group>"; };
 		96F4825E14C6243F00096933 /* Ramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96F4826214C6243F00096933 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		96F4826414C6243F00096933 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -206,6 +209,8 @@
 				96F4829114C6314D00096933 /* CameraDataCollector.m */,
 				96F4828814C624D400096933 /* LocalFileManager.h */,
 				96F4828914C624D400096933 /* LocalFileManager.m */,
+				964F746914C7D444006B5B6D /* LoginManager.h */,
+				964F746A14C7D444006B5B6D /* LoginManager.m */,
 				964F743214C7CCAC006B5B6D /* UploadManager.h */,
 				964F743314C7CCAC006B5B6D /* UploadManager.m */,
 			);
@@ -305,6 +310,7 @@
 				964F746314C7D382006B5B6D /* SBJsonBase.m in Sources */,
 				964F746414C7D382006B5B6D /* SBJsonParser.m in Sources */,
 				964F746514C7D382006B5B6D /* SBJsonWriter.m in Sources */,
+				964F746B14C7D445006B5B6D /* LoginManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
