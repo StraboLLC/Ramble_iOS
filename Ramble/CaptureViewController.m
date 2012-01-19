@@ -81,11 +81,17 @@
 -(void)viewWillAppear:(BOOL)animated {
     [locationManager startUpdatingLocation];
     [locationManager startUpdatingHeading];
+    
+    // Hide the status bar
+    //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     [locationManager stopUpdatingLocation];
     [locationManager stopUpdatingHeading];
+    
+    // Show the status bar
+    //[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 }
 
 - (void)viewDidUnload

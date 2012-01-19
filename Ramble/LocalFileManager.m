@@ -12,7 +12,6 @@
 
 -(NSString *)tempDirectoryPath;
 -(NSString *)createStraboFileDocumentsSubDirectoryWithName:(NSString *)directoryName;
--(NSString *)docsDirectoryPath;
 
 @end
 
@@ -66,6 +65,10 @@
     }
 }
 
+-(NSString *)docsDirectoryPath {
+    return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+}
+
 @end
 
 @implementation LocalFileManager (InternalMethods)
@@ -89,10 +92,6 @@
         }
     }
     return fullPath;
-}
-
--(NSString *)docsDirectoryPath {
-    return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
 }
 
 @end
