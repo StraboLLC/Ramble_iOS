@@ -98,7 +98,7 @@
         
         // Read the JSON file
         
-        // Create a new StraboTrack object
+        // Create a new StraboTrack objects
         
         // Enter the information into the new StraboTrack object
     }
