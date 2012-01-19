@@ -21,7 +21,6 @@
 		964F746514C7D382006B5B6D /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F745714C7D382006B5B6D /* SBJsonWriter.m */; };
 		964F746B14C7D445006B5B6D /* LoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F746A14C7D444006B5B6D /* LoginManager.m */; };
 		964F747214C7E5C0006B5B6D /* StraboTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F747114C7E5C0006B5B6D /* StraboTrack.m */; };
-		964F747414C7E93A006B5B6D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 964F747314C7E93A006B5B6D /* README.md */; };
 		96F4826314C6243F00096933 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F4826214C6243F00096933 /* UIKit.framework */; };
 		96F4826514C6243F00096933 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F4826414C6243F00096933 /* Foundation.framework */; };
 		96F4826714C6243F00096933 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F4826614C6243F00096933 /* CoreGraphics.framework */; };
@@ -69,7 +68,6 @@
 		964F746A14C7D444006B5B6D /* LoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginManager.m; sourceTree = "<group>"; };
 		964F747014C7E5C0006B5B6D /* StraboTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StraboTrack.h; sourceTree = "<group>"; };
 		964F747114C7E5C0006B5B6D /* StraboTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StraboTrack.m; sourceTree = "<group>"; };
-		964F747314C7E93A006B5B6D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		96F4825E14C6243F00096933 /* Ramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96F4826214C6243F00096933 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		96F4826414C6243F00096933 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -206,7 +204,6 @@
 		96F4826914C6243F00096933 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				964F747314C7E93A006B5B6D /* README.md */,
 				96F4826A14C6243F00096933 /* Ramble-Info.plist */,
 				96F4826B14C6243F00096933 /* InfoPlist.strings */,
 				96F4826E14C6243F00096933 /* main.m */,
@@ -298,7 +295,6 @@
 				96F4826D14C6243F00096933 /* InfoPlist.strings in Resources */,
 				96F4827614C6243F00096933 /* MainStoryboard.storyboard in Resources */,
 				964F745C14C7D382006B5B6D /* FBDialog.bundle in Resources */,
-				964F747414C7E93A006B5B6D /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
