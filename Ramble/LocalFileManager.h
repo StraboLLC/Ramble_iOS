@@ -11,6 +11,7 @@
 @protocol LocalFileManagerDelegate
 @optional
 -(void)saveTemporaryFilesFailedWithError:(NSError *)error;
+-(void)fileManagerFailedWithError:(NSError *)error;
 
 @end
 
@@ -30,6 +31,7 @@
  @return NSArray Returns an array of the string names of all of the ".strabo" files within the local documents directory.
  */
 -(void)saveTemporaryFiles;
+
 -(NSString *)docsDirectoryPath;
 
 /*!
@@ -46,6 +48,8 @@
  @discussion Searches for local strabo files and constructs an array of file objects for all local files. Note that this operation takes some time and system resources and if only the existance of directories is necessary, the list of local strabo filenames should be used.
  @return
  */
--(NSArray *)allLocalFiles;
+-(NSArray *)allLocalStraboFiles;
+
+-(void)deleteStraboFile:(NSString *)fileName;
 
 @end

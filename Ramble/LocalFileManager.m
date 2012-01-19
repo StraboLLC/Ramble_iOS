@@ -69,6 +69,46 @@
     return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
 }
 
+-(NSArray *)allLocalStraboFilenames {
+    NSError * error = nil;
+    NSArray * files = [fileManager contentsOfDirectoryAtPath:[self docsDirectoryPath] error:&error];
+    if (error && [self.delegate respondsToSelector:@selector(fileManagerFailedWithError:)]) {
+        [self.delegate fileManagerFailedWithError:error];
+        return nil;
+    }
+    return files;
+}
+
+-(NSArray *)allLocalStraboFiles {
+    
+    NSArray * fileNames = [self allLocalStraboFilenames];
+    
+    // Create an array to hold the new StraboTrack objects
+    NSMutableArray *files = [NSMutableArray array];
+    
+    // Create the enumerator
+    NSEnumerator * enumerator = [fileNames objectEnumerator];
+    id anObject;
+    
+    // Cycle through the filenames
+    while (anObject = [enumerator nextObject]) {
+        // Execute for each file
+        
+        // Find the JSON file based on the filename
+        
+        // Read the JSON file
+        
+        // Create a new StraboTrack object
+        
+        // Enter the information into the new StraboTrack object
+    }
+    return files;
+}
+
+-(void)deleteStraboFile:(NSString *)fileName {
+    
+}
+
 @end
 
 @implementation LocalFileManager (InternalMethods)
