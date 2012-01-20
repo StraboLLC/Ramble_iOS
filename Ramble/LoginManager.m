@@ -30,7 +30,6 @@
         if ([defaults objectForKey:FBAccessTokenKey]
             && [defaults objectForKey:FBExpirationDateKey]) {
             // Perform actions now that we know the user is logged in
-            NSLog(@"User is Logged In. Checking NSUserDefaults Now");
             facebook.accessToken = [defaults objectForKey:FBAccessTokenKey];
             facebook.expirationDate =[defaults objectForKey:FBExpirationDateKey];
             self.currentUser = [[CurrentUser alloc] init];
@@ -68,7 +67,6 @@
     [defaults setObject:[facebook expirationDate] forKey:FBExpirationDateKey];
     [defaults synchronize];
     self.currentUser = [[CurrentUser alloc] init];
-    NSLog(@"fbDidLogin successfully.");
 }
 
 -(void)fbDidLogout {
@@ -85,16 +83,13 @@
 }
 
 - (void)fbDidNotLogin:(BOOL)cancelled {
-    NSLog(@"Facebook did not log in");
 }
 
 - (void)fbDidExtendToken:(NSString*)accessToken
                expiresAt:(NSDate*)expiresAt {
-    NSLog(@"Facebook did not log in");
 }
 
-- (void)fbSessionInvalidated {
-    NSLog(@"Facebook did not log in");    
+- (void)fbSessionInvalidated {   
 }
 
 @end
