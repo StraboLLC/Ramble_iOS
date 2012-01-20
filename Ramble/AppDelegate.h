@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LoginManager.h"
+#import "RootViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

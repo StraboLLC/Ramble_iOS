@@ -16,6 +16,7 @@
 {
     // Override point for customization after application launch.
     return YES;
+    //InitialViewController *viewController = (InitialViewController *)self.window.rootViewController;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -59,7 +60,8 @@
 
 // Facebook Stuff
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    return [[self.rootViewController.loginManager facebook] handleOpenURL:url];
+    RootViewController * viewController = (RootViewController *)self.window.rootViewController;
+    return [[viewController.loginManager facebook] handleOpenURL:url];
 }
 
 @end
