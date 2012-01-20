@@ -29,6 +29,10 @@
 
 // Non build-specific definitions here
 
+// Facebook NSUserDefaults Constants
+#define FBAccessTokenKey @"FBAccessTokenKey"
+#define FBExpirationDateKey @"FBExpirationDateKey"
+
 // Keychain constants here
 #define keychainIdentifier @"StraboGISLoginData"
 

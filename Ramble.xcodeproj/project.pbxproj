@@ -8,19 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		964F743414C7CCAC006B5B6D /* UploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F743314C7CCAC006B5B6D /* UploadManager.m */; };
-		964F745B14C7D382006B5B6D /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F744014C7D382006B5B6D /* Facebook.m */; };
+		964F745B14C7D382006B5B6D /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F744014C7D382006B5B6D /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		964F745C14C7D382006B5B6D /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 964F744314C7D382006B5B6D /* FBDialog.bundle */; };
-		964F745D14C7D382006B5B6D /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F744514C7D382006B5B6D /* FBDialog.m */; };
-		964F745E14C7D382006B5B6D /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F744714C7D382006B5B6D /* FBLoginDialog.m */; };
-		964F745F14C7D382006B5B6D /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F744914C7D382006B5B6D /* FBRequest.m */; };
-		964F746014C7D382006B5B6D /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F744D14C7D382006B5B6D /* NSObject+SBJSON.m */; };
-		964F746114C7D382006B5B6D /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F744F14C7D382006B5B6D /* NSString+SBJSON.m */; };
-		964F746214C7D382006B5B6D /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F745114C7D382006B5B6D /* SBJSON.m */; };
-		964F746314C7D382006B5B6D /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F745314C7D382006B5B6D /* SBJsonBase.m */; };
-		964F746414C7D382006B5B6D /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F745514C7D382006B5B6D /* SBJsonParser.m */; };
-		964F746514C7D382006B5B6D /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F745714C7D382006B5B6D /* SBJsonWriter.m */; };
+		964F745D14C7D382006B5B6D /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F744514C7D382006B5B6D /* FBDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		964F745E14C7D382006B5B6D /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F744714C7D382006B5B6D /* FBLoginDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		964F745F14C7D382006B5B6D /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F744914C7D382006B5B6D /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		964F746014C7D382006B5B6D /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F744D14C7D382006B5B6D /* NSObject+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		964F746114C7D382006B5B6D /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F744F14C7D382006B5B6D /* NSString+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		964F746214C7D382006B5B6D /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F745114C7D382006B5B6D /* SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		964F746314C7D382006B5B6D /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F745314C7D382006B5B6D /* SBJsonBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		964F746414C7D382006B5B6D /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F745514C7D382006B5B6D /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		964F746514C7D382006B5B6D /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F745714C7D382006B5B6D /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		964F746B14C7D445006B5B6D /* LoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F746A14C7D444006B5B6D /* LoginManager.m */; };
 		964F747214C7E5C0006B5B6D /* StraboTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F747114C7E5C0006B5B6D /* StraboTrack.m */; };
+		96DAB85514C8D88B008FA0A4 /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DAB85414C8D88B008FA0A4 /* CurrentUser.m */; };
 		96F4826314C6243F00096933 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F4826214C6243F00096933 /* UIKit.framework */; };
 		96F4826514C6243F00096933 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F4826414C6243F00096933 /* Foundation.framework */; };
 		96F4826714C6243F00096933 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F4826614C6243F00096933 /* CoreGraphics.framework */; };
@@ -68,6 +69,8 @@
 		964F746A14C7D444006B5B6D /* LoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginManager.m; sourceTree = "<group>"; };
 		964F747014C7E5C0006B5B6D /* StraboTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StraboTrack.h; sourceTree = "<group>"; };
 		964F747114C7E5C0006B5B6D /* StraboTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StraboTrack.m; sourceTree = "<group>"; };
+		96DAB85314C8D88B008FA0A4 /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUser.h; sourceTree = "<group>"; };
+		96DAB85414C8D88B008FA0A4 /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUser.m; sourceTree = "<group>"; };
 		96F4825E14C6243F00096933 /* Ramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96F4826214C6243F00096933 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		96F4826414C6243F00096933 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -153,6 +156,8 @@
 			children = (
 				964F747014C7E5C0006B5B6D /* StraboTrack.h */,
 				964F747114C7E5C0006B5B6D /* StraboTrack.m */,
+				96DAB85314C8D88B008FA0A4 /* CurrentUser.h */,
+				96DAB85414C8D88B008FA0A4 /* CurrentUser.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -325,6 +330,7 @@
 				964F746514C7D382006B5B6D /* SBJsonWriter.m in Sources */,
 				964F746B14C7D445006B5B6D /* LoginManager.m in Sources */,
 				964F747214C7E5C0006B5B6D /* StraboTrack.m in Sources */,
+				96DAB85514C8D88B008FA0A4 /* CurrentUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

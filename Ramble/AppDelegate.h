@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginManager.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

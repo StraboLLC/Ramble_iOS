@@ -57,4 +57,9 @@
      */
 }
 
+// Facebook Stuff
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [[self.rootViewController.loginManager facebook] handleOpenURL:url];
+}
+
 @end

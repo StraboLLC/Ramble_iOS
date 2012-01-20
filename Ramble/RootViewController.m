@@ -3,12 +3,15 @@
 //  Ramble
 //
 //  Created by Thomas Beatty on 1/17/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Strabo LLC. All rights reserved.
 //
 
 #import "RootViewController.h"
+#import "LoginManager.h"
 
 @implementation RootViewController
+
+@synthesize loginManager;
 
 - (void)didReceiveMemoryWarning
 {
@@ -22,6 +25,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    // Test the facebook login
+    self.loginManager = [[LoginManager alloc] init];
+    if (![self.loginManager currentUser]) {
+        NSLog(@"User is not logged in. Now logging user in.");
+        [self.loginManager logInWithFacebook];
+    }
+    
 }
 
 - (void)viewDidUnload
