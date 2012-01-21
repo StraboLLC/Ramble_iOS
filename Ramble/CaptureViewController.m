@@ -120,10 +120,10 @@
 -(IBAction)recordButtonPressed:(id)sender {
     if (isRecording) {
         [self stopRecording];
-        recordButton.title = @"Rec";
+        [recordButton setTitle:@"Rec" forState:UIControlStateNormal];
     } else {
         [self startRecording];
-        recordButton.title = @"Stop";
+        [recordButton setTitle:@"Stop" forState:UIControlStateNormal];
     }
 }
 

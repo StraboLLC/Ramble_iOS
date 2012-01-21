@@ -13,8 +13,13 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" id="upP-vZ-cLb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5cG-nN-6LN">
-                                <rect key="frame" x="198" y="44" width="72" height="37"/>
+                                <rect key="frame" x="20" y="403" width="72" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal">
@@ -25,12 +30,30 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Tks-0X-fok" kind="modal" id="LU1-Uf-bSb"/>
+                                    <action selector="tableViewButtonPressed:" destination="2" eventType="touchUpInside" id="905-bk-MFs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mda-4j-iHA">
+                                <rect key="frame" x="228" y="403" width="72" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cameraViewButtonPressed:" destination="2" eventType="touchUpInside" id="BBu-Qo-ZLe"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="subView" destination="upP-vZ-cLb" id="b7R-G6-thj"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="167" y="182"/>
@@ -38,7 +61,7 @@
         <scene sceneID="tWw-u0-Qii">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmB-gI-s7I" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="Tks-0X-fok" customClass="CaptureViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CaptureViewController" id="Tks-0X-fok" customClass="CaptureViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L83-Ic-aRn">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -48,36 +71,64 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="1uw-M2-NdM">
-                                <rect key="frame" x="0.0" y="416" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem title="Back" id="9B2-Lg-jDi">
-                                        <connections>
-                                            <segue destination="2" kind="modal" id="YWg-ma-X8G"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wji-SS-y1t"/>
-                                    <barButtonItem title="Rec" id="j9T-T6-sSH">
-                                        <connections>
-                                            <action selector="recordButtonPressed:" destination="Tks-0X-fok" id="o84-Nm-Nfd"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wFk-c1-EDh"/>
-                                </items>
-                            </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Urv-eC-19d">
+                                <rect key="frame" x="124" y="410" width="72" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Rec">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="recordButtonPressed:" destination="Tks-0X-fok" eventType="touchUpInside" id="1Dd-0O-JCi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="recordButton" destination="j9T-T6-sSH" id="9mI-8f-elH"/>
+                        <outlet property="recordButton" destination="Urv-eC-19d" id="8jj-yS-agG"/>
                         <outlet property="videoPreviewView" destination="Ui9-go-TNU" id="pdu-zC-Hsd"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="611" y="182"/>
+            <point key="canvasLocation" x="703" y="-100"/>
+        </scene>
+        <scene sceneID="ONl-eS-USZ">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SbC-Jw-qkW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="ViewController" id="4Mu-E1-J6u" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zoq-VQ-6Tw">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.72941178080000002" green="0.0039215688589999999" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="703" y="495"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="CaptureViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CaptureViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="recordButtonPressed:"/>
+                <relationship kind="outlet" name="recordButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="videoPreviewView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="RootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cameraViewButtonPressed:"/>
+                <relationship kind="action" name="tableViewButtonPressed:"/>
+                <relationship kind="outlet" name="subView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -25,7 +25,7 @@
     CLHeading * currentHeading;
     
     // UI Outlets
-    IBOutlet UIBarButtonItem * recordButton;
+    IBOutlet UIButton * recordButton;
     IBOutlet UIView * videoPreviewView;
 }
 

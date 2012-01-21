@@ -7,12 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CaptureViewController.h"
 #import "LoginManager.h"
 
 @interface RootViewController : UIViewController {
+    CaptureViewController * captureViewController;
+    UIViewController * listViewController;
+    
     LoginManager * loginManager;
+    
+    IBOutlet UIView * subView;
 }
 
 @property(nonatomic, strong)LoginManager * loginManager;
+
+-(IBAction)tableViewButtonPressed:(id)sender;
+-(IBAction)cameraViewButtonPressed:(id)sender;
 
 @end

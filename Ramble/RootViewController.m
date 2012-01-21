@@ -19,7 +19,7 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
+#pragma mark View lifecycle
 
 - (void)viewDidLoad
 {
@@ -27,11 +27,26 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     // Test the facebook login
-    self.loginManager = [[LoginManager alloc] init];
-    if (![self.loginManager currentUser]) {
-        NSLog(@"User is not logged in. Now logging user in.");
-        [self.loginManager logInWithFacebook];
-    }
+//    self.loginManager = [[LoginManager alloc] init];
+//    if (![self.loginManager currentUser]) {
+//        NSLog(@"User is not logged in. Now logging user in.");
+//        [self.loginManager logInWithFacebook];
+//    }
+    
+    // Load the array of child controllers from the storyboard
+    UIStoryboard * theStoryboard = self.storyboard;
+    captureViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"CaptureViewController"];
+    listViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    
+    // Set up the controllers' views
+    captureViewController.view.frame = subView.frame;
+    listViewController.view.frame = subView.frame;
+    
+    [self addChildViewController:captureViewController];
+    [self addChildViewController:listViewController];
+    
+    // Set up the first child controller
+    [subView addSubview:captureViewController.view];
     
 }
 
@@ -66,6 +81,16 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+#pragma mark Button Handling
+
+-(IBAction)tableViewButtonPressed:(id)sender {
+    [self transitionFromViewController:captureViewController toViewController:listViewController duration:5 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];
+}
+
+-(IBAction)cameraViewButtonPressed:(id)sender {
+    [self transitionFromViewController:listViewController toViewController:captureViewController duration:5 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];
 }
 
 @end
