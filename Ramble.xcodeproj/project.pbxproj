@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		960B0E1814CA96B200FAC06A /* LeatherNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 960B0E1714CA96B200FAC06A /* LeatherNavBar.m */; };
 		964F743414C7CCAC006B5B6D /* UploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F743314C7CCAC006B5B6D /* UploadManager.m */; };
 		964F745B14C7D382006B5B6D /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F744014C7D382006B5B6D /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		964F745C14C7D382006B5B6D /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 964F744314C7D382006B5B6D /* FBDialog.bundle */; };
@@ -39,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		960B0E1614CA96B200FAC06A /* LeatherNavBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeatherNavBar.h; sourceTree = "<group>"; };
+		960B0E1714CA96B200FAC06A /* LeatherNavBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeatherNavBar.m; sourceTree = "<group>"; };
 		964F743214C7CCAC006B5B6D /* UploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadManager.h; sourceTree = "<group>"; };
 		964F743314C7CCAC006B5B6D /* UploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadManager.m; sourceTree = "<group>"; };
 		964F743614C7CD23006B5B6D /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -112,6 +115,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		960B0E1A14CA96BB00FAC06A /* Custom UI */ = {
+			isa = PBXGroup;
+			children = (
+				960B0E1614CA96B200FAC06A /* LeatherNavBar.h */,
+				960B0E1714CA96B200FAC06A /* LeatherNavBar.m */,
+			);
+			name = "Custom UI";
+			sourceTree = "<group>";
+		};
 		964F743B14C7D382006B5B6D /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +212,8 @@
 				96F4827214C6243F00096933 /* AppDelegate.m */,
 				96F4828D14C624E600096933 /* View Controllers */,
 				96F4828C14C624DB00096933 /* Models */,
+				960B0E1A14CA96BB00FAC06A /* Custom UI */,
+				964F746F14C7E589006B5B6D /* Objects */,
 				96F4827414C6243F00096933 /* MainStoryboard.storyboard */,
 				96F4826914C6243F00096933 /* Supporting Files */,
 			);
@@ -230,7 +244,6 @@
 				964F746A14C7D444006B5B6D /* LoginManager.m */,
 				964F743214C7CCAC006B5B6D /* UploadManager.h */,
 				964F743314C7CCAC006B5B6D /* UploadManager.m */,
-				964F746F14C7E589006B5B6D /* Objects */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -331,6 +344,7 @@
 				964F746B14C7D445006B5B6D /* LoginManager.m in Sources */,
 				964F747214C7E5C0006B5B6D /* StraboTrack.m in Sources */,
 				96DAB85514C8D88B008FA0A4 /* CurrentUser.m in Sources */,
+				960B0E1814CA96B200FAC06A /* LeatherNavBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

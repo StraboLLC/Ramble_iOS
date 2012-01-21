@@ -12,7 +12,7 @@
 
 @interface RootViewController : UIViewController {
     CaptureViewController * captureViewController;
-    UIViewController * listViewController;
+    UINavigationController * listViewController;
     
     LoginManager * loginManager;
     

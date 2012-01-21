@@ -36,7 +36,7 @@
     // Load the array of child controllers from the storyboard
     UIStoryboard * theStoryboard = self.storyboard;
     captureViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"CaptureViewController"];
-    listViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    listViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"NavController"];
     
     // Set up the controllers' views
     captureViewController.view.frame = subView.frame;
@@ -86,11 +86,11 @@
 #pragma mark Button Handling
 
 -(IBAction)tableViewButtonPressed:(id)sender {
-    [self transitionFromViewController:captureViewController toViewController:listViewController duration:5 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];
+    [self transitionFromViewController:captureViewController toViewController:listViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];
 }
 
 -(IBAction)cameraViewButtonPressed:(id)sender {
-    [self transitionFromViewController:listViewController toViewController:captureViewController duration:5 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];
+    [self transitionFromViewController:listViewController toViewController:captureViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];
 }
 
 @end
