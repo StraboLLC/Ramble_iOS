@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LocalFileManager.h"
+#import "Constants.h"
 
 /*!
  @header 
@@ -17,18 +19,36 @@
  @abstract An object to manage a the upload of a strabo track.
  @discussion An object that manages the uploading of a track to the website. It is recommended that a new upload manager be created for each set of files uploaded.
  */
+
+@protocol UploadManagerDelegate
+
+@optional
+-(void)uploadProgressMade:(double)percentComplete;
+-(void)uploadStopped:(BOOL)cancelled withError:(NSError *)error;
+-(void)uploadCompleted;
+@end
+
 @interface UploadManager : NSObject {
-    
+    id delegate;
+    NSURLConnection * currentConnection;
+    NSURLRequest * currentRequest;
+    NSMutableData * receivedData;
 }
+
+@property(strong)id delegate;
+
+-(id)init;
 
 /*!
  @method uploadTrack
  @abstract Uploads a track to the website.
  @discussion Discovers the track files based on the name of the track. Then uploads the files via a php post request
- @param
- @result
+ @param trackName The name of the track (should be the same as the contained track files) with no file extension.
  */
--(void)uploadTrack:(NSString *)trackName;
+-(void)generateUploadRequestFor:(NSString *)trackName inAlbum:(NSString *)album withAuthtoken:(NSString *)authToken;
 
+-(void)startUpload;
+
+-(void)cancelCurrentUpload;
 
 @end

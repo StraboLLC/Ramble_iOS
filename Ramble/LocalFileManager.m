@@ -112,6 +112,11 @@
     return files;
 }
 
+-(StraboTrack *)straboTrackWithName:(NSString *)trackName {
+    // Placeholder to avoid compiler complaints
+    return nil;
+}
+
 -(void)deleteStraboFile:(NSString *)fileName {
     
 }

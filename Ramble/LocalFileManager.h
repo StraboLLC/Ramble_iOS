@@ -51,6 +51,8 @@
  */
 -(NSArray *)allLocalStraboFiles;
 
+-(StraboTrack *)straboTrackWithName:(NSString *)trackName;
+
 -(void)deleteStraboFile:(NSString *)fileName;
 
 @end
