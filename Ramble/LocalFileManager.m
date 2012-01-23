@@ -72,8 +72,8 @@
 -(NSArray *)allLocalStraboFilenames {
     NSError * error = nil;
     NSArray * files = [fileManager contentsOfDirectoryAtPath:[self docsDirectoryPath] error:&error];
-    if (error && [self.delegate respondsToSelector:@selector(fileManagerFailedWithError:)]) {
-        [self.delegate fileManagerFailedWithError:error];
+    if (error && [self.delegate respondsToSelector:@selector(localFileManagerFailedWithError:)]) {
+        [self.delegate localFileManagerFailedWithError:error];
         return nil;
     }
     return files;
@@ -88,17 +88,24 @@
     
     // Create the enumerator
     NSEnumerator * enumerator = [fileNames objectEnumerator];
-    id anObject;
+    id fileName;
     
     // Cycle through the filenames
-    while (anObject = [enumerator nextObject]) {
+    while (fileName = [enumerator nextObject]) {
         // Execute for each file
         
         // Find the JSON file based on the filename
+        NSString * jsonFilePath = [[self docsDirectoryPath] stringByAppendingPathComponent: fileName];
         
         // Read the JSON file
+        NSData * data = [fileManager contentsAtPath:jsonFilePath];
+        NSError * error = nil;
+        NSDictionary * trackDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        
+        
         
         // Create a new StraboTrack objects
+        
         
         // Enter the information into the new StraboTrack object
     }

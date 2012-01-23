@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "StraboTrack.h"
 
 @protocol LocalFileManagerDelegate
 @optional
 -(void)saveTemporaryFilesFailedWithError:(NSError *)error;
--(void)fileManagerFailedWithError:(NSError *)error;
+-(void)localFileManagerFailedWithError:(NSError *)error;
 
 @end
 
