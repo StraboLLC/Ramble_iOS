@@ -104,15 +104,22 @@
     StraboTrack * newTrack = [[StraboTrack alloc] init];
     
     // Find the JSON file based on the filename
-    NSString * jsonFilePath = [[self docsDirectoryPath] stringByAppendingPathComponent: trackName];
+    NSString * docsRelativePath = [trackName stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json", trackName]];
+    NSString * jsonFilePath = [[self docsDirectoryPath] stringByAppendingPathComponent: docsRelativePath];
     
     // Read the JSON file
     NSData * data = [fileManager contentsAtPath:jsonFilePath];
     NSError * error = nil;
-    NSDictionary * trackDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+    NSDictionary * trackDictionary = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&error] objectForKey:@"track"];
+    
+    if (error) {
+        if ([self.delegate respondsToSelector:@selector(localFileManagerFailedWithError:)]) {
+            [self.delegate localFileManagerFailedWithError:error];
+        }
+        return nil;
+    }
     
     // Enter relevant info into the strabo track.
-    
     newTrack.trackPath = [trackDictionary objectForKey:@"title"];
     newTrack.fileName = trackName;
     newTrack.trackType = [trackDictionary objectForKey:@"tracktype"];

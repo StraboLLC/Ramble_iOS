@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "LocalFileManager.h"
+#import "StraboTrack.h"
 
 @interface LocalTracksTableViewController : UITableViewController {
     LocalFileManager * localFileManager;
-    NSArray * localFileNames;
+    NSArray * localTrackNames;
 }
 
 @end

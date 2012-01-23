@@ -17,7 +17,7 @@
     if (self) {
         // Custom initialization
         localFileManager = [[LocalFileManager alloc] init];
-        localFileNames = [localFileManager allLocalStraboTracks];
+        localTrackNames = [localFileManager allLocalStraboTracknames];
     }
     return self;
 }
@@ -87,7 +87,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [localFileNames count];
+    return [localTrackNames count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -100,9 +100,10 @@
     }
     
     // Configure the cell...
-    
-    [[cell textLabel] setText:[localFileNames objectAtIndex:[indexPath indexAtPosition:1]]];
-    
+    NSString * trackName = [localTrackNames objectAtIndex:[indexPath indexAtPosition:1]];
+    NSLog(@"Just set the trackname");
+    [[cell textLabel] setText:[localFileManager straboTrackWithName:trackName].fileName];
+    NSLog(@"Returning a cell");
     return cell;
 }
 
