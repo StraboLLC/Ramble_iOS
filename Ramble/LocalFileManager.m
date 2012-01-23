@@ -45,17 +45,17 @@
     }
     
     // Generate a directory name for the .strabo documents sub directory
-    NSString * directoryName = [NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]];
+    NSString * UNIXTime = [NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]];
     
     // Generate a name for the files
-    NSString * fileName = [NSString stringWithFormat:@"%@-%@", @"UUID", directoryName];
+    NSString * trackName = [NSString stringWithFormat:@"%@-%@", @"UUID", UNIXTime];
     
     // Create the new subdirectory
-    NSString * newDirectoryPath = [self createStraboFileDocumentsSubDirectoryWithName:directoryName];
+    NSString * newDirectoryPath = [self createStraboFileDocumentsSubDirectoryWithName:trackName];
     
     // Copy the files 
-    [fileManager copyItemAtPath:movFilePath toPath:[newDirectoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mov", fileName]] error:&error];
-    [fileManager copyItemAtPath:jsonFilePath toPath:[newDirectoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json", fileName]] error:&error];
+    [fileManager copyItemAtPath:movFilePath toPath:[newDirectoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mov", trackName]] error:&error];
+    [fileManager copyItemAtPath:jsonFilePath toPath:[newDirectoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json", trackName]] error:&error];
     
     if (error) {
         if ([self.delegate respondsToSelector:@selector(saveTemporaryFilesFailedWithError:)]) {
@@ -69,7 +69,7 @@
     return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
 }
 
--(NSArray *)allLocalStraboFilenames {
+-(NSArray *)allLocalStraboTracknames {
     NSError * error = nil;
     NSArray * files = [fileManager contentsOfDirectoryAtPath:[self docsDirectoryPath] error:&error];
     if (error && [self.delegate respondsToSelector:@selector(localFileManagerFailedWithError:)]) {
@@ -79,45 +79,52 @@
     return files;
 }
 
--(NSArray *)allLocalStraboFiles {
+-(NSArray *)allLocalStraboTracks {
     
-    NSArray * fileNames = [self allLocalStraboFilenames];
+    NSArray * trackNames = [self allLocalStraboTracknames];
     
     // Create an array to hold the new StraboTrack objects
-    NSMutableArray *files = [NSMutableArray array];
+    NSMutableArray *straboTracks = [NSMutableArray array];
     
     // Create the enumerator
-    NSEnumerator * enumerator = [fileNames objectEnumerator];
-    id fileName;
+    NSEnumerator * enumerator = [trackNames objectEnumerator];
+    id trackName;
     
     // Cycle through the filenames
-    while (fileName = [enumerator nextObject]) {
+    while (trackName = [enumerator nextObject]) {
         // Execute for each file
-        
-        // Find the JSON file based on the filename
-        NSString * jsonFilePath = [[self docsDirectoryPath] stringByAppendingPathComponent: fileName];
-        
-        // Read the JSON file
-        NSData * data = [fileManager contentsAtPath:jsonFilePath];
-        NSError * error = nil;
-        NSDictionary * trackDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-        
-        
-        
-        // Create a new StraboTrack objects
-        
-        
-        // Enter the information into the new StraboTrack object
+        // Add a strabo track with the proper
+        // name to the array of tracks.
+        [straboTracks addObject:[self straboTrackWithName:trackName]];
     }
-    return files;
+    return straboTracks;
 }
 
 -(StraboTrack *)straboTrackWithName:(NSString *)trackName {
-    // Placeholder to avoid compiler complaints
-    return nil;
+    StraboTrack * newTrack = [[StraboTrack alloc] init];
+    
+    // Find the JSON file based on the filename
+    NSString * jsonFilePath = [[self docsDirectoryPath] stringByAppendingPathComponent: trackName];
+    
+    // Read the JSON file
+    NSData * data = [fileManager contentsAtPath:jsonFilePath];
+    NSError * error = nil;
+    NSDictionary * trackDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+    
+    // Enter relevant info into the strabo track.
+    
+    newTrack.trackPath = [trackDictionary objectForKey:@"title"];
+    newTrack.fileName = trackName;
+    newTrack.trackType = [trackDictionary objectForKey:@"tracktype"];
+    newTrack.latitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"latitude"];
+    newTrack.longitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"longitude"];
+    newTrack.date = [NSDate dateWithTimeIntervalSince1970:(NSInteger)[trackDictionary objectForKey:@"date"]];
+    
+    // Return the new track
+    return newTrack;
 }
 
--(void)deleteStraboFile:(NSString *)fileName {
+-(void)deleteStraboTrack:(NSString *)trackName {
     
 }
 

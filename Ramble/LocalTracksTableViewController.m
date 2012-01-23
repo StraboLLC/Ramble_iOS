@@ -17,7 +17,7 @@
     if (self) {
         // Custom initialization
         localFileManager = [[LocalFileManager alloc] init];
-        localFileNames = [localFileManager allLocalStraboFilenames];
+        localFileNames = [localFileManager allLocalStraboTracks];
     }
     return self;
 }
