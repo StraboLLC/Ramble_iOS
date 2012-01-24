@@ -167,53 +167,39 @@
                     <navigationItem key="navigationItem" title="Vids" id="ICp-E5-XSB"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1768" y="1094"/>
+            <point key="canvasLocation" x="1762" y="1094"/>
         </scene>
         <scene sceneID="ext-zI-oWj">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCf-7T-wqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="TrackDetail" id="cjV-ov-Q4n" customClass="TrackDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rSy-6C-hW9">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" id="i7l-uQ-wk9">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="My Great Video" id="SBG-fz-ZfL">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qk5-id-kri">
-                                            <connections>
-                                                <action selector="cancelButtonPressed:" destination="cjV-ov-Q4n" id="Wfu-98-G27"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="tKI-uo-V8q"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Scrub Bar + Preview Here" lineBreakMode="tailTruncation" minimumFontSize="10" id="IiV-b9-Gii">
-                                <rect key="frame" x="61" y="58" width="198" height="21"/>
+                                <rect key="frame" x="61" y="20" width="198" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tag Friends:" lineBreakMode="tailTruncation" minimumFontSize="10" id="TVh-uK-9FS">
-                                <rect key="frame" x="20" y="87" width="96" height="21"/>
+                                <rect key="frame" x="20" y="49" width="96" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tag Places:" lineBreakMode="tailTruncation" minimumFontSize="10" id="81Z-8q-1Ga">
-                                <rect key="frame" x="20" y="116" width="90" height="21"/>
+                                <rect key="frame" x="20" y="78" width="90" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sdK-AL-rMH">
-                                <rect key="frame" x="100" y="403" width="121" height="37"/>
+                                <rect key="frame" x="100" y="365" width="121" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Upload Track">
@@ -228,14 +214,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Video Title" lineBreakMode="tailTruncation" minimumFontSize="10" id="h4A-IS-BZ3">
-                                <rect key="frame" x="20" y="145" width="280" height="21"/>
+                                <rect key="frame" x="20" y="107" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" id="gFG-Sy-vKA">
-                                <rect key="frame" x="20" y="145" width="280" height="243"/>
+                                <rect key="frame" x="20" y="107" width="280" height="243"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Uploading Video..." lineBreakMode="tailTruncation" minimumFontSize="10" id="086-N6-ad0">
@@ -277,6 +263,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="actionButton" destination="tgw-Z1-DE0" id="g76-OX-NDv"/>
                         <outlet property="titleLabel" destination="h4A-IS-BZ3" id="aeJ-UE-N0a"/>
@@ -286,7 +273,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1237" y="-100"/>
+            <point key="canvasLocation" x="2261" y="1094"/>
         </scene>
         <scene sceneID="Yhi-Xm-oNz">
             <objects>

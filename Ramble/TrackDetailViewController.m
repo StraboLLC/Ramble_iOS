@@ -47,7 +47,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    titleLabel.text = [self.straboTrack trackName];
+    if ([straboTrack.trackTitle isEqualToString:@""]) {
+        titleLabel.text = @"Some CG Title";
+    } else {
+        titleLabel.text = [self.straboTrack trackTitle];
+    }
+    
+    NSLog(@"StraboTrack Information: \n title:%@ \n date: %@", self.straboTrack.trackTitle, self.straboTrack.captureDate);
+    
 }
 
 - (void)viewDidUnload
@@ -66,6 +73,12 @@
 #pragma mark Button Handling
 
 -(IBAction)uploadButtonPressed:(id)sender {
+    
+    if ([straboTrack.uploadedDate isEqualToDate:[NSDate dateWithTimeIntervalSince1970:0]]) {
+        NSLog(@"File has never been uploaded before");
+    } else {
+        NSLog(@"File HAS been uploaded before");
+    }
     
     // Set a new upload manager
     uploadManager = [[UploadManager alloc] init];
@@ -94,7 +107,7 @@
 }
 
 -(IBAction)cancelButtonPressed:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+
 }
 
 @end
@@ -118,6 +131,11 @@
     uploadManager = nil;
     uploadStatusLabel.text = @"Upload Completed";
     [actionButton setTitle:@"Neat!" forState:UIControlStateNormal];
+    
+    // Save the upload date in the StraboFile
+    
+    self.straboTrack.uploadedDate = [NSDate date];
+    [self.straboTrack save];
 }
 
 @end

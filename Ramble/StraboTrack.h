@@ -11,10 +11,11 @@
 @interface StraboTrack : NSObject {
     NSURL * trackPath;
     NSString * trackName;
+    NSString * trackTitle;
     NSString * trackType;
     NSNumber * latitude;
     NSNumber * longitude;
-    NSDate * createdDate;
+    NSDate * captureDate;
     NSMutableArray * taggedPeople;
     NSMutableArray * taggedPlaces;
     NSDate * uploadedDate;
@@ -33,6 +34,8 @@
  @discussion All of the files within a specific track directory have the same name, but have different file extensions. This is a string containing the name of these files, not including their extensions.
  */
 @property(nonatomic, strong) NSString * trackName;
+
+@property(nonatomic, strong) NSString * trackTitle;
 
 /*!
  @property trackType;
@@ -60,7 +63,7 @@
  @abstract The time and date of the start of the track.
  @discussion The time and date of the captured track. This is the time that the recording started.
  */
-@property(nonatomic, strong) NSDate * createdDate;
+@property(nonatomic, strong) NSDate * captureDate;
 
 @property(nonatomic, strong) NSMutableArray * taggedPeople;
 @property(nonatomic, strong) NSMutableArray * taggedPlaces;

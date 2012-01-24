@@ -10,7 +10,7 @@
 
 @implementation StraboTrack
 
-@synthesize trackPath, trackName, trackType, latitude, longitude, createdDate, taggedPeople, taggedPlaces, uploadedDate;
+@synthesize trackPath, trackName, trackTitle, trackType, latitude, longitude, captureDate, taggedPeople, taggedPlaces, uploadedDate;
 
 +(StraboTrack *)straboTrackFromFileWithName:(NSString *)trackName {
     StraboTrack * straboTrack = [[StraboTrack alloc] init];
@@ -20,26 +20,62 @@
     
     // Read the JSON file
     NSData * data = [[NSFileManager defaultManager] contentsAtPath:jsonFilePath];
+    
+    NSLog(@"Filepath: %@", jsonFilePath);
     NSError * error = nil;
     NSDictionary * trackDictionary = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&error] objectForKey:@"track"];
     
     // Enter relevant info into the strabo track object
-    straboTrack.trackPath = [trackDictionary objectForKey:@"title"];
+    straboTrack.trackPath = [NSURL URLWithString:jsonFilePath];
     straboTrack.trackName = trackName;
+    straboTrack.trackTitle = [trackDictionary objectForKey:@"title"];
     straboTrack.trackType = [trackDictionary objectForKey:@"tracktype"];
     straboTrack.latitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"latitude"];
     straboTrack.longitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"longitude"];
-    straboTrack.createdDate = [NSDate dateWithTimeIntervalSince1970:(NSInteger)[trackDictionary objectForKey:@"createdDate"]];
+    straboTrack.captureDate = [NSDate dateWithTimeIntervalSince1970:[[trackDictionary objectForKey:@"captureDate"] integerValue]];
     straboTrack.taggedPeople = [trackDictionary objectForKey:@"taggedPeople"];
     straboTrack.taggedPlaces = [trackDictionary objectForKey:@"taggedPlaces"];
-    straboTrack.uploadedDate = [NSDate dateWithTimeIntervalSince1970:(NSInteger)[trackDictionary objectForKey:@"uploadedDate"]];
+    straboTrack.uploadedDate = [NSDate dateWithTimeIntervalSince1970:[[trackDictionary objectForKey:@"uploadDate"] integerValue]];
     
     return straboTrack;
 }
 
 -(BOOL)save {
     
-#warning Incomplete method. Changed strabo files will not save properly.
+    // Find the associated JSON file
+    NSString * jsonFilePath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:[self.trackName stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json", self.trackName]]];
+    
+    // Parse the file into Data
+    NSData * data = [[NSFileManager defaultManager] contentsAtPath:jsonFilePath];
+    NSError * error = nil;
+    
+    NSMutableDictionary * trackDictionary = [[NSMutableDictionary alloc] init];
+    [trackDictionary addEntriesFromDictionary:[[NSJSONSerialization JSONObjectWithData:data options:0 error:&error] objectForKey:@"track"]];
+    
+    
+    [trackDictionary setObject:self.trackTitle forKey:@"title"];
+    [trackDictionary setObject:self.taggedPeople forKey:@"taggedPeople"];
+    [trackDictionary setObject:self.taggedPlaces forKey:@"taggedPlaces"];
+    [trackDictionary setObject:[NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]] forKey:@"uploadDate"];
+    
+    NSDictionary * jsonDictionary = [NSDictionary dictionaryWithObject:trackDictionary forKey:@"track"];
+    
+    NSOutputStream * output = [NSOutputStream outputStreamToFileAtPath:jsonFilePath append:NO];
+    [output open];
+    
+    // Write the JSON file to the temporary folder designated by the output stream
+    
+    if ([NSJSONSerialization writeJSONObject:jsonDictionary toStream:output options:0 error:&error]) {
+        if (!error) {
+            NSLog(@"File Save Successful");
+        } else {
+            // Notify the delgate of an error
+            NSLog(@"An error occurred saving the file");
+        }
+    } else {
+        // Notify the delgate of an error
+        NSLog(@"An error occurred saving the file");
+    }
     
     return YES;
 }

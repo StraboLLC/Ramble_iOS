@@ -153,7 +153,8 @@
     // Navigation logic may go here. Create and push another view controller.
     TrackDetailViewController * trackDetailViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"TrackDetail"];
     trackDetailViewController.straboTrack = [StraboTrack straboTrackFromFileWithName:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
-    [self presentModalViewController:trackDetailViewController animated:YES];
+    //[self presentModalViewController:trackDetailViewController animated:YES];
+    [self.navigationController pushViewController:trackDetailViewController animated:YES];
 }
 
 @end
