@@ -96,6 +96,7 @@
         // Store the authtoken in NSUserDefaults
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:authToken forKey:STRAccessTokenKey];
+        [defaults synchronize];
         
         // Update the current user object
         self.currentUser.authToken = authToken;
@@ -118,6 +119,7 @@
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:STRAccessTokenKey]) {
         [defaults removeObjectForKey:STRAccessTokenKey];
+        [defaults synchronize];
     }
     if (self.currentUser) {
         self.currentUser = nil;
