@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
+#import <ImageIO/ImageIO.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 #import "StraboTrack.h"
 
 @protocol LocalFileManagerDelegate

@@ -12,6 +12,7 @@
 
 -(NSString *)tempDirectoryPath;
 -(NSString *)createStraboFileDocumentsSubDirectoryWithName:(NSString *)directoryName;
+-(void)generateVideoThumbnail;
 
 @end
 
@@ -29,6 +30,8 @@
 }
 
 -(void)saveTemporaryFiles {
+    
+    //[self generateVideoThumbnail];
     
     NSError * error = nil;
     
@@ -127,6 +130,35 @@
         }
     }
     return fullPath;
+}
+
+-(void)generateVideoThumbnail {
+    
+#warning Thumbnail generation is not yet functional.
+    
+    // Take a screenshot for a preview
+  	
+    NSLog(@"Generate Video Thumbnail Called");
+    
+  	NSURL * temporaryMovieFilePath = [NSURL URLWithString:[[self tempDirectoryPath] stringByAppendingPathComponent:@"output.mov"]];
+   	
+    NSLog(@"About to generate image from movie: %@", temporaryMovieFilePath);
+    
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:temporaryMovieFilePath options:nil];
+    AVAssetImageGenerator *generate = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    NSError *err = nil;
+    CMTime time = CMTimeMake(0, 60);
+    CGImageRef imgRef = [generate copyCGImageAtTime:time actualTime:NULL error:&err];
+    
+    if (err) {
+        NSLog(@"Error generating image: %@", err);
+    }
+    UIImage *currentImg = [[UIImage alloc] initWithCGImage:imgRef];
+    
+    NSString * pngPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.png"];
+    
+    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(currentImg)];
+	[imageData writeToFile:pngPath atomically:YES];
 }
 
 @end

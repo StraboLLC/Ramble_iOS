@@ -20,7 +20,7 @@
 -(AVCaptureDevice *)frontFacingCamera;
 -(AVCaptureDevice *)backFacingCamera;
 -(AVCaptureDevice *)audioDevice;
--(NSURL *)tempFileURL;
+-(NSURL *)videoTempFileURL;
 
 @end
 
@@ -70,7 +70,7 @@
         [videoConnection setVideoOrientation:AVCaptureVideoOrientationPortrait];
     }
     
-    [[self movieFileOutput] startRecordingToOutputFileURL:self.tempFileURL
+    [[self movieFileOutput] startRecordingToOutputFileURL:self.videoTempFileURL
                                         recordingDelegate:self];
 }
 
@@ -123,7 +123,7 @@
     return nil;
 }
 
--(NSURL *)tempFileURL {
+-(NSURL *)videoTempFileURL {
     NSString *outputPath = [[NSString alloc] initWithFormat:@"%@%@", NSTemporaryDirectory(), @"output.mov"];
     NSURL *outputURL = [[NSURL alloc] initFileURLWithPath:outputPath];
     NSFileManager *fileManager = [NSFileManager defaultManager];
