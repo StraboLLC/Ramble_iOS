@@ -46,7 +46,6 @@
     [postRequest setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding]];
     
     currentRequest = postRequest;
-    NSLog(@"Post Request Generated");
 }
 
 -(void)startUpload {
@@ -58,11 +57,10 @@
     // Get ready to receive data
     receivedData = [[NSMutableData data] init];
     
+    // Fire up the connection
     if (currentConnection) {
         [currentConnection start];
-        NSLog(@"Connection Started");
     } else {
-        NSLog(@"New Connection could not be initialized");
         if ([self.delegate respondsToSelector:@selector(uploadStopped:withError:)]) {
             [self.delegate uploadStopped:NO withError:nil];
         }
@@ -70,7 +68,6 @@
 }
 
 -(void)cancelCurrentUpload {
-    NSLog(@"Upload Cancelled");
     [currentConnection cancel];
     if ([self.delegate respondsToSelector:@selector(uploadStopped:withError:)]) {
         [self.delegate uploadStopped:YES withError:nil];
@@ -83,18 +80,19 @@
 @implementation UploadManager (InternalMethods)
 
 -(void)handleResponse:(NSData *)responseJSONdata {
-    
-    NSLog(@"File Upload Completed. Response from server: /n%@", [[NSString alloc] initWithData:responseJSONdata encoding:NSUTF8StringEncoding]);
-    
     NSError * error = nil;
     NSDictionary * dataDictionary =  [NSJSONSerialization JSONObjectWithData:responseJSONdata options:0 error:&error];
     NSString * serverError = [[dataDictionary objectForKey:@"errors"] objectAtIndex:0];
     
+    // Make sure the JSON data was processed properly
     if (error && [self.delegate respondsToSelector:@selector(uploadStopped:withError:)]) {
         [self.delegate uploadStopped:NO withError:error];
     } else if ([serverError isEqualToString:@"true"] && [self.delegate respondsToSelector:@selector(uploadStopped:withError:)]) {
+        // Report a server error
         [self.delegate uploadStopped:NO withError:nil];
     } else {
+        // If there are no possible errors, notify the delegate
+        // that the upload was completed successfully.
         if ([self.delegate respondsToSelector:@selector(uploadCompleted)]) {
             [self.delegate uploadCompleted];
         }
@@ -111,28 +109,29 @@
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    // Append the new data to receivedData.
+    // Append the new data to receivedData
     [receivedData appendData:data];
 }
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"Error Connecting: %@", error);
+    // Notify the delegate of an error
     if ([self.delegate respondsToSelector:@selector(uploadStopped:withError:)]) {
         [self.delegate uploadStopped:NO withError:error];
     }
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"Connection did finish loading");
+    // Make sure that the delegate is informed of 100% progress
     if ([self.delegate respondsToSelector:@selector(uploadProgressMade:)]) {
         [self.delegate uploadProgressMade:1];
     }
+    // Handle the data response internally first
     NSData * data = [NSData dataWithData:receivedData];
     [self handleResponse:data];
 }
 
 -(void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
-    NSLog(@"Made some uploading progress");
+    // Notify the delegate that uploading progress has been made
     if ([self.delegate respondsToSelector:@selector(uploadProgressMade:)]) {
         [self.delegate uploadProgressMade:(totalBytesWritten/totalBytesExpectedToWrite)];
     }

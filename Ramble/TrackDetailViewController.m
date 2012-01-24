@@ -47,7 +47,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    titleLabel.text = [self.straboTrack fileName];
+    titleLabel.text = [self.straboTrack trackName];
 }
 
 - (void)viewDidUnload
@@ -78,7 +78,7 @@
     uploadStatusLabel.text = @"Upload in Progress";
     
     // Fire up the uploader
-    [uploadManager generateUploadRequestFor:[straboTrack fileName] inAlbum:@"Mobile Uploads" withAuthtoken:@"asdfjkl1234567890"];
+    [uploadManager generateUploadRequestFor:[straboTrack trackName] inAlbum:@"Mobile Uploads" withAuthtoken:@"asdfjkl1234567890"];
     [uploadManager startUpload];
     
 }
@@ -117,7 +117,7 @@
     // Release the upload manager
     uploadManager = nil;
     uploadStatusLabel.text = @"Upload Completed";
-    [actionButton setTitle:@"Dismiss" forState:UIControlStateNormal];
+    [actionButton setTitle:@"Neat!" forState:UIControlStateNormal];
 }
 
 @end

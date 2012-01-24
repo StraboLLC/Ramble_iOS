@@ -18,6 +18,7 @@
     CameraDataCollector * cameraDataCollector;
     AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
     LocalFileManager * localFileManager;
+    NSDate * recordingStartTime;
     BOOL isRecording;
     
     // Variables to hold the current device location information

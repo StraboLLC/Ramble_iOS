@@ -58,15 +58,6 @@
 -(NSArray *)allLocalStraboTracks;
 
 /*!
- @method straboTrackWithName:
- @abstract Gets the strabo track with the designated name
- @discussion Returns a strabo track object with the name specified in the parameters.
- @param trackName The name of the strabo track, excluding the file extension.
- @return StraboTrack Returns an object of custom type StraboTrack
- */
--(StraboTrack *)straboTrackWithName:(NSString *)trackName;
-
-/*!
  @method deleteStraboFile:
  @abstract Deletes a strabo file with a given name from the local device.
  @discussion Searches the local directory structure for a strabo file (directory) with this name and then deletes the strabo file (directory) and its contents.

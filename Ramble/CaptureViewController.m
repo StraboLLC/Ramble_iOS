@@ -136,7 +136,7 @@
         [locationDataCollector addDataPointWithLatitude:[currentLocation coordinate].latitude 
                                   withLongitude:[currentLocation coordinate].longitude 
                                     withHeading:[currentHeading trueHeading]
-                                  withTimestamp:0.0
+                                  withTimestamp:[[NSDate date] timeIntervalSinceDate:recordingStartTime]
                                    withAccuracy:[currentLocation horizontalAccuracy]];
     }
 }
@@ -144,6 +144,7 @@
 -(void)startRecording {
     [cameraDataCollector startRecording];
     [locationDataCollector clearDataPoints];
+    recordingStartTime = [NSDate date];
     isRecording = YES;
 }
 

@@ -102,7 +102,7 @@
     // Configure the cell...
     NSString * trackName = [localTrackNames objectAtIndex:[indexPath indexAtPosition:1]];
     NSLog(@"Just set the trackname");
-    [[cell textLabel] setText:[localFileManager straboTrackWithName:trackName].fileName];
+    [[cell textLabel] setText:[StraboTrack straboTrackFromFileWithName:trackName].trackName];
     NSLog(@"Returning a cell");
     return cell;
 }
@@ -152,7 +152,7 @@
 {
     // Navigation logic may go here. Create and push another view controller.
     TrackDetailViewController * trackDetailViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"TrackDetail"];
-    trackDetailViewController.straboTrack = [localFileManager straboTrackWithName:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
+    trackDetailViewController.straboTrack = [StraboTrack straboTrackFromFileWithName:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
     [self presentModalViewController:trackDetailViewController animated:YES];
 }
 

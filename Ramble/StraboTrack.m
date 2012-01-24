@@ -10,14 +10,46 @@
 
 @implementation StraboTrack
 
-@synthesize trackPath, fileName, trackType, latitude, longitude, date;
+@synthesize trackPath, trackName, trackType, latitude, longitude, createdDate, taggedPeople, taggedPlaces, uploadedDate;
+
++(StraboTrack *)straboTrackFromFileWithName:(NSString *)trackName {
+    StraboTrack * straboTrack = [[StraboTrack alloc] init];
+    
+    // Find the JSON file from the trackName
+    NSString * jsonFilePath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:[trackName stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json", trackName]]];
+    
+    // Read the JSON file
+    NSData * data = [[NSFileManager defaultManager] contentsAtPath:jsonFilePath];
+    NSError * error = nil;
+    NSDictionary * trackDictionary = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&error] objectForKey:@"track"];
+    
+    // Enter relevant info into the strabo track object
+    straboTrack.trackPath = [trackDictionary objectForKey:@"title"];
+    straboTrack.trackName = trackName;
+    straboTrack.trackType = [trackDictionary objectForKey:@"tracktype"];
+    straboTrack.latitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"latitude"];
+    straboTrack.longitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"longitude"];
+    straboTrack.createdDate = [NSDate dateWithTimeIntervalSince1970:(NSInteger)[trackDictionary objectForKey:@"createdDate"]];
+    straboTrack.taggedPeople = [trackDictionary objectForKey:@"taggedPeople"];
+    straboTrack.taggedPlaces = [trackDictionary objectForKey:@"taggedPlaces"];
+    straboTrack.uploadedDate = [NSDate dateWithTimeIntervalSince1970:(NSInteger)[trackDictionary objectForKey:@"uploadedDate"]];
+    
+    return straboTrack;
+}
+
+-(BOOL)save {
+    
+#warning Incomplete method. Changed strabo files will not save properly.
+    
+    return YES;
+}
 
 -(NSDictionary *)getFilePaths {
     if ([trackType isEqualToString:@"video"]) {
         
         // Make the file paths from the track path, the filename, and a specific extension.
-        NSURL * jsonFilePath = [NSURL URLWithString:[NSString stringWithFormat:@"%@.json", self.fileName] relativeToURL:self.trackPath];
-        NSURL * videoFilePath = [NSURL URLWithString:[NSString stringWithFormat:@"%@.mov", self.fileName] relativeToURL:self.trackPath];
+        NSURL * jsonFilePath = [NSURL URLWithString:[NSString stringWithFormat:@"%@.json", self.trackName] relativeToURL:self.trackPath];
+        NSURL * videoFilePath = [NSURL URLWithString:[NSString stringWithFormat:@"%@.mov", self.trackName] relativeToURL:self.trackPath];
         
         // Organize the keys and values into arrays
         NSArray * keys = [NSArray arrayWithObjects:@"jsonFilePath", @"videoFilePath", nil];
@@ -29,9 +61,9 @@
     } else if ([trackType isEqualToString:@"images"]) {
         
         // Make the file paths from the track path, the filename, and a specific extension.
-        NSURL * jsonFilePath = [NSURL URLWithString:[NSString stringWithFormat:@"%@.json", self.fileName] relativeToURL:self.trackPath];
-        NSURL * imageFilePath = [NSURL URLWithString:[NSString stringWithFormat:@"%@.iso", self.fileName] relativeToURL:self.trackPath];
-        NSURL * audioFilePath = [NSURL URLWithString:[NSString stringWithFormat:@"%@.caf", self.fileName] relativeToURL:self.trackPath];
+        NSURL * jsonFilePath = [NSURL URLWithString:[NSString stringWithFormat:@"%@.json", self.trackName] relativeToURL:self.trackPath];
+        NSURL * imageFilePath = [NSURL URLWithString:[NSString stringWithFormat:@"%@.iso", self.trackName] relativeToURL:self.trackPath];
+        NSURL * audioFilePath = [NSURL URLWithString:[NSString stringWithFormat:@"%@.caf", self.trackName] relativeToURL:self.trackPath];
         
         // Organize the keys and values into arrays
         NSArray * keys = [NSArray arrayWithObjects:@"jsonFilePath", @"imageFilePath", @"audioFilePath", nil];

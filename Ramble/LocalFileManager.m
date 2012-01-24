@@ -95,40 +95,9 @@
         // Execute for each file
         // Add a strabo track with the proper
         // name to the array of tracks.
-        [straboTracks addObject:[self straboTrackWithName:trackName]];
+        [straboTracks addObject:[StraboTrack straboTrackFromFileWithName:trackName]];
     }
     return straboTracks;
-}
-
--(StraboTrack *)straboTrackWithName:(NSString *)trackName {
-    StraboTrack * newTrack = [[StraboTrack alloc] init];
-    
-    // Find the JSON file based on the filename
-    NSString * docsRelativePath = [trackName stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json", trackName]];
-    NSString * jsonFilePath = [[self docsDirectoryPath] stringByAppendingPathComponent: docsRelativePath];
-    
-    // Read the JSON file
-    NSData * data = [fileManager contentsAtPath:jsonFilePath];
-    NSError * error = nil;
-    NSDictionary * trackDictionary = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&error] objectForKey:@"track"];
-    
-    if (error) {
-        if ([self.delegate respondsToSelector:@selector(localFileManagerFailedWithError:)]) {
-            [self.delegate localFileManagerFailedWithError:error];
-        }
-        return nil;
-    }
-    
-    // Enter relevant info into the strabo track.
-    newTrack.trackPath = [trackDictionary objectForKey:@"title"];
-    newTrack.fileName = trackName;
-    newTrack.trackType = [trackDictionary objectForKey:@"tracktype"];
-    newTrack.latitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"latitude"];
-    newTrack.longitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"longitude"];
-    newTrack.date = [NSDate dateWithTimeIntervalSince1970:(NSInteger)[trackDictionary objectForKey:@"date"]];
-    
-    // Return the new track
-    return newTrack;
 }
 
 -(void)deleteStraboTrack:(NSString *)trackName {
