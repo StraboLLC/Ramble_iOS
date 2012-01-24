@@ -54,8 +54,35 @@
     UIDevice * myDevice = [UIDevice currentDevice];
     
     // Create keys and values for the main dictionary
-    NSArray * keys = [NSArray arrayWithObjects:@"title", @"date", @"tracktype", @"deviceModel", @"softwareVersion", @"deviceName", @"compass", @"orientation", @"points", nil];
-    NSArray * values = [NSArray arrayWithObjects:@"", [NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]], trackType, [myDevice model], [myDevice systemVersion], [myDevice name], compassMode, orientation, dataPoints, nil];
+    NSArray * keys = [NSArray arrayWithObjects:
+                      @"title", 
+                      @"captureDate", 
+                      @"tracktype", 
+                      @"deviceModel", 
+                      @"softwareVersion", 
+                      @"deviceName", 
+                      @"compass", 
+                      @"orientation",
+                      @"taggedPeople"
+                      @"taggedPlaces"
+                      @"uploadDate"
+                      @"points", 
+                      nil];
+    
+    NSArray * values = [NSArray arrayWithObjects:
+                        @"", 
+                        [NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]], 
+                        trackType, 
+                        [myDevice model],
+                        [myDevice systemVersion], 
+                        [myDevice name], 
+                        compassMode, 
+                        orientation,
+                        [NSArray arrayWithObject:nil],
+                        [NSArray arrayWithObject:nil],
+                        @"",
+                        dataPoints, 
+                        nil];
     
     // Enter the values into a dictionary
     NSDictionary * track = [NSDictionary dictionaryWithObject:[NSDictionary dictionaryWithObjects:values forKeys:keys] forKey:@"track"];
@@ -102,7 +129,7 @@
     
     // Make the output path from components
     NSString *outputPath = [[NSString alloc] initWithFormat:@"%@%@%@", NSTemporaryDirectory(), @"output", @".json"];
-    //NSURL *outputURL = [[NSURL alloc] initFileURLWithPath:outputPath];
+    
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:outputPath]) {
         NSError *error;
