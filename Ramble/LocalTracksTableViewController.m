@@ -16,8 +16,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        localFileManager = [[LocalFileManager alloc] init];
-        localTrackNames = [localFileManager allLocalStraboTracknames];
+
     }
     return self;
 }
@@ -35,6 +34,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    localFileManager = [[LocalFileManager alloc] init];
+    localTrackNames = [localFileManager allLocalStraboTracknames];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -151,10 +153,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    TrackDetailViewController * trackDetailViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"TrackDetail"];
+    TrackDetailViewController * trackDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TrackDetail"];
     trackDetailViewController.straboTrack = [StraboTrack straboTrackFromFileWithName:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
-    //[self presentModalViewController:trackDetailViewController animated:YES];
     [self.navigationController pushViewController:trackDetailViewController animated:YES];
+}
+
+#pragma mark Button Handling
+
+-(IBAction)prefsButtonPressed:(id)sender {
+    PreferencesViewController * preferencesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Preferences"];
+    [self presentModalViewController:preferencesViewController animated:YES];
 }
 
 @end

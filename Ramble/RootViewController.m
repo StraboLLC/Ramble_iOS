@@ -32,8 +32,8 @@
 //        NSLog(@"User is not logged in. Now logging user in.");
 //        [self.loginManager logInWithFacebook];
 //    }
-    self.loginManager = [[LoginManager alloc] init];
-    [self.loginManager logInWithStrabo];
+    //self.loginManager = [[LoginManager alloc] init];
+    //3[self.loginManager logInWithFacebook];
     
     // Load the array of child controllers from the storyboard
     UIStoryboard * theStoryboard = self.storyboard;
@@ -82,7 +82,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark Button Handling

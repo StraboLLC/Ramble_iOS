@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PreferencesViewController.h"
 #import "Constants.h"
 #import "StraboTrack.h"
 #import "LocalFileManager.h"
@@ -34,5 +35,6 @@
 -(IBAction)uploadButtonPressed:(id)sender;
 -(IBAction)actionButtonPressed:(id)sender;
 -(IBAction)cancelButtonPressed:(id)sender;
+-(IBAction)prefsButtonPressed:(id)sender;
 
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TrackDetailViewController.h"
+#import "PreferencesViewController.h"
 #import "LocalFileManager.h"
 #import "StraboTrack.h"
 
@@ -15,5 +16,7 @@
     LocalFileManager * localFileManager;
     NSArray * localTrackNames;
 }
+
+-(IBAction)prefsButtonPressed:(id)sender;
 
 @end

@@ -78,16 +78,19 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    if (section == 0) {
+        return 1;
+    } else {
+        // Return the number of albums
+        return 5;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -102,6 +105,14 @@
     // Configure the cell...
     
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"Local Albums";
+    } else {
+        return @"Cloud Albums";
+    }
 }
 
 /*
@@ -152,9 +163,9 @@
         // push a table view controller with the local files
         
         //UIStoryboard * theStoryboard = self.storyboard;
-        //LocalTracksTableViewController * localTracksTableViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"LocalTracks"];
+        LocalTracksTableViewController * localTracksTableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocalTracks"];
         
-        LocalTracksTableViewController * localTracksTableViewController = [[LocalTracksTableViewController alloc] init];
+        //LocalTracksTableViewController * localTracksTableViewController = [[LocalTracksTableViewController alloc] init];
         localTracksTableViewController.title = @"Potz Haz Skillz";
         
         // Pass the selected object to the new view controller.
@@ -168,6 +179,13 @@
         // Pass the selected object to the new view controller.
         [self.navigationController pushViewController:cloudTracksTableViewController animated:YES];
     }
+}
+
+#pragma mark Button Handling
+
+-(IBAction)prefsButtonPressed:(id)sender {
+    PreferencesViewController * preferencesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Preferences"];
+    [self presentModalViewController:preferencesViewController animated:YES];
 }
 
 @end

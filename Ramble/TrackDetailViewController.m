@@ -110,6 +110,11 @@
 
 }
 
+-(IBAction)prefsButtonPressed:(id)sender {
+    PreferencesViewController * preferencesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Preferences"];
+    [self presentModalViewController:preferencesViewController animated:YES];
+}
+
 @end
 
 @implementation TrackDetailViewController (UploadManagerDelegate)
