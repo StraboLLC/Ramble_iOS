@@ -50,6 +50,7 @@
 -(void)writeJSONFileForTracktype:(NSString *)trackType 
                  withCompassMode:(NSString *)compassMode 
                  withOrientation:(NSString *)orientation {
+    NSLog(@"About to write JSON file");
     // Create a new object to represent the device
     UIDevice * myDevice = [UIDevice currentDevice];
     
@@ -63,9 +64,9 @@
                       @"deviceName", 
                       @"compass", 
                       @"orientation",
-                      @"taggedPeople"
-                      @"taggedPlaces"
-                      @"uploadDate"
+                      @"taggedPeople",
+                      @"taggedPlaces",
+                      @"uploadDate",
                       @"points", 
                       nil];
     
@@ -78,12 +79,11 @@
                         [myDevice name], 
                         compassMode, 
                         orientation,
-                        [NSArray arrayWithObject:nil],
-                        [NSArray arrayWithObject:nil],
+                        [NSArray arrayWithObject:@""],
+                        [NSArray arrayWithObject:@""],
                         @"",
                         dataPoints, 
                         nil];
-    
     // Enter the values into a dictionary
     NSDictionary * track = [NSDictionary dictionaryWithObject:[NSDictionary dictionaryWithObjects:values forKeys:keys] forKey:@"track"];
     
