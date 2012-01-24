@@ -26,6 +26,7 @@
 		9660AF3F14CB448400BF3806 /* LocalTracksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9660AF3E14CB448400BF3806 /* LocalTracksTableViewController.m */; };
 		9660AF4214CB449D00BF3806 /* CloudTracksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9660AF4114CB449C00BF3806 /* CloudTracksTableViewController.m */; };
 		9660AF4514CB450A00BF3806 /* NewsFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9660AF4414CB450A00BF3806 /* NewsFeedTableViewController.m */; };
+		96C17D0114CDDDFA00C96702 /* TrackDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C17D0014CDDDFA00C96702 /* TrackDetailViewController.m */; };
 		96DAB85514C8D88B008FA0A4 /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DAB85414C8D88B008FA0A4 /* CurrentUser.m */; };
 		96F4826314C6243F00096933 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F4826214C6243F00096933 /* UIKit.framework */; };
 		96F4826514C6243F00096933 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F4826414C6243F00096933 /* Foundation.framework */; };
@@ -84,6 +85,8 @@
 		9660AF4114CB449C00BF3806 /* CloudTracksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudTracksTableViewController.m; sourceTree = "<group>"; };
 		9660AF4314CB450A00BF3806 /* NewsFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedTableViewController.h; sourceTree = "<group>"; };
 		9660AF4414CB450A00BF3806 /* NewsFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTableViewController.m; sourceTree = "<group>"; };
+		96C17CFF14CDDDFA00C96702 /* TrackDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackDetailViewController.h; sourceTree = "<group>"; };
+		96C17D0014CDDDFA00C96702 /* TrackDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackDetailViewController.m; sourceTree = "<group>"; };
 		96DAB85314C8D88B008FA0A4 /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUser.h; sourceTree = "<group>"; };
 		96DAB85414C8D88B008FA0A4 /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUser.m; sourceTree = "<group>"; };
 		96F4825E14C6243F00096933 /* Ramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,14 +192,14 @@
 		9660AF3B14CB408700BF3806 /* Table Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9660AF4314CB450A00BF3806 /* NewsFeedTableViewController.h */,
+				9660AF4414CB450A00BF3806 /* NewsFeedTableViewController.m */,
 				9660AF3714CB400300BF3806 /* AlbumsTableViewController.h */,
 				9660AF3814CB400300BF3806 /* AlbumsTableViewController.m */,
 				9660AF3D14CB448400BF3806 /* LocalTracksTableViewController.h */,
 				9660AF3E14CB448400BF3806 /* LocalTracksTableViewController.m */,
 				9660AF4014CB449C00BF3806 /* CloudTracksTableViewController.h */,
 				9660AF4114CB449C00BF3806 /* CloudTracksTableViewController.m */,
-				9660AF4314CB450A00BF3806 /* NewsFeedTableViewController.h */,
-				9660AF4414CB450A00BF3806 /* NewsFeedTableViewController.m */,
 			);
 			name = "Table Controllers";
 			sourceTree = "<group>";
@@ -290,6 +293,8 @@
 				96F4827814C6243F00096933 /* RootViewController.m */,
 				96F4828314C624C300096933 /* CaptureViewController.h */,
 				96F4828414C624C300096933 /* CaptureViewController.m */,
+				96C17CFF14CDDDFA00C96702 /* TrackDetailViewController.h */,
+				96C17D0014CDDDFA00C96702 /* TrackDetailViewController.m */,
 				9660AF3B14CB408700BF3806 /* Table Controllers */,
 			);
 			name = "View Controllers";
@@ -385,6 +390,7 @@
 				9660AF3F14CB448400BF3806 /* LocalTracksTableViewController.m in Sources */,
 				9660AF4214CB449D00BF3806 /* CloudTracksTableViewController.m in Sources */,
 				9660AF4514CB450A00BF3806 /* NewsFeedTableViewController.m in Sources */,
+				96C17D0114CDDDFA00C96702 /* TrackDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

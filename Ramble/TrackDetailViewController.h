@@ -1,0 +1,38 @@
+//
+//  TrackDetailViewController.h
+//  Ramble
+//
+//  Created by Thomas Beatty on 1/23/12.
+//  Copyright (c) 2012 Strabo LLC. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "Constants.h"
+#import "StraboTrack.h"
+#import "LocalFileManager.h"
+#import "UploadManager.h"
+
+@interface TrackDetailViewController : UIViewController {
+    
+    UploadManager * uploadManager;
+    StraboTrack * straboTrack;
+
+    // Detail View Outlets
+    IBOutlet UILabel * titleLabel;
+    
+    // Uploading View Outlets
+    IBOutlet UIView * uploadView;
+    IBOutlet UIProgressView * uploadProgress;
+    IBOutlet UILabel * uploadStatusLabel;
+    IBOutlet UIButton * actionButton;
+}
+
+
+
+@property(nonatomic, strong)StraboTrack * straboTrack;
+
+-(IBAction)uploadButtonPressed:(id)sender;
+-(IBAction)actionButtonPressed:(id)sender;
+-(IBAction)cancelButtonPressed:(id)sender;
+
+@end

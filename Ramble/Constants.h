@@ -36,5 +36,7 @@
 // Keychain constants here
 #define keychainIdentifier @"StraboGISLoginData"
 
+// Table Cell constants here
+
 
 #endif

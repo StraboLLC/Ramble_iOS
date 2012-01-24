@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LocalTracksTableViewController.h"
+#import "CloudTracksTableViewController.h"
 
-@interface NewsFeedTableViewController : UITableViewController
+@interface NewsFeedTableViewController : UITableViewController {
+}
 
 @end

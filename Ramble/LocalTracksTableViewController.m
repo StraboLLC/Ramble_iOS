@@ -151,12 +151,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    TrackDetailViewController * trackDetailViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"TrackDetail"];
+    trackDetailViewController.straboTrack = [localFileManager straboTrackWithName:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
+    [self presentModalViewController:trackDetailViewController animated:YES];
 }
 
 @end

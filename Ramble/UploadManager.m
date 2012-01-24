@@ -17,12 +17,7 @@
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error;
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection;
-@end
-
-@interface UploadManager (NSURLConnectionDownloadDelegate) <NSURLConnectionDownloadDelegate>
--(void)connection:(NSURLConnection *)connection didWriteData:(long long)bytesWritten totalBytesWritten:(long long)totalBytesWritten expectedTotalBytes:(long long)expectedTotalBytes;
--(void)connectionDidFinishDownloading:(NSURLConnection *)connection destinationURL:(NSURL *)destinationURL;
--(void)connectionDidResumeDownloading:(NSURLConnection *)connection totalBytesWritten:(long long)totalBytesWritten expectedTotalBytes:(long long)expectedTotalBytes;
+-(void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;
 @end
 
 @implementation UploadManager
@@ -40,17 +35,18 @@
 -(void)generateUploadRequestFor:(NSString *)trackName inAlbum:(NSString *)album withAuthtoken:(NSString *)authToken {
     LocalFileManager * localFileManager = [[LocalFileManager alloc] init];
     // Find the three data files
-    NSString * imageFilePath = [localFileManager.docsDirectoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", trackName]];
+    //NSString * imageFilePath = [localFileManager.docsDirectoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", trackName]];
     NSString * videoFilePath = [localFileManager.docsDirectoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mov", trackName]];
     NSString * jsonFilePath = [localFileManager.docsDirectoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json", trackName]];
 
     // Create the request
     NSMutableURLRequest * postRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:uploadServerURL]];
-    NSString *params = [[NSString alloc] initWithFormat:@"filetype=video&authtoken=%@&videofile=%@&JSONfile=%@&imagefile=%@&filename=%@&addtoalbum=%@", authToken, [NSData dataWithContentsOfFile:videoFilePath], [NSData dataWithContentsOfFile:jsonFilePath], [NSData dataWithContentsOfFile:imageFilePath], trackName, album];
+    NSString *params = [[NSString alloc] initWithFormat:@"filetype=video&authtoken=%@&videofile=%@&JSONfile=%@&imagefile=nil&filename=%@&addtoalbum=%@", authToken, [NSData dataWithContentsOfFile:videoFilePath], [NSData dataWithContentsOfFile:jsonFilePath], trackName, album];
     [postRequest setHTTPMethod:@"POST"];
     [postRequest setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding]];
     
     currentRequest = postRequest;
+    NSLog(@"Post Request Generated");
 }
 
 -(void)startUpload {
@@ -59,8 +55,12 @@
     
     currentRequest = nil;
     
+    // Get ready to receive data
+    receivedData = [[NSMutableData data] init];
+    
     if (currentConnection) {
         [currentConnection start];
+        NSLog(@"Connection Started");
     } else {
         NSLog(@"New Connection could not be initialized");
         if ([self.delegate respondsToSelector:@selector(uploadStopped:withError:)]) {
@@ -70,7 +70,7 @@
 }
 
 -(void)cancelCurrentUpload {
-    
+    NSLog(@"Upload Cancelled");
     [currentConnection cancel];
     if ([self.delegate respondsToSelector:@selector(uploadStopped:withError:)]) {
         [self.delegate uploadStopped:YES withError:nil];
@@ -83,6 +83,9 @@
 @implementation UploadManager (InternalMethods)
 
 -(void)handleResponse:(NSData *)responseJSONdata {
+    
+    NSLog(@"File Upload Completed. Response from server: /n%@", [[NSString alloc] initWithData:responseJSONdata encoding:NSUTF8StringEncoding]);
+    
     if ([self.delegate respondsToSelector:@selector(uploadCompleted)]) {
         [self.delegate uploadCompleted];
     }
@@ -103,37 +106,26 @@
 }
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSLog(@"Error Connecting: %@", error);
     if ([self.delegate respondsToSelector:@selector(uploadStopped:withError:)]) {
         [self.delegate uploadStopped:NO withError:error];
     }
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"Connection did finish loading");
+    if ([self.delegate respondsToSelector:@selector(uploadProgressMade:)]) {
+        [self.delegate uploadProgressMade:1];
+    }
     NSData * data = [NSData dataWithData:receivedData];
     [self handleResponse:data];
 }
 
-@end
-
-@implementation UploadManager (NSURLConnectionDownloadDelegate)
-
--(void)connection:(NSURLConnection *)connection didWriteData:(long long)bytesWritten totalBytesWritten:(long long)totalBytesWritten expectedTotalBytes:(long long)expectedTotalBytes {
-    
-    // Calculate the percent complete (between 0 and 1)
-    double percentComplete = totalBytesWritten/expectedTotalBytes;
-    
-    // Report the percent complete to the delegate if it responds to the proper protocol method
+-(void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
+    NSLog(@"Made some uploading progress");
     if ([self.delegate respondsToSelector:@selector(uploadProgressMade:)]) {
-        [self.delegate uploadProgressMade:percentComplete];
+        [self.delegate uploadProgressMade:(totalBytesWritten/totalBytesExpectedToWrite)];
     }
-}
-
--(void)connectionDidFinishDownloading:(NSURLConnection *)connection destinationURL:(NSURL *)destinationURL {
-    
-}
-
--(void)connectionDidResumeDownloading:(NSURLConnection *)connection totalBytesWritten:(long long)totalBytesWritten expectedTotalBytes:(long long)expectedTotalBytes {
-    
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TrackDetailViewController.h"
 #import "LocalFileManager.h"
 #import "StraboTrack.h"
 

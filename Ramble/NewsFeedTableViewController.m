@@ -147,13 +147,27 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    if ([indexPath indexAtPosition:0] == 0) { 
+        // If a row is in the first section then it is the local files row
+        // push a table view controller with the local files
+        
+        //UIStoryboard * theStoryboard = self.storyboard;
+        //LocalTracksTableViewController * localTracksTableViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"LocalTracks"];
+        
+        LocalTracksTableViewController * localTracksTableViewController = [[LocalTracksTableViewController alloc] init];
+        localTracksTableViewController.title = @"Potz Haz Skillz";
+        
+        // Pass the selected object to the new view controller.
+        [self.navigationController pushViewController:localTracksTableViewController animated:YES];
+        
+    } else {
+        // Navigation logic may go here. Create and push another view controller.
+        CloudTracksTableViewController * cloudTracksTableViewController = [[CloudTracksTableViewController alloc] init];
+        cloudTracksTableViewController.title = @"Mad Skillz";
+        
+        // Pass the selected object to the new view controller.
+        [self.navigationController pushViewController:cloudTracksTableViewController animated:YES];
+    }
 }
 
 @end
