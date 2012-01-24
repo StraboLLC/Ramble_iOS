@@ -32,6 +32,8 @@
 //        NSLog(@"User is not logged in. Now logging user in.");
 //        [self.loginManager logInWithFacebook];
 //    }
+    self.loginManager = [[LoginManager alloc] init];
+    [self.loginManager logInWithStrabo];
     
     // Load the array of child controllers from the storyboard
     UIStoryboard * theStoryboard = self.storyboard;

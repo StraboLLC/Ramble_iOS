@@ -11,12 +11,20 @@
 #import "FBConnect.h"
 #import "CurrentUser.h"
 
+@protocol LoginManagerDelegate
+@optional
+-(void)userDidLoginSuccessfully;
+-(void)straboLoginDidFailWithError:(NSError *)error;
+@end
+
 @interface LoginManager : NSObject {
+    id delegate;
     Facebook * facebook;
     CurrentUser * currentUser;
     
 }
 
+@property(strong)id delegate;
 @property(nonatomic, retain)Facebook * facebook;
 @property(nonatomic, retain)CurrentUser * currentUser;
 

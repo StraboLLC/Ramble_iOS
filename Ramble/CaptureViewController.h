@@ -28,6 +28,7 @@
     // UI Outlets
     IBOutlet UIButton * recordButton;
     IBOutlet UIView * videoPreviewView;
+    IBOutlet UIImageView * compassImage;
 }
 
 /*!

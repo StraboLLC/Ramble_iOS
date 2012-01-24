@@ -33,6 +33,8 @@
 
 @implementation CaptureViewController
 
+#define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -154,6 +156,24 @@
     [locationDataCollector writeJSONFileForTracktype:@"video" withCompassMode:@"mode" withOrientation:@"vertical"];
 }
 
+- (void)rotateImage:(UIImageView *)image duration:(NSTimeInterval)duration 
+              curve:(int)curve degrees:(CGFloat)degrees
+{
+    // Setup the animation
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:duration];
+    [UIView setAnimationCurve:curve];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    
+    // The transform matrix
+    CGAffineTransform transform = 
+    CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(degrees));
+    image.transform = transform;
+    
+    // Commit the changes
+    [UIView commitAnimations];
+}
+
 @end
 
 @implementation CaptureViewController (CLLocationManagerDelegate)
@@ -169,6 +189,8 @@
 -(void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
     currentHeading = newHeading;
     [self recordLocationIfRecording];
+    [self rotateImage:compassImage duration:0.1 
+                curve:UIViewAnimationCurveLinear degrees:-newHeading.trueHeading];
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {

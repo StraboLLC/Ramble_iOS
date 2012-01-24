@@ -26,6 +26,7 @@
 		9660AF3F14CB448400BF3806 /* LocalTracksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9660AF3E14CB448400BF3806 /* LocalTracksTableViewController.m */; };
 		9660AF4214CB449D00BF3806 /* CloudTracksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9660AF4114CB449C00BF3806 /* CloudTracksTableViewController.m */; };
 		9660AF4514CB450A00BF3806 /* NewsFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9660AF4414CB450A00BF3806 /* NewsFeedTableViewController.m */; };
+		966961F114CF27730084926C /* Compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 966961F014CF27730084926C /* Compass.png */; };
 		9695ADA314CE687A00847C69 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9695ADA214CE687A00847C69 /* CoreMedia.framework */; };
 		9695ADA614CE688800847C69 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9695ADA514CE688800847C69 /* ImageIO.framework */; };
 		9695ADA814CE68BE00847C69 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9695ADA714CE68BE00847C69 /* MobileCoreServices.framework */; };
@@ -88,6 +89,7 @@
 		9660AF4114CB449C00BF3806 /* CloudTracksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudTracksTableViewController.m; sourceTree = "<group>"; };
 		9660AF4314CB450A00BF3806 /* NewsFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedTableViewController.h; sourceTree = "<group>"; };
 		9660AF4414CB450A00BF3806 /* NewsFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTableViewController.m; sourceTree = "<group>"; };
+		966961F014CF27730084926C /* Compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Compass.png; sourceTree = "<group>"; };
 		9695ADA214CE687A00847C69 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		9695ADA514CE688800847C69 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		9695ADA714CE68BE00847C69 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -224,6 +226,14 @@
 			name = "Capture Support";
 			sourceTree = "<group>";
 		};
+		966961F314CF27790084926C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				966961F014CF27730084926C /* Compass.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		96F4825314C6243F00096933 = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +286,7 @@
 		96F4826914C6243F00096933 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				966961F314CF27790084926C /* Images */,
 				96F4826A14C6243F00096933 /* Ramble-Info.plist */,
 				96F4826B14C6243F00096933 /* InfoPlist.strings */,
 				96F4826E14C6243F00096933 /* main.m */,
@@ -366,6 +377,7 @@
 				96F4826D14C6243F00096933 /* InfoPlist.strings in Resources */,
 				96F4827614C6243F00096933 /* MainStoryboard.storyboard in Resources */,
 				964F745C14C7D382006B5B6D /* FBDialog.bundle in Resources */,
+				966961F114CF27730084926C /* Compass.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

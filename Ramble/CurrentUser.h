@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface CurrentUser : NSObject {
-    
+    NSString * authToken;
 }
+
+@property(nonatomic, strong)NSString * authToken;
 
 @end

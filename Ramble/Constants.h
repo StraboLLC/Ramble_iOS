@@ -35,7 +35,7 @@
 
 // Local NSUserDefaults Constants
 #define STRAccessTokenKey @"STRAccessTokenKey"
-#define STRSaltHash @""
+#define STRSaltHash @"123456"
 #define STRUUIDKey @"STRUUIDKey"
 
 // Keychain constants here

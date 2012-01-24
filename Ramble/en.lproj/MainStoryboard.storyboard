@@ -86,10 +86,15 @@
                                     <action selector="recordButtonPressed:" destination="Tks-0X-fok" eventType="touchUpInside" id="1Dd-0O-JCi"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Compass.png" id="i5N-ji-znc">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="compassImage" destination="i5N-ji-znc" id="PUR-Xx-9pG"/>
                         <outlet property="recordButton" destination="Urv-eC-19d" id="8jj-yS-agG"/>
                         <outlet property="videoPreviewView" destination="Ui9-go-TNU" id="pdu-zC-Hsd"/>
                     </connections>
@@ -304,6 +309,9 @@
             <point key="canvasLocation" x="703" y="1094"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Compass.png" width="300" height="288"/>
+    </resources>
     <classes>
         <class className="AlbumsTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AlbumsTableViewController.h"/>
@@ -312,6 +320,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CaptureViewController.h"/>
             <relationships>
                 <relationship kind="action" name="recordButtonPressed:"/>
+                <relationship kind="outlet" name="compassImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="recordButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="videoPreviewView" candidateClass="UIView"/>
             </relationships>
