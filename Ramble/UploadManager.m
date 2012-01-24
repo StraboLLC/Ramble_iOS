@@ -86,8 +86,18 @@
     
     NSLog(@"File Upload Completed. Response from server: /n%@", [[NSString alloc] initWithData:responseJSONdata encoding:NSUTF8StringEncoding]);
     
-    if ([self.delegate respondsToSelector:@selector(uploadCompleted)]) {
-        [self.delegate uploadCompleted];
+    NSError * error = nil;
+    NSDictionary * dataDictionary =  [NSJSONSerialization JSONObjectWithData:responseJSONdata options:0 error:&error];
+    NSString * serverError = [[dataDictionary objectForKey:@"errors"] objectAtIndex:0];
+    
+    if (error && [self.delegate respondsToSelector:@selector(uploadStopped:withError:)]) {
+        [self.delegate uploadStopped:NO withError:error];
+    } else if ([serverError isEqualToString:@"true"] && [self.delegate respondsToSelector:@selector(uploadStopped:withError:)]) {
+        [self.delegate uploadStopped:NO withError:nil];
+    } else {
+        if ([self.delegate respondsToSelector:@selector(uploadCompleted)]) {
+            [self.delegate uploadCompleted];
+        }
     }
 }
 

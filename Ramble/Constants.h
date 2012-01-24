@@ -33,6 +33,11 @@
 #define FBAccessTokenKey @"FBAccessTokenKey"
 #define FBExpirationDateKey @"FBExpirationDateKey"
 
+// Local NSUserDefaults Constants
+#define STRAccessTokenKey @"STRAccessTokenKey"
+#define STRSaltHash @""
+#define STRUUIDKey @"STRUUIDKey"
+
 // Keychain constants here
 #define keychainIdentifier @"StraboGISLoginData"
 
