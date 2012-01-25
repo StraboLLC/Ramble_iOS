@@ -31,7 +31,7 @@
 
 // UUID NSUserDefaults Key
 #define STRUUIDKey @"STRUUIDKey"
-#define STRSaltHash @"123456"
+#define STRSaltHash @"str480GUS"
 
 // Facebook NSUserDefaults Constants
 #define FBAccessTokenKey @"FBAccessTokenKey"

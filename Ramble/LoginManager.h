@@ -10,6 +10,7 @@
 #import "Constants.h"
 #import "FBConnect.h"
 #import "CurrentUser.h"
+#import "NSString+MD5.h"
 
 @protocol LoginManagerDelegate
 @optional
