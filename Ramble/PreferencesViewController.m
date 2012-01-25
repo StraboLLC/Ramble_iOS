@@ -45,8 +45,11 @@
 {
     [super viewDidLoad];
     preferencesManager = [[PreferencesManager alloc] init];
-    loginManager = [[LoginManager alloc] init];
-    loginManager.delegate = self;
+    //loginManager = [[LoginManager alloc] init];
+    //loginManager.delegate = self;
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    loginManager = appDelegate.loginManager;
     
     // Set the UI inputs appropriately
     [locationModeSwitch setOn:[preferencesManager precisionLocationModeOn] animated:NO];
@@ -100,6 +103,7 @@
 
 -(IBAction)logInButtonPressed:(id)sender {
     NSLog(@"Login Button Pressed");
+    
     if ([logInButton.titleLabel.text isEqualToString:@"Log Out"]) {
         NSLog(@"Loggin the user out");
         // Log the user out

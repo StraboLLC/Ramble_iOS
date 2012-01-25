@@ -10,8 +10,11 @@
 #import "LoginManager.h"
 #import "RootViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+    LoginManager * loginManager;
+}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) LoginManager * loginManager;
 
 @end
