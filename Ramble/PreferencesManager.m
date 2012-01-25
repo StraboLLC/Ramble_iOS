@@ -15,6 +15,13 @@
         // Customize initialization here
         defaults = [NSUserDefaults standardUserDefaults];
         
+        // Create a UUID for the device, if it does not already exist
+        if (![defaults objectForKey:STRUUIDKey]) {
+            NSString * UUID = [NSString stringWithFormat:@"%@", CFUUIDCreateString(NULL, CFUUIDCreate(NULL))];
+            NSLog(@"UUID: %@", UUID);
+            [defaults setObject:UUID forKey:STRUUIDKey];
+        }
+        
         // Set defaults if they do not exist
         if (![defaults objectForKey:STRPrecisionLocationModeOnKey] || ![defaults objectForKey:STRCompassModeMagneticKey] || ![defaults objectForKey:STRLaunchToCaptureModeKey]) {
             [defaults setObject:[NSNumber numberWithBool:false] forKey:STRPrecisionLocationModeOnKey];
@@ -25,6 +32,8 @@
     }
     return self;
 }
+
+#pragma mark User Settings
 
 -(void)setPrecisionLocationModeOn:(BOOL)precisionLocationModeOn {
     [defaults setObject:[NSNumber numberWithBool:precisionLocationModeOn] forKey:STRPrecisionLocationModeOnKey];
@@ -51,6 +60,12 @@
 
 -(BOOL)launchToCaptureMode {
     return [[defaults objectForKey:STRLaunchToCaptureModeKey] boolValue];
+}
+
+#pragma mark Administrator Settings
+
+-(NSString *)applicationUUID {
+    return [defaults objectForKey:STRUUIDKey];
 }
 
 @end

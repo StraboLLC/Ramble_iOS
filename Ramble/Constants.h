@@ -29,14 +29,16 @@
 
 // Non build-specific definitions here
 
+// UUID NSUserDefaults Key
+#define STRUUIDKey @"STRUUIDKey"
+#define STRSaltHash @"123456"
+
 // Facebook NSUserDefaults Constants
 #define FBAccessTokenKey @"FBAccessTokenKey"
 #define FBExpirationDateKey @"FBExpirationDateKey"
 
 // Local NSUserDefaults Constants
 #define STRAccessTokenKey @"STRAccessTokenKey"
-#define STRSaltHash @"123456"
-#define STRUUIDKey @"STRUUIDKey"
 
 // Preferences NSUserDefaults Constants
 #define STRPrecisionLocationModeOnKey @"STRPrecisionLocationModeOnKey"

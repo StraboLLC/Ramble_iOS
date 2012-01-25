@@ -13,6 +13,7 @@
     NSUserDefaults * defaults;
 }
 
+// User-controlled Preferences
 -(void)setPrecisionLocationModeOn:(BOOL)precisionLocationModeOn;
 -(BOOL)precisionLocationModeOn;
 
@@ -21,5 +22,8 @@
 
 -(void)setLaunchToCaptureMode:(BOOL)launchToCaptureMode;
 -(BOOL)launchToCaptureMode;
+
+// Admin Preferences
+-(NSString *)applicationUUID;
 
 @end

@@ -24,6 +24,7 @@
     self = [super init];
     if (self) {
         fileManager = [[NSFileManager alloc] init];
+        preferencesManager = [[PreferencesManager alloc] init];
     }
     
     return self;
@@ -51,7 +52,7 @@
     NSString * UNIXTime = [NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]];
     
     // Generate a name for the files
-    NSString * trackName = [NSString stringWithFormat:@"%@-%@", @"UUID", UNIXTime];
+    NSString * trackName = [NSString stringWithFormat:@"%@-%@", [preferencesManager applicationUUID], UNIXTime];
     
     // Create the new subdirectory
     NSString * newDirectoryPath = [self createStraboFileDocumentsSubDirectoryWithName:trackName];

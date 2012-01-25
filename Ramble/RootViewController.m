@@ -29,7 +29,7 @@
     // Listen for the app re-entering the foreground
     // Uncomment this if you want the app to switch
     // to capture mode after becomming active
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(transitionToCaptureMode) name:UIApplicationWillEnterForegroundNotification object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(transitionToCaptureMode) name:UIApplicationWillEnterForegroundNotification object:nil];
     
     preferencesManager = [[PreferencesManager alloc] init];
     

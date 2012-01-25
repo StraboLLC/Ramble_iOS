@@ -11,6 +11,7 @@
 #import <ImageIO/ImageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "StraboTrack.h"
+#import "PreferencesManager.h"
 
 @protocol LocalFileManagerDelegate
 @optional
@@ -22,6 +23,7 @@
 @interface LocalFileManager : NSObject {
     id delegate;
     NSFileManager * fileManager;
+    PreferencesManager * preferencesManager;
 }
 
 @property(strong)id delegate;
