@@ -23,8 +23,9 @@
 
 -(id)init {
     self = [super init];
+    NSLog(@"Init Called");
     if (self) {
-        
+        NSLog(@"Self Checked");
         self.currentUser = nil;
         
         // Perform custom initialization here
@@ -32,9 +33,9 @@
         
         // Check for previous authentication
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-        if ([defaults objectForKey:FBAccessTokenKey]
-            && [defaults objectForKey:FBExpirationDateKey]) {
+        if ([defaults objectForKey:FBAccessTokenKey]) {
             // Perform actions now that we know the user is logged in
+            NSLog(@"Login Manager says that the user is logged in");
             facebook.accessToken = [defaults objectForKey:FBAccessTokenKey];
             facebook.expirationDate =[defaults objectForKey:FBExpirationDateKey];
             self.currentUser = [[CurrentUser alloc] init];
@@ -52,6 +53,10 @@
     if (![facebook isSessionValid]) {
         [facebook authorize:nil];
     }
+}
+
+-(void)logOut {
+    [facebook logout];
 }
 
 @end
@@ -130,13 +135,14 @@
 
 @implementation LoginManager (FBSessionDelegate)
 
--(void)fbDidLogin {
+- (void)fbDidLogin {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[facebook accessToken] forKey:FBAccessTokenKey];
     [defaults setObject:[facebook expirationDate] forKey:FBExpirationDateKey];
     [defaults synchronize];
     self.currentUser = [[CurrentUser alloc] init];
     
+    NSLog(@"Defaults auth Key Saved: %@", [defaults objectForKey:FBAccessTokenKey]);
     // Now that the user is logged in with Facebook,
     // log the user into the Strabo system
     if ([self logInWithStrabo]) {
@@ -157,7 +163,7 @@
     if (self.currentUser) {
         self.currentUser = nil;
     }
-    
+    NSLog(@"Logged out of facebook");
     // When logging out the facebook user, log the user out of Strabo
     [self logOutFromStrabo];
 }

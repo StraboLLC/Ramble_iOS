@@ -48,7 +48,8 @@
     [self addChildViewController:listViewController];
     
     // Set up the first child controller
-    [subView addSubview:captureViewController.view];
+    [subView addSubview:captureViewController.view]; // Use Capture View
+    //[subview addSubview:listViewController.view]; // Use List View
     
 }
 

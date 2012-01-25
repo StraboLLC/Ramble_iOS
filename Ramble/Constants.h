@@ -38,6 +38,11 @@
 #define STRSaltHash @"123456"
 #define STRUUIDKey @"STRUUIDKey"
 
+// Preferences NSUserDefaults Constants
+#define STRPrecisionLocationModeOnKey @"STRPrecisionLocationModeOnKey"
+#define STRCompassModeMagneticKey @"STRCompassModeMagneticKey"
+#define STRLaunchToCaptureModeKey @"STRLaunchToCaptureModeKey"
+
 // Keychain constants here
 #define keychainIdentifier @"StraboGISLoginData"
 

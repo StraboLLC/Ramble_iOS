@@ -7,9 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Constants.h"
 
 @interface PreferencesManager : NSObject {
-    
+    NSUserDefaults * defaults;
 }
+
+-(void)setPrecisionLocationModeOn:(BOOL)precisionLocationModeOn;
+-(BOOL)precisionLocationModeOn;
+
+-(void)setCompassModeMagnetic:(BOOL)compassModeMagnetic;
+-(BOOL)compassModeMagnetic;
+
+-(void)setLaunchToCaptureMode:(BOOL)launchToCaptureMode;
+-(BOOL)launchToCaptureMode;
 
 @end

@@ -17,7 +17,7 @@
 -(void)straboLoginDidFailWithError:(NSError *)error;
 @end
 
-@interface LoginManager : NSObject {
+@interface LoginManager : NSObject <FBSessionDelegate> {
     id delegate;
     Facebook * facebook;
     CurrentUser * currentUser;
@@ -28,8 +28,7 @@
 @property(nonatomic, retain)Facebook * facebook;
 @property(nonatomic, retain)CurrentUser * currentUser;
 
--(id)init;
-
 -(void)logInWithFacebook;
+-(void)logOut;
 
 @end
