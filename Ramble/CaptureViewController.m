@@ -60,6 +60,7 @@
     
     isRecording = NO;
     localFileManager = [[LocalFileManager alloc] init];
+    preferencesManager = [[PreferencesManager alloc] init];
     
     // Set up the location stuff
     locationManager = [[CLLocationManager alloc] init];
@@ -81,6 +82,12 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    
+    // Turbocharge the accuracy if necessary
+    if ([preferencesManager precisionLocationModeOn]) {
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    }
+    
     [locationManager startUpdatingLocation];
     [locationManager startUpdatingHeading];
     
@@ -135,9 +142,17 @@
 
 -(void)recordLocationIfRecording {
     if (isRecording) {
+        
+        double direction;
+        if ([preferencesManager compassModeMagnetic]) {
+            direction = currentHeading.magneticHeading;
+        } else {
+            direction = currentHeading.trueHeading;
+        }
+        
         [locationDataCollector addDataPointWithLatitude:[currentLocation coordinate].latitude 
                                   withLongitude:[currentLocation coordinate].longitude 
-                                    withHeading:[currentHeading trueHeading]
+                                    withHeading:direction
                                   withTimestamp:[[NSDate date] timeIntervalSinceDate:recordingStartTime]
                                    withAccuracy:[currentLocation horizontalAccuracy]];
     }
@@ -188,9 +203,17 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
     currentHeading = newHeading;
+    
+    double direction;
+    if ([preferencesManager compassModeMagnetic]) {
+        direction = newHeading.magneticHeading;
+    } else {
+        direction = newHeading.trueHeading;
+    }
+    
     [self recordLocationIfRecording];
     [self rotateImage:compassImage duration:0.1 
-                curve:UIViewAnimationCurveLinear degrees:-newHeading.trueHeading];
+                curve:UIViewAnimationCurveLinear degrees:-direction];
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {

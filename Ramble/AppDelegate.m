@@ -62,14 +62,12 @@
 // Facebook Support
 // Pre 4.2 support
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    //RootViewController * viewController = (RootViewController *)self.window.rootViewController;
     return [[self.loginManager facebook] handleOpenURL:url];
 }
 
 // For 4.2+ support
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    //RootViewController * viewController = (RootViewController *)self.window.rootViewController;
     return [[self.loginManager facebook] handleOpenURL:url];
 }
 

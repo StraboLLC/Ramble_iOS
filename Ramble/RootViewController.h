@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CaptureViewController.h"
+#import "PreferencesManager.h"
 #import "LoginManager.h"
 
 @interface RootViewController : UIViewController {
@@ -15,6 +16,7 @@
     UINavigationController * listViewController;
     
     LoginManager * loginManager;
+    PreferencesManager * preferencesManager;
     
     IBOutlet UIView * subView;
 }
@@ -23,5 +25,7 @@
 
 -(IBAction)tableViewButtonPressed:(id)sender;
 -(IBAction)cameraViewButtonPressed:(id)sender;
+
+-(void)transitionToCaptureMode;
 
 @end

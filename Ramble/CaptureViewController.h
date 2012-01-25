@@ -11,6 +11,7 @@
 #import "LocationDataCollector.h"
 #import "CameraDataCollector.h"
 #import "LocalFileManager.h"
+#import "PreferencesManager.h"
 
 @interface CaptureViewController : UIViewController {
     CLLocationManager * locationManager;
@@ -18,6 +19,7 @@
     CameraDataCollector * cameraDataCollector;
     AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
     LocalFileManager * localFileManager;
+    PreferencesManager * preferencesManager;
     NSDate * recordingStartTime;
     BOOL isRecording;
     

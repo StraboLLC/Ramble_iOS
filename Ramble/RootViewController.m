@@ -26,14 +26,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    // Test the facebook login
-//    self.loginManager = [[LoginManager alloc] init];
-//    if (![self.loginManager currentUser]) {
-//        NSLog(@"User is not logged in. Now logging user in.");
-//        [self.loginManager logInWithFacebook];
-//    }
-    //self.loginManager = [[LoginManager alloc] init];
-    //3[self.loginManager logInWithFacebook];
+    // Listen for the app re-entering the foreground
+    // Uncomment this if you want the app to switch
+    // to capture mode after becomming active
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(transitionToCaptureMode) name:UIApplicationWillEnterForegroundNotification object:nil];
+    
+    preferencesManager = [[PreferencesManager alloc] init];
     
     // Load the array of child controllers from the storyboard
     UIStoryboard * theStoryboard = self.storyboard;
@@ -48,8 +46,12 @@
     [self addChildViewController:listViewController];
     
     // Set up the first child controller
-    [subView addSubview:captureViewController.view]; // Use Capture View
-    //[subview addSubview:listViewController.view]; // Use List View
+    // based on user preferences
+    if ([preferencesManager launchToCaptureMode]) {
+        [subView addSubview:captureViewController.view];
+    } else {
+        [subView addSubview:listViewController.view];
+    }
     
 }
 
@@ -93,6 +95,12 @@
 }
 
 -(IBAction)cameraViewButtonPressed:(id)sender {
+    [self transitionFromViewController:listViewController toViewController:captureViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];
+}
+
+#pragma mark Methods
+
+-(void)transitionToCaptureMode {
     [self transitionFromViewController:listViewController toViewController:captureViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];
 }
 
