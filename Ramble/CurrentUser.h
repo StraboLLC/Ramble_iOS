@@ -10,8 +10,10 @@
 
 @interface CurrentUser : NSObject {
     NSString * authToken;
+    NSNumber * userID;
 }
 
 @property(nonatomic, strong)NSString * authToken;
+@property(nonatomic, strong)NSNumber * userID;
 
 @end

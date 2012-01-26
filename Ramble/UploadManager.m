@@ -37,7 +37,7 @@
     return self;
 }
 
--(void)generateUploadRequestFor:(NSString *)trackName inAlbum:(NSString *)album withAuthtoken:(NSString *)authToken {
+-(void)generateUploadRequestFor:(NSString *)trackName inAlbum:(NSString *)album withAuthtoken:(NSString *)authToken withID:(NSString *)userID{
     
     LocalFileManager * localFileManager = [[LocalFileManager alloc] init];
     
@@ -69,7 +69,7 @@
     [postBody appendData:[[NSString stringWithString:trackName] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"id\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postBody appendData:[[NSString stringWithString:@"552425536"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithString:userID] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"videofile\"; filename=\"%@.mov\"\r\n", trackName] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];

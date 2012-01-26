@@ -45,7 +45,7 @@
  @discussion Discovers the track files based on the name of the track. Then uploads the files via a php post request
  @param trackName The name of the track (should be the same as the contained track files) with no file extension.
  */
--(void)generateUploadRequestFor:(NSString *)trackName inAlbum:(NSString *)album withAuthtoken:(NSString *)authToken;
+-(void)generateUploadRequestFor:(NSString *)trackName inAlbum:(NSString *)album withAuthtoken:(NSString *)authToken withID:(NSString *)userID;
 
 -(void)startUpload;
 

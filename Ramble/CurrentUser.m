@@ -10,6 +10,6 @@
 
 @implementation CurrentUser
 
-@synthesize authToken;
+@synthesize authToken, userID;
 
 @end

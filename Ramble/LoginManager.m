@@ -45,6 +45,7 @@
         }
         if ([defaults objectForKey:STRAccessTokenKey]) {
             self.currentUser.authToken = [defaults objectForKey:STRAccessTokenKey];
+            self.currentUser.userID = [defaults objectForKey:FBUserIDKey];
         }
         
     }
@@ -71,6 +72,11 @@
     NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&error];
     NSNumber * userID = [dict objectForKey:@"id"];
     NSLog(@"FBUser ID: %i", userID.intValue);
+    
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:userID forKey:FBUserIDKey];
+    [defaults synchronize];
+    
     NSString * unencryptedAuthtoken = [NSString stringWithFormat:@"%i%@", userID.intValue, STRSaltHash];
     NSLog(@"Authtoken: %@", [unencryptedAuthtoken MD5]);
     if (error) return nil;
@@ -92,6 +98,7 @@
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:STRAccessTokenKey]) {
         [defaults removeObjectForKey:STRAccessTokenKey];
+        [defaults removeObjectForKey:FBUserIDKey];
         [defaults synchronize];
     }
     if (self.currentUser) {
@@ -112,7 +119,9 @@
 }
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
-    
+    if ([self.delegate respondsToSelector:@selector(straboLoginDidFailWithError:)]) {
+        [self.delegate straboLoginDidFailWithError:error];
+    }
 }
 
 - (void)request:(FBRequest *)request didLoad:(id)result {
