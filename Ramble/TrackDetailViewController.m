@@ -91,7 +91,9 @@
     uploadStatusLabel.text = @"Upload in Progress";
     
     // Fire up the uploader
-    [uploadManager generateUploadRequestFor:[straboTrack trackName] inAlbum:@"Mobile Uploads" withAuthtoken:@"asdfjkl1234567890"];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSString * authToken = appDelegate.loginManager.currentUser.authToken;
+    [uploadManager generateUploadRequestFor:[straboTrack trackName] inAlbum:@"Mobile Uploads" withAuthtoken:authToken];
     [uploadManager startUpload];
     
 }

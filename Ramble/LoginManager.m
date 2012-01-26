@@ -70,8 +70,8 @@
     NSError * error = nil;
     NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&error];
     NSNumber * userID = [dict objectForKey:@"id"];
-    NSLog(@"FBUser ID: %i", userID);
-    NSString * unencryptedAuthtoken = [NSString stringWithFormat:@"%i%@", userID, STRSaltHash];
+    NSLog(@"FBUser ID: %i", userID.intValue);
+    NSString * unencryptedAuthtoken = [NSString stringWithFormat:@"%i%@", userID.intValue, STRSaltHash];
     NSLog(@"Authtoken: %@", [unencryptedAuthtoken MD5]);
     if (error) return nil;
     return [unencryptedAuthtoken MD5];
@@ -120,6 +120,8 @@
 }
 
 - (void)request:(FBRequest *)request didLoadRawResponse:(NSData *)data {
+    // Part of the login process. When the response from facebook is received
+    // process the response for the user's id and then generate an authtoken.
     NSLog(@"ResponseData: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     
     NSString * authToken = [self processForAuthToken:data];

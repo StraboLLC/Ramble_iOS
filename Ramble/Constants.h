@@ -15,8 +15,10 @@
 #ifdef DEBUG
 
 // Debugging specific definitions here
-#define uploadServerURL @"http://localhost/~tnbeatty/strabotest/ramble/mobileapi/v1/upload.php"
-#define loginServerURL @"http://localhost/~tnbeatty/strabotest/ramble/mobileapi/v1/login.php"
+//#define uploadServerURL @"http://localhost/~tnbeatty/strabotest/ramble/mobileapi/v1/upload.php"
+//#define loginServerURL @"http://localhost/~tnbeatty/strabotest/ramble/mobileapi/v1/login.php"
+#define uploadServerURL @"https://ramble.strabogis.com/mobileapi/v1/upload.php"
+#define loginServerURL @"http://ramble.strabogis.com/mobileapi/v1/login.php"
 
 #endif
 #ifdef RELEASE
@@ -31,10 +33,11 @@
 
 // UUID NSUserDefaults Key
 #define STRUUIDKey @"STRUUIDKey"
-#define STRSaltHash @"str480GUS"
+#define STRSaltHash @"str480GUS"    
 
 // Facebook NSUserDefaults Constants
 #define FBAccessTokenKey @"FBAccessTokenKey"
+#define FBUserIDKey @"FBUserIDKey"
 #define FBExpirationDateKey @"FBExpirationDateKey"
 
 // Local NSUserDefaults Constants
