@@ -139,27 +139,37 @@
     
     // Take a screenshot for a preview
   	
-    NSLog(@"Generate Video Thumbnail Called");
+    //    NSLog(@"Generate Video Thumbnail Called");
+    //    
+    //  	NSURL * temporaryMovieFilePath = [NSURL URLWithString:[[self tempDirectoryPath] stringByAppendingPathComponent:@"output.mov"]];
+    //   	
+    //    NSLog(@"About to generate image from movie: %@", temporaryMovieFilePath);
+    //    
+    //    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:temporaryMovieFilePath options:nil];
+    //    AVAssetImageGenerator *generate = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    //    NSError *err = nil;
+    //    CMTime time = CMTimeMakeWithSeconds(0,30);
+    //    CGImageRef imgRef = [generate copyCGImageAtTime:time actualTime:NULL error:&err];
+    //    
+    //    if (err) {
+    //        NSLog(@"Error generating image: %@", err);
+    //    }
+    //    UIImage *currentImg = [[UIImage alloc] initWithCGImage:imgRef];
+    //    
+    //    NSString * pngPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.png"];
+    //    
+    //    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(currentImg)];
+    //	[imageData writeToFile:pngPath atomically:YES];
     
-  	NSURL * temporaryMovieFilePath = [NSURL URLWithString:[[self tempDirectoryPath] stringByAppendingPathComponent:@"output.mov"]];
-   	
-    NSLog(@"About to generate image from movie: %@", temporaryMovieFilePath);
+//    MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:[[self tempDirectoryPath] stringByAppendingPathComponent:@"output.mov"]]];
+//    UIImage *thumbnail = [player thumbnailImageAtTime:1.0 timeOption:MPMovieTimeOptionNearestKeyFrame];
+//    [player stop];
+//    player = nil;
     
-    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:temporaryMovieFilePath options:nil];
-    AVAssetImageGenerator *generate = [[AVAssetImageGenerator alloc] initWithAsset:asset];
-    NSError *err = nil;
-    CMTime time = CMTimeMake(0, 60);
-    CGImageRef imgRef = [generate copyCGImageAtTime:time actualTime:NULL error:&err];
+    //NSString * pngPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.png"];
     
-    if (err) {
-        NSLog(@"Error generating image: %@", err);
-    }
-    UIImage *currentImg = [[UIImage alloc] initWithCGImage:imgRef];
-    
-    NSString * pngPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.png"];
-    
-    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(currentImg)];
-	[imageData writeToFile:pngPath atomically:YES];
+    //NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(thumbnail)];
+   	//[thumbnail writeToFile:pngPath atomically:YES];
 }
 
 @end

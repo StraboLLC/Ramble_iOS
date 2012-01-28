@@ -26,6 +26,7 @@
     IBOutlet UIProgressView * uploadProgress;
     IBOutlet UILabel * uploadStatusLabel;
     IBOutlet UIButton * actionButton;
+    IBOutlet UIImageView * thumbnailImage;
 }
 
 

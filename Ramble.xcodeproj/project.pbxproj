@@ -34,6 +34,7 @@
 		9695ADA614CE688800847C69 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9695ADA514CE688800847C69 /* ImageIO.framework */; };
 		9695ADA814CE68BE00847C69 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9695ADA714CE68BE00847C69 /* MobileCoreServices.framework */; };
 		96C17D0114CDDDFA00C96702 /* TrackDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C17D0014CDDDFA00C96702 /* TrackDetailViewController.m */; };
+		96CD7B9214D3D39F00976367 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96CD7B9114D3D39F00976367 /* MediaPlayer.framework */; };
 		96CFE00514D3581100F7E7F6 /* TrackListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 96CFE00414D3581100F7E7F6 /* TrackListItem.m */; };
 		96CFE00814D358A800F7E7F6 /* TrackListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96CFE00714D358A800F7E7F6 /* TrackListItem.xib */; };
 		96CFE00D14D3B3F000F7E7F6 /* bottomleftdown.png in Resources */ = {isa = PBXBuildFile; fileRef = 96CFE00914D3B3EF00F7E7F6 /* bottomleftdown.png */; };
@@ -108,6 +109,7 @@
 		9695ADA714CE68BE00847C69 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		96C17CFF14CDDDFA00C96702 /* TrackDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackDetailViewController.h; sourceTree = "<group>"; };
 		96C17D0014CDDDFA00C96702 /* TrackDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackDetailViewController.m; sourceTree = "<group>"; };
+		96CD7B9114D3D39F00976367 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		96CFE00314D3581100F7E7F6 /* TrackListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackListItem.h; sourceTree = "<group>"; };
 		96CFE00414D3581100F7E7F6 /* TrackListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackListItem.m; sourceTree = "<group>"; };
 		96CFE00714D358A800F7E7F6 /* TrackListItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackListItem.xib; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				9695ADA314CE687A00847C69 /* CoreMedia.framework in Frameworks */,
 				9695ADA614CE688800847C69 /* ImageIO.framework in Frameworks */,
 				9695ADA814CE68BE00847C69 /* MobileCoreServices.framework in Frameworks */,
+				96CD7B9214D3D39F00976367 /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +301,7 @@
 		96F4826114C6243F00096933 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				96CD7B9114D3D39F00976367 /* MediaPlayer.framework */,
 				9695ADA714CE68BE00847C69 /* MobileCoreServices.framework */,
 				9695ADA514CE688800847C69 /* ImageIO.framework */,
 				9695ADA214CE687A00847C69 /* CoreMedia.framework */,

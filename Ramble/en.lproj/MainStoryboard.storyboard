@@ -306,6 +306,10 @@
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="vHf-Wo-eel">
+                                <rect key="frame" x="179" y="49" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -318,6 +322,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="actionButton" destination="tgw-Z1-DE0" id="g76-OX-NDv"/>
+                        <outlet property="thumbnailImage" destination="vHf-Wo-eel" id="5ci-sy-476"/>
                         <outlet property="titleLabel" destination="h4A-IS-BZ3" id="aeJ-UE-N0a"/>
                         <outlet property="uploadProgress" destination="LkB-Br-XSq" id="KGy-Mq-CTF"/>
                         <outlet property="uploadStatusLabel" destination="Hqi-zH-Gzc" id="naB-HF-Epd"/>
@@ -511,6 +516,7 @@
                 <relationship kind="action" name="prefsButtonPressed:"/>
                 <relationship kind="action" name="uploadButtonPressed:"/>
                 <relationship kind="outlet" name="actionButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="thumbnailImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="uploadProgress" candidateClass="UIProgressView"/>
                 <relationship kind="outlet" name="uploadStatusLabel" candidateClass="UILabel"/>

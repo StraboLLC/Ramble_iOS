@@ -8,6 +8,9 @@
 
 #import "TrackDetailViewController.h"
 
+@interface TrackDetailViewController (InternalMethods)
+@end
+
 @interface TrackDetailViewController (UploadManagerDelegate) <UploadManagerDelegate>
 -(void)uploadProgressMade:(double)percentComplete;
 -(void)uploadStopped:(BOOL)cancelled withError:(NSError *)error;
@@ -47,14 +50,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if ([straboTrack.trackTitle isEqualToString:@""]) {
+    if ([self.straboTrack.trackTitle isEqualToString:@""]) {
         titleLabel.text = @"Some CG Title";
     } else {
         titleLabel.text = [self.straboTrack trackTitle];
     }
     
     NSLog(@"StraboTrack Information: \n title:%@ \n date: %@", self.straboTrack.trackTitle, self.straboTrack.captureDate);
-    
 }
 
 - (void)viewDidUnload
@@ -121,6 +123,10 @@
     PreferencesViewController * preferencesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Preferences"];
     [self presentModalViewController:preferencesViewController animated:YES];
 }
+
+@end
+
+@implementation TrackDetailViewController (InternalMethods)
 
 @end
 
