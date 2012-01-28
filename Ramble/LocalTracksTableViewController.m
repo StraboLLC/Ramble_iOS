@@ -8,6 +8,9 @@
 
 #import "LocalTracksTableViewController.h"
 
+@interface LocalTracksTableViewController (InternalMethods)
+-(TrackListItem *)configureCell:(TrackListItem *)cell forTrack:(NSString *)trackName;
+@end
 
 @implementation LocalTracksTableViewController
 
@@ -94,19 +97,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"trackListItemCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    TrackListItem * cell = (TrackListItem *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        [[NSBundle mainBundle] loadNibNamed:@"TrackListItem" owner:self options:nil];
+        cell = tblCell;
     }
     
     // Configure the cell...
     NSString * trackName = [localTrackNames objectAtIndex:[indexPath indexAtPosition:1]];
-    NSLog(@"Just set the trackname");
-    [[cell textLabel] setText:[StraboTrack straboTrackFromFileWithName:trackName].trackName];
-    NSLog(@"Returning a cell");
-    return cell;
+    return [self configureCell:cell forTrack:trackName];
 }
 
 /*
@@ -150,11 +151,17 @@
 
 #pragma mark - Table view delegate
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 70;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
     TrackDetailViewController * trackDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TrackDetail"];
-    trackDetailViewController.straboTrack = [StraboTrack straboTrackFromFileWithName:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
+    TrackListItem * cell = (TrackListItem *)[tableView cellForRowAtIndexPath:indexPath];
+    NSLog(@"Requesting a cell: %@", cell.trackNameTag);
+    trackDetailViewController.straboTrack = [StraboTrack straboTrackFromFileWithName:cell.trackNameTag];
     [self.navigationController pushViewController:trackDetailViewController animated:YES];
 }
 
@@ -163,6 +170,16 @@
 -(IBAction)prefsButtonPressed:(id)sender {
     PreferencesViewController * preferencesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Preferences"];
     [self presentModalViewController:preferencesViewController animated:YES];
+}
+
+@end
+
+@implementation LocalTracksTableViewController (InternalMethods)
+
+-(TrackListItem *)configureCell:(TrackListItem *)cell forTrack:(NSString *)trackName {
+    cell.trackNameTag = trackName;
+    cell.title.text = @"A Title";
+    return cell;
 }
 
 @end

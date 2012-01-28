@@ -10,11 +10,14 @@
 #import "TrackDetailViewController.h"
 #import "PreferencesViewController.h"
 #import "LocalFileManager.h"
+#import "TrackListItem.h"
 #import "StraboTrack.h"
 
 @interface LocalTracksTableViewController : UITableViewController {
     LocalFileManager * localFileManager;
     NSArray * localTrackNames;
+    
+    IBOutlet TrackListItem * tblCell;
 }
 
 -(IBAction)prefsButtonPressed:(id)sender;
