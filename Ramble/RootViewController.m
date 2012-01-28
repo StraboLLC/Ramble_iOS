@@ -36,21 +36,23 @@
     // Load the array of child controllers from the storyboard
     UIStoryboard * theStoryboard = self.storyboard;
     captureViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"CaptureViewController"];
-    listViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"NavController"];
+    feedViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"FeedViewController"];
     
     // Set up the controllers' views
     captureViewController.view.frame = subView.frame;
-    listViewController.view.frame = subView.frame;
+    feedViewController.view.frame = subView.frame;
     
     [self addChildViewController:captureViewController];
-    [self addChildViewController:listViewController];
+    [self addChildViewController:feedViewController];
     
     // Set up the first child controller
     // based on user preferences
     if ([preferencesManager launchToCaptureMode]) {
+        currentViewControllerIsCapture = true;
         [subView addSubview:captureViewController.view];
     } else {
-        [subView addSubview:listViewController.view];
+        currentViewControllerIsCapture = false;
+        [subView addSubview:feedViewController.view];
     }
     
 }
@@ -90,18 +92,28 @@
 
 #pragma mark Button Handling
 
--(IBAction)tableViewButtonPressed:(id)sender {
-    [self transitionFromViewController:captureViewController toViewController:listViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];
+-(IBAction)toggleViewButtonPressed:(id)sender {
+    if (currentViewControllerIsCapture) {
+        [self transitionToFeedList];
+    } else {
+        [self transitionToCaptureMode];
+    }
 }
 
--(IBAction)cameraViewButtonPressed:(id)sender {
-    [self transitionFromViewController:listViewController toViewController:captureViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];
+-(IBAction)recentCaptureViewButtonPressed:(id)sender {
+    
 }
 
 #pragma mark Methods
 
+-(void)transitionToFeedList {
+    currentViewControllerIsCapture = false;
+    [self transitionFromViewController:captureViewController toViewController:feedViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];    
+}
+
 -(void)transitionToCaptureMode {
-    [self transitionFromViewController:listViewController toViewController:captureViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];
+    currentViewControllerIsCapture = true;
+    [self transitionFromViewController:feedViewController toViewController:captureViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];
 }
 
 @end

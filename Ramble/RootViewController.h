@@ -13,19 +13,23 @@
 
 @interface RootViewController : UIViewController {
     CaptureViewController * captureViewController;
-    UINavigationController * listViewController;
+    UINavigationController * feedViewController;
     
     LoginManager * loginManager;
     PreferencesManager * preferencesManager;
+    
+    // Keep track of the current view controller
+    BOOL currentViewControllerIsCapture;
     
     IBOutlet UIView * subView;
 }
 
 @property(nonatomic, strong)LoginManager * loginManager;
 
--(IBAction)tableViewButtonPressed:(id)sender;
--(IBAction)cameraViewButtonPressed:(id)sender;
+-(IBAction)toggleViewButtonPressed:(id)sender;
+-(IBAction)recentCaptureViewButtonPressed:(id)sender;
 
+-(void)transitionToFeedList;
 -(void)transitionToCaptureMode;
 
 @end

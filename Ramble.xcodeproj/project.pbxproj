@@ -34,6 +34,10 @@
 		96C17D0114CDDDFA00C96702 /* TrackDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C17D0014CDDDFA00C96702 /* TrackDetailViewController.m */; };
 		96CFE00514D3581100F7E7F6 /* TrackListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 96CFE00414D3581100F7E7F6 /* TrackListItem.m */; };
 		96CFE00814D358A800F7E7F6 /* TrackListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96CFE00714D358A800F7E7F6 /* TrackListItem.xib */; };
+		96CFE00D14D3B3F000F7E7F6 /* bottomleftdown.png in Resources */ = {isa = PBXBuildFile; fileRef = 96CFE00914D3B3EF00F7E7F6 /* bottomleftdown.png */; };
+		96CFE00E14D3B3F000F7E7F6 /* bottomleftup.png in Resources */ = {isa = PBXBuildFile; fileRef = 96CFE00A14D3B3EF00F7E7F6 /* bottomleftup.png */; };
+		96CFE00F14D3B3F000F7E7F6 /* bottomrightdown.png in Resources */ = {isa = PBXBuildFile; fileRef = 96CFE00B14D3B3F000F7E7F6 /* bottomrightdown.png */; };
+		96CFE01014D3B3F000F7E7F6 /* bottomrightup.png in Resources */ = {isa = PBXBuildFile; fileRef = 96CFE00C14D3B3F000F7E7F6 /* bottomrightup.png */; };
 		96DAB85514C8D88B008FA0A4 /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DAB85414C8D88B008FA0A4 /* CurrentUser.m */; };
 		96E1003914D0BF8200B9C074 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E1003814D0BF8200B9C074 /* NSString+MD5.m */; };
 		96F4826314C6243F00096933 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F4826214C6243F00096933 /* UIKit.framework */; };
@@ -104,6 +108,10 @@
 		96CFE00314D3581100F7E7F6 /* TrackListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackListItem.h; sourceTree = "<group>"; };
 		96CFE00414D3581100F7E7F6 /* TrackListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackListItem.m; sourceTree = "<group>"; };
 		96CFE00714D358A800F7E7F6 /* TrackListItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackListItem.xib; sourceTree = "<group>"; };
+		96CFE00914D3B3EF00F7E7F6 /* bottomleftdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomleftdown.png; sourceTree = "<group>"; };
+		96CFE00A14D3B3EF00F7E7F6 /* bottomleftup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomleftup.png; sourceTree = "<group>"; };
+		96CFE00B14D3B3F000F7E7F6 /* bottomrightdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomrightdown.png; sourceTree = "<group>"; };
+		96CFE00C14D3B3F000F7E7F6 /* bottomrightup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomrightup.png; sourceTree = "<group>"; };
 		96DAB85314C8D88B008FA0A4 /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUser.h; sourceTree = "<group>"; };
 		96DAB85414C8D88B008FA0A4 /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUser.m; sourceTree = "<group>"; };
 		96E1003714D0BF8200B9C074 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
@@ -241,9 +249,21 @@
 		966961F314CF27790084926C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				96CFE01114D3B3FF00F7E7F6 /* Corner Buttons */,
 				966961F014CF27730084926C /* Compass.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		96CFE01114D3B3FF00F7E7F6 /* Corner Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				96CFE00914D3B3EF00F7E7F6 /* bottomleftdown.png */,
+				96CFE00A14D3B3EF00F7E7F6 /* bottomleftup.png */,
+				96CFE00B14D3B3F000F7E7F6 /* bottomrightdown.png */,
+				96CFE00C14D3B3F000F7E7F6 /* bottomrightup.png */,
+			);
+			name = "Corner Buttons";
 			sourceTree = "<group>";
 		};
 		96F4825314C6243F00096933 = {
@@ -397,6 +417,10 @@
 				964F745C14C7D382006B5B6D /* FBDialog.bundle in Resources */,
 				966961F114CF27730084926C /* Compass.png in Resources */,
 				96CFE00814D358A800F7E7F6 /* TrackListItem.xib in Resources */,
+				96CFE00D14D3B3F000F7E7F6 /* bottomleftdown.png in Resources */,
+				96CFE00E14D3B3F000F7E7F6 /* bottomleftup.png in Resources */,
+				96CFE00F14D3B3F000F7E7F6 /* bottomrightdown.png in Resources */,
+				96CFE01014D3B3F000F7E7F6 /* bottomrightup.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
