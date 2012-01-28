@@ -101,7 +101,8 @@
 }
 
 -(IBAction)recentCaptureViewButtonPressed:(id)sender {
-    
+    UINavigationController * tracksViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocalTracksViewController"];
+    [self presentViewController:tracksViewController animated:YES completion:NULL];
 }
 
 #pragma mark Methods

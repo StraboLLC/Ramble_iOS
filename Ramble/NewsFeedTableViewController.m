@@ -79,18 +79,12 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    if (section == 0) {
-        return 1;
-    } else {
-        // Return the number of albums
-        return 5;
-    }
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -108,11 +102,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        return @"Local Albums";
-    } else {
-        return @"Cloud Albums";
-    }
+    
 }
 
 /*
@@ -158,27 +148,27 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([indexPath indexAtPosition:0] == 0) { 
-        // If a row is in the first section then it is the local files row
-        // push a table view controller with the local files
-        
-        //UIStoryboard * theStoryboard = self.storyboard;
-        LocalTracksTableViewController * localTracksTableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocalTracks"];
-        
-        //LocalTracksTableViewController * localTracksTableViewController = [[LocalTracksTableViewController alloc] init];
-        localTracksTableViewController.title = @"Potz Haz Skillz";
-        
-        // Pass the selected object to the new view controller.
-        [self.navigationController pushViewController:localTracksTableViewController animated:YES];
-        
-    } else {
-        // Navigation logic may go here. Create and push another view controller.
-        CloudTracksTableViewController * cloudTracksTableViewController = [[CloudTracksTableViewController alloc] init];
-        cloudTracksTableViewController.title = @"Mad Skillz";
-        
-        // Pass the selected object to the new view controller.
-        [self.navigationController pushViewController:cloudTracksTableViewController animated:YES];
-    }
+//    if ([indexPath indexAtPosition:0] == 0) { 
+//        // If a row is in the first section then it is the local files row
+//        // push a table view controller with the local files
+//        
+//        //UIStoryboard * theStoryboard = self.storyboard;
+//        LocalTracksTableViewController * localTracksTableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocalTracks"];
+//        
+//        //LocalTracksTableViewController * localTracksTableViewController = [[LocalTracksTableViewController alloc] init];
+//        localTracksTableViewController.title = @"Potz Haz Skillz";
+//        
+//        // Pass the selected object to the new view controller.
+//        [self.navigationController pushViewController:localTracksTableViewController animated:YES];
+//        
+//    } else {
+//        // Navigation logic may go here. Create and push another view controller.
+//        CloudTracksTableViewController * cloudTracksTableViewController = [[CloudTracksTableViewController alloc] init];
+//        cloudTracksTableViewController.title = @"Mad Skillz";
+//        
+//        // Pass the selected object to the new view controller.
+//        [self.navigationController pushViewController:cloudTracksTableViewController animated:YES];
+//    }
 }
 
 #pragma mark Button Handling

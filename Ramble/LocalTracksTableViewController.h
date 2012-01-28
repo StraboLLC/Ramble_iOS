@@ -20,6 +20,7 @@
     IBOutlet TrackListItem * tblCell;
 }
 
+-(IBAction)doneButtonPressed:(id)sender;
 -(IBAction)prefsButtonPressed:(id)sender;
 
 @end

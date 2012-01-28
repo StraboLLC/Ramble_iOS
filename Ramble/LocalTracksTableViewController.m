@@ -165,7 +165,11 @@
     [self.navigationController pushViewController:trackDetailViewController animated:YES];
 }
 
-#pragma mark Button Handling
+#pragma mark - Button Handling
+
+-(IBAction)doneButtonPressed:(id)sender {
+    [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
+}
 
 -(IBAction)prefsButtonPressed:(id)sender {
     PreferencesViewController * preferencesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Preferences"];

@@ -35,6 +35,7 @@
 -(IBAction)uploadButtonPressed:(id)sender;
 -(IBAction)actionButtonPressed:(id)sender;
 -(IBAction)cancelButtonPressed:(id)sender;
+-(IBAction)doneButtonPressed:(id)sender;
 -(IBAction)prefsButtonPressed:(id)sender;
 
 @end
