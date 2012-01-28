@@ -102,7 +102,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    
+    return @"Title";
 }
 
 /*

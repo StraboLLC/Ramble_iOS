@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "LocalTracksTableViewController.h"
-#import "CloudTracksTableViewController.h"
 #import "PreferencesViewController.h"
 
 @interface NewsFeedTableViewController : UITableViewController {
