@@ -67,6 +67,30 @@
         }
         return;
     }
+    
+//  	NSURL * temporaryMovieFilePath = [NSURL URLWithString:[[self tempDirectoryPath] stringByAppendingPathComponent:@"output.mov"]];
+//    AVURLAsset *asset = [AVURLAsset assetWithURL:temporaryMovieFilePath];
+//    
+//    // Now export the video file
+//    AVAssetExportSession * sessionExporter = [AVAssetExportSession exportSessionWithAsset:asset presetName:AVAssetExportPreset640x480];
+//    sessionExporter.outputURL = [NSURL URLWithString:[newDirectoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mov", trackName]]];
+//    NSLog(@"Available File Types: %@", sessionExporter.supportedFileTypes);
+//    sessionExporter.outputFileType = @"com.apple.quicktime-movie";
+//    
+//    [sessionExporter exportAsynchronouslyWithCompletionHandler:^{
+//        
+//        switch ([sessionExporter status]) {
+//            case AVAssetExportSessionStatusFailed:
+//                NSLog(@"Export failed: %@", [[sessionExporter error] localizedDescription]);
+//                break;
+//            case AVAssetExportSessionStatusCancelled:
+//                NSLog(@"Export canceled");
+//                break;
+//            default:
+//                break;
+//        }
+//    }];
+    
 }
 
 -(NSString *)docsDirectoryPath {
@@ -135,41 +159,73 @@
 
 -(void)generateVideoThumbnail {
     
-#warning Thumbnail generation is not yet functional.
-    
     // Take a screenshot for a preview
   	
-    //    NSLog(@"Generate Video Thumbnail Called");
+    NSLog(@"Generate Video Thumbnail Called");
+    
+  	NSURL * temporaryMovieFilePath = [NSURL URLWithString:[[self tempDirectoryPath] stringByAppendingPathComponent:@"output.mov"]];
+  	
+    NSLog(@"About to generate image from movie: %@", temporaryMovieFilePath);
+    
+    AVAsset *asset = [AVAsset assetWithURL:temporaryMovieFilePath];
+    
+    if (asset) {
+        NSLog(@"Asset tracks: %@", asset.tracks.count);
+    }
+    
+    if (asset.readable) {
+        NSLog(@"Asset is readable");
+    }
+    if (asset.playable) {
+        NSLog(@"Asset is playable");
+    }
+    if (asset.exportable) {
+        NSLog(@"Asset is exportable");
+    }
+    
+    AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    
+    if (!generator) {
+        NSLog(@"Generator is nil");
+    }
+    
+    NSError *err = nil;
+    CMTime time = CMTimeMakeWithSeconds(0,30);
+    CGImageRef imgRef = [generator copyCGImageAtTime:time actualTime:NULL error:&err];
+    
+    if (err) {
+        NSLog(@"Error generating image: %@", err);
+    }
+    UIImage *currentImg = [[UIImage alloc] initWithCGImage:imgRef];
+    currentImg = nil; // Delete this line... it's just to avoid a compiler complaint.
+    //NSString * pngPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.png"];
+    
+    //NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(currentImg)];
+	//[imageData writeToFile:pngPath atomically:YES];
+    
+    //    NSURL * videoPath = [NSURL URLWithString:[[self tempDirectoryPath] stringByAppendingPathComponent:@"output.mov"]];
     //    
-    //  	NSURL * temporaryMovieFilePath = [NSURL URLWithString:[[self tempDirectoryPath] stringByAppendingPathComponent:@"output.mov"]];
-    //   	
-    //    NSLog(@"About to generate image from movie: %@", temporaryMovieFilePath);
+    //    NSLog(@"Resource Path: %@", videoPath);
     //    
-    //    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:temporaryMovieFilePath options:nil];
-    //    AVAssetImageGenerator *generate = [[AVAssetImageGenerator alloc] initWithAsset:asset];
-    //    NSError *err = nil;
-    //    CMTime time = CMTimeMakeWithSeconds(0,30);
-    //    CGImageRef imgRef = [generate copyCGImageAtTime:time actualTime:NULL error:&err];
+    //    MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:videoPath];
+    //    player.movieSourceType = MPMovieSourceTypeFile;
     //    
-    //    if (err) {
-    //        NSLog(@"Error generating image: %@", err);
+    //    UIImage * thumbnail = [player thumbnailImageAtTime:1.0 timeOption:MPMovieTimeOptionExact];
+    //    
+    //    if (!thumbnail) {
+    //        NSLog(@"Image Selection Failed");
     //    }
-    //    UIImage *currentImg = [[UIImage alloc] initWithCGImage:imgRef];
+    //    
+    //    [player stop];
+    //    player = nil;
     //    
     //    NSString * pngPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.png"];
     //    
-    //    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(currentImg)];
-    //	[imageData writeToFile:pngPath atomically:YES];
-    
-//    MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:[[self tempDirectoryPath] stringByAppendingPathComponent:@"output.mov"]]];
-//    UIImage *thumbnail = [player thumbnailImageAtTime:1.0 timeOption:MPMovieTimeOptionNearestKeyFrame];
-//    [player stop];
-//    player = nil;
-    
-    //NSString * pngPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.png"];
-    
-    //NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(thumbnail)];
-   	//[thumbnail writeToFile:pngPath atomically:YES];
+    //    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(thumbnail)];
+    //    
+    //    NSLog(@"Image Data: %@", imageData);
+    //    
+    //   	[imageData writeToFile:pngPath atomically:YES];
 }
 
 @end

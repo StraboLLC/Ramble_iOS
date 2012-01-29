@@ -11,22 +11,24 @@
 @implementation LeatherNavBar
 
 - (CGSize)sizeThatFits:(CGSize)size {
-    CGSize newSize = CGSizeMake([UIScreen mainScreen].applicationFrame.size.width, 50);
+    CGSize newSize = CGSizeMake([UIScreen mainScreen].applicationFrame.size.width, 70);
     return newSize;
 }
 
 - (void)drawRect:(CGRect)rect {
     // Add here to customize the navigation bar
-    //UIImage *image = [UIImage imageNamed: @"NavigationBar.png"];
-    //[image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     
-    // For now, just draw some red
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGColorRef redColor = [UIColor redColor].CGColor;
-    CGContextSetFillColorWithColor(context, redColor);
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    CGColorRef redColor = [UIColor redColor].CGColor;
+//    CGContextSetFillColorWithColor(context, redColor);
     //CGContextFillRect(context, self.bounds);
-    CGRect fillBox = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    CGContextFillRect(context, fillBox);
+//    CGRect fillBox = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+//    CGContextFillRect(context, fillBox);
+    [self setTintColor:[UIColor clearColor]];
+    [self setTranslucent:YES];
+    UIImage *image = [UIImage imageNamed:@"topbar.png"];
+    [image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    
     
 }
 
