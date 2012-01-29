@@ -181,8 +181,26 @@
 @implementation LocalTracksTableViewController (InternalMethods)
 
 -(TrackListItem *)configureCell:(TrackListItem *)cell forTrack:(NSString *)trackName {
+    // Acquire the necessary information to fill out the track
+    // Get the track
+    StraboTrack * track = [StraboTrack straboTrackFromFileWithName:trackName];
+    NSString * title = nil;
+    if (![track.trackTitle isEqualToString:@""]) {
+        title = track.trackTitle;
+    } else {
+        // Generate a custom name for the track
+        title = [NSString stringWithFormat:@"%i_cap.strabo", [track.captureDate timeIntervalSince1970]];
+    }
+    // Generate the formatted date string
+    NSLocale *locale = [NSLocale currentLocale];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init]; 
+    NSString *dateFormat = [NSDateFormatter dateFormatFromTemplate:@"E MMM d yyyy hh:mm" options:0 locale:locale];
+    [formatter setDateFormat:dateFormat];
+    [formatter setLocale:locale];
+    
     cell.trackNameTag = trackName;
-    cell.title.text = @"A Title";
+    cell.title.text = title;
+    cell.dateTaken.text = [formatter stringFromDate:track.captureDate];
     return cell;
 }
 
