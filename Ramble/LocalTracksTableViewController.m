@@ -19,7 +19,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-
+        
     }
     return self;
 }
@@ -40,10 +40,10 @@
     
     localFileManager = [[LocalFileManager alloc] init];
     localTrackNames = [localFileManager allLocalStraboTracknames];
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -58,6 +58,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    // Reload the data, just in case the user edited anything
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -111,43 +113,43 @@
 }
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }   
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }   
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 #pragma mark - Table view delegate
 
@@ -171,11 +173,6 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
 }
 
--(IBAction)prefsButtonPressed:(id)sender {
-    PreferencesViewController * preferencesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Preferences"];
-    [self presentModalViewController:preferencesViewController animated:YES];
-}
-
 @end
 
 @implementation LocalTracksTableViewController (InternalMethods)
@@ -189,8 +186,20 @@
         title = track.trackTitle;
     } else {
         // Generate a custom name for the track
-        title = [NSString stringWithFormat:@"%i_cap.strabo", [track.captureDate timeIntervalSince1970]];
+        title = [NSString stringWithFormat:@"%.1f-cap.strabo", [track.captureDate timeIntervalSince1970]];
     }
+    
+    // Truncate the title if necessary
+    NSString * shortTitle = nil;
+    if (title.length <= 30) {
+        shortTitle = title;
+    } else {
+        // String is too long: Truncate
+        NSRange stringRange = {0, MIN([title length], 25)};
+        stringRange = [title rangeOfComposedCharacterSequencesForRange:stringRange];
+        shortTitle = [NSString stringWithFormat:@"%@...", [title substringWithRange:stringRange]];
+    }
+    
     // Generate the formatted date string
     NSLocale *locale = [NSLocale currentLocale];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init]; 
@@ -199,7 +208,7 @@
     [formatter setLocale:locale];
     
     cell.trackNameTag = trackName;
-    cell.title.text = title;
+    cell.title.text = shortTitle;
     cell.dateTaken.text = [formatter stringFromDate:track.captureDate];
     return cell;
 }

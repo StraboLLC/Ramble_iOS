@@ -17,6 +17,12 @@
 -(void)uploadCompleted;
 @end
 
+@interface TrackDetailViewController (UITextFieldDelegate) <UITextFieldDelegate>
+-(void)textFieldDidBeginEditing:(UITextField *)textField;
+-(void)textFieldDidEndEditing:(UITextField *)textField;
+-(BOOL)textFieldShouldReturn:(UITextField *)textField;
+@end
+
 @implementation TrackDetailViewController
 
 @synthesize straboTrack;
@@ -41,22 +47,27 @@
 #pragma mark - View lifecycle
 
 /*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
+ // Implement loadView to create a view hierarchy programmatically, without using a nib.
+ - (void)loadView
+ {
+ }
+ */
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if ([self.straboTrack.trackTitle isEqualToString:@""]) {
-        titleLabel.text = @"Some CG Title";
-    } else {
-        titleLabel.text = [self.straboTrack trackTitle];
+    // Set up the display with the proper track information
+    // Set the title
+    if (![self.straboTrack.trackTitle isEqualToString:@""]) {
+        titleTextField.text = self.straboTrack.trackTitle;
     }
-    
-    NSLog(@"StraboTrack Information: \n title:%@ \n date: %@", self.straboTrack.trackTitle, self.straboTrack.captureDate);
+    // Set the date
+    NSLocale *locale = [NSLocale currentLocale];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init]; 
+    NSString *dateFormat = [NSDateFormatter dateFormatFromTemplate:@"E MMM d yyyy hh:mm" options:0 locale:locale];
+    [formatter setDateFormat:dateFormat];
+    [formatter setLocale:locale];
+    dateLabel.text = [formatter stringFromDate:straboTrack.captureDate];
 }
 
 - (void)viewDidUnload
@@ -76,28 +87,31 @@
 
 -(IBAction)uploadButtonPressed:(id)sender {
     
+    // Only upload if the track has never been uploaded before.
     if ([straboTrack.uploadedDate isEqualToDate:[NSDate dateWithTimeIntervalSince1970:0]]) {
+        
         NSLog(@"File has never been uploaded before");
+        
+        // Set a new upload manager
+        uploadManager = [[UploadManager alloc] init];
+        uploadManager.delegate = self;
+        
+        // Set up the upload view
+        uploadProgress.progress = 0;
+        [actionButton setTitle:@"Cancel" forState:UIControlStateNormal];
+        uploadView.hidden = NO;
+        uploadStatusLabel.text = @"Upload in Progress";
+        
+        // Fire up the uploader
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        NSString * authToken = appDelegate.loginManager.currentUser.authToken;
+        NSString * userID = [NSString stringWithFormat:@"%f", appDelegate.loginManager.currentUser.userID];
+        [uploadManager generateUploadRequestFor:[straboTrack trackName] inAlbum:@"Mobile Uploads" withAuthtoken:authToken withID:userID];
+        [uploadManager startUpload];
+        
     } else {
-        NSLog(@"File HAS been uploaded before");
+        NSLog(@"File HAS been uploaded before. Upload Cancelled.");
     }
-    
-    // Set a new upload manager
-    uploadManager = [[UploadManager alloc] init];
-    uploadManager.delegate = self;
-    
-    // Set up the upload view
-    uploadProgress.progress = 0;
-    [actionButton setTitle:@"Cancel" forState:UIControlStateNormal];
-    uploadView.hidden = NO;
-    uploadStatusLabel.text = @"Upload in Progress";
-    
-    // Fire up the uploader
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSString * authToken = appDelegate.loginManager.currentUser.authToken;
-    NSString * userID = [NSString stringWithFormat:@"%f", appDelegate.loginManager.currentUser.userID];
-    [uploadManager generateUploadRequestFor:[straboTrack trackName] inAlbum:@"Mobile Uploads" withAuthtoken:authToken withID:userID];
-    [uploadManager startUpload];
     
 }
 
@@ -111,22 +125,31 @@
     }
 }
 
--(IBAction)cancelButtonPressed:(id)sender {
-
-}
-
 -(IBAction)doneButtonPressed:(id)sender {
     [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
-}
-
--(IBAction)prefsButtonPressed:(id)sender {
-    PreferencesViewController * preferencesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Preferences"];
-    [self presentModalViewController:preferencesViewController animated:YES];
 }
 
 @end
 
 @implementation TrackDetailViewController (InternalMethods)
+
+@end
+
+@implementation TrackDetailViewController (UITextFieldDelegate)
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    self.straboTrack.trackTitle = textField.text;
+    [self.straboTrack save];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
 
 @end
 

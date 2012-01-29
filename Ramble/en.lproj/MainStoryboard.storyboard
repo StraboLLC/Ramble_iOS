@@ -204,7 +204,7 @@
                             <outlet property="delegate" destination="Nif-Gi-iJw" id="eK6-z3-xfH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Vids" id="ICp-E5-XSB">
+                    <navigationItem key="navigationItem" title="Captures" id="ICp-E5-XSB">
                         <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="a4H-Bz-cJF">
                             <connections>
                                 <action selector="doneButtonPressed:" destination="Nif-Gi-iJw" id="wB7-NM-Y3O"/>
@@ -224,21 +224,21 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Scrub Bar + Preview Here" lineBreakMode="tailTruncation" minimumFontSize="10" id="IiV-b9-Gii">
-                                <rect key="frame" x="61" y="20" width="198" height="21"/>
+                                <rect key="frame" x="88" y="39" width="198" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tag Friends:" lineBreakMode="tailTruncation" minimumFontSize="10" id="TVh-uK-9FS">
-                                <rect key="frame" x="20" y="49" width="96" height="21"/>
+                                <rect key="frame" x="20" y="156" width="96" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tag Places:" lineBreakMode="tailTruncation" minimumFontSize="10" id="81Z-8q-1Ga">
-                                <rect key="frame" x="20" y="78" width="90" height="21"/>
+                                <rect key="frame" x="20" y="185" width="90" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -259,15 +259,15 @@
                                     <action selector="uploadButtonPressed:" destination="cjV-ov-Q4n" eventType="touchUpInside" id="P0X-Ub-eSa"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Video Title" lineBreakMode="tailTruncation" minimumFontSize="10" id="h4A-IS-BZ3">
-                                <rect key="frame" x="20" y="107" width="280" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date Taken" lineBreakMode="tailTruncation" minimumFontSize="10" id="h4A-IS-BZ3">
+                                <rect key="frame" x="20" y="127" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" id="gFG-Sy-vKA">
-                                <rect key="frame" x="20" y="107" width="280" height="243"/>
+                                <rect key="frame" x="249" y="336" width="280" height="243"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Uploading Video..." lineBreakMode="tailTruncation" minimumFontSize="10" id="086-N6-ad0">
@@ -307,13 +307,22 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="vHf-Wo-eel">
-                                <rect key="frame" x="179" y="49" width="128" height="128"/>
+                                <rect key="frame" x="20" y="20" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to rename this capture" minimumFontSize="17" clearButtonMode="whileEditing" id="Pbc-vb-58M">
+                                <rect key="frame" x="20" y="88" width="280" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="cjV-ov-Q4n" id="s4S-oM-Z9J"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ewG-lM-Cs5">
+                    <navigationItem key="navigationItem" title="Capture Detail" id="ewG-lM-Cs5">
                         <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="IrF-2a-6Wf">
                             <connections>
                                 <action selector="doneButtonPressed:" destination="cjV-ov-Q4n" id="DGF-32-lMs"/>
@@ -322,8 +331,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="actionButton" destination="tgw-Z1-DE0" id="g76-OX-NDv"/>
+                        <outlet property="dateLabel" destination="h4A-IS-BZ3" id="nPK-N3-pfP"/>
                         <outlet property="thumbnailImage" destination="vHf-Wo-eel" id="5ci-sy-476"/>
                         <outlet property="titleLabel" destination="h4A-IS-BZ3" id="aeJ-UE-N0a"/>
+                        <outlet property="titleTextField" destination="Pbc-vb-58M" id="amx-XL-ZVy"/>
                         <outlet property="uploadProgress" destination="LkB-Br-XSq" id="KGy-Mq-CTF"/>
                         <outlet property="uploadStatusLabel" destination="Hqi-zH-Gzc" id="naB-HF-Epd"/>
                         <outlet property="uploadView" destination="gFG-Sy-vKA" id="wWe-iJ-AXg"/>
@@ -481,7 +492,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LocalTracksTableViewController.h"/>
             <relationships>
                 <relationship kind="action" name="doneButtonPressed:"/>
-                <relationship kind="action" name="prefsButtonPressed:"/>
                 <relationship kind="outlet" name="tblCell" candidateClass="TrackListItem"/>
             </relationships>
         </class>
@@ -511,13 +521,13 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrackDetailViewController.h"/>
             <relationships>
                 <relationship kind="action" name="actionButtonPressed:"/>
-                <relationship kind="action" name="cancelButtonPressed:"/>
                 <relationship kind="action" name="doneButtonPressed:"/>
-                <relationship kind="action" name="prefsButtonPressed:"/>
                 <relationship kind="action" name="uploadButtonPressed:"/>
                 <relationship kind="outlet" name="actionButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="thumbnailImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="uploadProgress" candidateClass="UIProgressView"/>
                 <relationship kind="outlet" name="uploadStatusLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="uploadView" candidateClass="UIView"/>
@@ -526,7 +536,6 @@
         <class className="TrackListItem" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrackListItem.h"/>
             <relationships>
-                <relationship kind="outlet" name="dateCaptured" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="dateTaken" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="thumbnailImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="title" candidateClass="UILabel"/>

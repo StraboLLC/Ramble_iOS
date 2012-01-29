@@ -20,6 +20,8 @@
 
     // Detail View Outlets
     IBOutlet UILabel * titleLabel;
+    IBOutlet UILabel * dateLabel;
+    IBOutlet UITextField * titleTextField;
     
     // Uploading View Outlets
     IBOutlet UIView * uploadView;
@@ -30,13 +32,11 @@
 }
 
 
-
 @property(nonatomic, strong)StraboTrack * straboTrack;
+
 
 -(IBAction)uploadButtonPressed:(id)sender;
 -(IBAction)actionButtonPressed:(id)sender;
--(IBAction)cancelButtonPressed:(id)sender;
 -(IBAction)doneButtonPressed:(id)sender;
--(IBAction)prefsButtonPressed:(id)sender;
 
 @end
