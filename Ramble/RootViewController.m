@@ -79,6 +79,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self refreshVideoThumbnail];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -114,12 +116,14 @@
 
 -(IBAction)recentCaptureViewButtonPressed:(id)sender {
     UINavigationController * tracksViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocalTracksViewController"];
-
-    TrackDetailViewController * trackDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TrackDetail"];
-    trackDetailViewController.straboTrack = localFileManager.mostRecentTrack;
-    [tracksViewController pushViewController:trackDetailViewController animated:NO];
     
-    [self presentViewController:tracksViewController animated:YES completion:NULL];
+    if (localFileManager.mostRecentTrack) {
+        TrackDetailViewController * trackDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TrackDetail"];
+        trackDetailViewController.straboTrack = localFileManager.mostRecentTrack;
+        [tracksViewController pushViewController:trackDetailViewController animated:NO];
+        
+        [self presentViewController:tracksViewController animated:YES completion:NULL];
+    }
 }
 
 #pragma mark Methods
@@ -142,6 +146,8 @@
     StraboTrack * straboTrack = localFileManager.mostRecentTrack;
     if (straboTrack) {
         lastVideoThumbnail.image = [UIImage imageWithContentsOfFile:localFileManager.mostRecentTrack.thumbnailPath.absoluteString];
+    } else {
+        lastVideoThumbnail.image = nil;
     }
 }
 

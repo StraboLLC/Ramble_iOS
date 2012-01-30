@@ -21,6 +21,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="9jR-Rp-aU5">
                                 <rect key="frame" x="0.0" y="424" width="38" height="36"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.34414859693877553" green="0.15941870594777768" blue="0.075782483656172323" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5cG-nN-6LN">
                                 <rect key="frame" x="0.0" y="410" width="50" height="50"/>
