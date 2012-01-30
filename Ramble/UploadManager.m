@@ -66,7 +66,7 @@
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",stringBoundary];
     [postRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
     
-    NSLog(@"Uploading using authToken: %@", authToken);
+    NSLog(@"Uploading using authToken: %@, and userID: %@", authToken, userID);
     
     // setting up the body:
     NSMutableData *postBody = [NSMutableData data];

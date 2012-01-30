@@ -46,6 +46,7 @@
         if ([defaults objectForKey:STRAccessTokenKey]) {
             self.currentUser.authToken = [defaults objectForKey:STRAccessTokenKey];
             self.currentUser.userID = [defaults objectForKey:FBUserIDKey];
+            NSLog(@"Saved Facebook ID: %@", self.currentUser.userID);
         }
         
     }

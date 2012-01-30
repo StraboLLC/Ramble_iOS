@@ -115,7 +115,7 @@
         // Fire up the uploader
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         NSString * authToken = appDelegate.loginManager.currentUser.authToken;
-        NSString * userID = [NSString stringWithFormat:@"%f", appDelegate.loginManager.currentUser.userID];
+        NSString * userID = [NSString stringWithFormat:@"%@", appDelegate.loginManager.currentUser.userID];
         [uploadManager generateUploadRequestFor:[straboTrack trackName] inAlbum:@"Mobile Uploads" withAuthtoken:authToken withID:userID];
         [uploadManager startUpload];
         
