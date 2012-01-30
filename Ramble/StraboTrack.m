@@ -22,25 +22,30 @@
     // Read the JSON file
     NSData * data = [[NSFileManager defaultManager] contentsAtPath:jsonFilePath];
     
-    NSError * error = nil;
-    NSDictionary * trackDictionary = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&error] objectForKey:@"track"];
-    
-    // Enter relevant info into the strabo track object
-    straboTrack.trackName = trackName;
-    straboTrack.trackPath = [NSURL URLWithString:trackFilePath];
-    straboTrack.jsonPath = [NSURL URLWithString:jsonFilePath];
-    straboTrack.videoPath = [NSURL URLWithString:[trackFilePath stringByAppendingFormat:[NSString stringWithFormat:@"%@.mov", trackName]]];
-    straboTrack.thumbnailPath = [straboTrack.trackPath URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", straboTrack.trackName]];
-    straboTrack.trackTitle = [trackDictionary objectForKey:@"title"];
-    straboTrack.trackType = [trackDictionary objectForKey:@"tracktype"];
-    straboTrack.latitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"latitude"];
-    straboTrack.longitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"longitude"];
-    straboTrack.captureDate = [NSDate dateWithTimeIntervalSince1970:[[trackDictionary objectForKey:@"captureDate"] integerValue]];
-    straboTrack.taggedPeople = [trackDictionary objectForKey:@"taggedPeople"];
-    straboTrack.taggedPlaces = [trackDictionary objectForKey:@"taggedPlaces"];
-    straboTrack.uploadedDate = [NSDate dateWithTimeIntervalSince1970:[[trackDictionary objectForKey:@"uploadDate"] integerValue]];
-    
-    return straboTrack;
+    if (data) {
+        NSError * error = nil;
+        NSDictionary * trackDictionary = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&error] objectForKey:@"track"];
+        
+        // Enter relevant info into the strabo track object
+        straboTrack.trackName = trackName;
+        straboTrack.trackPath = [NSURL URLWithString:trackFilePath];
+        straboTrack.jsonPath = [NSURL URLWithString:jsonFilePath];
+        straboTrack.videoPath = [NSURL URLWithString:[trackFilePath stringByAppendingFormat:[NSString stringWithFormat:@"%@.mov", trackName]]];
+        straboTrack.thumbnailPath = [straboTrack.trackPath URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", straboTrack.trackName]];
+        straboTrack.trackTitle = [trackDictionary objectForKey:@"title"];
+        straboTrack.trackType = [trackDictionary objectForKey:@"tracktype"];
+        straboTrack.latitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"latitude"];
+        straboTrack.longitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"longitude"];
+        straboTrack.captureDate = [NSDate dateWithTimeIntervalSince1970:[[trackDictionary objectForKey:@"captureDate"] integerValue]];
+        straboTrack.taggedPeople = [trackDictionary objectForKey:@"taggedPeople"];
+        straboTrack.taggedPlaces = [trackDictionary objectForKey:@"taggedPlaces"];
+        straboTrack.uploadedDate = [NSDate dateWithTimeIntervalSince1970:[[trackDictionary objectForKey:@"uploadDate"] integerValue]];
+        
+        return straboTrack;
+        
+    } else {
+        return nil;
+    }
 }
 
 -(BOOL)save {

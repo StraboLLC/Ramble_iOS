@@ -9,6 +9,14 @@
 #import "RootViewController.h"
 #import "LoginManager.h"
 
+@interface RootViewController (InternalMethods)
+-(void)refreshVideoThumbnail;
+@end
+
+@interface RootViewController (CaptureViewControllerDelegate) <CaptureViewControllerDelegate>
+-(void)parentShouldUpdateThumbnail;
+@end
+
 @implementation RootViewController
 
 @synthesize loginManager;
@@ -32,10 +40,14 @@
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(transitionToCaptureMode) name:UIApplicationWillEnterForegroundNotification object:nil];
     
     preferencesManager = [[PreferencesManager alloc] init];
+    localFileManager = [[LocalFileManager alloc] init];
+    
+    [self refreshVideoThumbnail];
     
     // Load the array of child controllers from the storyboard
     UIStoryboard * theStoryboard = self.storyboard;
     captureViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"CaptureViewController"];
+    captureViewController.delegate = self;
     feedViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"FeedViewController"];
     
     // Set up the controllers' views
@@ -102,6 +114,11 @@
 
 -(IBAction)recentCaptureViewButtonPressed:(id)sender {
     UINavigationController * tracksViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocalTracksViewController"];
+
+    TrackDetailViewController * trackDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TrackDetail"];
+    trackDetailViewController.straboTrack = localFileManager.mostRecentTrack;
+    [tracksViewController pushViewController:trackDetailViewController animated:NO];
+    
     [self presentViewController:tracksViewController animated:YES completion:NULL];
 }
 
@@ -115,6 +132,26 @@
 -(void)transitionToCaptureMode {
     currentViewControllerIsCapture = true;
     [self transitionFromViewController:feedViewController toViewController:captureViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];
+}
+
+@end
+
+@implementation RootViewController (InternalMethods)
+
+-(void)refreshVideoThumbnail {
+    StraboTrack * straboTrack = localFileManager.mostRecentTrack;
+    if (straboTrack) {
+        lastVideoThumbnail.image = [UIImage imageWithContentsOfFile:localFileManager.mostRecentTrack.thumbnailPath.absoluteString];
+    }
+}
+
+@end
+
+@implementation RootViewController (CaptureViewControllerDelegate)
+
+-(void)parentShouldUpdateThumbnail {
+    NSLog(@"Thumbnail Delegate Method Called");
+    [self refreshVideoThumbnail];
 }
 
 @end

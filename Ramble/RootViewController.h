@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CaptureViewController.h"
+#import "TrackDetailViewController.h"
 #import "PreferencesManager.h"
 #import "LoginManager.h"
 
@@ -17,11 +18,13 @@
     
     LoginManager * loginManager;
     PreferencesManager * preferencesManager;
+    LocalFileManager * localFileManager;
     
     // Keep track of the current view controller
     BOOL currentViewControllerIsCapture;
     
     IBOutlet UIView * subView;
+    IBOutlet UIImageView * lastVideoThumbnail;
 }
 
 @property(nonatomic, strong)LoginManager * loginManager;

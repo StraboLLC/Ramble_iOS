@@ -13,7 +13,14 @@
 #import "LocalFileManager.h"
 #import "PreferencesManager.h"
 
+@protocol CaptureViewControllerDelegate
+@optional
+-(void)parentShouldUpdateThumbnail;
+@end
+
 @interface CaptureViewController : UIViewController {
+    id delegate;
+    
     CLLocationManager * locationManager;
     LocationDataCollector * locationDataCollector;
     CameraDataCollector * cameraDataCollector;
@@ -32,6 +39,8 @@
     IBOutlet UIView * videoPreviewView;
     IBOutlet UIImageView * compassImage;
 }
+
+@property(strong) id delegate;
 
 /*!
  @method recordButtonPressed:

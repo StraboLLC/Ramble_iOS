@@ -56,6 +56,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    loginManager = appDelegate.loginManager;
+    if (!loginManager.currentUser) {
+        uploadButton.enabled = NO;
+    }
     // Set up the display with the proper track information
     
     // Set the title

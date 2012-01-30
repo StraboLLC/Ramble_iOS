@@ -62,6 +62,14 @@
 -(NSArray *)allLocalStraboTracks;
 
 /*!
+ @method mostRecentTrack
+ @abstract Finds the most recently recorded track
+ @discussion Enumerates through the documents directory to find the track with the most recent creation date. Then creates and returns the corresponding StraboTrack object.
+ @return StraboTrack The most recently recorded StraboTrack of object type StraboTrack
+ */
+-(StraboTrack *)mostRecentTrack;
+
+/*!
  @method deleteStraboFile:
  @abstract Deletes a strabo file with a given name from the local device.
  @discussion Searches the local directory structure for a strabo file (directory) with this name and then deletes the strabo file (directory) and its contents.

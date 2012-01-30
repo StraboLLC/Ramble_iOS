@@ -33,6 +33,8 @@
 
 @implementation CaptureViewController
 
+@synthesize delegate;
+
 #define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -245,6 +247,9 @@
 
 -(void)videoRecordingDidEnd {
     [localFileManager saveTemporaryFiles];
+    if ([self.delegate respondsToSelector:@selector(parentShouldUpdateThumbnail)]) {
+        [self.delegate parentShouldUpdateThumbnail];
+    }
 }
 
 -(void)videoRecordingFailedWithError:(NSError *)error {

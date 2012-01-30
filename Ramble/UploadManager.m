@@ -66,6 +66,8 @@
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",stringBoundary];
     [postRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
     
+    NSLog(@"Uploading using authToken: %@", authToken);
+    
     // setting up the body:
     NSMutableData *postBody = [NSMutableData data];
     [postBody appendData:[[NSString stringWithFormat:@"--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -135,27 +137,25 @@
     
     // *** UNCOMMENT THIS SHIT WHEN ERROR HANDLING IS WORKED OUT *** //
     
-//    NSError * error = nil;
-//    NSDictionary * dataDictionary =  [NSJSONSerialization JSONObjectWithData:responseJSONdata options:0 error:&error];
-//    NSString * serverError = [[dataDictionary objectForKey:@"errors"] objectAtIndex:0];
-//    
-//    // Make sure the JSON data was processed properly
-//    if (error && [self.delegate respondsToSelector:@selector(uploadStopped:withError:)]) {
-//        NSLog(@"Handler reports an error");
-//        [self.delegate uploadStopped:NO withError:error];
-//    } else if ([serverError isEqualToString:@"true"] && [self.delegate respondsToSelector:@selector(uploadStopped:withError:)]) {
-//        // Report a server error
-//        NSLog(@"Handler reports an error");
-//        [self.delegate uploadStopped:NO withError:nil];
-//    } else {
-//        // If there are no possible errors, notify the delegate
-//        // that the upload was completed successfully.
-//        if ([self.delegate respondsToSelector:@selector(uploadCompleted)]) {
-//            [self.delegate uploadCompleted];
-//        }
-//    }
+    NSError * error = nil;
+    NSDictionary * dataDictionary =  [NSJSONSerialization JSONObjectWithData:responseJSONdata options:0 error:&error];
+    NSString * serverError = [[dataDictionary objectForKey:@"errors"] objectAtIndex:0];
     
-    [self.delegate uploadCompleted];
+    // Make sure the JSON data was processed properly
+    if (error && [self.delegate respondsToSelector:@selector(uploadStopped:withError:)]) {
+        NSLog(@"Handler reports an error");
+        [self.delegate uploadStopped:NO withError:error];
+    } else if ([serverError isEqualToString:@"true"] && [self.delegate respondsToSelector:@selector(uploadStopped:withError:)]) {
+        // Report a server error
+        NSLog(@"Handler reports an error");
+        [self.delegate uploadStopped:NO withError:nil];
+    } else {
+        // If there are no possible errors, notify the delegate
+        // that the upload was completed successfully.
+        if ([self.delegate respondsToSelector:@selector(uploadCompleted)]) {
+            [self.delegate uploadCompleted];
+        }
+    }
     
 }
 

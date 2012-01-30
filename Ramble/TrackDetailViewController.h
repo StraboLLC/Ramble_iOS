@@ -12,16 +12,19 @@
 #import "StraboTrack.h"
 #import "LocalFileManager.h"
 #import "UploadManager.h"
+#import "LoginManager.h"
 
 @interface TrackDetailViewController : UIViewController {
     
     UploadManager * uploadManager;
     StraboTrack * straboTrack;
+    LoginManager * loginManager;
 
     // Detail View Outlets
     IBOutlet UILabel * titleLabel;
     IBOutlet UILabel * dateLabel;
     IBOutlet UITextField * titleTextField;
+    IBOutlet UIButton * uploadButton;
     
     // Uploading View Outlets
     IBOutlet UIView * uploadView;
