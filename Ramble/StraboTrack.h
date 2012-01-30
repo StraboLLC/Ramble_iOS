@@ -29,12 +29,38 @@
 @property(nonatomic, strong) NSURL * trackPath;
 
 /*!
+ @property jsonPath
+ @abstract The path to the relevant JSON file.
+ @discussion The path to the JSON file located within the track package. File has a .json extension.
+ */
+@property(nonatomic, strong) NSURL * jsonPath;
+
+/*!
+ @property videoPath
+ @abstract The path to the relevant video file.
+ @discussion The path to the Quicktime video file located within the track package. File has a .mov extension.
+ */
+@property(nonatomic, strong) NSURL * videoPath;
+
+/*!
+ @property thumbnailPath
+ @abstract The path to the relevant thumbnail file.
+ @discussion The path to the thumbnail PNG file located within the track package. File has a .png extension.
+ */
+@property(nonatomic, strong) NSURL * thumbnailPath;
+
+/*!
  @property trackName
  @abstract The name of all of the files in the track directory.
  @discussion All of the files within a specific track directory have the same name, but have different file extensions. This is a string containing the name of these files, not including their extensions.
  */
 @property(nonatomic, strong) NSString * trackName;
 
+/*!
+ @property trackTitle
+ @abstract The user-defined title of the track
+ @discussion A string containing an optional, user-defined title for the track. The trackTitle is set to nil by default.
+ */
 @property(nonatomic, strong) NSString * trackTitle;
 
 /*!

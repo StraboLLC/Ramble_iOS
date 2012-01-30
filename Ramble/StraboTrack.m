@@ -10,23 +10,26 @@
 
 @implementation StraboTrack
 
-@synthesize trackPath, trackName, trackTitle, trackType, latitude, longitude, captureDate, taggedPeople, taggedPlaces, uploadedDate;
+@synthesize trackPath, jsonPath, videoPath, thumbnailPath, trackName, trackTitle, trackType, latitude, longitude, captureDate, taggedPeople, taggedPlaces, uploadedDate;
 
 +(StraboTrack *)straboTrackFromFileWithName:(NSString *)trackName {
     StraboTrack * straboTrack = [[StraboTrack alloc] init];
     
     // Find the JSON file from the trackName
     NSString * jsonFilePath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:[trackName stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json", trackName]]];
+    NSString * trackFilePath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:trackName];
     
     // Read the JSON file
     NSData * data = [[NSFileManager defaultManager] contentsAtPath:jsonFilePath];
     
-    NSLog(@"Filepath: %@", jsonFilePath);
     NSError * error = nil;
     NSDictionary * trackDictionary = [[NSJSONSerialization JSONObjectWithData:data options:0 error:&error] objectForKey:@"track"];
     
     // Enter relevant info into the strabo track object
-    straboTrack.trackPath = [NSURL URLWithString:jsonFilePath];
+    straboTrack.trackPath = [NSURL URLWithString:trackFilePath];
+    straboTrack.jsonPath = [NSURL URLWithString:jsonFilePath];
+    straboTrack.videoPath = [NSURL URLWithString:[trackFilePath stringByAppendingFormat:[NSString stringWithFormat:@"%@.mov", trackName]]];
+    straboTrack.thumbnailPath = [NSURL URLWithString:[trackFilePath stringByAppendingFormat:[NSString stringWithFormat:@"%@.png", trackName]]];
     straboTrack.trackName = trackName;
     straboTrack.trackTitle = [trackDictionary objectForKey:@"title"];
     straboTrack.trackType = [trackDictionary objectForKey:@"tracktype"];

@@ -57,10 +57,12 @@
 {
     [super viewDidLoad];
     // Set up the display with the proper track information
+    
     // Set the title
     if (![self.straboTrack.trackTitle isEqualToString:@""]) {
         titleTextField.text = self.straboTrack.trackTitle;
     }
+    
     // Set the date
     NSLocale *locale = [NSLocale currentLocale];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init]; 
@@ -68,6 +70,9 @@
     [formatter setDateFormat:dateFormat];
     [formatter setLocale:locale];
     dateLabel.text = [formatter stringFromDate:straboTrack.captureDate];
+    
+    // Load the thumbnail image
+    thumbnailImage.image = [UIImage imageWithContentsOfFile:self.straboTrack.thumbnailPath.absoluteString];
 }
 
 - (void)viewDidUnload
