@@ -13,6 +13,7 @@
 -(NSString *)tempDirectoryPath;
 -(NSString *)createStraboFileDocumentsSubDirectoryWithName:(NSString *)directoryName;
 -(void)generateVideoThumbnailAtPath:(NSString *)outputPath error:(NSError **)error;
+-(CGImageRef)CGImageRotatedByAngle:(CGImageRef)imgRef angle:(CGFloat)angle;
 
 @end
 
@@ -68,6 +69,7 @@
         }
         return;
     }
+    
 }
 
 -(NSString *)docsDirectoryPath {
@@ -141,19 +143,59 @@
     AVURLAsset * theFileAsset = [AVURLAsset URLAssetWithURL:temporaryMovieFilePath options:nil];
     
     AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:theFileAsset];
+    // Set the maximum size of the image. Constrained to aspect ratio
+    generator.maximumSize = CGSizeMake(300, 300);
     
     NSError *err = nil;
     CMTime time = CMTimeMakeWithSeconds(0,30);
     CGImageRef imgRef = [generator copyCGImageAtTime:time actualTime:NULL error:&err];
     
+    UIImage * image = [UIImage imageWithCGImage:[self CGImageRotatedByAngle:imgRef angle:-90]];
+    
     if (err) {
         // Set the error
     }
     
-    UIImage *currentImg = [[UIImage alloc] initWithCGImage:imgRef];
+    // Set the image orientation
+    //UIImage *currentImage = [UIImage imageWithCGImage:imgRef scale:1.0 orientation:UIImageOrientationDown];
     
     // Write image to PNG
-    [UIImagePNGRepresentation(currentImg) writeToFile:outputPath atomically:YES];
+    [UIImagePNGRepresentation(image) writeToFile:outputPath atomically:YES];
+    
+    NSLog(@"Image Rotation Complete");
+}
+
+- (CGImageRef)CGImageRotatedByAngle:(CGImageRef)imgRef angle:(CGFloat)angle {
+	CGFloat angleInRadians = angle * (M_PI / 180);
+	CGFloat width = CGImageGetWidth(imgRef);
+	CGFloat height = CGImageGetHeight(imgRef);
+    
+	CGRect imgRect = CGRectMake(0, 0, width, height);
+	CGAffineTransform transform = CGAffineTransformMakeRotation(angleInRadians);
+	CGRect rotatedRect = CGRectApplyAffineTransform(imgRect, transform);
+    
+	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+	CGContextRef bmContext = CGBitmapContextCreate(NULL,
+												   rotatedRect.size.width,
+												   rotatedRect.size.height,
+												   8,
+												   0,
+												   colorSpace,
+												   kCGImageAlphaPremultipliedFirst);
+	CGContextSetAllowsAntialiasing(bmContext, YES);
+	CGContextSetInterpolationQuality(bmContext, kCGInterpolationHigh);
+	CGColorSpaceRelease(colorSpace);
+	CGContextTranslateCTM(bmContext,
+						  +(rotatedRect.size.width/2),
+						  +(rotatedRect.size.height/2));
+	CGContextRotateCTM(bmContext, angleInRadians);
+	CGContextDrawImage(bmContext, CGRectMake(-width/2, -height/2, width, height),
+					   imgRef);
+    
+	CGImageRef rotatedImage = CGBitmapContextCreateImage(bmContext);
+	CFRelease(bmContext);
+    
+	return rotatedImage;
 }
 
 @end

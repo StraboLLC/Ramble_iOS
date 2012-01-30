@@ -207,6 +207,11 @@
     [formatter setDateFormat:dateFormat];
     [formatter setLocale:locale];
     
+    // Path for the thumbnail image
+    NSURL * thumbnailURL = [track.trackPath URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", track.trackName]];
+    NSLog(@"Image URL: %@", thumbnailURL);
+    
+    cell.thumbnailImage.image = [UIImage imageWithContentsOfFile:track.thumbnailPath.absoluteString];
     cell.trackNameTag = trackName;
     cell.title.text = shortTitle;
     cell.dateTaken.text = [formatter stringFromDate:track.captureDate];
