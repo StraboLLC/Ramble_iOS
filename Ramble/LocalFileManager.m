@@ -24,7 +24,7 @@
 -(id)init {
     self = [super init];
     if (self) {
-        fileManager = [[NSFileManager alloc] init];
+        fileManager = [NSFileManager defaultManager];
         preferencesManager = [[PreferencesManager alloc] init];
     }
     
@@ -108,33 +108,17 @@
 }
 
 -(void)deleteStraboTrack:(NSString *)trackName {
-    
+//#warning Not very good error handling here. Complete with blocking in the tableviewcontroller
+    StraboTrack * track = [StraboTrack straboTrackFromFileWithName:trackName];
+    NSError * error = nil;
+    NSLog(@"Track to remove: %@", track.trackPath);
+    [fileManager removeItemAtPath:track.trackPath.absoluteString error:&error];
+    if (error) {
+        NSLog(@"An error occurred deleting the file: %@", error);
+    }
 }
 
 -(StraboTrack *)mostRecentTrack {
-    // Create enumerator
-#warning No error handling ... unsafe operation of the NSDirectoryEnumerator
-//    NSDirectoryEnumerator * dirEnumerator = [[NSFileManager defaultManager] enumeratorAtURL:[NSURL URLWithString:self.docsDirectoryPath] 
-//                                                                 includingPropertiesForKeys:[NSArray arrayWithObjects:NSURLCreationDateKey, NSURLNameKey, nil] 
-//                                                                                    options:NSDirectoryEnumerationSkipsHiddenFiles 
-//                                                                               errorHandler:nil];
-//    // A string to hold the most recent track while enumerating
-//    NSString * newestTrackName = nil;
-//    // A string to hold the most recent date
-//    NSDate * newestTrackDate = [NSDate dateWithTimeIntervalSince1970:0];
-//    
-//    // Enumerate!
-//    for (NSURL * theURL in dirEnumerator) {
-//        
-//        NSDate * theDate;
-//        [theURL getResourceValue:&theDate forKey:NSURLCreationDateKey error:NULL];
-//        
-//        if ([theDate compare:newestTrackDate] == NSOrderedAscending) {
-//            newestTrackDate = theDate;
-//            [theURL getResourceValue:&newestTrackName forKey:NSURLNameKey error:NULL];
-//        }
-//    }
-    
     NSArray * directoryContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:self.docsDirectoryPath error:nil];
     NSLog(@"Getting strabo file from: %@", directoryContents);
     return [StraboTrack straboTrackFromFileWithName:directoryContents.lastObject];

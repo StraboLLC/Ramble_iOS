@@ -39,7 +39,6 @@
     [super viewDidLoad];
     
     localFileManager = [[LocalFileManager alloc] init];
-    localTrackNames = [localFileManager allLocalStraboTracknames];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -94,7 +93,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [localTrackNames count];
+    return [localFileManager.allLocalStraboTracknames count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -108,7 +107,7 @@
     }
     
     // Configure the cell...
-    NSString * trackName = [localTrackNames objectAtIndex:[indexPath indexAtPosition:1]];
+    NSString * trackName = [localFileManager.allLocalStraboTracknames objectAtIndex:[indexPath indexAtPosition:1]];
     return [self configureCell:cell forTrack:trackName];
 }
 
@@ -121,19 +120,23 @@
  }
  */
 
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }   
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }   
- }
- */
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        TrackListItem * cell = (TrackListItem *)[tableView cellForRowAtIndexPath:indexPath];
+        [localFileManager deleteStraboTrack:cell.trackNameTag];
+        
+        NSLog(@"Number of items now: %i", localFileManager.allLocalStraboTracknames.count);
+        
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }   
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }   
+}
+
 
 /*
  // Override to support rearranging the table view.
