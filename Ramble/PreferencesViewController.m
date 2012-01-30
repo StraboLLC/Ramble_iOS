@@ -45,14 +45,13 @@
 {
     [super viewDidLoad];
     preferencesManager = [[PreferencesManager alloc] init];
-    //loginManager = [[LoginManager alloc] init];
-    //loginManager.delegate = self;
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     loginManager = appDelegate.loginManager;
     
     // Set the UI inputs appropriately
     [locationModeSwitch setOn:[preferencesManager precisionLocationModeOn] animated:NO];
+    [videoModeSwitch setOn:[preferencesManager videoModeIsHigh] animated:NO];
     [launchScreenSwitch setOn:[preferencesManager launchToCaptureMode] animated:NO];
     if ([preferencesManager compassModeMagnetic]) {
         headingSelector.selectedSegmentIndex = 1;
@@ -87,6 +86,10 @@
 
 -(IBAction)locationModeSwitchDidChange:(id)sender {
     [preferencesManager setPrecisionLocationModeOn:locationModeSwitch.on];
+}
+
+-(IBAction)videoModeSwitchDidChange:(id)sender {
+    [preferencesManager setVideoModeIsHigh:videoModeSwitch.on];
 }
 
 -(IBAction)launchScreenSwitchDidChange:(id)sender {

@@ -367,14 +367,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Heading System:" lineBreakMode="tailTruncation" minimumFontSize="10" id="9Qf-Pp-h4q">
-                                                <rect key="frame" x="20" y="207" width="131" height="21"/>
+                                                <rect key="frame" x="20" y="271" width="131" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="s5e-47-Chu">
-                                                <rect key="frame" x="57" y="236" width="207" height="30"/>
+                                                <rect key="frame" x="57" y="300" width="207" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <segments>
                                                     <segment title="True"/>
@@ -386,13 +386,20 @@
                                                 </connections>
                                             </segmentedControl>
                                             <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="jAj-q4-iPU">
-                                                <rect key="frame" x="20" y="172" width="79" height="27"/>
+                                                <rect key="frame" x="20" y="236" width="79" height="27"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <connections>
                                                     <action selector="launchScreenSwitchDidChange:" destination="2ne-Ja-Zi6" eventType="valueChanged" id="hgd-BQ-s5h"/>
                                                 </connections>
                                             </switch>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Launch To Capture" lineBreakMode="tailTruncation" minimumFontSize="10" id="TCa-nD-t5j">
+                                                <rect key="frame" x="20" y="207" width="284" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Video High Quality Mode:" lineBreakMode="tailTruncation" minimumFontSize="10" id="uFU-kl-kVs">
                                                 <rect key="frame" x="20" y="143" width="284" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -400,7 +407,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="agC-hq-37u">
-                                                <rect key="frame" x="119" y="303" width="82" height="37"/>
+                                                <rect key="frame" x="119" y="367" width="82" height="37"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="Log Out">
@@ -429,6 +436,13 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="zOB-Gq-RrD">
+                                                <rect key="frame" x="20" y="172" width="79" height="27"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="videoModeSwitchDidChange:" destination="2ne-Ja-Zi6" eventType="valueChanged" id="oi3-pL-MFx"/>
+                                                </connections>
+                                            </switch>
                                         </subviews>
                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                     </view>
@@ -455,6 +469,7 @@
                         <outlet property="launchScreenSwitch" destination="jAj-q4-iPU" id="sO2-pv-Vl4"/>
                         <outlet property="locationModeSwitch" destination="KHJ-Dm-T7L" id="aML-Jf-bBe"/>
                         <outlet property="logInButton" destination="agC-hq-37u" id="YrJ-21-Znv"/>
+                        <outlet property="videoModeSwitch" destination="zOB-Gq-RrD" id="Zm9-Xf-zvN"/>
                     </connections>
                 </viewController>
             </objects>
@@ -503,10 +518,12 @@
                 <relationship kind="action" name="launchScreenSwitchDidChange:"/>
                 <relationship kind="action" name="locationModeSwitchDidChange:"/>
                 <relationship kind="action" name="logInButtonPressed:"/>
+                <relationship kind="action" name="videoModeSwitchDidChange:"/>
                 <relationship kind="outlet" name="headingSelector" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="launchScreenSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="locationModeSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="logInButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="videoModeSwitch" candidateClass="UISwitch"/>
             </relationships>
         </class>
         <class className="RootViewController" superclassName="UIViewController">

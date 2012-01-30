@@ -75,6 +75,9 @@
     captureVideoPreviewLayer.frame = videoPreviewView.bounds;
     captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [videoPreviewView.layer addSublayer:captureVideoPreviewLayer];
+    if ([preferencesManager videoModeIsHigh]) {
+        captureVideoPreviewLayer.session.sessionPreset = AVCaptureSessionPreset640x480;
+    }
     
     // Start updating the location
     [locationManager startUpdatingLocation];

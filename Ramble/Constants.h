@@ -47,11 +47,13 @@
 #define STRPrecisionLocationModeOnKey @"STRPrecisionLocationModeOnKey"
 #define STRCompassModeMagneticKey @"STRCompassModeMagneticKey"
 #define STRLaunchToCaptureModeKey @"STRLaunchToCaptureModeKey"
+#define STRVideoModeHighKey @"STRVideoModeHighKey"
 
-// Keychain constants here
+// Keychain Constants ** UNUSED FOR NOW
 #define keychainIdentifier @"StraboGISLoginData"
 
-// Table Cell constants here
-
+// Video Quality Constants
+#define STRVideoQualityLow AVCaptureSessionPreset352x288
+#define STRVideoQualityHigh AVCaptureSessionPreset640x480
 
 #endif

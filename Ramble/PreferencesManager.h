@@ -23,6 +23,9 @@
 -(void)setLaunchToCaptureMode:(BOOL)launchToCaptureMode;
 -(BOOL)launchToCaptureMode;
 
+-(void)setVideoModeIsHigh:(BOOL)videoModeIsHigh;
+-(BOOL)videoModeIsHigh;
+
 // Admin Preferences
 -(NSString *)applicationUUID;
 

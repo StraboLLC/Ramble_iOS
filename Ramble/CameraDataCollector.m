@@ -67,6 +67,7 @@
 -(void)startRecording {
     AVCaptureConnection *videoConnection = [CameraDataCollector connectionWithMediaType:AVMediaTypeVideo fromConnections:[[self movieFileOutput] connections]];
     if ([videoConnection isVideoOrientationSupported]) {
+        // Hardcoded video recording device orientation - this will need to be dynamic later.
         [videoConnection setVideoOrientation:AVCaptureVideoOrientationPortrait];
     }
     

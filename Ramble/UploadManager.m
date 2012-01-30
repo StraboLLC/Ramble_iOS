@@ -42,9 +42,19 @@
     LocalFileManager * localFileManager = [[LocalFileManager alloc] init];
     
     // Find the three data files
-    //NSString * imageFilePath = [localFileManager.docsDirectoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", trackName]];
     NSString * videoFilePath = [localFileManager.docsDirectoryPath stringByAppendingPathComponent:[trackName stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mov", trackName]]];
     NSString * jsonFilePath = [localFileManager.docsDirectoryPath stringByAppendingPathComponent:[trackName stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json", trackName]]];
+    NSString * thumbnailFilePath = [localFileManager.docsDirectoryPath stringByAppendingPathComponent:[trackName stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", trackName]]];
+    
+    // Error Handling... Make sure the files exist
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:videoFilePath] || ![fileManager fileExistsAtPath:jsonFilePath] || ![fileManager fileExistsAtPath:thumbnailFilePath]) {
+        NSLog(@"Files to upload do not exist.");
+        if ([self.delegate respondsToSelector:@selector(uploadStopped:withError:)]) {
+            [self.delegate uploadStopped:NO withError:nil];
+        }
+        return;
+    }
     
     // Create the request
     NSMutableURLRequest * postRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:uploadServerURL]];
@@ -74,6 +84,10 @@
     [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"videofile\"; filename=\"%@.mov\"\r\n", trackName] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[NSData dataWithContentsOfFile:videoFilePath]];
+    [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"imagefile\"; filename=\"%@.png\"\r\n", trackName] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[NSData dataWithContentsOfFile:thumbnailFilePath]];
     [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"JSONfile\"; filename=\"%@.json\"\r\n", trackName] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];

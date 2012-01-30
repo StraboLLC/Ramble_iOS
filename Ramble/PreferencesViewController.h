@@ -16,6 +16,7 @@
     LoginManager * loginManager;
     
     IBOutlet UISwitch * locationModeSwitch;
+    IBOutlet UISwitch * videoModeSwitch;
     IBOutlet UISwitch * launchScreenSwitch;
     IBOutlet UISegmentedControl * headingSelector;
     
@@ -23,6 +24,7 @@
 }
 
 -(IBAction)locationModeSwitchDidChange:(id)sender;
+-(IBAction)videoModeSwitchDidChange:(id)sender;
 -(IBAction)launchScreenSwitchDidChange:(id)sender;
 -(IBAction)headingSelectorDidChange:(id)sender;
 -(IBAction)doneButtonPressed:(id)sender;
