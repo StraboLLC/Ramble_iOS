@@ -10,6 +10,7 @@
 		960B0E1814CA96B200FAC06A /* LeatherNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 960B0E1714CA96B200FAC06A /* LeatherNavBar.m */; };
 		96381B1F14D74EB200F171C7 /* cellBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 96381B1E14D74EB200F171C7 /* cellBackground.png */; };
 		96381B2314D74F2200F171C7 /* bottomLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 96381B2214D74F2200F171C7 /* bottomLine.png */; };
+		96381B2814D8A85400F171C7 /* RambleNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96381B2714D8A85300F171C7 /* RambleNavigationController.m */; };
 		964F743414C7CCAC006B5B6D /* UploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F743314C7CCAC006B5B6D /* UploadManager.m */; };
 		964F745B14C7D382006B5B6D /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F744014C7D382006B5B6D /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		964F745C14C7D382006B5B6D /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 964F744314C7D382006B5B6D /* FBDialog.bundle */; };
@@ -66,6 +67,8 @@
 		960B0E1714CA96B200FAC06A /* LeatherNavBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeatherNavBar.m; sourceTree = "<group>"; };
 		96381B1E14D74EB200F171C7 /* cellBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellBackground.png; sourceTree = "<group>"; };
 		96381B2214D74F2200F171C7 /* bottomLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomLine.png; sourceTree = "<group>"; };
+		96381B2614D8A85300F171C7 /* RambleNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RambleNavigationController.h; sourceTree = "<group>"; };
+		96381B2714D8A85300F171C7 /* RambleNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RambleNavigationController.m; sourceTree = "<group>"; };
 		964F743214C7CCAC006B5B6D /* UploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadManager.h; sourceTree = "<group>"; };
 		964F743314C7CCAC006B5B6D /* UploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadManager.m; sourceTree = "<group>"; };
 		964F743614C7CD23006B5B6D /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -189,6 +192,17 @@
 				96381B1E14D74EB200F171C7 /* cellBackground.png */,
 			);
 			name = "Table Cell";
+			sourceTree = "<group>";
+		};
+		96381B2914D8AB2800F171C7 /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				96F4827714C6243F00096933 /* RootViewController.h */,
+				96F4827814C6243F00096933 /* RootViewController.m */,
+				96381B2614D8A85300F171C7 /* RambleNavigationController.h */,
+				96381B2714D8A85300F171C7 /* RambleNavigationController.m */,
+			);
+			name = Containers;
 			sourceTree = "<group>";
 		};
 		964F743B14C7D382006B5B6D /* src */ = {
@@ -378,8 +392,7 @@
 		96F4828D14C624E600096933 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				96F4827714C6243F00096933 /* RootViewController.h */,
-				96F4827814C6243F00096933 /* RootViewController.m */,
+				96381B2914D8AB2800F171C7 /* Containers */,
 				96F4828314C624C300096933 /* CaptureViewController.h */,
 				96F4828414C624C300096933 /* CaptureViewController.m */,
 				96C17CFF14CDDDFA00C96702 /* TrackDetailViewController.h */,
@@ -495,6 +508,7 @@
 				96E1003914D0BF8200B9C074 /* NSString+MD5.m in Sources */,
 				96CFE00514D3581100F7E7F6 /* TrackListItem.m in Sources */,
 				967E01F214D3BE2A006C2E96 /* FeedViewController.m in Sources */,
+				96381B2814D8A85400F171C7 /* RambleNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
