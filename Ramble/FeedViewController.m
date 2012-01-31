@@ -33,6 +33,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIImage *img = [UIImage imageNamed:@"cellBackground.png"];
+	[feedTableView setBackgroundColor:[UIColor colorWithPatternImage:img]];
 }
 
 - (void)viewDidUnload
@@ -75,10 +77,13 @@
     return cell;
 }
 
+/*
+// Override to support section headers
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return @"Title";
 }
-
+*/
+ 
 /*
  // Override to support conditional editing of the table view.
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

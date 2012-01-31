@@ -18,17 +18,17 @@
 - (void)drawRect:(CGRect)rect {
     // Add here to customize the navigation bar
     
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    CGColorRef redColor = [UIColor redColor].CGColor;
-//    CGContextSetFillColorWithColor(context, redColor);
-    //CGContextFillRect(context, self.bounds);
-//    CGRect fillBox = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-//    CGContextFillRect(context, fillBox);
-    [self setTintColor:[UIColor clearColor]];
-    [self setTranslucent:YES];
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGColorRef redColor = [UIColor redColor].CGColor;
+    CGContextSetFillColorWithColor(context, redColor);
+    CGContextFillRect(context, self.bounds);
+    CGRect fillBox = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    CGContextFillRect(context, fillBox);
+
     UIImage *image = [UIImage imageNamed:@"topbar.png"];
     [image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     
+    [self setTintColor: [UIColor colorWithRed:0.34 green:0.15 blue:0.07 alpha:1.0]];
     
 }
 

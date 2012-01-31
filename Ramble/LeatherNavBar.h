@@ -12,7 +12,7 @@
     
 }
 
-- (CGSize)sizeThatFits:(CGSize)size;
+//- (CGSize)sizeThatFits:(CGSize)size;
 - (void)drawRect:(CGRect)rect;
 
 @end

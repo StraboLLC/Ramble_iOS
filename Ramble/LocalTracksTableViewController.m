@@ -40,6 +40,9 @@
     
     localFileManager = [[LocalFileManager alloc] init];
     
+    UIImage *img = [UIImage imageNamed:@"cellBackground.png"];
+	[[self tableView] setBackgroundColor:[UIColor colorWithPatternImage:img]];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		960B0E1814CA96B200FAC06A /* LeatherNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 960B0E1714CA96B200FAC06A /* LeatherNavBar.m */; };
+		96381B1F14D74EB200F171C7 /* cellBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 96381B1E14D74EB200F171C7 /* cellBackground.png */; };
+		96381B2314D74F2200F171C7 /* bottomLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 96381B2214D74F2200F171C7 /* bottomLine.png */; };
 		964F743414C7CCAC006B5B6D /* UploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F743314C7CCAC006B5B6D /* UploadManager.m */; };
 		964F745B14C7D382006B5B6D /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F744014C7D382006B5B6D /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		964F745C14C7D382006B5B6D /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 964F744314C7D382006B5B6D /* FBDialog.bundle */; };
@@ -62,6 +64,8 @@
 /* Begin PBXFileReference section */
 		960B0E1614CA96B200FAC06A /* LeatherNavBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeatherNavBar.h; sourceTree = "<group>"; };
 		960B0E1714CA96B200FAC06A /* LeatherNavBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeatherNavBar.m; sourceTree = "<group>"; };
+		96381B1E14D74EB200F171C7 /* cellBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellBackground.png; sourceTree = "<group>"; };
+		96381B2214D74F2200F171C7 /* bottomLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomLine.png; sourceTree = "<group>"; };
 		964F743214C7CCAC006B5B6D /* UploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadManager.h; sourceTree = "<group>"; };
 		964F743314C7CCAC006B5B6D /* UploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadManager.m; sourceTree = "<group>"; };
 		964F743614C7CD23006B5B6D /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -178,6 +182,15 @@
 			name = "Custom UI";
 			sourceTree = "<group>";
 		};
+		96381B2114D74ECD00F171C7 /* Table Cell */ = {
+			isa = PBXGroup;
+			children = (
+				96381B2214D74F2200F171C7 /* bottomLine.png */,
+				96381B1E14D74EB200F171C7 /* cellBackground.png */,
+			);
+			name = "Table Cell";
+			sourceTree = "<group>";
+		};
 		964F743B14C7D382006B5B6D /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +266,7 @@
 		966961F314CF27790084926C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				96381B2114D74ECD00F171C7 /* Table Cell */,
 				96CFE01114D3B3FF00F7E7F6 /* Corner Buttons */,
 				967E020214D3BFC4006C2E96 /* Toolbar Items */,
 				966961F014CF27730084926C /* Compass.png */,
@@ -440,6 +454,8 @@
 				967E01FD14D3BFAB006C2E96 /* topbar.png in Resources */,
 				967E01FF14D3BFB7006C2E96 /* ramble.png in Resources */,
 				967E020114D3BFC0006C2E96 /* gear.png in Resources */,
+				96381B1F14D74EB200F171C7 /* cellBackground.png in Resources */,
+				96381B2314D74F2200F171C7 /* bottomLine.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
