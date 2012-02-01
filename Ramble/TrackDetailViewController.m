@@ -9,6 +9,7 @@
 #import "TrackDetailViewController.h"
 
 @interface TrackDetailViewController (InternalMethods)
+-(BOOL)setFileHasBeenUploaded;
 @end
 
 @interface TrackDetailViewController (UploadManagerDelegate) <UploadManagerDelegate>
@@ -59,7 +60,11 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     loginManager = appDelegate.loginManager;
     if (!loginManager.currentUser) {
-        uploadButton.enabled = NO;
+        uploadButton.hidden = YES;
+        statusLabel.text = @"Please log in to upload this capture.";
+    } else {
+        // Display content conditional on the file's upload history
+        [self setFileHasBeenUploaded];
     }
     // Set up the display with the proper track information
     
@@ -98,30 +103,25 @@
 -(IBAction)uploadButtonPressed:(id)sender {
     
     // Only upload if the track has never been uploaded before.
-    if ([straboTrack.uploadedDate isEqualToDate:[NSDate dateWithTimeIntervalSince1970:0]]) {
-        
-        NSLog(@"File has never been uploaded before");
-        
-        // Set a new upload manager
-        uploadManager = [[UploadManager alloc] init];
-        uploadManager.delegate = self;
-        
-        // Set up the upload view
-        uploadProgress.progress = 0;
-        [actionButton setTitle:@"Cancel" forState:UIControlStateNormal];
-        uploadView.hidden = NO;
-        uploadStatusLabel.text = @"Upload in Progress";
-        
-        // Fire up the uploader
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        NSString * authToken = appDelegate.loginManager.currentUser.authToken;
-        NSString * userID = [NSString stringWithFormat:@"%@", appDelegate.loginManager.currentUser.userID];
-        [uploadManager generateUploadRequestFor:[straboTrack trackName] inAlbum:@"Mobile Uploads" withAuthtoken:authToken withID:userID];
-        [uploadManager startUpload];
-        
-    } else {
-        NSLog(@"File HAS been uploaded before. Upload Cancelled.");
-    }
+    
+    // Set a new upload manager
+    uploadManager = [[UploadManager alloc] init];
+    uploadManager.delegate = self;
+    
+    // Set up the upload view
+    uploadProgress.progress = 0;
+    [actionButton setTitle:@"Cancel" forState:UIControlStateNormal];
+    uploadView.hidden = NO;
+    uploadStatusLabel.text = @"Upload in Progress";
+    
+    // Fire up the uploader
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSString * authToken = appDelegate.loginManager.currentUser.authToken;
+    NSString * userID = [NSString stringWithFormat:@"%@", appDelegate.loginManager.currentUser.userID];
+    [uploadManager generateUploadRequestFor:[straboTrack trackName] inAlbum:@"Mobile Uploads" withAuthtoken:authToken withID:userID];
+    [uploadManager startUpload];
+    
+    
     
 }
 
@@ -135,13 +135,22 @@
     }
 }
 
--(IBAction)doneButtonPressed:(id)sender {
-    [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
-}
-
 @end
 
 @implementation TrackDetailViewController (InternalMethods)
+
+-(BOOL)setFileHasBeenUploaded {
+    if ([straboTrack.uploadedDate isEqualToDate:[NSDate dateWithTimeIntervalSince1970:0]]) {
+        NSLog(@"File has never been uploaded before");
+        statusLabel.text = nil;
+        return false;
+    } else {
+        NSLog(@"File HAS been uploaded before.");
+        statusLabel.text = @"You have uploaded this file before. You may not upload it again.";
+        uploadButton.enabled = NO;
+        return true;
+    }
+}
 
 @end
 

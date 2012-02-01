@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FeedViewController.h"
 #import "CaptureViewController.h"
 #import "TrackDetailViewController.h"
+#import "LocalTracksNavigationController.h"
 #import "PreferencesManager.h"
 #import "LoginManager.h"
 
 @interface RootViewController : UIViewController {
     CaptureViewController * captureViewController;
-    UINavigationController * feedViewController;
+    
+    UIViewController * feedViewController;
     
     LoginManager * loginManager;
     PreferencesManager * preferencesManager;

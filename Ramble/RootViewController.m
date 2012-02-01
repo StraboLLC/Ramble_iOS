@@ -7,7 +7,6 @@
 //
 
 #import "RootViewController.h"
-#import "LoginManager.h"
 
 @interface RootViewController (InternalMethods)
 -(void)refreshVideoThumbnail;
@@ -44,11 +43,11 @@
     
     [self refreshVideoThumbnail];
     
-    // Load the array of child controllers from the storyboard
+    // Load the child controllers from the storyboard
     UIStoryboard * theStoryboard = self.storyboard;
-    captureViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"CaptureViewController"];
+    captureViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"Capture"];
     captureViewController.delegate = self;
-    feedViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"FeedViewController"];
+    feedViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"Feed"];
     
     // Set up the controllers' views
     captureViewController.view.frame = subView.frame;
@@ -115,15 +114,17 @@
 }
 
 -(IBAction)recentCaptureViewButtonPressed:(id)sender {
-    UINavigationController * tracksViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocalTracksViewController"];
+    LocalTracksNavigationController * tracksNavController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocalTracksNavigation"];
     
-    if (localFileManager.mostRecentTrack) {
-        TrackDetailViewController * trackDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TrackDetail"];
-        trackDetailViewController.straboTrack = localFileManager.mostRecentTrack;
-        [tracksViewController pushViewController:trackDetailViewController animated:NO];
-        
-        [self presentViewController:tracksViewController animated:YES completion:NULL];
-    }
+//    if (localFileManager.mostRecentTrack) {
+//        TrackDetailViewController * trackDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TrackDetail"];
+//        trackDetailViewController.straboTrack = localFileManager.mostRecentTrack;
+//        [tracksNavController pushViewController:trackDetailViewController animated:NO];
+//        
+//        [self presentViewController:tracksNavController animated:YES completion:NULL];
+//    }
+    
+    [self presentViewController:tracksNavController animated:YES completion:NULL];
 }
 
 #pragma mark Methods

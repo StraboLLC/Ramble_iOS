@@ -25,6 +25,7 @@
     IBOutlet UILabel * dateLabel;
     IBOutlet UITextField * titleTextField;
     IBOutlet UIButton * uploadButton;
+    IBOutlet UILabel * statusLabel;
     
     // Uploading View Outlets
     IBOutlet UIView * uploadView;
@@ -40,6 +41,5 @@
 
 -(IBAction)uploadButtonPressed:(id)sender;
 -(IBAction)actionButtonPressed:(id)sender;
--(IBAction)doneButtonPressed:(id)sender;
 
 @end
