@@ -51,6 +51,14 @@
 	[mainTableView setBackgroundColor:[UIColor colorWithPatternImage:img]];
 }
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    // Reload the data, just in case the user edited anything
+    [mainTableView reloadData];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];

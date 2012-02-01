@@ -236,7 +236,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="topbar.png" id="S3P-dO-pbA">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="ramble.png" id="hlm-UU-9Xc">
@@ -262,7 +262,7 @@
                                 <rect key="frame" x="20" y="16" width="72" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Left">
+                                <state key="normal" title="&lt;---">
                                     <color key="titleColor" red="0.34414859689999999" green="0.15941870590000001" blue="0.075782483659999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -656,7 +656,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
-                                    <outlet property="delegate" destination="cjV-ov-Q4n" id="858-cE-kwT"/>
+                                    <outlet property="delegate" destination="zld-xc-Htz" id="GQn-4T-R1V"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="14" id="Xzx-CB-KDs">

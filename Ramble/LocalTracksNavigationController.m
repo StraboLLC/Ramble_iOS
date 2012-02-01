@@ -30,11 +30,11 @@
 #pragma mark - View lifecycle
 
 /*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
+ // Implement loadView to create a view hierarchy programmatically, without using a nib.
+ - (void)loadView
+ {
+ }
+ */
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
@@ -69,20 +69,76 @@
 
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     [self addChildViewController:viewController];
-    ((UIViewController *)self.childViewControllers.lastObject).view.frame = CGRectMake(0, 0, subView.frame.size.height, subView.frame.size.width); 
+    ((UIViewController *)self.childViewControllers.lastObject).view.frame = CGRectMake(subView.frame.size.width, 
+                                                                                       0, 
+                                                                                       subView.frame.size.width, 
+                                                                                       subView.frame.size.height);
     [self transitionFromViewController:[self.childViewControllers objectAtIndex:self.childViewControllers.count-2]
                       toViewController:[self.childViewControllers lastObject] 
-                              duration:0 options:UIViewAnimationTransitionFlipFromLeft 
-                            animations:^{} 
+                              duration:0.25 options:UIViewAnimationOptionTransitionNone 
+                            animations:^(void){
+                                
+                                UIView * hostView = [[self.childViewControllers objectAtIndex:self.childViewControllers.count-2] view];
+                                UIGraphicsBeginImageContext(hostView.frame.size);
+                                [hostView.layer renderInContext:UIGraphicsGetCurrentContext()];
+                                
+                                CGRect incommingViewFrame = CGRectMake(0, 
+                                                                       0, 
+                                                                       subView.frame.size.width, 
+                                                                       subView.frame.size.height);
+                                
+                                CGRect outgoingViewFrame = CGRectMake(-320, 0, subView.frame.size.width, subView.frame.size.height);
+                                
+                                [UIView animateWithDuration:0.25
+                                                      delay:0.0
+                                                    options:0
+                                                 animations:^{
+                                                     hostView.frame = outgoingViewFrame;
+                                                     ((UIViewController *)self.childViewControllers.lastObject).view.frame = incommingViewFrame;
+                                                 } 
+                                                 completion:^(BOOL finished){
+                                                     NSLog(@"Done!");
+                                                 }];
+                                
+                            } 
                             completion:nil];
 }
 
 -(UIViewController *)popViewControllerAnimated:(BOOL)animated {
-    UIViewController * topViewController =self.childViewControllers.lastObject;
+    UIViewController * topViewController = self.childViewControllers.lastObject;
+    UIViewController * nextViewController = [self.childViewControllers objectAtIndex:self.childViewControllers.count-2];
+    nextViewController.view.frame = CGRectMake(-subView.frame.size.width, 
+                                               0, 
+                                               subView.frame.size.width, 
+                                               subView.frame.size.height);
+    
     [self transitionFromViewController:topViewController
-                      toViewController:[self.childViewControllers objectAtIndex:self.childViewControllers.count-2] 
-                              duration:0 options:UIViewAnimationTransitionFlipFromLeft 
-                            animations:^{} 
+                      toViewController:nextViewController 
+                              duration:0.25 options:0 
+                            animations:^{
+                                
+                                UIView * hostView = [topViewController view];
+                                UIGraphicsBeginImageContext(hostView.frame.size);
+                                [hostView.layer renderInContext:UIGraphicsGetCurrentContext()];
+                                
+                                CGRect incommingViewFrame = CGRectMake(0, 
+                                                                       0, 
+                                                                       subView.frame.size.width, 
+                                                                       subView.frame.size.height);
+                                
+                                CGRect outgoingViewFrame = CGRectMake(320, 0, subView.frame.size.width, subView.frame.size.height);
+                                
+                                [UIView animateWithDuration:0.25
+                                                      delay:0.0
+                                                    options:0
+                                                 animations:^{
+                                                     hostView.frame = outgoingViewFrame;
+                                                     nextViewController.view.frame = incommingViewFrame;
+                                                 } 
+                                                 completion:^(BOOL finished){
+                                                     NSLog(@"Done!");
+                                                 }];
+                            } 
                             completion:^(BOOL finished){
                                 [self.childViewControllers.lastObject removeFromParentViewController];
                             }];
