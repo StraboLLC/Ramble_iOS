@@ -97,7 +97,7 @@
                                                      ((UIViewController *)self.childViewControllers.lastObject).view.frame = incommingViewFrame;
                                                  } 
                                                  completion:^(BOOL finished){
-                                                     NSLog(@"Done!");
+                                                     NSLog(@"Animation Complete");
                                                  }];
                                 
                             } 
@@ -136,7 +136,7 @@
                                                      nextViewController.view.frame = incommingViewFrame;
                                                  } 
                                                  completion:^(BOOL finished){
-                                                     NSLog(@"Done!");
+                                                     NSLog(@"Animation Complete");
                                                  }];
                             } 
                             completion:^(BOOL finished){

@@ -694,7 +694,6 @@
                                         </state>
                                         <connections>
                                             <action selector="actionButtonPressed:" destination="zld-xc-Htz" eventType="touchUpInside" id="Xlk-Oz-jej"/>
-                                            <action selector="actionButtonPressed:" destination="cjV-ov-Q4n" eventType="touchUpInside" id="gtt-ns-F8L"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Upload Status" lineBreakMode="tailTruncation" minimumFontSize="10" id="6wf-eo-42o">
@@ -713,11 +712,12 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="actionButton" destination="MX8-oI-MT2" id="PRn-72-yOp"/>
                         <outlet property="dateLabel" destination="c1Y-Os-8et" id="NAG-5c-vTh"/>
                         <outlet property="statusLabel" destination="Xzx-CB-KDs" id="D48-2o-tT5"/>
                         <outlet property="thumbnailImage" destination="Y0F-ue-CII" id="KkJ-tf-w4C"/>
                         <outlet property="titleTextField" destination="Sjq-66-pFm" id="CNv-U5-E1R"/>
-                        <outlet property="uploadButton" destination="MX8-oI-MT2" id="jQ2-5G-cbT"/>
+                        <outlet property="uploadButton" destination="zkU-FI-Esy" id="OIq-1g-jmC"/>
                         <outlet property="uploadProgress" destination="6gT-Zc-oU1" id="WqD-Wx-kIy"/>
                         <outlet property="uploadStatusLabel" destination="6wf-eo-42o" id="Tio-iv-Itv"/>
                         <outlet property="uploadView" destination="WUD-gT-gTP" id="YgV-hz-RkO"/>
