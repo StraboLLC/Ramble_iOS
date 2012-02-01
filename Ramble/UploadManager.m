@@ -22,6 +22,7 @@
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error;
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection;
+-(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;
 -(void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;
 @end
 
@@ -174,9 +175,9 @@
     NSLog(@"Response Data Partial: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
 }
 
--(void)connection:(NSURLConnection *)connection didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    NSString * userName = @"team";
-    NSString * password = @"strabogus";
+-(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    NSString * userName = STRUserName;
+    NSString * password = STRPassword;
     NSURLCredential * credential = [NSURLCredential credentialWithUser:userName 
                                                               password:password 
                                                            persistence:NSURLCredentialPersistenceForSession];

@@ -20,6 +20,10 @@
 #define uploadServerURL @"https://ramble.strabogis.com/mobileapi/v1/upload.php"
 #define loginServerURL @"http://ramble.strabogis.com/mobileapi/v1/login.php"
 
+// Authentication Challenge Constants
+#define STRUserName @"team"
+#define STRPassword @"strabogus"
+
 #endif
 #ifdef RELEASE
 
