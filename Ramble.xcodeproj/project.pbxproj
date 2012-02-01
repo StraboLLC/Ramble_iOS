@@ -38,6 +38,8 @@
 		96A76E0C14D9C33100F61B93 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A76E0B14D9C33100F61B93 /* shadow.png */; };
 		96A76E0F14D9C53800F61B93 /* cameraIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A76E0D14D9C53800F61B93 /* cameraIcon.png */; };
 		96A76E1014D9C53800F61B93 /* listIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A76E0E14D9C53800F61B93 /* listIcon.png */; };
+		96A76E1214D9CE6200F61B93 /* compassFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A76E1114D9CE6200F61B93 /* compassFrame.png */; };
+		96A76E1514D9CF0F00F61B93 /* compassface.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A76E1414D9CF0F00F61B93 /* compassface.png */; };
 		96B586CD14D8E92300B9DB9A /* LocalTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B586CC14D8E92300B9DB9A /* LocalTracksViewController.m */; };
 		96C17D0114CDDDFA00C96702 /* TrackDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C17D0014CDDDFA00C96702 /* TrackDetailViewController.m */; };
 		96CD7B9214D3D39F00976367 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96CD7B9114D3D39F00976367 /* MediaPlayer.framework */; };
@@ -118,6 +120,8 @@
 		96A76E0B14D9C33100F61B93 /* shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadow.png; sourceTree = "<group>"; };
 		96A76E0D14D9C53800F61B93 /* cameraIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraIcon.png; sourceTree = "<group>"; };
 		96A76E0E14D9C53800F61B93 /* listIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = listIcon.png; sourceTree = "<group>"; };
+		96A76E1114D9CE6200F61B93 /* compassFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compassFrame.png; sourceTree = "<group>"; };
+		96A76E1414D9CF0F00F61B93 /* compassface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compassface.png; sourceTree = "<group>"; };
 		96B586CB14D8E92300B9DB9A /* LocalTracksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalTracksViewController.h; sourceTree = "<group>"; };
 		96B586CC14D8E92300B9DB9A /* LocalTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalTracksViewController.m; sourceTree = "<group>"; };
 		96C17CFF14CDDDFA00C96702 /* TrackDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackDetailViewController.h; sourceTree = "<group>"; };
@@ -286,6 +290,7 @@
 		966961F314CF27790084926C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				96A76E1314D9CE8C00F61B93 /* Compass Graphics */,
 				96381B2114D74ECD00F171C7 /* Table Cell */,
 				96CFE01114D3B3FF00F7E7F6 /* Corner Buttons */,
 				967E020214D3BFC4006C2E96 /* Toolbar Items */,
@@ -303,6 +308,15 @@
 				967E01FE14D3BFB7006C2E96 /* ramble.png */,
 			);
 			name = "Toolbar Items";
+			sourceTree = "<group>";
+		};
+		96A76E1314D9CE8C00F61B93 /* Compass Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				96A76E1114D9CE6200F61B93 /* compassFrame.png */,
+				96A76E1414D9CF0F00F61B93 /* compassface.png */,
+			);
+			name = "Compass Graphics";
 			sourceTree = "<group>";
 		};
 		96CFE01114D3B3FF00F7E7F6 /* Corner Buttons */ = {
@@ -481,6 +495,8 @@
 				96A76E0C14D9C33100F61B93 /* shadow.png in Resources */,
 				96A76E0F14D9C53800F61B93 /* cameraIcon.png in Resources */,
 				96A76E1014D9C53800F61B93 /* listIcon.png in Resources */,
+				96A76E1214D9CE6200F61B93 /* compassFrame.png in Resources */,
+				96A76E1514D9CF0F00F61B93 /* compassface.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,6 +568,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Thomas Beatty (HAF49YT948)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -567,6 +584,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "51F9E95A-FC53-416F-8D64-E646FDD45BC7";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -577,6 +595,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Thomas Beatty (HAF49YT948)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -586,6 +605,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "51F9E95A-FC53-416F-8D64-E646FDD45BC7";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

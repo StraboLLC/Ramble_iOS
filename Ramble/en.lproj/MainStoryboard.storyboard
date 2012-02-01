@@ -82,8 +82,20 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Urv-eC-19d">
-                                <rect key="frame" x="124" y="410" width="72" height="37"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="GlC-H5-Cku">
+                                <rect key="frame" x="141" y="212" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="compassface.png" id="8qy-zs-qbn">
+                                <rect key="frame" x="-10" y="395" width="339" height="339"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="compassFrame.png" id="B7E-mw-4MJ">
+                                <rect key="frame" x="0.0" y="375" width="320" height="85"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Urv-eC-19d">
+                                <rect key="frame" x="124" y="423" width="72" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Rec">
@@ -97,20 +109,12 @@
                                     <action selector="recordButtonPressed:" destination="Tks-0X-fok" eventType="touchUpInside" id="1Dd-0O-JCi"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="GlC-H5-Cku">
-                                <rect key="frame" x="141" y="212" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Compass.png" id="i5N-ji-znc">
-                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="GlC-H5-Cku" id="MBJ-LZ-qiD"/>
-                        <outlet property="compassImage" destination="i5N-ji-znc" id="PUR-Xx-9pG"/>
+                        <outlet property="compassImage" destination="8qy-zs-qbn" id="BFy-nf-cRD"/>
                         <outlet property="recordButton" destination="Urv-eC-19d" id="8jj-yS-agG"/>
                         <outlet property="videoPreviewView" destination="Ui9-go-TNU" id="pdu-zC-Hsd"/>
                     </connections>
@@ -562,11 +566,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Compass.png" width="300" height="288"/>
         <image name="bottomleftdown.png" width="99" height="103"/>
         <image name="bottomleftup.png" width="99" height="103"/>
         <image name="bottomrightdown.png" width="99" height="102"/>
         <image name="bottomrightup.png" width="99" height="102"/>
+        <image name="compassFrame.png" width="640" height="170"/>
+        <image name="compassface.png" width="671" height="678"/>
         <image name="gear.png" width="52" height="52"/>
         <image name="ramble.png" width="237" height="78"/>
         <image name="topBar.png" width="640" height="132"/>
