@@ -25,6 +25,11 @@
 -(void)videoRecordingFailedWithError:(NSError *)error;
 @end
 
+@interface CaptureViewController (LocalFileManagerDelegate) <LocalFileManagerDelegate>
+-(void)saveTemporaryFilesFailedWithError:(NSError *)error;
+-(void)temporaryFilesWereSaved;
+@end
+
 @interface CaptureViewController (InternalMethods)
 -(void)recordLocationIfRecording;
 -(void)startRecording;
@@ -62,6 +67,7 @@
     
     isRecording = NO;
     localFileManager = [[LocalFileManager alloc] init];
+    localFileManager.delegate = self;
     preferencesManager = [[PreferencesManager alloc] init];
     
     // Set up the location stuff
@@ -172,6 +178,9 @@
 
 -(void)stopRecording {
     isRecording = NO;
+    // Once the user hits the stop button, start a loading screen
+    [activityIndicator startAnimating];
+    
     [cameraDataCollector stopRecording];
     [locationDataCollector writeJSONFileForTracktype:@"video" withCompassMode:@"mode" withOrientation:@"vertical"];
 }
@@ -246,6 +255,7 @@
 }
 
 -(void)videoRecordingDidEnd {
+    // Save temporary files
     [localFileManager saveTemporaryFiles];
     if ([self.delegate respondsToSelector:@selector(parentShouldUpdateThumbnail)]) {
         [self.delegate parentShouldUpdateThumbnail];
@@ -254,6 +264,21 @@
 
 -(void)videoRecordingFailedWithError:(NSError *)error {
     
+}
+
+@end
+
+@implementation CaptureViewController (LocalFileManagerDelegate)
+
+-(void)saveTemporaryFilesFailedWithError:(NSError *)error {
+    NSLog(@"Were");
+    [activityIndicator stopAnimating];
+}
+
+-(void)temporaryFilesWereSaved {
+    NSLog(@"Temporary Files Saved.");
+    // This is the last step in the process. Notify the user of completion
+    [activityIndicator stopAnimating];
 }
 
 @end

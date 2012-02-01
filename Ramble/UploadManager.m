@@ -174,6 +174,15 @@
     NSLog(@"Response Data Partial: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
 }
 
+-(void)connection:(NSURLConnection *)connection didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    NSString * userName = @"team";
+    NSString * password = @"strabogus";
+    NSURLCredential * credential = [NSURLCredential credentialWithUser:userName 
+                                                              password:password 
+                                                           persistence:NSURLCredentialPersistenceForSession];
+    [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
+}
+
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     // Notify the delegate of an error
     NSLog(@"Connection failed with error: %@", error);

@@ -15,8 +15,8 @@
 @protocol LocalFileManagerDelegate
 @optional
 -(void)saveTemporaryFilesFailedWithError:(NSError *)error;
+-(void)temporaryFilesWereSaved;
 -(void)localFileManagerFailedWithError:(NSError *)error;
-
 @end
 
 @interface LocalFileManager : NSObject {

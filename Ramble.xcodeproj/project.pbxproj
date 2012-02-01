@@ -25,7 +25,6 @@
 		964F746514C7D382006B5B6D /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F745714C7D382006B5B6D /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		964F746B14C7D445006B5B6D /* LoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F746A14C7D444006B5B6D /* LoginManager.m */; };
 		964F747214C7E5C0006B5B6D /* StraboTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F747114C7E5C0006B5B6D /* StraboTrack.m */; };
-		9660AF3F14CB448400BF3806 /* LocalTracksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9660AF3E14CB448400BF3806 /* LocalTracksTableViewController.m */; };
 		966961F114CF27730084926C /* Compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 966961F014CF27730084926C /* Compass.png */; };
 		966961F614CF46730084926C /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 966961F514CF46730084926C /* PreferencesManager.m */; };
 		966961F914CF468D0084926C /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 966961F814CF468D0084926C /* PreferencesViewController.m */; };
@@ -68,7 +67,7 @@
 		960B0E1714CA96B200FAC06A /* LeatherNavBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeatherNavBar.m; sourceTree = "<group>"; };
 		96381B1E14D74EB200F171C7 /* cellBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellBackground.png; sourceTree = "<group>"; };
 		96381B2214D74F2200F171C7 /* bottomLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomLine.png; sourceTree = "<group>"; };
-		96381B2614D8A85300F171C7 /* LocalTracksNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = LocalTracksNavigationController.h; sourceTree = "<group>"; };
+		96381B2614D8A85300F171C7 /* LocalTracksNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalTracksNavigationController.h; sourceTree = "<group>"; };
 		96381B2714D8A85300F171C7 /* LocalTracksNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalTracksNavigationController.m; sourceTree = "<group>"; };
 		964F743214C7CCAC006B5B6D /* UploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadManager.h; sourceTree = "<group>"; };
 		964F743314C7CCAC006B5B6D /* UploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadManager.m; sourceTree = "<group>"; };
@@ -100,8 +99,6 @@
 		964F746A14C7D444006B5B6D /* LoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginManager.m; sourceTree = "<group>"; };
 		964F747014C7E5C0006B5B6D /* StraboTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StraboTrack.h; sourceTree = "<group>"; };
 		964F747114C7E5C0006B5B6D /* StraboTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StraboTrack.m; sourceTree = "<group>"; };
-		9660AF3D14CB448400BF3806 /* LocalTracksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalTracksTableViewController.h; sourceTree = "<group>"; };
-		9660AF3E14CB448400BF3806 /* LocalTracksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalTracksTableViewController.m; sourceTree = "<group>"; };
 		966961F014CF27730084926C /* Compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Compass.png; sourceTree = "<group>"; };
 		966961F414CF46720084926C /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesManager.h; sourceTree = "<group>"; };
 		966961F514CF46730084926C /* PreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesManager.m; sourceTree = "<group>"; };
@@ -265,8 +262,6 @@
 				967E01F114D3BE2A006C2E96 /* FeedViewController.m */,
 				96B586CB14D8E92300B9DB9A /* LocalTracksViewController.h */,
 				96B586CC14D8E92300B9DB9A /* LocalTracksViewController.m */,
-				9660AF3D14CB448400BF3806 /* LocalTracksTableViewController.h */,
-				9660AF3E14CB448400BF3806 /* LocalTracksTableViewController.m */,
 			);
 			name = "Table Controllers";
 			sourceTree = "<group>";
@@ -506,7 +501,6 @@
 				964F747214C7E5C0006B5B6D /* StraboTrack.m in Sources */,
 				96DAB85514C8D88B008FA0A4 /* CurrentUser.m in Sources */,
 				960B0E1814CA96B200FAC06A /* LeatherNavBar.m in Sources */,
-				9660AF3F14CB448400BF3806 /* LocalTracksTableViewController.m in Sources */,
 				96C17D0114CDDDFA00C96702 /* TrackDetailViewController.m in Sources */,
 				966961F614CF46730084926C /* PreferencesManager.m in Sources */,
 				966961F914CF468D0084926C /* PreferencesViewController.m in Sources */,

@@ -8,11 +8,6 @@
 
 #import "PreferencesViewController.h"
 
-@interface PreferencesViewController (LoginManagerDelegate) <LoginManagerDelegate>
--(void)userDidLoginSuccessfully;
--(void)straboLoginDidFailWithError:(NSError *)error;
-@end
-
 @implementation PreferencesViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -128,18 +123,6 @@
 
 -(IBAction)doneButtonPressed:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
-}
-
-@end
-
-@implementation PreferencesViewController (LoginManagerDelegate)
-
--(void)userDidLoginSuccessfully {
-    NSLog(@"User Logged In");
-}
-
--(void)straboLoginDidFailWithError:(NSError *)error {
-    NSLog(@"Login Failed: %@", error);
 }
 
 @end

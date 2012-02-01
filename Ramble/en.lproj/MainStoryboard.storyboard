@@ -92,6 +92,10 @@
                                     <action selector="recordButtonPressed:" destination="Tks-0X-fok" eventType="touchUpInside" id="1Dd-0O-JCi"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="GlC-H5-Cku">
+                                <rect key="frame" x="141" y="212" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Compass.png" id="i5N-ji-znc">
                                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,6 +104,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="GlC-H5-Cku" id="MBJ-LZ-qiD"/>
                         <outlet property="compassImage" destination="i5N-ji-znc" id="PUR-Xx-9pG"/>
                         <outlet property="recordButton" destination="Urv-eC-19d" id="8jj-yS-agG"/>
                         <outlet property="videoPreviewView" destination="Ui9-go-TNU" id="pdu-zC-Hsd"/>
@@ -116,7 +121,7 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="gKN-jj-xSX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="gKN-jj-xSX">
                                 <rect key="frame" x="0.0" y="67" width="320" height="393"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -168,59 +173,6 @@
                 </viewController>
             </objects>
             <point key="canvasLocation" x="703" y="538"/>
-        </scene>
-        <scene sceneID="JN2-CB-6Xv">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HEO-bD-oms" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController storyboardIdentifier="OldLocalTracksViewController" definesPresentationContext="YES" id="Y67-cL-NeY" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="NL6-0o-4Ly" customClass="LeatherNavBar">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Nif-Gi-iJw" kind="relationship" relationship="rootViewController" id="94A-l8-RID"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="1243" y="-100"/>
-        </scene>
-        <scene sceneID="6jE-BF-awP">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HI9-ac-vv3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController storyboardIdentifier="" id="Nif-Gi-iJw" customClass="LocalTracksTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="aMF-lh-8r1">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Video" id="qzO-TQ-Dhn">
-                                <rect key="frame" x="0.0" y="22" width="320" height="70"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="69"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <connections>
-                                    <segue destination="cjV-ov-Q4n" kind="push" id="JHs-jt-KSt"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Nif-Gi-iJw" id="uVD-B2-Md5"/>
-                            <outlet property="delegate" destination="Nif-Gi-iJw" id="eK6-z3-xfH"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Captures" id="ICp-E5-XSB">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="a4H-Bz-cJF">
-                            <color key="tintColor" red="0.34414859689999999" green="0.15941870590000001" blue="0.075782483659999997" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="doneButtonPressed:" destination="Nif-Gi-iJw" id="wB7-NM-Y3O"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-            </objects>
-            <point key="canvasLocation" x="1794" y="-100"/>
         </scene>
         <scene sceneID="qXp-5A-EDb">
             <objects>
@@ -281,7 +233,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1243" y="-790"/>
+            <point key="canvasLocation" x="1211" y="-100"/>
         </scene>
         <scene sceneID="l4p-GR-vdD">
             <objects>
@@ -291,7 +243,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="390"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="R2x-bD-Blr">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="R2x-bD-Blr">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="390"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -321,146 +273,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1794" y="-700"/>
-        </scene>
-        <scene sceneID="ext-zI-oWj">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zCf-7T-wqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="OldTrackDetail" id="cjV-ov-Q4n" customClass="TrackDetailViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rSy-6C-hW9">
-                        <rect key="frame" x="0.0" y="94" width="320" height="386"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Scrub Bar Here" lineBreakMode="tailTruncation" minimumFontSize="10" id="IiV-b9-Gii">
-                                <rect key="frame" x="128" y="59" width="172" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tag Friends:" lineBreakMode="tailTruncation" minimumFontSize="10" id="TVh-uK-9FS">
-                                <rect key="frame" x="20" y="196" width="96" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tag Places:" lineBreakMode="tailTruncation" minimumFontSize="10" id="81Z-8q-1Ga">
-                                <rect key="frame" x="20" y="225" width="90" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sdK-AL-rMH">
-                                <rect key="frame" x="100" y="329" width="121" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Upload Track">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="uploadButtonPressed:" destination="cjV-ov-Q4n" eventType="touchUpInside" id="P0X-Ub-eSa"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date Taken" lineBreakMode="tailTruncation" minimumFontSize="10" id="h4A-IS-BZ3">
-                                <rect key="frame" x="20" y="167" width="280" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" id="vHf-Wo-eel">
-                                <rect key="frame" x="20" y="20" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to rename this capture" minimumFontSize="17" clearButtonMode="whileEditing" id="Pbc-vb-58M">
-                                <rect key="frame" x="20" y="128" width="280" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="cjV-ov-Q4n" id="s4S-oM-Z9J"/>
-                                </connections>
-                            </textField>
-                            <view hidden="YES" opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" id="gFG-Sy-vKA">
-                                <rect key="frame" x="20" y="56" width="280" height="243"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Uploading Video..." lineBreakMode="tailTruncation" minimumFontSize="10" id="086-N6-ad0">
-                                        <rect key="frame" x="70" y="34" width="141" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="LkB-Br-XSq">
-                                        <rect key="frame" x="20" y="83" width="240" height="9"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </progressView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tgw-Z1-DE0">
-                                        <rect key="frame" x="103" y="173" width="74" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Cancel">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="actionButtonPressed:" destination="cjV-ov-Q4n" eventType="touchUpInside" id="myN-1r-aCF"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Upload Status" lineBreakMode="tailTruncation" minimumFontSize="10" id="Hqi-zH-Gzc">
-                                        <rect key="frame" x="20" y="100" width="109" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                            </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="14" id="ew6-G9-qYu">
-                                <rect key="frame" x="20" y="271" width="280" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Capture Detail" id="ewG-lM-Cs5">
-                        <barButtonItem key="rightBarButtonItem" title="Done" style="plain" id="IrF-2a-6Wf">
-                            <color key="tintColor" red="0.34414859689999999" green="0.15941870590000001" blue="0.075782483659999997" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="doneButtonPressed:" destination="cjV-ov-Q4n" id="DGF-32-lMs"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
-                    <connections>
-                        <outlet property="actionButton" destination="tgw-Z1-DE0" id="g76-OX-NDv"/>
-                        <outlet property="dateLabel" destination="h4A-IS-BZ3" id="nPK-N3-pfP"/>
-                        <outlet property="statusLabel" destination="ew6-G9-qYu" id="NfU-iS-C0U"/>
-                        <outlet property="thumbnailImage" destination="vHf-Wo-eel" id="5ci-sy-476"/>
-                        <outlet property="titleLabel" destination="h4A-IS-BZ3" id="aeJ-UE-N0a"/>
-                        <outlet property="titleTextField" destination="Pbc-vb-58M" id="amx-XL-ZVy"/>
-                        <outlet property="uploadButton" destination="sdK-AL-rMH" id="tvL-3c-a1r"/>
-                        <outlet property="uploadProgress" destination="LkB-Br-XSq" id="KGy-Mq-CTF"/>
-                        <outlet property="uploadStatusLabel" destination="Hqi-zH-Gzc" id="naB-HF-Epd"/>
-                        <outlet property="uploadView" destination="gFG-Sy-vKA" id="wWe-iJ-AXg"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="2289" y="-100"/>
+            <point key="canvasLocation" x="1762" y="-10"/>
         </scene>
         <scene sceneID="ztD-IF-EhV">
             <objects>
@@ -635,7 +448,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="uploadButtonPressed:" destination="cjV-ov-Q4n" eventType="touchUpInside" id="TFQ-ei-WnI"/>
                                     <action selector="uploadButtonPressed:" destination="zld-xc-Htz" eventType="touchUpInside" id="miL-Ix-Rad"/>
                                 </connections>
                             </button>
@@ -724,7 +536,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2289" y="-700"/>
+            <point key="canvasLocation" x="2257" y="-10"/>
         </scene>
     </scenes>
     <resources>
@@ -742,6 +554,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CaptureViewController.h"/>
             <relationships>
                 <relationship kind="action" name="recordButtonPressed:"/>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="compassImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="recordButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="videoPreviewView" candidateClass="UIView"/>
@@ -754,21 +567,11 @@
                 <relationship kind="outlet" name="feedTableView" candidateClass="UITableView"/>
             </relationships>
         </class>
-        <class className="LeatherNavBar" superclassName="UINavigationBar">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LeatherNavBar.h"/>
-        </class>
         <class className="LocalTracksNavigationController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LocalTracksNavigationController.h"/>
             <relationships>
                 <relationship kind="action" name="doneButtonPressed:"/>
                 <relationship kind="outlet" name="subView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="LocalTracksTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LocalTracksTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="doneButtonPressed:"/>
-                <relationship kind="outlet" name="tblCell" candidateClass="TrackListItem"/>
             </relationships>
         </class>
         <class className="LocalTracksViewController" superclassName="UIViewController">

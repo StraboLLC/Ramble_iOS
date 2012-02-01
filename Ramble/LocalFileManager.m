@@ -69,6 +69,9 @@
         }
         return;
     }
+    if ([self.delegate respondsToSelector:@selector(temporaryFilesWereSaved)]) {
+        [self.delegate temporaryFilesWereSaved];
+    }
     
 }
 
