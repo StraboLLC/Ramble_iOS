@@ -13,6 +13,7 @@
 @interface LocalTracksNavigationController : UIViewController {
     
     UIViewController * localTracksViewController;
+    
     IBOutlet UIView * subView;
     IBOutlet UIButton * backButton;
     IBOutlet UIButton * accessoryButton;

@@ -28,6 +28,7 @@
     
     IBOutlet UIView * subView;
     IBOutlet UIImageView * lastVideoThumbnail;
+    IBOutlet UIImageView * rightButtonIcon;
 }
 
 @property(nonatomic, strong)LoginManager * loginManager;

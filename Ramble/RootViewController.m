@@ -10,6 +10,7 @@
 
 @interface RootViewController (InternalMethods)
 -(void)refreshVideoThumbnail;
+-(void)updateButtonIcon;
 @end
 
 @interface RootViewController (CaptureViewControllerDelegate) <CaptureViewControllerDelegate>
@@ -65,6 +66,8 @@
         currentViewControllerIsCapture = false;
         [subView addSubview:feedViewController.view];
     }
+    
+    [self updateButtonIcon];
     
 }
 
@@ -131,12 +134,14 @@
 
 -(void)transitionToFeedList {
     currentViewControllerIsCapture = false;
-    [self transitionFromViewController:captureViewController toViewController:feedViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];    
+    [self transitionFromViewController:captureViewController toViewController:feedViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil]; 
+    [self updateButtonIcon];
 }
 
 -(void)transitionToCaptureMode {
     currentViewControllerIsCapture = true;
     [self transitionFromViewController:feedViewController toViewController:captureViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];
+    [self updateButtonIcon];
 }
 
 @end
@@ -149,6 +154,14 @@
         lastVideoThumbnail.image = [UIImage imageWithContentsOfFile:localFileManager.mostRecentTrack.thumbnailPath.absoluteString];
     } else {
         lastVideoThumbnail.image = nil;
+    }
+}
+
+-(void)updateButtonIcon {
+    if (currentViewControllerIsCapture) {
+        rightButtonIcon.image = [UIImage imageNamed:@"listIcon.png"];
+    } else {
+        rightButtonIcon.image = [UIImage imageNamed:@"cameraIcon.png"];
     }
 }
 
