@@ -14,9 +14,13 @@
     
     UIViewController * localTracksViewController;
     IBOutlet UIView * subView;
+    IBOutlet UIButton * backButton;
+    IBOutlet UIButton * accessoryButton;
 }
 
 -(IBAction)doneButtonPressed:(id)sender;
+-(IBAction)backButtonPressed:(id)sender;
+-(IBAction)accessoryButtonPressed:(id)sender;
 
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated;
 -(UIViewController *)popViewControllerAnimated:(BOOL)animated;

@@ -8,6 +8,10 @@
 
 #import "LocalTracksNavigationController.h"
 
+@interface LocalTracksNavigationController (InternalMethods)
+-(void)shouldPresentRootAccessoryView;
+@end
+
 @implementation LocalTracksNavigationController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -155,6 +159,19 @@
     if (self.childViewControllers.count > 1) {
         [self popViewControllerAnimated:NO];
     }
+}
+
+-(IBAction)accessoryButtonPressed:(id)sender {
+    [self shouldPresentRootAccessoryView];
+}
+
+@end
+
+@implementation LocalTracksNavigationController (InternalMethods)
+
+// Implement this method to present the accessory view.
+-(void)shouldPresentRootAccessoryView {
+    
 }
 
 @end
