@@ -150,7 +150,7 @@
                                     <outlet property="delegate" destination="l2J-xt-vz1" id="Vv7-Qd-iL1"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="topBar.png" id="UV9-04-dpL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="topbar.png" id="UV9-04-dpL">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -196,7 +196,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="topBar.png" id="S3P-dO-pbA">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="topbar.png" id="S3P-dO-pbA">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -574,7 +574,7 @@
         <image name="compassface.png" width="671" height="678"/>
         <image name="gear.png" width="52" height="52"/>
         <image name="ramble.png" width="237" height="78"/>
-        <image name="topBar.png" width="640" height="132"/>
+        <image name="topbar.png" width="640" height="140"/>
     </resources>
     <classes>
         <class className="CaptureViewController" superclassName="UIViewController">
