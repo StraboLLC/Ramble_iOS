@@ -40,9 +40,6 @@
         // set the session configuration
         [self.session beginConfiguration];
         
-        // set the video quality
-        self.session.sessionPreset = AVCaptureSessionPreset640x480;
-        
         if ([self.session canAddInput:self.audioInput]) {                
             [self.session addInput:self.audioInput];
         }

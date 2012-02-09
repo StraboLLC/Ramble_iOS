@@ -23,7 +23,7 @@
         }
         
         // Set defaults if they do not exist
-        if (![defaults objectForKey:STRPrecisionLocationModeOnKey] || ![defaults objectForKey:STRCompassModeMagneticKey] || ![defaults objectForKey:STRLaunchToCaptureModeKey] || [defaults objectForKey:STRVideoModeHighKey]) {
+        if (![defaults objectForKey:STRPrecisionLocationModeOnKey] || ![defaults objectForKey:STRCompassModeMagneticKey] || ![defaults objectForKey:STRLaunchToCaptureModeKey] || ![defaults objectForKey:STRVideoModeHighKey]) {
             [defaults setObject:[NSNumber numberWithBool:false] forKey:STRPrecisionLocationModeOnKey];
             [defaults setObject:[NSNumber numberWithBool:true] forKey:STRCompassModeMagneticKey];
             [defaults setObject:[NSNumber numberWithBool:true] forKey:STRLaunchToCaptureModeKey];

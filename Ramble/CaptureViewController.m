@@ -83,9 +83,6 @@
     captureVideoPreviewLayer.frame = videoPreviewView.bounds;
     captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [videoPreviewView.layer addSublayer:captureVideoPreviewLayer];
-    if ([preferencesManager videoModeIsHigh]) {
-        captureVideoPreviewLayer.session.sessionPreset = AVCaptureSessionPreset640x480;
-    }
     
     // Start updating the location
     [locationManager startUpdatingLocation];
@@ -97,6 +94,13 @@
     // Turbocharge the accuracy if necessary
     if ([preferencesManager precisionLocationModeOn]) {
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    }
+    
+    // Turbocharge the video quality if necessary
+    if ([preferencesManager videoModeIsHigh]) {
+        cameraDataCollector.session.sessionPreset = AVCaptureSessionPreset640x480;
+    } else {
+        cameraDataCollector.session.sessionPreset = AVCaptureSessionPreset352x288;
     }
     
     [locationManager startUpdatingLocation];
