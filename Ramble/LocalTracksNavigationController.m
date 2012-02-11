@@ -54,6 +54,9 @@
     
     // Add the first child controller
     [subView addSubview:localTracksViewController.view];
+    
+    // Make sure that the back button doesn't appear initially
+    backButton.hidden = YES;
 }
 
 - (void)viewDidUnload
@@ -72,14 +75,17 @@
 #pragma mark - Transition Methods
 
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    backButton.hidden = NO;
     [self addChildViewController:viewController];
     ((UIViewController *)self.childViewControllers.lastObject).view.frame = CGRectMake(subView.frame.size.width, 
                                                                                        0, 
                                                                                        subView.frame.size.width, 
                                                                                        subView.frame.size.height);
+    float transitionDuration = 0.25;
     [self transitionFromViewController:[self.childViewControllers objectAtIndex:self.childViewControllers.count-2]
                       toViewController:[self.childViewControllers lastObject] 
-                              duration:0.25 options:UIViewAnimationOptionTransitionNone 
+                              duration:transitionDuration 
+                               options:UIViewAnimationOptionTransitionNone 
                             animations:^(void){
                                 
                                 UIView * hostView = [[self.childViewControllers objectAtIndex:self.childViewControllers.count-2] view];
@@ -93,7 +99,7 @@
                                 
                                 CGRect outgoingViewFrame = CGRectMake(-320, 0, subView.frame.size.width, subView.frame.size.height);
                                 
-                                [UIView animateWithDuration:0.25
+                                [UIView animateWithDuration:transitionDuration
                                                       delay:0.0
                                                     options:0
                                                  animations:^{
@@ -115,10 +121,11 @@
                                                0, 
                                                subView.frame.size.width, 
                                                subView.frame.size.height);
-    
+    float transitionDuration = 0.25;
     [self transitionFromViewController:topViewController
                       toViewController:nextViewController 
-                              duration:0.25 options:0 
+                              duration:transitionDuration
+                               options:0 
                             animations:^{
                                 
                                 UIView * hostView = [topViewController view];
@@ -132,7 +139,7 @@
                                 
                                 CGRect outgoingViewFrame = CGRectMake(320, 0, subView.frame.size.width, subView.frame.size.height);
                                 
-                                [UIView animateWithDuration:0.25
+                                [UIView animateWithDuration:transitionDuration
                                                       delay:0.0
                                                     options:0
                                                  animations:^{
@@ -144,9 +151,14 @@
                                                  }];
                             } 
                             completion:^(BOOL finished){
+                                // If popping to the root view controller
+                                if (self.childViewControllers.count < 1) {
+                                    backButton.hidden = YES;
+                                    accessoryButton.hidden = NO;
+                                }
                                 [self.childViewControllers.lastObject removeFromParentViewController];
                             }];
-    return topViewController; // To prevent compiler complaints
+    return topViewController;
 }
 
 #pragma mark - Button Handling

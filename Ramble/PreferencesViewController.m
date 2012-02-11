@@ -73,7 +73,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
