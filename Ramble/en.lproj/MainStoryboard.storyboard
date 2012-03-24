@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11C74" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
+        <!--Root View Controller-->
         <scene sceneID="5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -70,6 +72,7 @@
             </objects>
             <point key="canvasLocation" x="167" y="182"/>
         </scene>
+        <!--Capture View Controller-->
         <scene sceneID="tWw-u0-Qii">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmB-gI-s7I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -124,6 +127,7 @@
             </objects>
             <point key="canvasLocation" x="703" y="-100"/>
         </scene>
+        <!--Feed View Controller-->
         <scene sceneID="2Ch-KN-Oaf">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYo-4C-w11" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -186,6 +190,7 @@
             </objects>
             <point key="canvasLocation" x="703" y="538"/>
         </scene>
+        <!--Local Tracks Navigation Controller-->
         <scene sceneID="qXp-5A-EDb">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UFU-dA-hAS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -265,6 +270,7 @@
             </objects>
             <point key="canvasLocation" x="1211" y="-100"/>
         </scene>
+        <!--Local Tracks View Controller-->
         <scene sceneID="l4p-GR-vdD">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aVY-U8-2qF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -305,6 +311,7 @@
             </objects>
             <point key="canvasLocation" x="1742" y="-30"/>
         </scene>
+        <!--Preferences View Controller-->
         <scene sceneID="ztD-IF-EhV">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ePH-Hc-kKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -405,6 +412,10 @@
                                                     <action selector="videoModeSwitchDidChange:" destination="2ne-Ja-Zi6" eventType="valueChanged" id="oi3-pL-MFx"/>
                                                 </connections>
                                             </switch>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="0Zp-B0-i78">
+                                                <rect key="frame" x="209" y="367" width="37" height="37"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                     </view>
@@ -427,6 +438,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="0Zp-B0-i78" id="MB5-u8-SMw"/>
                         <outlet property="headingSelector" destination="s5e-47-Chu" id="EGb-fl-rJp"/>
                         <outlet property="launchScreenSwitch" destination="jAj-q4-iPU" id="sO2-pv-Vl4"/>
                         <outlet property="locationModeSwitch" destination="KHJ-Dm-T7L" id="aML-Jf-bBe"/>
@@ -437,6 +449,7 @@
             </objects>
             <point key="canvasLocation" x="167" y="859"/>
         </scene>
+        <!--Track Detail View Controller-->
         <scene sceneID="dLQ-cM-4ec">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rZZ-ZQ-fV6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -625,6 +638,7 @@
                 <relationship kind="action" name="locationModeSwitchDidChange:"/>
                 <relationship kind="action" name="logInButtonPressed:"/>
                 <relationship kind="action" name="videoModeSwitchDidChange:"/>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="headingSelector" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="launchScreenSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="locationModeSwitch" candidateClass="UISwitch"/>

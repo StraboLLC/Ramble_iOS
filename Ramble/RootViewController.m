@@ -111,24 +111,12 @@
 #pragma mark Button Handling
 
 -(IBAction)toggleViewButtonPressed:(id)sender {
-    if (currentViewControllerIsCapture) {
-        [self transitionToFeedList];
-    } else {
-        [self transitionToCaptureMode];
-    }
+    PreferencesViewController * preferencesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Preferences"];
+    [self presentViewController:preferencesViewController animated:YES completion:NULL];
 }
 
 -(IBAction)recentCaptureViewButtonPressed:(id)sender {
     LocalTracksNavigationController * tracksNavController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocalTracksNavigation"];
-    
-//    if (localFileManager.mostRecentTrack) {
-//        TrackDetailViewController * trackDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TrackDetail"];
-//        trackDetailViewController.straboTrack = localFileManager.mostRecentTrack;
-//        [tracksNavController pushViewController:trackDetailViewController animated:NO];
-//        
-//        [self presentViewController:tracksNavController animated:YES completion:NULL];
-//    }
-    
     [self presentViewController:tracksNavController animated:YES completion:NULL];
 }
 

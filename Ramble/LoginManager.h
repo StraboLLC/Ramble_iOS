@@ -15,6 +15,7 @@
 @protocol LoginManagerDelegate
 @optional
 -(void)userDidLoginSuccessfully;
+-(void)facebookLoginDidFailWithError:(NSError *)error;
 -(void)straboLoginDidFailWithError:(NSError *)error;
 @end
 
@@ -22,7 +23,6 @@
     id delegate;
     Facebook * facebook;
     CurrentUser * currentUser;
-    
 }
 
 @property(strong)id delegate;

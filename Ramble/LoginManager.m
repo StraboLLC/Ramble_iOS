@@ -120,8 +120,8 @@
 }
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
-    if ([self.delegate respondsToSelector:@selector(straboLoginDidFailWithError:)]) {
-        [self.delegate straboLoginDidFailWithError:error];
+    if ([self.delegate respondsToSelector:@selector(facebookLoginDidFailWithError:)]) {
+        [self.delegate facebookLoginDidFailWithError:error];
     }
 }
 
@@ -165,6 +165,7 @@
     self.currentUser = [[CurrentUser alloc] init];
     
     NSLog(@"Defaults auth Key Saved: %@", [defaults objectForKey:FBAccessTokenKey]);
+    
     // Now that the user is logged in with Facebook,
     // log the user into the Strabo system
     [self logInWithStrabo];
@@ -182,13 +183,14 @@
         self.currentUser = nil;
     }
     NSLog(@"Logged out of facebook");
+    
     // When logging out the facebook user, log the user out of Strabo
     [self logOutFromStrabo];
 }
 
 - (void)fbDidNotLogin:(BOOL)cancelled {
     if ([self.delegate respondsToSelector:@selector(straboLoginDidFailWithError:)]) {
-        [self.delegate straboLoginDidFailWithError:nil];
+        [self.delegate facebookLoginDidFailWithError:nil];
     }
 }
 

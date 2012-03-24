@@ -20,6 +20,8 @@
     IBOutlet UISwitch * launchScreenSwitch;
     IBOutlet UISegmentedControl * headingSelector;
     
+    IBOutlet UIActivityIndicatorView * activityIndicator;
+    
     IBOutlet UIButton * logInButton;
 }
 

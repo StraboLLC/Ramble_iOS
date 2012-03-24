@@ -8,6 +8,12 @@
 
 #import "PreferencesViewController.h"
 
+@interface PreferencesViewController (LoginManagerDelegate) <LoginManagerDelegate>
+-(void)userDidLoginSuccessfully;
+-(void)facebookLoginDidFailWithError:(NSError *)error;
+-(void)straboLoginDidFailWithError:(NSError *)error;
+@end
+
 @implementation PreferencesViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,13 +35,6 @@
 
 #pragma mark - View lifecycle
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -43,6 +42,7 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     loginManager = appDelegate.loginManager;
+    loginManager.delegate = self;
     
     // Set the UI inputs appropriately
     [locationModeSwitch setOn:[preferencesManager precisionLocationModeOn] animated:NO];
@@ -53,6 +53,9 @@
     } else {
         headingSelector.selectedSegmentIndex = 0;
     }
+    
+    // Hide the activity indicator
+    [activityIndicator stopAnimating];
     
     // Check the user's login status and
     // update the login button appropriately
@@ -72,12 +75,11 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
-    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
-    //[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -109,6 +111,7 @@
 }
 
 -(IBAction)logInButtonPressed:(id)sender {
+
     NSLog(@"Login Button Pressed");
     
     if ([logInButton.titleLabel.text isEqualToString:@"Log Out"]) {
@@ -121,17 +124,36 @@
         
     } else if ([logInButton.titleLabel.text isEqualToString:@"Log In"]){
         NSLog(@"Logging the user in.");
+        
+        // Start animating the activityIndicator
+        [activityIndicator startAnimating];
+        
         // Log the user in
         [loginManager logInWithFacebook];
-        
-        // Update the login button to reflect the change
-        [logInButton setTitle:@"Log Out" forState:UIControlStateNormal];
     }
 }
 
 
 -(IBAction)doneButtonPressed:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+@end
+
+@implementation PreferencesViewController (LoginManagerDelegate)
+
+-(void)userDidLoginSuccessfully {
+    [logInButton setTitle:@"Log Out" forState:UIControlStateNormal];
+
+    [activityIndicator stopAnimating];
+}
+
+-(void)facebookLoginDidFailWithError:(NSError *)error {
+    [activityIndicator stopAnimating];
+}
+
+-(void)straboLoginDidFailWithError:(NSError *)error {
+    [activityIndicator stopAnimating];
 }
 
 @end

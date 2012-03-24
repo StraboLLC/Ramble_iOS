@@ -11,6 +11,7 @@
 #import "CaptureViewController.h"
 #import "TrackDetailViewController.h"
 #import "LocalTracksNavigationController.h"
+#import "PreferencesViewController.h"
 #import "PreferencesManager.h"
 #import "LoginManager.h"
 
