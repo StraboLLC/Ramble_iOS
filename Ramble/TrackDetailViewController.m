@@ -66,6 +66,7 @@
         // Display content conditional on the file's upload history
         [self setFileHasBeenUploaded];
     }
+    
     // Set up the display with the proper track information
     
     // Set the title
@@ -176,6 +177,10 @@
 
 -(void)uploadProgressMade:(double)percentComplete {
     uploadProgress.progress = percentComplete;
+    
+    if (percentComplete == 1) {
+        uploadStatusLabel.text = @"Confirming Upload";
+    }
 }
 
 -(void)uploadStopped:(BOOL)cancelled withError:(NSError *)error {
@@ -196,6 +201,11 @@
     
     self.straboTrack.uploadedDate = [NSDate date];
     [self.straboTrack save];
+    
+    // Ensure that the user can't upload again
+    // (after a successful upload)
+    [self setFileHasBeenUploaded];
+    
 }
 
 @end
