@@ -26,9 +26,8 @@
 
 -(id)init {
     self = [super init];
-    NSLog(@"Init Called");
+    NSLog(@"Login Manager initialized with application start.");
     if (self) {
-        NSLog(@"Self Checked");
         self.currentUser = nil;
         
         // Perform custom initialization here
@@ -72,14 +71,14 @@
     NSError * error = nil;
     NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&error];
     NSNumber * userID = [dict objectForKey:@"id"];
-    NSLog(@"FBUser ID: %i", userID.intValue);
+    NSLog(@"Retrieved FBUser ID: %i", userID.intValue);
     
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:userID forKey:FBUserIDKey];
     [defaults synchronize];
     
     NSString * unencryptedAuthtoken = [NSString stringWithFormat:@"%i%@", userID.intValue, STRSaltHash];
-    NSLog(@"Authtoken: %@", [unencryptedAuthtoken MD5]);
+    NSLog(@"Processed Secure Authtoken: %@", [unencryptedAuthtoken MD5]);
     if (error) return nil;
     return [unencryptedAuthtoken MD5];
     
@@ -132,8 +131,7 @@
 - (void)request:(FBRequest *)request didLoadRawResponse:(NSData *)data {
     // Part of the login process. When the response from facebook is received
     // process the response for the user's id and then generate an authtoken.
-    NSLog(@"ResponseData: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-    
+    NSLog(@"Strabo login facebook response successful.");
     NSString * authToken = [self processForAuthToken:data];
     
     if (authToken) {

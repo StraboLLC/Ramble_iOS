@@ -60,4 +60,8 @@
 #define STRVideoQualityLow AVCaptureSessionPreset352x288
 #define STRVideoQualityHigh AVCaptureSessionPreset640x480
 
+// User experience stuff here
+
+#define UntitledTrackTitle @"Untitled Track"
+
 #endif

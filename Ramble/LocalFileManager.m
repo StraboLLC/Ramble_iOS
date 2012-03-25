@@ -123,7 +123,7 @@
 
 -(StraboTrack *)mostRecentTrack {
     NSArray * directoryContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:self.docsDirectoryPath error:nil];
-    NSLog(@"Getting strabo file from: %@", directoryContents);
+    NSLog(@"Retrieving most recent track.");
     return [StraboTrack straboTrackFromFileWithName:directoryContents.lastObject];
 }
 

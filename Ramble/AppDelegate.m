@@ -17,8 +17,7 @@
 {
     // Override point for customization after application launch.
     self.loginManager = [[LoginManager alloc] init];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent
-                                                animated:YES];
+    
     return YES;
 }
 							

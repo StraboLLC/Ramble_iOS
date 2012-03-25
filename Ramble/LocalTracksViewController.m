@@ -176,7 +176,10 @@
         title = track.trackTitle;
     } else {
         // Generate a custom name for the track
-        title = [NSString stringWithFormat:@"%.1f-cap.strabo", [track.captureDate timeIntervalSince1970]];
+        // title = [NSString stringWithFormat:@"%.1f-cap.strabo", [track.captureDate timeIntervalSince1970]];
+        
+        // Leave the title blank
+        title = UntitledTrackTitle;
     }
     
     // Truncate the title if necessary
@@ -196,10 +199,6 @@
     NSString *dateFormat = [NSDateFormatter dateFormatFromTemplate:@"E MMM d yyyy hh:mm" options:0 locale:locale];
     [formatter setDateFormat:dateFormat];
     [formatter setLocale:locale];
-    
-    // Path for the thumbnail image
-    NSURL * thumbnailURL = [track.trackPath URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", track.trackName]];
-    NSLog(@"Image URL: %@", thumbnailURL);
     
     cell.thumbnailImage.image = [UIImage imageWithContentsOfFile:track.thumbnailPath.absoluteString];
     cell.trackNameTag = trackName;

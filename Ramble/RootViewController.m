@@ -44,8 +44,6 @@
     preferencesManager = [[PreferencesManager alloc] init];
     localFileManager = [[LocalFileManager alloc] init];
     
-    [self refreshVideoThumbnail];
-    
     // Load the child controllers from the storyboard
     UIStoryboard * theStoryboard = self.storyboard;
     captureViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"Capture"];
@@ -132,6 +130,8 @@
     currentViewControllerIsCapture = true;
     [self transitionFromViewController:feedViewController toViewController:captureViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];
     [self updateButtonIcon];
+    
+    // Uncomment to hide the Status Bar on transition to capture mode
     //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 }
 

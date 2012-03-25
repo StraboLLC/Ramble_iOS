@@ -20,11 +20,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="9jR-Rp-aU5">
-                                <rect key="frame" x="0.0" y="424" width="38" height="36"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.34414859693877553" green="0.15941870594777768" blue="0.075782483656172323" alpha="1" colorSpace="calibratedRGB"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5cG-nN-6LN">
                                 <rect key="frame" x="0.0" y="410" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -55,8 +50,8 @@
                                     <action selector="toggleViewButtonPressed:" destination="2" eventType="touchUpInside" id="VvC-sq-9pU"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="aez-vp-vzP">
-                                <rect key="frame" x="284" y="428" width="34" height="26"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="gear.png" id="aez-vp-vzP">
+                                <rect key="frame" x="286" y="427" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -64,7 +59,6 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <connections>
-                        <outlet property="lastVideoThumbnail" destination="9jR-Rp-aU5" id="sjP-3m-xde"/>
                         <outlet property="rightButtonIcon" destination="aez-vp-vzP" id="CLn-lu-vOd"/>
                         <outlet property="subView" destination="upP-vZ-cLb" id="b7R-G6-thj"/>
                     </connections>
@@ -182,7 +176,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="feedTableView" destination="gKN-jj-xSX" id="UG9-KT-mga"/>
                     </connections>
@@ -205,7 +199,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="LETHA.png" id="S3P-dO-pbA">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="70"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Kc0-ii-IvQ">
@@ -260,7 +254,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="accessoryButton" destination="tKi-oy-D1J" id="jXx-Jn-Esu"/>
                         <outlet property="backButton" destination="lq9-Nh-dzO" id="mtL-vi-Q2z"/>
@@ -509,7 +503,7 @@
                                 <rect key="frame" x="20" y="128" width="280" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                 <connections>
                                     <outlet property="delegate" destination="zld-xc-Htz" id="GQn-4T-R1V"/>
                                 </connections>

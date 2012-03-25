@@ -75,7 +75,10 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-
+    
+    // Make sure the status bar is grey
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault
+                                                animated:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {

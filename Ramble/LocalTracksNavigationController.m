@@ -33,13 +33,6 @@
 
 #pragma mark - View lifecycle
 
-/*
- // Implement loadView to create a view hierarchy programmatically, without using a nib.
- - (void)loadView
- {
- }
- */
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
@@ -57,6 +50,13 @@
     
     // Make sure that the back button doesn't appear initially
     backButton.hidden = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    // Make sure the status bar is grey
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault
+                                                animated:YES];
 }
 
 - (void)viewDidUnload
