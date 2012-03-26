@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FeedViewController.h"
 #import "CaptureViewController.h"
 #import "TrackDetailViewController.h"
 #import "LocalTracksNavigationController.h"

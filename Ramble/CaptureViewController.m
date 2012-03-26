@@ -34,6 +34,9 @@
 -(void)recordLocationIfRecording;
 -(void)startRecording;
 -(void)stopRecording;
+-(void)animateRecordingLight;
+-(void)stopAnimatingRecordingLight;
+-(void)flashRecordingLight;
 @end
 
 @implementation CaptureViewController
@@ -157,11 +160,11 @@
     if (isRecording) {
         [self stopRecording];
         //[recordButton setTitle:@"Rec" forState:UIControlStateNormal];
-        recordLight.image = [UIImage imageNamed:@"recordOFF"];
+        [self stopAnimatingRecordingLight];
     } else {
         [self startRecording];
         //[recordButton setTitle:@"Stop" forState:UIControlStateNormal];
-        recordLight.image = [UIImage imageNamed:@"recordON"];        
+        [self animateRecordingLight];       
     }
 }
 
@@ -203,6 +206,36 @@
     
     [cameraDataCollector stopRecording];
     [locationDataCollector writeJSONFileForTracktype:@"video" withCompassMode:@"mode" withOrientation:@"vertical"];
+}
+
+-(void)animateRecordingLight {
+    recordLight.image = [UIImage imageNamed:@"recordON"];
+    flashTimer = [NSTimer scheduledTimerWithTimeInterval:1.5 
+                                                  target:self
+                                                selector:@selector(flashRecordingLight) 
+                                                userInfo:nil 
+                                                 repeats:YES];
+}
+
+-(void)stopAnimatingRecordingLight {
+    [flashTimer invalidate];
+    recordLight.image = [UIImage imageNamed:@"recordOFF"];
+}
+
+-(void)flashRecordingLight {
+    
+    if (recordLight.image == [UIImage imageNamed:@"recordON"]) {
+        recordLight.image = [UIImage imageNamed:@"recordOFF"];
+        
+        // Turn back on shortly
+        [NSTimer scheduledTimerWithTimeInterval:0.4 
+                                         target:self 
+                                       selector:@selector(flashRecordingLight)
+                                       userInfo:nil 
+                                        repeats:NO];
+    } else {
+        recordLight.image = [UIImage imageNamed:@"recordON"];
+    }
 }
 
 - (void)rotateImage:(UIImageView *)image duration:(NSTimeInterval)duration 

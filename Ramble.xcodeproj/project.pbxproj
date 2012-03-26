@@ -39,7 +39,6 @@
 		966961F114CF27730084926C /* Compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 966961F014CF27730084926C /* Compass.png */; };
 		966961F614CF46730084926C /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 966961F514CF46730084926C /* PreferencesManager.m */; };
 		966961F914CF468D0084926C /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 966961F814CF468D0084926C /* PreferencesViewController.m */; };
-		967E01F214D3BE2A006C2E96 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 967E01F114D3BE2A006C2E96 /* FeedViewController.m */; };
 		967E01FF14D3BFB7006C2E96 /* ramble.png in Resources */ = {isa = PBXBuildFile; fileRef = 967E01FE14D3BFB7006C2E96 /* ramble.png */; };
 		967E020114D3BFC0006C2E96 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 967E020014D3BFC0006C2E96 /* gear.png */; };
 		9695ADA314CE687A00847C69 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9695ADA214CE687A00847C69 /* CoreMedia.framework */; };
@@ -132,8 +131,6 @@
 		966961F514CF46730084926C /* PreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesManager.m; sourceTree = "<group>"; };
 		966961F714CF468D0084926C /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
 		966961F814CF468D0084926C /* PreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesViewController.m; sourceTree = "<group>"; };
-		967E01F014D3BE2A006C2E96 /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
-		967E01F114D3BE2A006C2E96 /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		967E01FE14D3BFB7006C2E96 /* ramble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ramble.png; sourceTree = "<group>"; };
 		967E020014D3BFC0006C2E96 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
 		9695ADA214CE687A00847C69 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -305,8 +302,6 @@
 		9660AF3B14CB408700BF3806 /* Table Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				967E01F014D3BE2A006C2E96 /* FeedViewController.h */,
-				967E01F114D3BE2A006C2E96 /* FeedViewController.m */,
 				96B586CB14D8E92300B9DB9A /* LocalTracksViewController.h */,
 				96B586CC14D8E92300B9DB9A /* LocalTracksViewController.m */,
 			);
@@ -598,7 +593,6 @@
 				966961F914CF468D0084926C /* PreferencesViewController.m in Sources */,
 				96E1003914D0BF8200B9C074 /* NSString+MD5.m in Sources */,
 				96CFE00514D3581100F7E7F6 /* TrackListItem.m in Sources */,
-				967E01F214D3BE2A006C2E96 /* FeedViewController.m in Sources */,
 				96381B2814D8A85400F171C7 /* LocalTracksNavigationController.m in Sources */,
 				96B586CD14D8E92300B9DB9A /* LocalTracksViewController.m in Sources */,
 			);

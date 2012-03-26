@@ -30,6 +30,8 @@
     NSDate * recordingStartTime;
     BOOL isRecording;
     
+    NSTimer * flashTimer;
+    
     // Variables to hold the current device location information
     CLLocation * currentLocation;
     CLHeading * currentHeading;
