@@ -57,6 +57,10 @@
 		96D9EF0815200C1E0079C357 /* bottomleftup.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D9EF0415200C1E0079C357 /* bottomleftup.png */; };
 		96D9EF0915200C1E0079C357 /* bottomrightdown.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D9EF0515200C1E0079C357 /* bottomrightdown.png */; };
 		96D9EF0A15200C1E0079C357 /* bottomrightup.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D9EF0615200C1E0079C357 /* bottomrightup.png */; };
+		96D9EF10152011450079C357 /* recorddown.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D9EF0C152011450079C357 /* recorddown.png */; };
+		96D9EF11152011450079C357 /* recordOFF.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D9EF0D152011450079C357 /* recordOFF.png */; };
+		96D9EF12152011450079C357 /* recordON.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D9EF0E152011450079C357 /* recordON.png */; };
+		96D9EF13152011450079C357 /* recordup.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D9EF0F152011450079C357 /* recordup.png */; };
 		96DAB85514C8D88B008FA0A4 /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DAB85414C8D88B008FA0A4 /* CurrentUser.m */; };
 		96E1003914D0BF8200B9C074 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E1003814D0BF8200B9C074 /* NSString+MD5.m */; };
 		96F4826314C6243F00096933 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F4826214C6243F00096933 /* UIKit.framework */; };
@@ -150,6 +154,10 @@
 		96D9EF0415200C1E0079C357 /* bottomleftup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomleftup.png; sourceTree = "<group>"; };
 		96D9EF0515200C1E0079C357 /* bottomrightdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomrightdown.png; sourceTree = "<group>"; };
 		96D9EF0615200C1E0079C357 /* bottomrightup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomrightup.png; sourceTree = "<group>"; };
+		96D9EF0C152011450079C357 /* recorddown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recorddown.png; sourceTree = "<group>"; };
+		96D9EF0D152011450079C357 /* recordOFF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordOFF.png; sourceTree = "<group>"; };
+		96D9EF0E152011450079C357 /* recordON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordON.png; sourceTree = "<group>"; };
+		96D9EF0F152011450079C357 /* recordup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordup.png; sourceTree = "<group>"; };
 		96DAB85314C8D88B008FA0A4 /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUser.h; sourceTree = "<group>"; };
 		96DAB85414C8D88B008FA0A4 /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUser.m; sourceTree = "<group>"; };
 		96E1003714D0BF8200B9C074 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
@@ -326,6 +334,7 @@
 				96381B2114D74ECD00F171C7 /* Table Cell */,
 				96CFE01114D3B3FF00F7E7F6 /* Corner Buttons */,
 				967E020214D3BFC4006C2E96 /* Toolbar Items */,
+				96D9EF14152011580079C357 /* Record Button */,
 				966961F014CF27730084926C /* Compass.png */,
 			);
 			name = Images;
@@ -361,6 +370,17 @@
 				9617830B1520089300D54414 /* gearIcon.png */,
 			);
 			name = "Corner Buttons";
+			sourceTree = "<group>";
+		};
+		96D9EF14152011580079C357 /* Record Button */ = {
+			isa = PBXGroup;
+			children = (
+				96D9EF0C152011450079C357 /* recorddown.png */,
+				96D9EF0D152011450079C357 /* recordOFF.png */,
+				96D9EF0E152011450079C357 /* recordON.png */,
+				96D9EF0F152011450079C357 /* recordup.png */,
+			);
+			name = "Record Button";
 			sourceTree = "<group>";
 		};
 		96F4825314C6243F00096933 = {
@@ -537,6 +557,10 @@
 				96D9EF0815200C1E0079C357 /* bottomleftup.png in Resources */,
 				96D9EF0915200C1E0079C357 /* bottomrightdown.png in Resources */,
 				96D9EF0A15200C1E0079C357 /* bottomrightup.png in Resources */,
+				96D9EF10152011450079C357 /* recorddown.png in Resources */,
+				96D9EF11152011450079C357 /* recordOFF.png in Resources */,
+				96D9EF12152011450079C357 /* recordON.png in Resources */,
+				96D9EF13152011450079C357 /* recordup.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

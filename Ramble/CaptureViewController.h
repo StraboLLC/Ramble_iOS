@@ -36,6 +36,7 @@
     
     // UI Outlets
     IBOutlet UIButton * recordButton;
+    IBOutlet UIImageView * recordLight;
     IBOutlet UIView * videoPreviewView;
     IBOutlet UIImageView * compassImage;
     IBOutlet UIActivityIndicatorView * activityIndicator;

@@ -156,10 +156,12 @@
 -(IBAction)recordButtonPressed:(id)sender {
     if (isRecording) {
         [self stopRecording];
-        [recordButton setTitle:@"Rec" forState:UIControlStateNormal];
+        //[recordButton setTitle:@"Rec" forState:UIControlStateNormal];
+        recordLight.image = [UIImage imageNamed:@"recordOFF"];
     } else {
         [self startRecording];
-        [recordButton setTitle:@"Stop" forState:UIControlStateNormal];
+        //[recordButton setTitle:@"Stop" forState:UIControlStateNormal];
+        recordLight.image = [UIImage imageNamed:@"recordON"];        
     }
 }
 
