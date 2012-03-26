@@ -199,6 +199,8 @@
     
     // Save the upload date in the StraboFile
     
+    NSLog(@"Setting upload date: True");
+    
     self.straboTrack.uploadedDate = [NSDate date];
     [self.straboTrack save];
     

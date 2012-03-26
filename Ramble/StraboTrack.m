@@ -66,6 +66,8 @@
 
 -(BOOL)save {
     
+    NSLog(@"Saving StraboTrack updates");
+    
     // Find the associated JSON file
     NSString * jsonFilePath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:[self.trackName stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json", self.trackName]]];
     
@@ -80,7 +82,10 @@
     [trackDictionary setObject:self.trackTitle forKey:@"title"];
     [trackDictionary setObject:self.taggedPeople forKey:@"taggedPeople"];
     [trackDictionary setObject:self.taggedPlaces forKey:@"taggedPlaces"];
-    [trackDictionary setObject:[NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]] forKey:@"uploadDate"];
+    
+    NSLog(@"Saving new uploadedDate: %.0f", [self.uploadedDate timeIntervalSince1970]);
+    
+    [trackDictionary setObject:[NSString stringWithFormat:@"%.0f", [self.uploadedDate timeIntervalSince1970]] forKey:@"uploadDate"];
     
     NSDictionary * jsonDictionary = [NSDictionary dictionaryWithObject:trackDictionary forKey:@"track"];
     
