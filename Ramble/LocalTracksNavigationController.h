@@ -13,11 +13,14 @@
 @interface LocalTracksNavigationController : UIViewController {
     
     UIViewController * localTracksViewController;
+    BOOL hasAccessoryButton;
     
     IBOutlet UIView * subView;
     IBOutlet UIButton * backButton;
     IBOutlet UIButton * accessoryButton;
 }
+
+@property(nonatomic)BOOL hasAccessoryButton;
 
 -(IBAction)doneButtonPressed:(id)sender;
 -(IBAction)backButtonPressed:(id)sender;
