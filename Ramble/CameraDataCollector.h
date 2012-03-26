@@ -15,6 +15,7 @@
 -(void)videoRecordingFailedWithError:(NSError *)error;
 -(void)videoRecordingDidBegin;
 -(void)videoRecordingDidEnd;
+-(void)videoRecordingWasCanceled;
 @end
 
 @interface CameraDataCollector : NSObject {
@@ -41,6 +42,7 @@
 -(id)init;
 -(void)startRecording;
 -(void)stopRecording;
+-(void)cancelRecording;
 -(BOOL)isRecording;
 +(AVCaptureConnection *)connectionWithMediaType:(NSString *)mediaType fromConnections:(NSArray *)connections;
 

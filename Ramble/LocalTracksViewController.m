@@ -118,7 +118,7 @@
         TrackListItem * cell = (TrackListItem *)[tableView cellForRowAtIndexPath:indexPath];
         [localFileManager deleteStraboTrack:cell.trackNameTag];
         
-        NSLog(@"Number of items now: %i", localFileManager.allLocalStraboTracknames.count);
+        NSLog(@"%i remaining list items", localFileManager.allLocalStraboTracknames.count);
         
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   

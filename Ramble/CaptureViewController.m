@@ -34,6 +34,7 @@
 -(void)recordLocationIfRecording;
 -(void)startRecording;
 -(void)stopRecording;
+-(void)cancelRecording;
 -(void)animateRecordingLight;
 -(void)stopAnimatingRecordingLight;
 -(void)flashRecordingLight;
@@ -126,8 +127,11 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
-    [locationManager stopUpdatingLocation];
-    [locationManager stopUpdatingHeading];
+    
+    NSLog(@"Capture View Controller will disappear before recording terminated.");
+    NSLog(@"Stopping recording session and saving video.");
+    
+    [self cancelRecording];
     
     // Allow the idle timer to take over when the user is not capturing video
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
@@ -183,10 +187,10 @@
         }
         
         [locationDataCollector addDataPointWithLatitude:[currentLocation coordinate].latitude 
-                                  withLongitude:[currentLocation coordinate].longitude 
-                                    withHeading:direction
-                                  withTimestamp:[[NSDate date] timeIntervalSinceDate:recordingStartTime]
-                                   withAccuracy:[currentLocation horizontalAccuracy]];
+                                          withLongitude:[currentLocation coordinate].longitude 
+                                            withHeading:direction
+                                          withTimestamp:[[NSDate date] timeIntervalSinceDate:recordingStartTime]
+                                           withAccuracy:[currentLocation horizontalAccuracy]];
     }
 }
 
@@ -208,6 +212,15 @@
     [locationDataCollector writeJSONFileForTracktype:@"video" withCompassMode:@"mode" withOrientation:@"vertical"];
 }
 
+-(void)cancelRecording {
+    
+    NSLog(@"Stopping recording");
+    isRecording = NO;
+    
+    [cameraDataCollector stopRecording];
+    [locationDataCollector writeJSONFileForTracktype:@"video" withCompassMode:@"mode" withOrientation:@"vertical"];
+}
+
 -(void)animateRecordingLight {
     recordLight.image = [UIImage imageNamed:@"recordON"];
     flashTimer = [NSTimer scheduledTimerWithTimeInterval:1.5 
@@ -223,18 +236,19 @@
 }
 
 -(void)flashRecordingLight {
-    
-    if (recordLight.image == [UIImage imageNamed:@"recordON"]) {
-        recordLight.image = [UIImage imageNamed:@"recordOFF"];
-        
-        // Turn back on shortly
-        [NSTimer scheduledTimerWithTimeInterval:0.4 
-                                         target:self 
-                                       selector:@selector(flashRecordingLight)
-                                       userInfo:nil 
-                                        repeats:NO];
-    } else {
-        recordLight.image = [UIImage imageNamed:@"recordON"];
+    if (isRecording) {
+        if (recordLight.image == [UIImage imageNamed:@"recordON"]) {
+            recordLight.image = [UIImage imageNamed:@"recordOFF"];
+            
+            // Turn back on shortly
+            [NSTimer scheduledTimerWithTimeInterval:0.4 
+                                             target:self 
+                                           selector:@selector(flashRecordingLight)
+                                           userInfo:nil 
+                                            repeats:NO];
+        } else {
+            recordLight.image = [UIImage imageNamed:@"recordON"];
+        }
     }
 }
 
@@ -325,7 +339,7 @@
 @implementation CaptureViewController (LocalFileManagerDelegate)
 
 -(void)saveTemporaryFilesFailedWithError:(NSError *)error {
-    NSLog(@"Were");
+    NSLog(@"Temporary file save failed with error: %@", error);
     [activityIndicator stopAnimating];
 }
 

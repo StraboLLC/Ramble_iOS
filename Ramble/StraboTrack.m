@@ -32,14 +32,30 @@
         straboTrack.jsonPath = [NSURL URLWithString:jsonFilePath];
         straboTrack.videoPath = [NSURL URLWithString:[trackFilePath stringByAppendingFormat:[NSString stringWithFormat:@"%@.mov", trackName]]];
         straboTrack.thumbnailPath = [straboTrack.trackPath URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", straboTrack.trackName]];
-        straboTrack.trackTitle = [trackDictionary objectForKey:@"title"];
-        straboTrack.trackType = [trackDictionary objectForKey:@"tracktype"];
-        straboTrack.latitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"latitude"];
-        straboTrack.longitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"longitude"];
-        straboTrack.captureDate = [NSDate dateWithTimeIntervalSince1970:[[trackDictionary objectForKey:@"captureDate"] integerValue]];
-        straboTrack.taggedPeople = [trackDictionary objectForKey:@"taggedPeople"];
-        straboTrack.taggedPlaces = [trackDictionary objectForKey:@"taggedPlaces"];
-        straboTrack.uploadedDate = [NSDate dateWithTimeIntervalSince1970:[[trackDictionary objectForKey:@"uploadDate"] integerValue]];
+        
+        if ([[trackDictionary objectForKey:@"points"] count] > 0) {
+            
+            straboTrack.trackTitle = [trackDictionary objectForKey:@"title"];
+            straboTrack.trackType = [trackDictionary objectForKey:@"tracktype"];
+            straboTrack.latitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"latitude"];
+            straboTrack.longitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"longitude"];
+            straboTrack.captureDate = [NSDate dateWithTimeIntervalSince1970:[[trackDictionary objectForKey:@"captureDate"] integerValue]];
+            straboTrack.taggedPeople = [trackDictionary objectForKey:@"taggedPeople"];
+            straboTrack.taggedPlaces = [trackDictionary objectForKey:@"taggedPlaces"];
+            straboTrack.uploadedDate = [NSDate dateWithTimeIntervalSince1970:[[trackDictionary objectForKey:@"uploadDate"] integerValue]];
+            
+        } else {
+            
+            straboTrack.trackTitle = @"Corrupted";
+            straboTrack.trackType = nil;
+            straboTrack.latitude = nil;
+            straboTrack.longitude = nil;
+            straboTrack.captureDate = [NSDate date];
+            straboTrack.taggedPeople = nil;
+            straboTrack.taggedPlaces = nil;
+            straboTrack.uploadedDate = 0;
+            
+        }
         
         return straboTrack;
         
