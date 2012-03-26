@@ -24,11 +24,7 @@
     PreferencesManager * preferencesManager;
     LocalFileManager * localFileManager;
     
-    // Keep track of the current view controller
-    BOOL currentViewControllerIsCapture;
-    
     IBOutlet UIView * subView;
-    IBOutlet UIImageView * lastVideoThumbnail;
     IBOutlet UIImageView * rightButtonIcon;
 }
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
@@ -50,8 +49,12 @@
                                     <action selector="toggleViewButtonPressed:" destination="2" eventType="touchUpInside" id="VvC-sq-9pU"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="gear.png" id="aez-vp-vzP">
-                                <rect key="frame" x="286" y="427" width="30" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="gearIcon.png" id="aez-vp-vzP">
+                                <rect key="frame" x="285" y="427" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="arrowIcon.png" id="Xzt-ht-T2r">
+                                <rect key="frame" x="4" y="427" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -578,6 +581,7 @@
     </scenes>
     <resources>
         <image name="LETHA.png" width="640" height="132"/>
+        <image name="arrowIcon.png" width="66" height="66"/>
         <image name="bottomleftdown.png" width="99" height="103"/>
         <image name="bottomleftup.png" width="99" height="103"/>
         <image name="bottomrightdown.png" width="99" height="102"/>
@@ -585,6 +589,7 @@
         <image name="compassFrame.png" width="640" height="170"/>
         <image name="compassface.png" width="671" height="678"/>
         <image name="gear.png" width="52" height="52"/>
+        <image name="gearIcon.png" width="66" height="66"/>
         <image name="ramble.png" width="237" height="78"/>
     </resources>
     <classes>

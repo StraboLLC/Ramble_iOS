@@ -36,11 +36,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    // Listen for the app re-entering the foreground
-    // Uncomment this if you want the app to switch
-    // to capture mode after becomming active
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(transitionToCaptureMode) name:UIApplicationWillEnterForegroundNotification object:nil];
-    
     preferencesManager = [[PreferencesManager alloc] init];
     localFileManager = [[LocalFileManager alloc] init];
     
@@ -48,26 +43,15 @@
     UIStoryboard * theStoryboard = self.storyboard;
     captureViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"Capture"];
     captureViewController.delegate = self;
-    feedViewController = [theStoryboard instantiateViewControllerWithIdentifier:@"Feed"];
     
     // Set up the controllers' views
     captureViewController.view.frame = subView.frame;
-    feedViewController.view.frame = subView.frame;
     
     [self addChildViewController:captureViewController];
-    [self addChildViewController:feedViewController];
     
     // Set up the first child controller
     // based on user preferences
-    if ([preferencesManager launchToCaptureMode]) {
-        currentViewControllerIsCapture = true;
-        [subView addSubview:captureViewController.view];
-    } else {
-        currentViewControllerIsCapture = false;
-        [subView addSubview:feedViewController.view];
-    }
-    
-    [self updateButtonIcon];
+    [subView addSubview:captureViewController.view];
     
 }
 
@@ -121,18 +105,13 @@
 #pragma mark Methods
 
 -(void)transitionToFeedList {
-    currentViewControllerIsCapture = false;
     [self transitionFromViewController:captureViewController toViewController:feedViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil]; 
     [self updateButtonIcon];
 }
 
 -(void)transitionToCaptureMode {
-    currentViewControllerIsCapture = true;
     [self transitionFromViewController:feedViewController toViewController:captureViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];
     [self updateButtonIcon];
-    
-    // Uncomment to hide the Status Bar on transition to capture mode
-    //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 }
 
 @end
@@ -140,20 +119,10 @@
 @implementation RootViewController (InternalMethods)
 
 -(void)refreshVideoThumbnail {
-    StraboTrack * straboTrack = localFileManager.mostRecentTrack;
-    if (straboTrack) {
-        lastVideoThumbnail.image = [UIImage imageWithContentsOfFile:localFileManager.mostRecentTrack.thumbnailPath.absoluteString];
-    } else {
-        lastVideoThumbnail.image = nil;
-    }
+    
 }
 
 -(void)updateButtonIcon {
-    if (currentViewControllerIsCapture) {
-        rightButtonIcon.image = [UIImage imageNamed:@"listIcon.png"];
-    } else {
-        rightButtonIcon.image = [UIImage imageNamed:@"cameraIcon.png"];
-    }
 }
 
 @end
