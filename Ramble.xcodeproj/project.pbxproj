@@ -11,6 +11,15 @@
 		96381B1F14D74EB200F171C7 /* cellBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 96381B1E14D74EB200F171C7 /* cellBackground.png */; };
 		96381B2314D74F2200F171C7 /* bottomLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 96381B2214D74F2200F171C7 /* bottomLine.png */; };
 		96381B2814D8A85400F171C7 /* LocalTracksNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96381B2714D8A85300F171C7 /* LocalTracksNavigationController.m */; };
+		9649DBA7151FE97400FFE1F3 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9649DBA6151FE97400FFE1F3 /* Entitlements.plist */; };
+		9649DBAE151FFD7100FFE1F3 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9649DBA8151FFD7100FFE1F3 /* Icon-Small-50.png */; };
+		9649DBAF151FFD7100FFE1F3 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9649DBA9151FFD7100FFE1F3 /* Icon-Small.png */; };
+		9649DBB0151FFD7100FFE1F3 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9649DBAA151FFD7100FFE1F3 /* Icon-Small@2x.png */; };
+		9649DBB1151FFD7100FFE1F3 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9649DBAB151FFD7100FFE1F3 /* Icon.png */; };
+		9649DBB2151FFD7100FFE1F3 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9649DBAC151FFD7100FFE1F3 /* Icon@2x.png */; };
+		9649DBB3151FFD7100FFE1F3 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 9649DBAD151FFD7100FFE1F3 /* iTunesArtwork */; };
+		9649DBB7151FFF8100FFE1F3 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 9649DBB5151FFF8100FFE1F3 /* LaunchImage.png */; };
+		9649DBB8151FFF8100FFE1F3 /* LaunchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9649DBB6151FFF8100FFE1F3 /* LaunchImage@2x.png */; };
 		964F743414C7CCAC006B5B6D /* UploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F743314C7CCAC006B5B6D /* UploadManager.m */; };
 		964F745B14C7D382006B5B6D /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F744014C7D382006B5B6D /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		964F745C14C7D382006B5B6D /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 964F744314C7D382006B5B6D /* FBDialog.bundle */; };
@@ -73,6 +82,15 @@
 		96381B2214D74F2200F171C7 /* bottomLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomLine.png; sourceTree = "<group>"; };
 		96381B2614D8A85300F171C7 /* LocalTracksNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalTracksNavigationController.h; sourceTree = "<group>"; };
 		96381B2714D8A85300F171C7 /* LocalTracksNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalTracksNavigationController.m; sourceTree = "<group>"; };
+		9649DBA6151FE97400FFE1F3 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = SOURCE_ROOT; };
+		9649DBA8151FFD7100FFE1F3 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		9649DBA9151FFD7100FFE1F3 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		9649DBAA151FFD7100FFE1F3 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		9649DBAB151FFD7100FFE1F3 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		9649DBAC151FFD7100FFE1F3 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		9649DBAD151FFD7100FFE1F3 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		9649DBB5151FFF8100FFE1F3 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
+		9649DBB6151FFF8100FFE1F3 /* LaunchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage@2x.png"; sourceTree = "<group>"; };
 		964F743214C7CCAC006B5B6D /* UploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadManager.h; sourceTree = "<group>"; };
 		964F743314C7CCAC006B5B6D /* UploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadManager.m; sourceTree = "<group>"; };
 		964F743614C7CD23006B5B6D /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -213,6 +231,19 @@
 			name = Containers;
 			sourceTree = "<group>";
 		};
+		9649DBB4151FFD8000FFE1F3 /* Icon Images */ = {
+			isa = PBXGroup;
+			children = (
+				9649DBA8151FFD7100FFE1F3 /* Icon-Small-50.png */,
+				9649DBA9151FFD7100FFE1F3 /* Icon-Small.png */,
+				9649DBAA151FFD7100FFE1F3 /* Icon-Small@2x.png */,
+				9649DBAB151FFD7100FFE1F3 /* Icon.png */,
+				9649DBAC151FFD7100FFE1F3 /* Icon@2x.png */,
+				9649DBAD151FFD7100FFE1F3 /* iTunesArtwork */,
+			);
+			name = "Icon Images";
+			sourceTree = "<group>";
+		};
 		964F743B14C7D382006B5B6D /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +319,9 @@
 		966961F314CF27790084926C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9649DBB5151FFF8100FFE1F3 /* LaunchImage.png */,
+				9649DBB6151FFF8100FFE1F3 /* LaunchImage@2x.png */,
+				9649DBB4151FFD8000FFE1F3 /* Icon Images */,
 				96A76E1314D9CE8C00F61B93 /* Compass Graphics */,
 				96381B2114D74ECD00F171C7 /* Table Cell */,
 				96CFE01114D3B3FF00F7E7F6 /* Corner Buttons */,
@@ -384,6 +418,7 @@
 			children = (
 				966961F314CF27790084926C /* Images */,
 				96F4826A14C6243F00096933 /* Ramble-Info.plist */,
+				9649DBA6151FE97400FFE1F3 /* Entitlements.plist */,
 				96F4826B14C6243F00096933 /* InfoPlist.strings */,
 				96F4826E14C6243F00096933 /* main.m */,
 				96F4827014C6243F00096933 /* Ramble-Prefix.pch */,
@@ -493,6 +528,15 @@
 				96A76E1214D9CE6200F61B93 /* compassFrame.png in Resources */,
 				96A76E1514D9CF0F00F61B93 /* compassface.png in Resources */,
 				96D17CB014E4C28E006F1CF0 /* LETHA.png in Resources */,
+				9649DBA7151FE97400FFE1F3 /* Entitlements.plist in Resources */,
+				9649DBAE151FFD7100FFE1F3 /* Icon-Small-50.png in Resources */,
+				9649DBAF151FFD7100FFE1F3 /* Icon-Small.png in Resources */,
+				9649DBB0151FFD7100FFE1F3 /* Icon-Small@2x.png in Resources */,
+				9649DBB1151FFD7100FFE1F3 /* Icon.png in Resources */,
+				9649DBB2151FFD7100FFE1F3 /* Icon@2x.png in Resources */,
+				9649DBB3151FFD7100FFE1F3 /* iTunesArtwork in Resources */,
+				9649DBB7151FFF8100FFE1F3 /* LaunchImage.png in Resources */,
+				9649DBB8151FFF8100FFE1F3 /* LaunchImage@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +602,43 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9649DB9F151FE61600FFE1F3 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Thomas Beatty (HAF49YT948)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "AE4F2184-3862-4D09-8B7E-9E60E164198B";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Ad Hoc";
+		};
+		9649DBA0151FE61600FFE1F3 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Thomas Beatty";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Ramble/Ramble-Prefix.pch";
+				INFOPLIST_FILE = "Ramble/Ramble-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4F4F0012-FA82-42B6-9FE7-90FBEF823F84";
+				WRAPPER_EXTENSION = app;
+			};
+			name = "Ad Hoc";
+		};
 		96F4827A14C6243F00096933 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -637,6 +718,7 @@
 			buildConfigurations = (
 				96F4827A14C6243F00096933 /* Debug */,
 				96F4827B14C6243F00096933 /* Release */,
+				9649DB9F151FE61600FFE1F3 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -646,6 +728,7 @@
 			buildConfigurations = (
 				96F4827D14C6243F00096933 /* Debug */,
 				96F4827E14C6243F00096933 /* Release */,
+				9649DBA0151FE61600FFE1F3 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
