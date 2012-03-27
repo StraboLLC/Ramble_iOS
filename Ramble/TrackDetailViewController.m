@@ -26,6 +26,10 @@
 
 @implementation TrackDetailViewController
 
+// Constants for view animation with keyboard
+static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
+static const CGFloat VERTICAL_SLIDE_DISTANCE = 50;
+
 @synthesize straboTrack;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -108,7 +112,8 @@
     NSLog(@"Buffering video at URL: %@", resourcePath);
     
     previewPlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:resourcePath];
-
+    previewPlayer.moviePlayer.useApplicationAudioSession = NO;
+    
     [self presentMoviePlayerViewControllerAnimated:previewPlayer];
 }
 
@@ -175,9 +180,39 @@
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
     
+    // Animate the view up so the keyboard does not hide the text fields
+    
+    // Set the desired frames
+    CGRect viewFrame = self.view.frame;
+    viewFrame.origin.y -= VERTICAL_SLIDE_DISTANCE;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:KEYBOARD_ANIMATION_DURATION];
+    
+    [self.view setFrame:viewFrame];
+    
+    [UIView commitAnimations];
+    
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    // Animate the view back down to its original position
+    
+    // Set the desired frames
+    CGRect viewFrame = self.view.frame;
+    viewFrame.origin.y += VERTICAL_SLIDE_DISTANCE;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:KEYBOARD_ANIMATION_DURATION];
+    
+    [self.view setFrame:viewFrame];
+    
+    [UIView commitAnimations];
+    
+    // Save the edited text
     self.straboTrack.trackTitle = textField.text;
     [self.straboTrack save];
 }

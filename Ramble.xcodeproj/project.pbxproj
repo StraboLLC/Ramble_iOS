@@ -44,7 +44,7 @@
 		968B68E015222BB300624AAD /* compassCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = 968B68DF15222BB300624AAD /* compassCenter.png */; };
 		968B68E21522421900624AAD /* imageboarderUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 968B68E11522421900624AAD /* imageboarderUp.png */; };
 		968B68E61522436700624AAD /* imageboarderDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 968B68E51522436700624AAD /* imageboarderDown.png */; };
-		968B68E9152243FB00624AAD /* textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 968B68E8152243FB00624AAD /* textfield.png */; };
+		968B68F315224BF400624AAD /* textboarder.png in Resources */ = {isa = PBXBuildFile; fileRef = 968B68F215224BF400624AAD /* textboarder.png */; };
 		9695ADA314CE687A00847C69 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9695ADA214CE687A00847C69 /* CoreMedia.framework */; };
 		9695ADA614CE688800847C69 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9695ADA514CE688800847C69 /* ImageIO.framework */; };
 		9695ADA814CE68BE00847C69 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9695ADA714CE68BE00847C69 /* MobileCoreServices.framework */; };
@@ -151,7 +151,7 @@
 		968B68DF15222BB300624AAD /* compassCenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compassCenter.png; sourceTree = "<group>"; };
 		968B68E11522421900624AAD /* imageboarderUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageboarderUp.png; sourceTree = "<group>"; };
 		968B68E51522436700624AAD /* imageboarderDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageboarderDown.png; sourceTree = "<group>"; };
-		968B68E8152243FB00624AAD /* textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textfield.png; sourceTree = "<group>"; };
+		968B68F215224BF400624AAD /* textboarder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textboarder.png; sourceTree = "<group>"; };
 		9695ADA214CE687A00847C69 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		9695ADA514CE688800847C69 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		9695ADA714CE68BE00847C69 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -387,7 +387,7 @@
 			children = (
 				96FA240115215C3F004D8C9A /* uploadDown.png */,
 				96FA240215215C3F004D8C9A /* uploadUp.png */,
-				968B68E8152243FB00624AAD /* textfield.png */,
+				968B68F215224BF400624AAD /* textboarder.png */,
 				968B68E11522421900624AAD /* imageboarderUp.png */,
 				968B68E51522436700624AAD /* imageboarderDown.png */,
 			);
@@ -631,7 +631,7 @@
 				968B68E015222BB300624AAD /* compassCenter.png in Resources */,
 				968B68E21522421900624AAD /* imageboarderUp.png in Resources */,
 				968B68E61522436700624AAD /* imageboarderDown.png in Resources */,
-				968B68E9152243FB00624AAD /* textfield.png in Resources */,
+				968B68F315224BF400624AAD /* textboarder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
