@@ -15,6 +15,8 @@
     PreferencesManager * preferencesManager;
     LoginManager * loginManager;
     
+    IBOutlet UIView * buttonPanelView;
+    
     IBOutlet UISwitch * locationModeSwitch;
     IBOutlet UISwitch * videoModeSwitch;
     IBOutlet UISwitch * launchScreenSwitch;

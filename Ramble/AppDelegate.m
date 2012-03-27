@@ -16,6 +16,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
+    [UIApplication sharedApplication].keyWindow.frame=CGRectMake(0, 20, 320, 460); //move down 20px.
+    
     self.loginManager = [[LoginManager alloc] init];
     
     return YES;

@@ -12,6 +12,7 @@
 -(void)userDidLoginSuccessfully;
 -(void)facebookLoginDidFailWithError:(NSError *)error;
 -(void)straboLoginDidFailWithError:(NSError *)error;
+-(void)resetButtonGraphics;
 @end
 
 @implementation PreferencesViewController
@@ -44,6 +45,9 @@
     loginManager = appDelegate.loginManager;
     loginManager.delegate = self;
     
+    UIImage *background = [UIImage imageNamed:@"cellBackground.png"];
+	[buttonPanelView setBackgroundColor:[UIColor colorWithPatternImage:background]];
+    
     // Set the UI inputs appropriately
     [locationModeSwitch setOn:[preferencesManager precisionLocationModeOn] animated:NO];
     [videoModeSwitch setOn:[preferencesManager videoModeIsHigh] animated:NO];
@@ -59,12 +63,14 @@
     
     // Check the user's login status and
     // update the login button appropriately
-    if (loginManager.currentUser == nil) {
-        [logInButton setTitle:@"Log In" forState:UIControlStateNormal];
-        NSLog(@"User is not logged in.");
-    } else {
-        [logInButton setTitle:@"Log Out" forState:UIControlStateNormal];
-    }
+    [self resetButtonGraphics];
+    
+//    if (loginManager.currentUser == nil) {
+//        [logInButton setTitle:@"Log In" forState:UIControlStateNormal];
+//        NSLog(@"User is not logged in.");
+//    } else {
+//        [logInButton setTitle:@"Log Out" forState:UIControlStateNormal];
+//    }
 }
 
 - (void)viewDidUnload
@@ -117,15 +123,17 @@
 
     NSLog(@"Login Button Pressed");
     
-    if ([logInButton.titleLabel.text isEqualToString:@"Log Out"]) {
-        NSLog(@"Loggin the user out");
+    [logInButton setEnabled:NO];
+    
+    if (loginManager.currentUser != nil) {
+        NSLog(@"Logging the user out");
         // Log the user out
         [loginManager logOut];
         
         // Update the login button to reflect the change
-        [logInButton setTitle:@"Log In" forState:UIControlStateNormal];
+        [self resetButtonGraphics];
         
-    } else if ([logInButton.titleLabel.text isEqualToString:@"Log In"]){
+    } else {
         NSLog(@"Logging the user in.");
         
         // Start animating the activityIndicator
@@ -146,7 +154,9 @@
 @implementation PreferencesViewController (LoginManagerDelegate)
 
 -(void)userDidLoginSuccessfully {
-    [logInButton setTitle:@"Log Out" forState:UIControlStateNormal];
+    
+    // Update the login button to reflect the change
+    [self resetButtonGraphics];
 
     [activityIndicator stopAnimating];
 }
@@ -157,6 +167,26 @@
 
 -(void)straboLoginDidFailWithError:(NSError *)error {
     [activityIndicator stopAnimating];
+}
+
+-(void)resetButtonGraphics {
+    
+    [logInButton setEnabled:YES];
+    
+    if (loginManager.currentUser == nil) {
+        
+        NSLog(@"Setting the login button to display a login dialog");
+
+        [logInButton setBackgroundImage:[UIImage imageNamed:@"loginUp"] forState:UIControlStateNormal];
+        [logInButton setBackgroundImage:[UIImage imageNamed:@"loginDown"] forState:UIControlStateHighlighted];
+        
+    } else {
+
+        NSLog(@"Setting the login button to display a logout dialog");
+        
+        [logInButton setBackgroundImage:[UIImage imageNamed:@"logoutUp"] forState:UIControlStateNormal];
+        [logInButton setBackgroundImage:[UIImage imageNamed:@"logoutDown"] forState:UIControlStateHighlighted];
+    }
 }
 
 @end
