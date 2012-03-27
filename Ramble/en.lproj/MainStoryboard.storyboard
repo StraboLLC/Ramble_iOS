@@ -142,6 +142,12 @@
                             <view contentMode="scaleToFill" id="vhH-E3-BO3" userLabel="subView">
                                 <rect key="frame" x="0.0" y="50" width="320" height="410"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="dropshadow.png" id="EBs-SX-ujj">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="10"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="header.png" id="S3P-dO-pbA">
@@ -296,14 +302,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Heading System:" lineBreakMode="tailTruncation" minimumFontSize="10" id="9Qf-Pp-h4q">
-                                        <rect key="frame" x="20" y="277" width="131" height="21"/>
+                                        <rect key="frame" x="20" y="174" width="131" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.34414859689999999" green="0.15941870590000001" blue="0.075782483659999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="s5e-47-Chu">
-                                        <rect key="frame" x="57" y="306" width="207" height="30"/>
+                                        <rect key="frame" x="57" y="215" width="207" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="True"/>
@@ -314,29 +320,15 @@
                                             <action selector="headingSelectorDidChange:" destination="2ne-Ja-Zi6" eventType="valueChanged" id="K5A-2v-8E5"/>
                                         </connections>
                                     </segmentedControl>
-                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="jAj-q4-iPU">
-                                        <rect key="frame" x="20" y="242" width="79" height="27"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <connections>
-                                            <action selector="launchScreenSwitchDidChange:" destination="2ne-Ja-Zi6" eventType="valueChanged" id="hgd-BQ-s5h"/>
-                                        </connections>
-                                    </switch>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Launch To Capture" lineBreakMode="tailTruncation" minimumFontSize="10" id="TCa-nD-t5j">
-                                        <rect key="frame" x="20" y="213" width="284" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.34414859689999999" green="0.15941870590000001" blue="0.075782483659999997" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Video High Quality Mode:" lineBreakMode="tailTruncation" minimumFontSize="10" id="uFU-kl-kVs">
-                                        <rect key="frame" x="20" y="149" width="284" height="21"/>
+                                        <rect key="frame" x="20" y="128" width="284" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.34414859689999999" green="0.15941870590000001" blue="0.075782483659999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="agC-hq-37u">
-                                        <rect key="frame" x="64" y="348" width="193" height="42"/>
+                                        <rect key="frame" x="64" y="296" width="193" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" backgroundImage="loginUp.png">
@@ -351,7 +343,7 @@
                                         </connections>
                                     </button>
                                     <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="KHJ-Dm-T7L">
-                                        <rect key="frame" x="20" y="55" width="79" height="27"/>
+                                        <rect key="frame" x="221" y="24" width="79" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="onTintColor" red="1" green="0.38823533059999998" blue="0.015686275440000001" alpha="1" colorSpace="deviceRGB"/>
                                         <connections>
@@ -359,27 +351,31 @@
                                         </connections>
                                     </switch>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Turning &quot;Location Precision Mode&quot; on will increase the accuracy of the GPS but will deplete your battery significantly faster." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" minimumFontSize="10" id="zt8-xK-mYF">
-                                        <rect key="frame" x="49" y="90" width="222" height="51"/>
+                                        <rect key="frame" x="49" y="61" width="222" height="51"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.34414859689999999" green="0.15941870590000001" blue="0.075782483659999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="zOB-Gq-RrD">
-                                        <rect key="frame" x="20" y="178" width="79" height="27"/>
+                                        <rect key="frame" x="221" y="126" width="79" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="videoModeSwitchDidChange:" destination="2ne-Ja-Zi6" eventType="valueChanged" id="oi3-pL-MFx"/>
                                         </connections>
                                     </switch>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="0Zp-B0-i78">
-                                        <rect key="frame" x="265" y="350" width="37" height="37"/>
+                                        <rect key="frame" x="265" y="298" width="37" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="color" red="0.34414859689999999" green="0.15941870590000001" blue="0.075782483659999997" alpha="1" colorSpace="calibratedRGB"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.97249331622718793" blue="0.7976762066503994" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="dropshadow.png" id="eUk-ek-WhD">
+                                <rect key="frame" x="0.0" y="50" width="320" height="10"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -388,7 +384,6 @@
                         <outlet property="activityIndicator" destination="0Zp-B0-i78" id="MB5-u8-SMw"/>
                         <outlet property="buttonPanelView" destination="Dr4-db-4pe" id="v3I-LJ-vl1"/>
                         <outlet property="headingSelector" destination="s5e-47-Chu" id="EGb-fl-rJp"/>
-                        <outlet property="launchScreenSwitch" destination="jAj-q4-iPU" id="sO2-pv-Vl4"/>
                         <outlet property="locationModeSwitch" destination="KHJ-Dm-T7L" id="aML-Jf-bBe"/>
                         <outlet property="logInButton" destination="agC-hq-37u" id="YrJ-21-Znv"/>
                         <outlet property="videoModeSwitch" destination="zOB-Gq-RrD" id="Zm9-Xf-zvN"/>
@@ -519,9 +514,10 @@
         <image name="bottomrightdown.png" width="99" height="102"/>
         <image name="bottomrightup.png" width="99" height="102"/>
         <image name="compassFrame.png" width="640" height="170"/>
-        <image name="compassface.png" width="671" height="678"/>
+        <image name="compassface.png" width="671" height="671"/>
         <image name="doneDown.png" width="125" height="100"/>
         <image name="doneUp.png" width="125" height="100"/>
+        <image name="dropshadow.png" width="640" height="20"/>
         <image name="gearIcon.png" width="66" height="66"/>
         <image name="header.png" width="640" height="100"/>
         <image name="loginUp.png" width="386" height="85"/>
