@@ -9,7 +9,7 @@
 #import "TrackDetailViewController.h"
 
 @interface TrackDetailViewController (InternalMethods)
--(BOOL)setFileHasBeenUploaded;
+-(BOOL)setUploadState;
 @end
 
 @interface TrackDetailViewController (UploadManagerDelegate) <UploadManagerDelegate>
@@ -64,8 +64,12 @@
         statusLabel.text = @"Please log in to upload this capture.";
     } else {
         // Display content conditional on the file's upload history
-        [self setFileHasBeenUploaded];
+        [self setUploadState];
     }
+    
+    // Set the background of the view
+    UIImage *background = [UIImage imageNamed:@"cellBackground.png"];
+	[self.view setBackgroundColor:[UIColor colorWithPatternImage:background]];
     
     // Set up the display with the proper track information
     
@@ -140,15 +144,20 @@
 
 @implementation TrackDetailViewController (InternalMethods)
 
--(BOOL)setFileHasBeenUploaded {
+-(BOOL)setUploadState {
     if ([straboTrack.uploadedDate isEqualToDate:[NSDate dateWithTimeIntervalSince1970:0]]) {
         NSLog(@"File has never been uploaded before");
-        statusLabel.text = nil;
+        // Set the upload button to up and enabled
+        [uploadButton setBackgroundImage:[UIImage imageNamed:@"uploadUp"] forState:UIControlStateNormal];
+        [uploadButton setEnabled:YES];
+
         return false;
     } else {
         NSLog(@"File HAS been uploaded before.");
-        statusLabel.text = @"You have uploaded this file before. You may not upload it again.";
+        // Depress and disable the upload button
+        [uploadButton setBackgroundImage:[UIImage imageNamed:@"uploadDown"] forState:UIControlStateNormal];
         uploadButton.enabled = NO;
+        
         return true;
     }
 }
@@ -206,7 +215,7 @@
     
     // Ensure that the user can't upload again
     // (after a successful upload)
-    [self setFileHasBeenUploaded];
+    [self setUploadState];
     
 }
 

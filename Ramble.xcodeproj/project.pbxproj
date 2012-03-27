@@ -84,6 +84,8 @@
 		96FA23FD15215388004D8C9A /* loginUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 96FA23F915215388004D8C9A /* loginUp.png */; };
 		96FA23FE15215388004D8C9A /* logoutDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 96FA23FA15215388004D8C9A /* logoutDown.png */; };
 		96FA23FF15215388004D8C9A /* logoutUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 96FA23FB15215388004D8C9A /* logoutUp.png */; };
+		96FA240315215C40004D8C9A /* uploadDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 96FA240115215C3F004D8C9A /* uploadDown.png */; };
+		96FA240415215C40004D8C9A /* uploadUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 96FA240215215C3F004D8C9A /* uploadUp.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -198,6 +200,8 @@
 		96FA23F915215388004D8C9A /* loginUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginUp.png; sourceTree = "<group>"; };
 		96FA23FA15215388004D8C9A /* logoutDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoutDown.png; sourceTree = "<group>"; };
 		96FA23FB15215388004D8C9A /* logoutUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoutUp.png; sourceTree = "<group>"; };
+		96FA240115215C3F004D8C9A /* uploadDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uploadDown.png; sourceTree = "<group>"; };
+		96FA240215215C3F004D8C9A /* uploadUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uploadUp.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -338,7 +342,7 @@
 		966961F314CF27790084926C /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				96FA240015215405004D8C9A /* Random Buttons */,
+				96FA240015215405004D8C9A /* Action Buttons */,
 				9649DBB5151FFF8100FFE1F3 /* LaunchImage.png */,
 				9649DBB6151FFF8100FFE1F3 /* LaunchImage@2x.png */,
 				9649DBB4151FFD8000FFE1F3 /* Icon Images */,
@@ -495,15 +499,17 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
-		96FA240015215405004D8C9A /* Random Buttons */ = {
+		96FA240015215405004D8C9A /* Action Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				96FA240115215C3F004D8C9A /* uploadDown.png */,
+				96FA240215215C3F004D8C9A /* uploadUp.png */,
 				96FA23F815215388004D8C9A /* loginDown.png */,
 				96FA23F915215388004D8C9A /* loginUp.png */,
 				96FA23FA15215388004D8C9A /* logoutDown.png */,
 				96FA23FB15215388004D8C9A /* logoutUp.png */,
 			);
-			name = "Random Buttons";
+			name = "Action Buttons";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -596,6 +602,8 @@
 				96FA23FD15215388004D8C9A /* loginUp.png in Resources */,
 				96FA23FE15215388004D8C9A /* logoutDown.png in Resources */,
 				96FA23FF15215388004D8C9A /* logoutUp.png in Resources */,
+				96FA240315215C40004D8C9A /* uploadDown.png in Resources */,
+				96FA240415215C40004D8C9A /* uploadUp.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
