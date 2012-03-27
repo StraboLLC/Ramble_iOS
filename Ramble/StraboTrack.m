@@ -8,9 +8,21 @@
 
 #import "StraboTrack.h"
 
+@interface StraboTrack (InternalMethods)
+-(NSString *)sanitizeFileName:(NSString *)string;
+@end
+
 @implementation StraboTrack
 
 @synthesize trackPath, jsonPath, videoPath, thumbnailPath, trackName, trackTitle, trackType, latitude, longitude, captureDate, taggedPeople, taggedPlaces, uploadedDate;
+
+#pragma mark - Custom Setters
+
+-(void)setTrackTitle:(NSString *)titleString {
+    
+    NSLog(@"Scrubbing and setting track title");
+    trackTitle = [self sanitizeFileName:titleString];
+}
 
 +(StraboTrack *)straboTrackFromFileWithName:(NSString *)trackName {
     StraboTrack * straboTrack = [[StraboTrack alloc] init];
@@ -140,6 +152,19 @@
     } else {
         return nil;
     }
+}
+
+@end
+
+@implementation StraboTrack (InternalMethods)
+
+-(NSString *)sanitizeFileName:(NSString *)string {
+
+    // Only allow alpha characters
+    NSCharacterSet* illegalFileNameChars = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+    NSString* sanitizedString = [string stringByTrimmingCharactersInSet:illegalFileNameChars];
+    
+    return sanitizedString;
 }
 
 @end
