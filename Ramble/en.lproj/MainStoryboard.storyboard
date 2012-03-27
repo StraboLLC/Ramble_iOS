@@ -421,11 +421,11 @@
                                     <action selector="uploadButtonPressed:" destination="zld-xc-Htz" eventType="touchUpInside" id="miL-Ix-Rad"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date Taken" lineBreakMode="tailTruncation" minimumFontSize="10" id="c1Y-Os-8et">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date Taken" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="c1Y-Os-8et">
                                 <rect key="frame" x="20" y="228" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.34414859689999999" green="0.15941870590000001" blue="0.075782483659999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" id="Y0F-ue-CII">
@@ -441,15 +441,15 @@
                                     <outlet property="delegate" destination="zld-xc-Htz" id="GQn-4T-R1V"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="14" id="Xzx-CB-KDs">
-                                <rect key="frame" x="20" y="264" width="280" height="50"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Vist ramble.strabogis.com on your computer to view your uploaded capture." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="13" id="Xzx-CB-KDs">
+                                <rect key="frame" x="37" y="264" width="246" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.34414859689999999" green="0.15941870590000001" blue="0.075782483659999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" id="WUD-gT-gTP">
-                                <rect key="frame" x="-65" y="384" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="-50" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Uploading Video..." lineBreakMode="tailTruncation" minimumFontSize="10" id="cZm-XX-6TM">
