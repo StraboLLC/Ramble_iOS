@@ -40,10 +40,14 @@
 		966961F614CF46730084926C /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 966961F514CF46730084926C /* PreferencesManager.m */; };
 		966961F914CF468D0084926C /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 966961F814CF468D0084926C /* PreferencesViewController.m */; };
 		967E01FF14D3BFB7006C2E96 /* ramble.png in Resources */ = {isa = PBXBuildFile; fileRef = 967E01FE14D3BFB7006C2E96 /* ramble.png */; };
+		968B68DE15222B7B00624AAD /* compassFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 968B68DD15222B7B00624AAD /* compassFrame.png */; };
+		968B68E015222BB300624AAD /* compassCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = 968B68DF15222BB300624AAD /* compassCenter.png */; };
+		968B68E21522421900624AAD /* imageboarderUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 968B68E11522421900624AAD /* imageboarderUp.png */; };
+		968B68E61522436700624AAD /* imageboarderDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 968B68E51522436700624AAD /* imageboarderDown.png */; };
+		968B68E9152243FB00624AAD /* textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 968B68E8152243FB00624AAD /* textfield.png */; };
 		9695ADA314CE687A00847C69 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9695ADA214CE687A00847C69 /* CoreMedia.framework */; };
 		9695ADA614CE688800847C69 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9695ADA514CE688800847C69 /* ImageIO.framework */; };
 		9695ADA814CE68BE00847C69 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9695ADA714CE68BE00847C69 /* MobileCoreServices.framework */; };
-		96A76E1214D9CE6200F61B93 /* compassFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A76E1114D9CE6200F61B93 /* compassFrame.png */; };
 		96B586CD14D8E92300B9DB9A /* LocalTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B586CC14D8E92300B9DB9A /* LocalTracksViewController.m */; };
 		96C17D0114CDDDFA00C96702 /* TrackDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C17D0014CDDDFA00C96702 /* TrackDetailViewController.m */; };
 		96CD7B9214D3D39F00976367 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96CD7B9114D3D39F00976367 /* MediaPlayer.framework */; };
@@ -143,10 +147,14 @@
 		966961F714CF468D0084926C /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
 		966961F814CF468D0084926C /* PreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesViewController.m; sourceTree = "<group>"; };
 		967E01FE14D3BFB7006C2E96 /* ramble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ramble.png; sourceTree = "<group>"; };
+		968B68DD15222B7B00624AAD /* compassFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compassFrame.png; sourceTree = "<group>"; };
+		968B68DF15222BB300624AAD /* compassCenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compassCenter.png; sourceTree = "<group>"; };
+		968B68E11522421900624AAD /* imageboarderUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageboarderUp.png; sourceTree = "<group>"; };
+		968B68E51522436700624AAD /* imageboarderDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageboarderDown.png; sourceTree = "<group>"; };
+		968B68E8152243FB00624AAD /* textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textfield.png; sourceTree = "<group>"; };
 		9695ADA214CE687A00847C69 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		9695ADA514CE688800847C69 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		9695ADA714CE68BE00847C69 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		96A76E1114D9CE6200F61B93 /* compassFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compassFrame.png; sourceTree = "<group>"; };
 		96B586CB14D8E92300B9DB9A /* LocalTracksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalTracksViewController.h; sourceTree = "<group>"; };
 		96B586CC14D8E92300B9DB9A /* LocalTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalTracksViewController.m; sourceTree = "<group>"; };
 		96C17CFF14CDDDFA00C96702 /* TrackDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackDetailViewController.h; sourceTree = "<group>"; };
@@ -344,9 +352,10 @@
 		966961F314CF27790084926C /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				96FA240015215405004D8C9A /* Action Buttons */,
 				9649DBB5151FFF8100FFE1F3 /* LaunchImage.png */,
 				9649DBB6151FFF8100FFE1F3 /* LaunchImage@2x.png */,
+				96FA240015215405004D8C9A /* Prefs View */,
+				968B68E7152243CC00624AAD /* Detail View */,
 				9649DBB4151FFD8000FFE1F3 /* Icon Images */,
 				96A76E1314D9CE8C00F61B93 /* Compass Graphics */,
 				96381B2114D74ECD00F171C7 /* Table Cell */,
@@ -373,11 +382,24 @@
 			name = "Toolbar Items";
 			sourceTree = "<group>";
 		};
+		968B68E7152243CC00624AAD /* Detail View */ = {
+			isa = PBXGroup;
+			children = (
+				96FA240115215C3F004D8C9A /* uploadDown.png */,
+				96FA240215215C3F004D8C9A /* uploadUp.png */,
+				968B68E8152243FB00624AAD /* textfield.png */,
+				968B68E11522421900624AAD /* imageboarderUp.png */,
+				968B68E51522436700624AAD /* imageboarderDown.png */,
+			);
+			name = "Detail View";
+			sourceTree = "<group>";
+		};
 		96A76E1314D9CE8C00F61B93 /* Compass Graphics */ = {
 			isa = PBXGroup;
 			children = (
 				96FA240515216480004D8C9A /* compassface.png */,
-				96A76E1114D9CE6200F61B93 /* compassFrame.png */,
+				968B68DF15222BB300624AAD /* compassCenter.png */,
+				968B68DD15222B7B00624AAD /* compassFrame.png */,
 			);
 			name = "Compass Graphics";
 			sourceTree = "<group>";
@@ -502,17 +524,15 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
-		96FA240015215405004D8C9A /* Action Buttons */ = {
+		96FA240015215405004D8C9A /* Prefs View */ = {
 			isa = PBXGroup;
 			children = (
-				96FA240115215C3F004D8C9A /* uploadDown.png */,
-				96FA240215215C3F004D8C9A /* uploadUp.png */,
 				96FA23F815215388004D8C9A /* loginDown.png */,
 				96FA23F915215388004D8C9A /* loginUp.png */,
 				96FA23FA15215388004D8C9A /* logoutDown.png */,
 				96FA23FB15215388004D8C9A /* logoutUp.png */,
 			);
-			name = "Action Buttons";
+			name = "Prefs View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -574,7 +594,6 @@
 				967E01FF14D3BFB7006C2E96 /* ramble.png in Resources */,
 				96381B1F14D74EB200F171C7 /* cellBackground.png in Resources */,
 				96381B2314D74F2200F171C7 /* bottomLine.png in Resources */,
-				96A76E1214D9CE6200F61B93 /* compassFrame.png in Resources */,
 				9649DBA7151FE97400FFE1F3 /* Entitlements.plist in Resources */,
 				9649DBAE151FFD7100FFE1F3 /* Icon-Small-50.png in Resources */,
 				9649DBAF151FFD7100FFE1F3 /* Icon-Small.png in Resources */,
@@ -608,6 +627,11 @@
 				96FA240415215C40004D8C9A /* uploadUp.png in Resources */,
 				96FA240615216480004D8C9A /* compassface.png in Resources */,
 				96FA2408152166A1004D8C9A /* dropshadow.png in Resources */,
+				968B68DE15222B7B00624AAD /* compassFrame.png in Resources */,
+				968B68E015222BB300624AAD /* compassCenter.png in Resources */,
+				968B68E21522421900624AAD /* imageboarderUp.png in Resources */,
+				968B68E61522436700624AAD /* imageboarderDown.png in Resources */,
+				968B68E9152243FB00624AAD /* textfield.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

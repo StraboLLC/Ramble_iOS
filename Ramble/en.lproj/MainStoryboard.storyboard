@@ -92,6 +92,10 @@
                                 <rect key="frame" x="-10" y="395" width="339" height="339"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="compassCenter.png" id="ANl-di-roc">
+                                <rect key="frame" x="143" y="394" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="compassFrame.png" id="B7E-mw-4MJ">
                                 <rect key="frame" x="0.0" y="375" width="320" height="85"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -142,17 +146,15 @@
                             <view contentMode="scaleToFill" id="vhH-E3-BO3" userLabel="subView">
                                 <rect key="frame" x="0.0" y="50" width="320" height="410"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="dropshadow.png" id="EBs-SX-ujj">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="10"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    </imageView>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="header.png" id="S3P-dO-pbA">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="dropshadow.png" id="EBs-SX-ujj">
+                                <rect key="frame" x="0.0" y="50" width="320" height="10"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Kc0-ii-IvQ">
                                 <rect key="frame" x="248" y="0.0" width="72" height="50"/>
@@ -200,7 +202,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="banjo.png" id="hlm-UU-9Xc">
-                                <rect key="frame" x="105" y="1" width="111" height="50"/>
+                                <rect key="frame" x="105" y="-1" width="111" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -271,7 +273,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="banjo.png" id="cWX-n4-93d">
-                                <rect key="frame" x="105" y="0.0" width="111" height="50"/>
+                                <rect key="frame" x="105" y="-1" width="111" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aBI-VX-clr">
@@ -370,7 +372,7 @@
                                         <color key="color" red="0.34414859689999999" green="0.15941870590000001" blue="0.075782483659999997" alpha="1" colorSpace="calibratedRGB"/>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.97249331622718793" blue="0.7976762066503994" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="dropshadow.png" id="eUk-ek-WhD">
                                 <rect key="frame" x="0.0" y="50" width="320" height="10"/>
@@ -402,7 +404,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zkU-FI-Esy">
-                                <rect key="frame" x="64" y="322" width="193" height="42"/>
+                                <rect key="frame" x="64" y="329" width="193" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" backgroundImage="uploadUp.png">
@@ -417,19 +419,16 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date Taken" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="c1Y-Os-8et">
-                                <rect key="frame" x="20" y="228" width="280" height="21"/>
+                                <rect key="frame" x="20" y="242" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.34414859689999999" green="0.15941870590000001" blue="0.075782483659999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" id="Y0F-ue-CII">
-                                <rect key="frame" x="80" y="20" width="161" height="161"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to rename this capture" textAlignment="center" minimumFontSize="17" background="textfield.png" clearButtonMode="whileEditing" id="Sjq-66-pFm">
+                                <rect key="frame" x="37" y="203" width="246" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to rename this capture" minimumFontSize="17" clearButtonMode="whileEditing" id="Sjq-66-pFm">
-                                <rect key="frame" x="20" y="189" width="280" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" red="0.34414859689999999" green="0.15941870590000001" blue="0.075782483659999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                 <connections>
@@ -437,14 +436,33 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Vist ramble.strabogis.com on your computer to view your uploaded capture." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="13" id="Xzx-CB-KDs">
-                                <rect key="frame" x="37" y="264" width="246" height="50"/>
+                                <rect key="frame" x="37" y="271" width="246" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.34414859689999999" green="0.15941870590000001" blue="0.075782483659999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zqt-uo-zOD">
+                                <rect key="frame" x="73" y="20" width="175" height="175"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="imageboarderUp.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" backgroundImage="imageboarderDown.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playButtonPressed:" destination="zld-xc-Htz" eventType="touchUpInside" id="u4C-fF-CD4"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" id="KcO-5t-VPM">
+                                <rect key="frame" x="80" y="28" width="160" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <view hidden="YES" opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" id="WUD-gT-gTP">
-                                <rect key="frame" x="0.0" y="-50" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="264" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Uploading Video..." lineBreakMode="tailTruncation" minimumFontSize="10" id="cZm-XX-6TM">
@@ -492,7 +510,7 @@
                         <outlet property="actionButton" destination="MX8-oI-MT2" id="PRn-72-yOp"/>
                         <outlet property="dateLabel" destination="c1Y-Os-8et" id="NAG-5c-vTh"/>
                         <outlet property="statusLabel" destination="Xzx-CB-KDs" id="D48-2o-tT5"/>
-                        <outlet property="thumbnailImage" destination="Y0F-ue-CII" id="KkJ-tf-w4C"/>
+                        <outlet property="thumbnailImage" destination="KcO-5t-VPM" id="TBK-od-92D"/>
                         <outlet property="titleTextField" destination="Sjq-66-pFm" id="CNv-U5-E1R"/>
                         <outlet property="uploadButton" destination="zkU-FI-Esy" id="OIq-1g-jmC"/>
                         <outlet property="uploadProgress" destination="6gT-Zc-oU1" id="WqD-Wx-kIy"/>
@@ -513,17 +531,21 @@
         <image name="bottomleftup.png" width="99" height="103"/>
         <image name="bottomrightdown.png" width="99" height="102"/>
         <image name="bottomrightup.png" width="99" height="102"/>
-        <image name="compassFrame.png" width="640" height="170"/>
+        <image name="compassCenter.png" width="64" height="65"/>
+        <image name="compassFrame.png" width="640" height="162"/>
         <image name="compassface.png" width="671" height="671"/>
         <image name="doneDown.png" width="125" height="100"/>
         <image name="doneUp.png" width="125" height="100"/>
         <image name="dropshadow.png" width="640" height="20"/>
         <image name="gearIcon.png" width="66" height="66"/>
         <image name="header.png" width="640" height="100"/>
+        <image name="imageboarderDown.png" width="330" height="330"/>
+        <image name="imageboarderUp.png" width="330" height="330"/>
         <image name="loginUp.png" width="386" height="85"/>
         <image name="recordOFF.png" width="33" height="33"/>
         <image name="recorddown.png" width="125" height="53"/>
         <image name="recordup.png" width="125" height="53"/>
+        <image name="textfield.png" width="330" height="50"/>
         <image name="uploadDown.png" width="386" height="85"/>
         <image name="uploadUp.png" width="386" height="85"/>
     </resources>
@@ -588,12 +610,12 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TrackDetailViewController.h"/>
             <relationships>
                 <relationship kind="action" name="actionButtonPressed:"/>
+                <relationship kind="action" name="playButtonPressed:"/>
                 <relationship kind="action" name="uploadButtonPressed:"/>
                 <relationship kind="outlet" name="actionButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="thumbnailImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="titleTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="uploadButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="uploadProgress" candidateClass="UIProgressView"/>

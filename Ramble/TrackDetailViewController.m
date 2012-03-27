@@ -47,13 +47,6 @@
 
 #pragma mark - View lifecycle
 
-/*
- // Implement loadView to create a view hierarchy programmatically, without using a nib.
- - (void)loadView
- {
- }
- */
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -87,6 +80,7 @@
     dateLabel.text = [formatter stringFromDate:straboTrack.captureDate];
     
     // Load the thumbnail image
+    // [thumbnailButton setBackgroundImage:[UIImage imageWithContentsOfFile:self.straboTrack.thumbnailPath.absoluteString] forState:UIControlStateNormal];
     thumbnailImage.image = [UIImage imageWithContentsOfFile:self.straboTrack.thumbnailPath.absoluteString];
 }
 
@@ -104,6 +98,19 @@
 }
 
 #pragma mark Button Handling
+
+-(IBAction)playButtonPressed:(id)sender {
+    
+    NSLog(@"Preparing video playback");
+    
+    NSURL * resourcePath = [NSURL fileURLWithPath:[straboTrack videoPath].absoluteString];
+    
+    NSLog(@"Buffering video at URL: %@", resourcePath);
+    
+    previewPlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:resourcePath];
+
+    [self presentMoviePlayerViewControllerAnimated:previewPlayer];
+}
 
 -(IBAction)uploadButtonPressed:(id)sender {
     

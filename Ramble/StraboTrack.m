@@ -30,7 +30,7 @@
         straboTrack.trackName = trackName;
         straboTrack.trackPath = [NSURL URLWithString:trackFilePath];
         straboTrack.jsonPath = [NSURL URLWithString:jsonFilePath];
-        straboTrack.videoPath = [NSURL URLWithString:[trackFilePath stringByAppendingFormat:[NSString stringWithFormat:@"%@.mov", trackName]]];
+        straboTrack.videoPath = [NSURL URLWithString:[trackFilePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mov", trackName]]];
         straboTrack.thumbnailPath = [straboTrack.trackPath URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", straboTrack.trackName]];
         
         if ([[trackDictionary objectForKey:@"points"] count] > 0) {
