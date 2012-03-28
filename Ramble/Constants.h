@@ -16,8 +16,8 @@
 // Debugging specific definitions here
 //#define uploadServerURL @"http://localhost/~tnbeatty/strabotest/ramble/mobileapi/v1/upload.php"
 //#define loginServerURL @"http://localhost/~tnbeatty/strabotest/ramble/mobileapi/v1/login.php"
-#define uploadServerURL @"https://ramble.strabogis.com/mobileapi/v1/upload.php"
-#define loginServerURL @"http://ramble.strabogis.com/mobileapi/v1/login.php"
+#define uploadServerURL @"https://rambl.it/mobileapi/v1/upload.php"
+#define loginServerURL @"http://rambl.it/mobileapi/v1/login.php"
 
 // Authentication Challenge Constants
 #define STRUserName @"team"

@@ -204,6 +204,9 @@
     [locationDataCollector clearDataPoints];
     recordingStartTime = [NSDate date];
     isRecording = YES;
+    
+    // Force record first datapoint
+    [self recordLocationIfRecording];
 }
 
 -(void)stopRecording {

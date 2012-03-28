@@ -427,7 +427,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date Taken" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="c1Y-Os-8et">
                                 <rect key="frame" x="20" y="242" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.34414859689999999" green="0.15941870590000001" blue="0.075782483659999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -435,13 +435,13 @@
                                 <rect key="frame" x="37" y="209" width="246" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="0.34414859689999999" green="0.15941870590000001" blue="0.075782483659999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
                                 <connections>
                                     <outlet property="delegate" destination="zld-xc-Htz" id="GQn-4T-R1V"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Vist ramble.strabogis.com on your computer to view your uploaded capture." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="13" id="Xzx-CB-KDs">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Vist rambl.it on your computer to view your uploaded capture." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="13" id="Xzx-CB-KDs">
                                 <rect key="frame" x="37" y="271" width="246" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
