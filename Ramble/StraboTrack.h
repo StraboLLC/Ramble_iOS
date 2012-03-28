@@ -61,7 +61,7 @@
  @abstract The user-defined title of the track
  @discussion A string containing an optional, user-defined title for the track. The trackTitle is set to nil by default.
  */
-@property(nonatomic, strong, setter = setTrackTitle:) NSString * trackTitle;
+@property(nonatomic, strong, setter=setTrackTitle:) NSString * trackTitle;
 
 /*!
  @property trackType;

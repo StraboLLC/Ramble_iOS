@@ -133,6 +133,10 @@
     
     [self cancelRecording];
     
+    NSLog(@"Turning location off");
+    [locationManager stopUpdatingLocation];
+    [locationManager stopUpdatingHeading];
+    
     // Allow the idle timer to take over when the user is not capturing video
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 }
