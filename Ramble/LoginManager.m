@@ -73,9 +73,15 @@
     NSNumber * userID = [dict objectForKey:@"id"];
     NSLog(@"Retrieved FBUser ID: %i", userID.intValue);
     
+    currentUser.userID = userID;
+    
+    NSLog(@"Set current user ID");
+    
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:userID forKey:FBUserIDKey];
     [defaults synchronize];
+    
+    // Set the currentUser ID as the facebook id
     
     NSString * unencryptedAuthtoken = [NSString stringWithFormat:@"%i%@", userID.intValue, STRSaltHash];
     NSLog(@"Processed Secure Authtoken: %@", [unencryptedAuthtoken MD5]);
@@ -135,12 +141,13 @@
     NSString * authToken = [self processForAuthToken:data];
     
     if (authToken) {
-    // Save the authtoken
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:authToken forKey:STRAccessTokenKey];
-    [defaults synchronize];
-    
-    self.currentUser.authToken = authToken;
+        // Save the authtoken
+        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:authToken forKey:STRAccessTokenKey];
+        [defaults synchronize];
+        
+        self.currentUser.authToken = authToken;
+        
         if ([self.delegate respondsToSelector:@selector(userDidLoginSuccessfully)]) {
             [self.delegate userDidLoginSuccessfully];
         }

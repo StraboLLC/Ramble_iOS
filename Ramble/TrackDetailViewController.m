@@ -135,6 +135,7 @@ static const CGFloat VERTICAL_SLIDE_DISTANCE = 50;
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSString * authToken = appDelegate.loginManager.currentUser.authToken;
     NSString * userID = [NSString stringWithFormat:@"%@", appDelegate.loginManager.currentUser.userID];
+    NSLog(@"Requesting Upload to: %@", userID);
     [uploadManager generateUploadRequestFor:[straboTrack trackName] inAlbum:@"Mobile Uploads" withAuthtoken:authToken withID:userID];
     [uploadManager startUpload];
     
