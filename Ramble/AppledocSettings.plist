@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" 
+	"http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>--project-name</key>
+    <string>Ramble</string>
+    <key>--project-company</key>
+    <string>Strabo, LLC</string>
+    <key>--project-version</key>
+    <string>0.1.4</string>
+    <key>--company-id</key>
+    <string>com.strabogis</string>
+	<key>--ignore</key>
+	<array>
+		<string>src</string>
+		<string>Libraries</string>
+		<string>Frameworks</string>
+		<string>Testing</string>
+		<string>.m</string>
+	</array>
+	<key>--output</key>
+	<string>~/Documents/Developer/StraboGIS/Documentation/Ramble</string>
+	<key>--create-docset</key>
+	<true/>
+	<key>--install-docset</key>
+	<false/>
+    <key>--verbose</key>
+	<integer>5</integer>
+	<key>--logformat</key>
+	<integer>1</integer>
+</dict>
+</plist>

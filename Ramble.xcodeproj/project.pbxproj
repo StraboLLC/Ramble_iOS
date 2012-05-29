@@ -12,6 +12,7 @@
 		9617830D1520089300D54414 /* gearIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9617830B1520089300D54414 /* gearIcon.png */; };
 		96381B1F14D74EB200F171C7 /* cellBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 96381B1E14D74EB200F171C7 /* cellBackground.png */; };
 		96381B2814D8A85400F171C7 /* LocalTracksNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96381B2714D8A85300F171C7 /* LocalTracksNavigationController.m */; };
+		964183EC157552E9007224A3 /* AppledocSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 964183EB157552E9007224A3 /* AppledocSettings.plist */; };
 		9649DBA7151FE97400FFE1F3 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9649DBA6151FE97400FFE1F3 /* Entitlements.plist */; };
 		9649DBAE151FFD7100FFE1F3 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9649DBA8151FFD7100FFE1F3 /* Icon-Small-50.png */; };
 		9649DBAF151FFD7100FFE1F3 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9649DBA9151FFD7100FFE1F3 /* Icon-Small.png */; };
@@ -101,6 +102,7 @@
 		96381B1E14D74EB200F171C7 /* cellBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellBackground.png; sourceTree = "<group>"; };
 		96381B2614D8A85300F171C7 /* LocalTracksNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalTracksNavigationController.h; sourceTree = "<group>"; };
 		96381B2714D8A85300F171C7 /* LocalTracksNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalTracksNavigationController.m; sourceTree = "<group>"; };
+		964183EB157552E9007224A3 /* AppledocSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppledocSettings.plist; sourceTree = "<group>"; };
 		9649DBA6151FE97400FFE1F3 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = SOURCE_ROOT; };
 		9649DBA8151FFD7100FFE1F3 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
 		9649DBA9151FFD7100FFE1F3 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 		96F4826814C6243F00096933 /* Ramble */ = {
 			isa = PBXGroup;
 			children = (
+				964183EB157552E9007224A3 /* AppledocSettings.plist */,
 				964F743B14C7D382006B5B6D /* src */,
 				964F743614C7CD23006B5B6D /* Constants.h */,
 				96F4827114C6243F00096933 /* AppDelegate.h */,
@@ -632,6 +635,7 @@
 				968B68F315224BF400624AAD /* textboarder.png in Resources */,
 				96868F8315226C2500376C88 /* iTunesArtwork in Resources */,
 				96868F851522ADAD00376C88 /* divider.png in Resources */,
+				964183EC157552E9007224A3 /* AppledocSettings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,7 +716,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "9BDF124C-8954-424C-8CA3-5FDF76C76B61";
+				PROVISIONING_PROFILE = "C9EC5CBC-7AE0-4574-982C-ED1F52806EA5";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -728,7 +732,7 @@
 				GCC_PREFIX_HEADER = "Ramble/Ramble-Prefix.pch";
 				INFOPLIST_FILE = "Ramble/Ramble-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D4A2BCD6-5842-43F8-877A-FB7445DDC917";
+				PROVISIONING_PROFILE = "F25F11FF-CB94-4D24-9B65-54FFA7694E0D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "Ad Hoc";
