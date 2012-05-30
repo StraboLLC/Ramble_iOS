@@ -20,10 +20,11 @@
  The JSON file associated with a track should never be altered directly. You should change information about a track by creating a new StraboTrack object, manipulating it, and saving your changes.
  
  First, create a new StraboTrack object. After changing the desired properties, call the saveChanges method to ensure that any changes to the object are written to the associated documents. It should be noted that most of the properties associated with the StraboTrack are generated automatically directly from the track's associated files. The only editable properties are:
- + trackTitle
- + taggedPeople
- + taggedPlaces
- + uploadedDate
+ 
+ - trackTitle
+ - taggedPeople
+ - taggedPlaces
+ - uploadedDate
  */
 
 @interface StraboTrack : NSObject {
@@ -141,6 +142,10 @@
  */
 @property(readonly) NSDate * captureDate;
 
+///---------------------------------------------------------------------------------------
+/// @name Class Methods
+///---------------------------------------------------------------------------------------
+
 /**
  Builds a new StraboTrack object related to the TrackName specified.
  
@@ -149,6 +154,10 @@
  @param trackName Should be the name of the track as a string without an extension. This is the same as every filename associated with the track. Note that this is NOT the same as the user-defined trackTitle.
  */
 +(StraboTrack *)straboTrackFromFileWithName:(NSString *)trackName;
+
+///---------------------------------------------------------------------------------------
+/// @name Instance Methods
+///---------------------------------------------------------------------------------------
 
 /**
  Saves any changes to the StraboTrack object by writing them to the appropriate files.

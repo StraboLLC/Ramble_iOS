@@ -115,6 +115,9 @@
     // Fire up the connection
     if (currentConnection) {
         [currentConnection start];
+        if ([self.delegate respondsToSelector:@selector(uploadStarted)]) {
+            [self.delegate uploadStarted];
+        }
     } else {
         
         NSLog(@"Error initiating connection. Alerting delegate.");

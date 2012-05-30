@@ -10,7 +10,8 @@
 
 @implementation TrackListItem
 
-@synthesize title, dateTaken, thumbnailImage, trackNameTag;
+@synthesize title, dateTaken, thumbnailImage; 
+@synthesize trackNameTag;
 
 - (id)initWithFrame:(CGRect)frame
 {

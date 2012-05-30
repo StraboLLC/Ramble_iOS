@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		960B0E1814CA96B200FAC06A /* LeatherNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 960B0E1714CA96B200FAC06A /* LeatherNavBar.m */; };
 		9617830C1520089300D54414 /* arrowIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9617830A1520089300D54414 /* arrowIcon.png */; };
 		9617830D1520089300D54414 /* gearIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9617830B1520089300D54414 /* gearIcon.png */; };
 		96381B1F14D74EB200F171C7 /* cellBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 96381B1E14D74EB200F171C7 /* cellBackground.png */; };
@@ -95,8 +94,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		960B0E1614CA96B200FAC06A /* LeatherNavBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeatherNavBar.h; sourceTree = "<group>"; };
-		960B0E1714CA96B200FAC06A /* LeatherNavBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeatherNavBar.m; sourceTree = "<group>"; };
 		9617830A1520089300D54414 /* arrowIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowIcon.png; sourceTree = "<group>"; };
 		9617830B1520089300D54414 /* gearIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gearIcon.png; sourceTree = "<group>"; };
 		96381B1E14D74EB200F171C7 /* cellBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellBackground.png; sourceTree = "<group>"; };
@@ -239,8 +236,6 @@
 		960B0E1A14CA96BB00FAC06A /* Custom UI */ = {
 			isa = PBXGroup;
 			children = (
-				960B0E1614CA96B200FAC06A /* LeatherNavBar.h */,
-				960B0E1714CA96B200FAC06A /* LeatherNavBar.m */,
 				96CFE00314D3581100F7E7F6 /* TrackListItem.h */,
 				96CFE00414D3581100F7E7F6 /* TrackListItem.m */,
 				96CFE00714D358A800F7E7F6 /* TrackListItem.xib */,
@@ -667,7 +662,6 @@
 				964F746B14C7D445006B5B6D /* LoginManager.m in Sources */,
 				964F747214C7E5C0006B5B6D /* StraboTrack.m in Sources */,
 				96DAB85514C8D88B008FA0A4 /* CurrentUser.m in Sources */,
-				960B0E1814CA96B200FAC06A /* LeatherNavBar.m in Sources */,
 				96C17D0114CDDDFA00C96702 /* TrackDetailViewController.m in Sources */,
 				966961F614CF46730084926C /* PreferencesManager.m in Sources */,
 				966961F914CF468D0084926C /* PreferencesViewController.m in Sources */,

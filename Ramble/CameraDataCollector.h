@@ -10,6 +10,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import "Constants.h"
 
+/**
+ Undocumented pending reorganization with the New Ramble.
+ */
 @protocol CameraDataCollectorDelegate
 @optional
 -(void)videoRecordingFailedWithError:(NSError *)error;
@@ -18,6 +21,9 @@
 -(void)videoRecordingWasCanceled;
 @end
 
+/**
+ Undocumented pending reorganization with the New Ramble.
+ */
 @interface CameraDataCollector : NSObject {
     id delegate;
     
