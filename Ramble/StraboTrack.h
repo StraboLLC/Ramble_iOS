@@ -150,6 +150,11 @@
  */
 +(StraboTrack *)straboTrackFromFileWithName:(NSString *)trackName;
 
+/**
+ Saves any changes to the StraboTrack object by writing them to the appropriate files.
+ 
+ Should be called after any alteration to readwrite properties are made.
+ */
 -(BOOL)saveChanges;
 
 /**
