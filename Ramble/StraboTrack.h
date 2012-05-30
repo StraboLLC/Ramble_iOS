@@ -9,11 +9,28 @@
 #import <Foundation/Foundation.h>
 
 /**
- The StraboTrack is an object containing the filepaths to the track 
+ The StraboTrack is an object containing the filepaths to the track along with data about the track. It pulls information from the directory containing all of the files associated with a track and presents them in an accessible way.
+ 
+ ##Creating StraboTrack Objects
+
+ StraboTrack objects should be created when accessing or editing any information associated with a track. To create a StraboTrack, use the class method straboTrackFromFileWithName:. It is not recommended to instantiate a new StraboTrack without the use of this method.
+ 
+ ##Editing the StraboTrack Information
+ 
+ The JSON file associated with a track should never be altered directly. You should change information about a track by creating a new StraboTrack object, manipulating it, and saving your changes.
+ 
+ First, create a new StraboTrack object. After changing the desired properties, call the saveChanges method to ensure that any changes to the object are written to the associated documents. It should be noted that most of the properties associated with the StraboTrack are generated automatically directly from the track's associated files. The only editable properties are:
+ + trackTitle
+ + taggedPeople
+ + taggedPlaces
+ + uploadedDate
  */
 
 @interface StraboTrack : NSObject {
     NSURL * trackPath;
+    NSURL * jsonPath;
+    NSURL * mediaPath;
+    NSURL * thumbnailPath;
     NSString * trackName;
     NSString * trackTitle;
     NSString * trackType;
@@ -25,95 +42,123 @@
     NSDate * uploadedDate;
 }
 
-/**
- @property trackPath
- @abstract This is the path to the directory of the track.
- @discussion This is the path to the directory containing the video and data files.
- */
-@property(nonatomic, strong) NSURL * trackPath;
+///---------------------------------------------------------------------------------------
+/// @name File Paths
+///---------------------------------------------------------------------------------------
 
 /**
- @property jsonPath
- @abstract The path to the relevant JSON file.
- @discussion The path to the JSON file located within the track package. File has a .json extension.
+ Returns the path to the directory containing all of the files associated with a track.
  */
-@property(nonatomic, strong) NSURL * jsonPath;
+@property(readonly) NSURL * trackPath;
 
 /**
- @property videoPath
- @abstract The path to the relevant video file.
- @discussion The path to the Quicktime video file located within the track package. File has a .mov extension.
+ Returns the path to the .JSON file associated with the track. 
+ 
+ Documentation for this file can be found at the following link: [JSON docs](/mobile/JSON/index.html).
  */
-@property(nonatomic, strong) NSURL * videoPath;
+@property(readonly) NSURL * jsonPath;
 
 /**
- @property thumbnailPath
- @abstract The path to the relevant thumbnail file.
- @discussion The path to the thumbnail PNG file located within the track package. File has a .png extension.
+ Returns the path to the video or image.
  */
-@property(nonatomic, strong) NSURL * thumbnailPath;
+@property(readonly) NSURL * mediaPath;
 
 /**
- @property trackName
- @abstract The name of all of the files in the track directory.
- @discussion All of the files within a specific track directory have the same name, but have different file extensions. This is a string containing the name of these files, not including their extensions.
+ Returns the path to a thumbnail image of the track.
+ 
+ This file is either one of the first frames of the video or it is a scaled-down version of the image.
  */
-@property(nonatomic, strong) NSString * trackName;
+@property(readonly) NSURL * thumbnailPath;
 
 /**
- @property trackTitle
- @abstract The user-defined title of the track
- @discussion A string containing an optional, user-defined title for the track. The trackTitle is set to nil by default.
+ The name of the track, excluding an extension. 
+ 
+ The name of the files, not the user-defined trackTitle of the track. It should be noted that every file associated with the track has an identical file name but a different extension.
+ */
+@property(readonly) NSString * trackName;
+
+///---------------------------------------------------------------------------------------
+/// @name User-Defined Track Properties
+///---------------------------------------------------------------------------------------
+
+/**
+ The user-defined title of the track.
+ 
+ A string containing an optional, user-defined title for the track. The trackTitle is set to nil by default unless it is otherwise defined. This string is scrubbed free of special characters upon setting so that the web application is not confused.
  */
 @property(nonatomic, strong, setter=setTrackTitle:) NSString * trackTitle;
 
 /**
- @property trackType;
- @abstract The type of track files contained within this directory.
- @discussion This string has two possible values: "video" and "image". A video track contains a video file and a json file. An audio track contains an image file, an audio file, and a json file.
+ An array specifying the names of people tagged in the track.
+ 
+ @warning *Important* The structure of this array is undefined and undocumented. The web app does not yet know how to parse this information.
  */
-@property(nonatomic, strong) NSString * trackType;
-
-/**
- @property latitude
- @abstract The latitude of the track.
- @discussion The latitude of the captured track. In the case of a video track, this value is equal to the latitude of the first captured location.
- */
-@property(nonatomic, strong) NSNumber * latitude;
-
-/**
- @property longitude
- @abstract The longitude of the track.
- @discussion The longitude of the captured track. In the case of a video track, this value is equal to the longitude of the first captured location.
- */
-@property(nonatomic, strong) NSNumber * longitude;
-
-/**
- @property date
- @abstract The time and date of the start of the track.
- @discussion The time and date of the captured track. This is the time that the recording started.
- */
-@property(nonatomic, strong) NSDate * captureDate;
-
 @property(nonatomic, strong) NSMutableArray * taggedPeople;
+
+/**
+ An array specifying the names of places tagged in the track.
+ 
+ @warning *Important* The structure of this array is undefined and undocumented. The web app does not yet know how to parse this information.
+ */
 @property(nonatomic, strong) NSMutableArray * taggedPlaces;
+
+/**
+ The date that the track was uploaded.
+ 
+ Should return nil if the track has never been uploaded to the web application. Otherwise returns the date of upload formatted as an NSDate.
+ */
 @property(nonatomic, strong) NSDate * uploadedDate;
 
-/**
- @method straboTrackFromFileWithName
- @abstract Builds a dictionary of the local file paths relevant to this track.
- @discussion Creates a dictionary for 
- @result NSDictionary Returns all file paths relevant to this track. Will either contain ("videoFile" and "jsonFile") or ("imageFile" and "audioFile" and "jsonFile"), depending on the trackType (as discussed above).
- */
-+(StraboTrack *)straboTrackFromFileWithName:(NSString *)trackName;
--(BOOL)save;
+///---------------------------------------------------------------------------------------
+/// @name Associated Geographical Data
+///---------------------------------------------------------------------------------------
 
 /**
- @function getFilePaths
- @abstract Builds a dictionary of the local file paths relevant to this track.
- @discussion Creates a dictionary for 
- @result NSDictionary Returns all file paths relevant to this track. Will either contain ("videoFile" and "jsonFile") or ("imageFile" and "audioFile" and "jsonFile"), depending on the trackType (as discussed above).
+ The first latitude position recorded in the track.
  */
--(NSDictionary *)getFilePaths;
+@property(readonly) NSNumber * latitude;
+
+/**
+ The first longitude position recorded in the track.
+ */
+@property(readonly) NSNumber * longitude;
+
+///---------------------------------------------------------------------------------------
+/// @name Other Track Data
+///---------------------------------------------------------------------------------------
+
+/**
+ The type of track files contained within this directory.
+ 
+ This string has two possible values: "video" and "image". It specifies whether the track contains a still image file or a movie file.
+ */
+@property(readonly) NSString * trackType;
+
+/**
+ The time and date of the start of the track.
+ 
+ The time and date of the captured track. This is the time that the recording started and is generated automatically according to the clock on the user's device at the time of capture.
+ */
+@property(readonly) NSDate * captureDate;
+
+/**
+ Builds a new StraboTrack object related to the TrackName specified.
+ 
+ This method should be used to construct a StraboTrack object whenever the data of the StraboTrack needs to be accessed. It pulls from the JSON file and the relevant media files to determine all of the attributes of the track.
+ 
+ @param trackName Should be the name of the track as a string without an extension. This is the same as every filename associated with the track. Note that this is NOT the same as the user-defined trackTitle.
+ */
++(StraboTrack *)straboTrackFromFileWithName:(NSString *)trackName;
+
+-(BOOL)saveChanges;
+
+/**
+ Builds a dictionary of the local file paths relevant to this track.
+ 
+ Returns all file paths relevant to this track. Will either contain ("videoFile" and "jsonFile") or ("imageFile" and "audioFile" and "jsonFile"), depending on the trackType (as discussed above).
+ 
+ @bug *Deprecated* Use the properties trackPath, jsonPath, mediaPath, and thumbnailPath of a StraboTrack object to retrieve the file paths associated with a track.
+ */
+-(NSDictionary *)getFilePaths __attribute__((deprecated));
 
 @end

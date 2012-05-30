@@ -107,7 +107,7 @@ static const CGFloat VERTICAL_SLIDE_DISTANCE = 50;
     
     NSLog(@"Preparing video playback");
     
-    NSURL * resourcePath = [NSURL fileURLWithPath:[straboTrack videoPath].absoluteString];
+    NSURL * resourcePath = [NSURL fileURLWithPath:[straboTrack mediaPath].absoluteString];
     
     NSLog(@"Buffering video at URL: %@", resourcePath);
     
@@ -215,7 +215,7 @@ static const CGFloat VERTICAL_SLIDE_DISTANCE = 50;
     
     // Save the edited text
     self.straboTrack.trackTitle = textField.text;
-    [self.straboTrack save];
+    [self.straboTrack saveChanges];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -254,7 +254,7 @@ static const CGFloat VERTICAL_SLIDE_DISTANCE = 50;
     NSLog(@"Setting upload date: True");
     
     self.straboTrack.uploadedDate = [NSDate date];
-    [self.straboTrack save];
+    [self.straboTrack saveChanges];
     
     // Ensure that the user can't upload again
     // (after a successful upload)

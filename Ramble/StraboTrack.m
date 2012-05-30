@@ -9,12 +9,36 @@
 #import "StraboTrack.h"
 
 @interface StraboTrack (InternalMethods)
+
+// Class extension to define setters for readonly synthesized properties
+
 -(NSString *)sanitizeFileName:(NSString *)string;
+
+@end
+
+@interface StraboTrack ()
+
+// Specify that internally, we should be able to write these properties
+// This action will be necessary to create StraboTrack objects.
+
+@property(readwrite) NSURL * trackPath;
+@property(readwrite) NSURL * jsonPath;
+@property(readwrite) NSURL * mediaPath;
+@property(readwrite) NSURL * thumbnailPath;
+@property(readwrite) NSString * trackName;
+@property(readwrite) NSNumber * latitude;
+@property(readwrite) NSNumber * longitude;
+@property(readwrite) NSString * trackType;
+@property(readwrite) NSDate * captureDate;
+
 @end
 
 @implementation StraboTrack
 
-@synthesize trackPath, jsonPath, videoPath, thumbnailPath, trackName, trackTitle, trackType, latitude, longitude, captureDate, taggedPeople, taggedPlaces, uploadedDate;
+// Synthesize all readonly properties
+@synthesize trackPath, jsonPath, mediaPath, thumbnailPath, trackName, latitude, longitude, trackType, captureDate;
+// Synthesize all user-defined, readwrite properties
+@synthesize trackTitle, taggedPeople, taggedPlaces, uploadedDate;
 
 #pragma mark - Custom Setters
 
@@ -42,7 +66,7 @@
         straboTrack.trackName = trackName;
         straboTrack.trackPath = [NSURL URLWithString:trackFilePath];
         straboTrack.jsonPath = [NSURL URLWithString:jsonFilePath];
-        straboTrack.videoPath = [NSURL URLWithString:[trackFilePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mov", trackName]]];
+        straboTrack.mediaPath = [NSURL URLWithString:[trackFilePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mov", trackName]]];
         straboTrack.thumbnailPath = [straboTrack.trackPath URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", straboTrack.trackName]];
         
         if ([[trackDictionary objectForKey:@"points"] count] > 0) {
@@ -76,7 +100,7 @@
     }
 }
 
--(BOOL)save {
+-(BOOL)saveChanges {
     
     NSLog(@"Saving StraboTrack updates");
     
