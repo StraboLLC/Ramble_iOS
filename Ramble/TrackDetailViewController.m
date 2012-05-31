@@ -9,7 +9,7 @@
 #import "TrackDetailViewController.h"
 
 @interface TrackDetailViewController (InternalMethods)
--(BOOL)setFileHasBeenUploaded;
+-(BOOL)setUploadState;
 @end
 
 @interface TrackDetailViewController (UploadManagerDelegate) <UploadManagerDelegate>
@@ -25,6 +25,10 @@
 @end
 
 @implementation TrackDetailViewController
+
+// Constants for view animation with keyboard
+static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
+static const CGFloat VERTICAL_SLIDE_DISTANCE = 50;
 
 @synthesize straboTrack;
 
@@ -47,13 +51,6 @@
 
 #pragma mark - View lifecycle
 
-/*
- // Implement loadView to create a view hierarchy programmatically, without using a nib.
- - (void)loadView
- {
- }
- */
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -64,8 +61,13 @@
         statusLabel.text = @"Please log in to upload this capture.";
     } else {
         // Display content conditional on the file's upload history
-        [self setFileHasBeenUploaded];
+        [self setUploadState];
     }
+    
+    // Set the background of the view
+    UIImage *background = [UIImage imageNamed:@"cellBackground.png"];
+	[self.view setBackgroundColor:[UIColor colorWithPatternImage:background]];
+    
     // Set up the display with the proper track information
     
     // Set the title
@@ -82,6 +84,7 @@
     dateLabel.text = [formatter stringFromDate:straboTrack.captureDate];
     
     // Load the thumbnail image
+    // [thumbnailButton setBackgroundImage:[UIImage imageWithContentsOfFile:self.straboTrack.thumbnailPath.absoluteString] forState:UIControlStateNormal];
     thumbnailImage.image = [UIImage imageWithContentsOfFile:self.straboTrack.thumbnailPath.absoluteString];
 }
 
@@ -99,6 +102,20 @@
 }
 
 #pragma mark Button Handling
+
+-(IBAction)playButtonPressed:(id)sender {
+    
+    NSLog(@"Preparing video playback");
+    
+    NSURL * resourcePath = [NSURL fileURLWithPath:[straboTrack mediaPath].absoluteString];
+    
+    NSLog(@"Buffering video at URL: %@", resourcePath);
+    
+    previewPlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:resourcePath];
+    previewPlayer.moviePlayer.useApplicationAudioSession = NO;
+    
+    [self presentMoviePlayerViewControllerAnimated:previewPlayer];
+}
 
 -(IBAction)uploadButtonPressed:(id)sender {
     
@@ -118,6 +135,7 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSString * authToken = appDelegate.loginManager.currentUser.authToken;
     NSString * userID = [NSString stringWithFormat:@"%@", appDelegate.loginManager.currentUser.userID];
+    NSLog(@"Requesting Upload to: %@", userID);
     [uploadManager generateUploadRequestFor:[straboTrack trackName] inAlbum:@"Mobile Uploads" withAuthtoken:authToken withID:userID];
     [uploadManager startUpload];
     
@@ -139,15 +157,20 @@
 
 @implementation TrackDetailViewController (InternalMethods)
 
--(BOOL)setFileHasBeenUploaded {
+-(BOOL)setUploadState {
     if ([straboTrack.uploadedDate isEqualToDate:[NSDate dateWithTimeIntervalSince1970:0]]) {
         NSLog(@"File has never been uploaded before");
-        statusLabel.text = nil;
+        // Set the upload button to up and enabled
+        [uploadButton setBackgroundImage:[UIImage imageNamed:@"uploadUp"] forState:UIControlStateNormal];
+        [uploadButton setEnabled:YES];
+
         return false;
     } else {
         NSLog(@"File HAS been uploaded before.");
-        statusLabel.text = @"You have uploaded this file before. You may not upload it again.";
+        // Depress and disable the upload button
+        [uploadButton setBackgroundImage:[UIImage imageNamed:@"uploadDown"] forState:UIControlStateNormal];
         uploadButton.enabled = NO;
+        
         return true;
     }
 }
@@ -158,11 +181,41 @@
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
     
+    // Animate the view up so the keyboard does not hide the text fields
+    
+    // Set the desired frames
+    CGRect viewFrame = self.view.frame;
+    viewFrame.origin.y -= VERTICAL_SLIDE_DISTANCE;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:KEYBOARD_ANIMATION_DURATION];
+    
+    [self.view setFrame:viewFrame];
+    
+    [UIView commitAnimations];
+    
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    // Animate the view back down to its original position
+    
+    // Set the desired frames
+    CGRect viewFrame = self.view.frame;
+    viewFrame.origin.y += VERTICAL_SLIDE_DISTANCE;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:KEYBOARD_ANIMATION_DURATION];
+    
+    [self.view setFrame:viewFrame];
+    
+    [UIView commitAnimations];
+    
+    // Save the edited text
     self.straboTrack.trackTitle = textField.text;
-    [self.straboTrack save];
+    [self.straboTrack saveChanges];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -176,6 +229,10 @@
 
 -(void)uploadProgressMade:(double)percentComplete {
     uploadProgress.progress = percentComplete;
+    
+    if (percentComplete == 1) {
+        uploadStatusLabel.text = @"Confirming Upload";
+    }
 }
 
 -(void)uploadStopped:(BOOL)cancelled withError:(NSError *)error {
@@ -194,8 +251,15 @@
     
     // Save the upload date in the StraboFile
     
+    NSLog(@"Setting upload date: True");
+    
     self.straboTrack.uploadedDate = [NSDate date];
-    [self.straboTrack save];
+    [self.straboTrack saveChanges];
+    
+    // Ensure that the user can't upload again
+    // (after a successful upload)
+    [self setUploadState];
+    
 }
 
 @end

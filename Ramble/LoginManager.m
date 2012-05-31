@@ -26,9 +26,8 @@
 
 -(id)init {
     self = [super init];
-    NSLog(@"Init Called");
+    NSLog(@"Login Manager initialized with application start.");
     if (self) {
-        NSLog(@"Self Checked");
         self.currentUser = nil;
         
         // Perform custom initialization here
@@ -72,14 +71,20 @@
     NSError * error = nil;
     NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&error];
     NSNumber * userID = [dict objectForKey:@"id"];
-    NSLog(@"FBUser ID: %i", userID.intValue);
+    NSLog(@"Retrieved FBUser ID: %i", userID.intValue);
+    
+    currentUser.userID = userID;
+    
+    NSLog(@"Set current user ID");
     
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:userID forKey:FBUserIDKey];
     [defaults synchronize];
     
+    // Set the currentUser ID as the facebook id
+    
     NSString * unencryptedAuthtoken = [NSString stringWithFormat:@"%i%@", userID.intValue, STRSaltHash];
-    NSLog(@"Authtoken: %@", [unencryptedAuthtoken MD5]);
+    NSLog(@"Processed Secure Authtoken: %@", [unencryptedAuthtoken MD5]);
     if (error) return nil;
     return [unencryptedAuthtoken MD5];
     
@@ -120,8 +125,8 @@
 }
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
-    if ([self.delegate respondsToSelector:@selector(straboLoginDidFailWithError:)]) {
-        [self.delegate straboLoginDidFailWithError:error];
+    if ([self.delegate respondsToSelector:@selector(facebookLoginDidFailWithError:)]) {
+        [self.delegate facebookLoginDidFailWithError:error];
     }
 }
 
@@ -132,17 +137,17 @@
 - (void)request:(FBRequest *)request didLoadRawResponse:(NSData *)data {
     // Part of the login process. When the response from facebook is received
     // process the response for the user's id and then generate an authtoken.
-    NSLog(@"ResponseData: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-    
+    NSLog(@"Strabo login facebook response successful.");
     NSString * authToken = [self processForAuthToken:data];
     
     if (authToken) {
-    // Save the authtoken
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:authToken forKey:STRAccessTokenKey];
-    [defaults synchronize];
-    
-    self.currentUser.authToken = authToken;
+        // Save the authtoken
+        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:authToken forKey:STRAccessTokenKey];
+        [defaults synchronize];
+        
+        self.currentUser.authToken = authToken;
+        
         if ([self.delegate respondsToSelector:@selector(userDidLoginSuccessfully)]) {
             [self.delegate userDidLoginSuccessfully];
         }
@@ -165,6 +170,7 @@
     self.currentUser = [[CurrentUser alloc] init];
     
     NSLog(@"Defaults auth Key Saved: %@", [defaults objectForKey:FBAccessTokenKey]);
+    
     // Now that the user is logged in with Facebook,
     // log the user into the Strabo system
     [self logInWithStrabo];
@@ -182,13 +188,14 @@
         self.currentUser = nil;
     }
     NSLog(@"Logged out of facebook");
+    
     // When logging out the facebook user, log the user out of Strabo
     [self logOutFromStrabo];
 }
 
 - (void)fbDidNotLogin:(BOOL)cancelled {
     if ([self.delegate respondsToSelector:@selector(straboLoginDidFailWithError:)]) {
-        [self.delegate straboLoginDidFailWithError:nil];
+        [self.delegate facebookLoginDidFailWithError:nil];
     }
 }
 

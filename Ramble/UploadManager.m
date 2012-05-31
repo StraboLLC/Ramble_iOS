@@ -115,7 +115,13 @@
     // Fire up the connection
     if (currentConnection) {
         [currentConnection start];
+        if ([self.delegate respondsToSelector:@selector(uploadStarted)]) {
+            [self.delegate uploadStarted];
+        }
     } else {
+        
+        NSLog(@"Error initiating connection. Alerting delegate.");
+        
         if ([self.delegate respondsToSelector:@selector(uploadStopped:withError:)]) {
             [self.delegate uploadStopped:NO withError:nil];
         }
@@ -124,6 +130,9 @@
 
 -(void)cancelCurrentUpload {
     [currentConnection cancel];
+    
+    NSLog(@"Upload canceled. Alerting delegate.");
+    
     if ([self.delegate respondsToSelector:@selector(uploadStopped:withError:)]) {
         [self.delegate uploadStopped:YES withError:nil];
     }
@@ -172,7 +181,7 @@
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     // Append the new data to receivedData
     [receivedData appendData:data];
-    NSLog(@"Response Data Partial: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    NSLog(@"Upload connection received partial response: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
@@ -199,14 +208,14 @@
     }
     // Handle the data response internally first
     NSData * data = [NSData dataWithData:receivedData];
-    NSLog(@"Response Data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    NSLog(@"Connection finished receiving response: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     [self handleResponse:data];
 }
 
 -(void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
     // Notify the delegate that uploading progress has been made
     if ([self.delegate respondsToSelector:@selector(uploadProgressMade:)]) {
-        NSLog(@"Upload Progress Made: %f", (double)totalBytesWritten/(double)totalBytesExpectedToWrite);
+        NSLog(@"Upload connection progress made: %f", (double)totalBytesWritten/(double)totalBytesExpectedToWrite);
         [self.delegate uploadProgressMade:((double)totalBytesWritten/(double)totalBytesExpectedToWrite)];
     }
 }

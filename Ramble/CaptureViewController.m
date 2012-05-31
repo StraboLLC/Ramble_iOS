@@ -34,6 +34,10 @@
 -(void)recordLocationIfRecording;
 -(void)startRecording;
 -(void)stopRecording;
+-(void)cancelRecording;
+-(void)animateRecordingLight;
+-(void)stopAnimatingRecordingLight;
+-(void)flashRecordingLight;
 @end
 
 @implementation CaptureViewController
@@ -91,31 +95,50 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     
+    NSLog(@"Capture View will appear - Setting Up");
+    
+    // Make sure the status bar is translucent
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent
+                                                animated:YES];
+    
+    // Prevent the screen from going black while recording
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    
     // Turbocharge the accuracy if necessary
     if ([preferencesManager precisionLocationModeOn]) {
+        NSLog(@"Setting location accuracy - precisionLocationModeOn");
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    } else {
+        NSLog(@"Setting location accuracy - precisionLocationModeOff");
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     }
     
     // Turbocharge the video quality if necessary
     if ([preferencesManager videoModeIsHigh]) {
+        NSLog(@"Setting video quality - videoModeIsHigh");
         cameraDataCollector.session.sessionPreset = AVCaptureSessionPreset640x480;
     } else {
+        NSLog(@"Setting video quality - videoModeIsLow");
         cameraDataCollector.session.sessionPreset = AVCaptureSessionPreset352x288;
     }
     
     [locationManager startUpdatingLocation];
     [locationManager startUpdatingHeading];
-    
-    // Hide the status bar
-    //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
+    
+    NSLog(@"Capture View Controller will disappear before recording terminated.");
+    NSLog(@"Stopping recording session and saving video.");
+    
+    [self cancelRecording];
+    
+    NSLog(@"Turning location off");
     [locationManager stopUpdatingLocation];
     [locationManager stopUpdatingHeading];
     
-    // Show the status bar
-    //[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    // Allow the idle timer to take over when the user is not capturing video
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 }
 
 - (void)viewDidUnload
@@ -144,10 +167,12 @@
 -(IBAction)recordButtonPressed:(id)sender {
     if (isRecording) {
         [self stopRecording];
-        [recordButton setTitle:@"Rec" forState:UIControlStateNormal];
+        //[recordButton setTitle:@"Rec" forState:UIControlStateNormal];
+        [self stopAnimatingRecordingLight];
     } else {
         [self startRecording];
-        [recordButton setTitle:@"Stop" forState:UIControlStateNormal];
+        //[recordButton setTitle:@"Stop" forState:UIControlStateNormal];
+        [self animateRecordingLight];       
     }
 }
 
@@ -166,27 +191,72 @@
         }
         
         [locationDataCollector addDataPointWithLatitude:[currentLocation coordinate].latitude 
-                                  withLongitude:[currentLocation coordinate].longitude 
-                                    withHeading:direction
-                                  withTimestamp:[[NSDate date] timeIntervalSinceDate:recordingStartTime]
-                                   withAccuracy:[currentLocation horizontalAccuracy]];
+                                          withLongitude:[currentLocation coordinate].longitude 
+                                            withHeading:direction
+                                          withTimestamp:[[NSDate date] timeIntervalSinceDate:recordingStartTime]
+                                           withAccuracy:[currentLocation horizontalAccuracy]];
     }
 }
 
 -(void)startRecording {
+    NSLog(@"Starting recording");
     [cameraDataCollector startRecording];
     [locationDataCollector clearDataPoints];
     recordingStartTime = [NSDate date];
     isRecording = YES;
+    
+    // Force record first datapoint
+    [self recordLocationIfRecording];
 }
 
 -(void)stopRecording {
+    NSLog(@"Stopping recording");
     isRecording = NO;
     // Once the user hits the stop button, start a loading screen
     [activityIndicator startAnimating];
     
     [cameraDataCollector stopRecording];
     [locationDataCollector writeJSONFileForTracktype:@"video" withCompassMode:@"mode" withOrientation:@"vertical"];
+}
+
+-(void)cancelRecording {
+    
+    NSLog(@"Stopping recording");
+    isRecording = NO;
+    
+    [cameraDataCollector stopRecording];
+    [locationDataCollector writeJSONFileForTracktype:@"video" withCompassMode:@"mode" withOrientation:@"vertical"];
+}
+
+-(void)animateRecordingLight {
+    recordLight.image = [UIImage imageNamed:@"recordON"];
+    flashTimer = [NSTimer scheduledTimerWithTimeInterval:1.5 
+                                                  target:self
+                                                selector:@selector(flashRecordingLight) 
+                                                userInfo:nil 
+                                                 repeats:YES];
+}
+
+-(void)stopAnimatingRecordingLight {
+    [flashTimer invalidate];
+    recordLight.image = [UIImage imageNamed:@"recordOFF"];
+}
+
+-(void)flashRecordingLight {
+    if (isRecording) {
+        if (recordLight.image == [UIImage imageNamed:@"recordON"]) {
+            recordLight.image = [UIImage imageNamed:@"recordOFF"];
+            
+            // Turn back on shortly
+            [NSTimer scheduledTimerWithTimeInterval:0.4 
+                                             target:self 
+                                           selector:@selector(flashRecordingLight)
+                                           userInfo:nil 
+                                            repeats:NO];
+        } else {
+            recordLight.image = [UIImage imageNamed:@"recordON"];
+        }
+    }
 }
 
 - (void)rotateImage:(UIImageView *)image duration:(NSTimeInterval)duration 
@@ -243,11 +313,11 @@
 @implementation CaptureViewController (LocationDataCollectorDelegate)
 
 -(void)writeJSONFileSuccessful {
-    NSLog(@"JSON file appears to have written successfully");
+    NSLog(@"JSON file written");
 }
 
 -(void)writeJSONFileFailedWithError:(NSError *)error {
-    NSLog(@"JSON writing failed with error: %@", error);
+    NSLog(@"JSON file failed with error: %@", error);
 }
 
 @end
@@ -255,11 +325,12 @@
 @implementation CaptureViewController (CameraDataCollectorDelegate)
 
 -(void)videoRecordingDidBegin {
-    
+    NSLog(@"Video recording ended");
 }
 
 -(void)videoRecordingDidEnd {
     // Save temporary files
+    NSLog(@"Video recording ended");
     [localFileManager saveTemporaryFiles];
     if ([self.delegate respondsToSelector:@selector(parentShouldUpdateThumbnail)]) {
         [self.delegate parentShouldUpdateThumbnail];
@@ -275,7 +346,7 @@
 @implementation CaptureViewController (LocalFileManagerDelegate)
 
 -(void)saveTemporaryFilesFailedWithError:(NSError *)error {
-    NSLog(@"Were");
+    NSLog(@"Temporary file save failed with error: %@", error);
     [activityIndicator stopAnimating];
 }
 

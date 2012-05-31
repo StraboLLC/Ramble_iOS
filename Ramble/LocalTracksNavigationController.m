@@ -14,6 +14,8 @@
 
 @implementation LocalTracksNavigationController
 
+@synthesize hasAccessoryButton;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,17 +35,13 @@
 
 #pragma mark - View lifecycle
 
-/*
- // Implement loadView to create a view hierarchy programmatically, without using a nib.
- - (void)loadView
- {
- }
- */
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Set accessory button
+    hasAccessoryButton = NO;
     
     // Load the initial view controller from the storyboard
     localTracksViewController = (LocalTracksViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"LocalTracks"];
@@ -57,6 +55,13 @@
     
     // Make sure that the back button doesn't appear initially
     backButton.hidden = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    // Make sure the status bar is grey
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault
+                                                animated:YES];
 }
 
 - (void)viewDidUnload
@@ -75,7 +80,6 @@
 #pragma mark - Transition Methods
 
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    backButton.hidden = NO;
     [self addChildViewController:viewController];
     ((UIViewController *)self.childViewControllers.lastObject).view.frame = CGRectMake(subView.frame.size.width, 
                                                                                        0, 
@@ -107,7 +111,11 @@
                                                      ((UIViewController *)self.childViewControllers.lastObject).view.frame = incommingViewFrame;
                                                  } 
                                                  completion:^(BOOL finished){
-                                                     NSLog(@"Animation Complete");
+                                                     NSLog(@"Push view animation complete");
+                                                     backButton.hidden = NO;
+                                                     if (hasAccessoryButton) {
+                                                         accessoryButton.hidden = YES;
+                                                     }
                                                  }];
                                 
                             } 
@@ -147,14 +155,18 @@
                                                      nextViewController.view.frame = incommingViewFrame;
                                                  } 
                                                  completion:^(BOOL finished){
-                                                     NSLog(@"Animation Complete");
+                                                     NSLog(@"Pop view animation complete");
                                                  }];
                             } 
                             completion:^(BOOL finished){
                                 // If popping to the root view controller
-                                if (self.childViewControllers.count < 1) {
+                                if (self.childViewControllers.count == 2) {
+                                    // Hide the back button
                                     backButton.hidden = YES;
-                                    accessoryButton.hidden = NO;
+                                    
+                                    if (hasAccessoryButton) {
+                                        accessoryButton.hidden = NO;
+                                    }
                                 }
                                 [self.childViewControllers.lastObject removeFromParentViewController];
                             }];

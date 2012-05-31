@@ -30,12 +30,15 @@
     NSDate * recordingStartTime;
     BOOL isRecording;
     
+    NSTimer * flashTimer;
+    
     // Variables to hold the current device location information
     CLLocation * currentLocation;
     CLHeading * currentHeading;
     
     // UI Outlets
     IBOutlet UIButton * recordButton;
+    IBOutlet UIImageView * recordLight;
     IBOutlet UIView * videoPreviewView;
     IBOutlet UIImageView * compassImage;
     IBOutlet UIActivityIndicatorView * activityIndicator;

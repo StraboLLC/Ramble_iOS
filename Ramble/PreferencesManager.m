@@ -24,7 +24,7 @@
         
         // Set defaults if they do not exist
         if (![defaults objectForKey:STRPrecisionLocationModeOnKey] || ![defaults objectForKey:STRCompassModeMagneticKey] || ![defaults objectForKey:STRLaunchToCaptureModeKey] || ![defaults objectForKey:STRVideoModeHighKey]) {
-            [defaults setObject:[NSNumber numberWithBool:false] forKey:STRPrecisionLocationModeOnKey];
+            [defaults setObject:[NSNumber numberWithBool:true] forKey:STRPrecisionLocationModeOnKey];
             [defaults setObject:[NSNumber numberWithBool:true] forKey:STRCompassModeMagneticKey];
             [defaults setObject:[NSNumber numberWithBool:true] forKey:STRLaunchToCaptureModeKey];
             [defaults setObject:[NSNumber numberWithBool:false] forKey:STRVideoModeHighKey];
@@ -37,6 +37,7 @@
 #pragma mark User Settings
 
 -(void)setPrecisionLocationModeOn:(BOOL)precisionLocationModeOn {
+    NSLog(@"Precision mode set: %@", precisionLocationModeOn ? @"YES" : @"NO");
     [defaults setObject:[NSNumber numberWithBool:precisionLocationModeOn] forKey:STRPrecisionLocationModeOnKey];
     [defaults synchronize];
 }
@@ -46,6 +47,7 @@
 }
 
 -(void)setCompassModeMagnetic:(BOOL)compassModeMagnetic {
+    NSLog(@"Compass mode magnetic set: %@", compassModeMagnetic ? @"YES" : @"NO");
     [defaults setObject:[NSNumber numberWithBool:compassModeMagnetic] forKey:STRCompassModeMagneticKey];
     [defaults synchronize];
 }
@@ -55,6 +57,7 @@
 }
 
 -(void)setLaunchToCaptureMode:(BOOL)launchToCaptureMode {
+    NSLog(@"Launch to capture mode set: %@", launchToCaptureMode ? @"YES" : @"NO");
     [defaults setObject:[NSNumber numberWithBool:launchToCaptureMode] forKey:STRLaunchToCaptureModeKey];
     [defaults synchronize];
 }
@@ -64,6 +67,7 @@
 }
 
 -(void)setVideoModeIsHigh:(BOOL)videoModeIsHigh {
+    NSLog(@"Video high accuracy mode set: %@", videoModeIsHigh ? @"YES" : @"NO");
     [defaults setObject:[NSNumber numberWithBool:videoModeIsHigh] forKey:STRVideoModeHighKey];
     [defaults synchronize];
 }

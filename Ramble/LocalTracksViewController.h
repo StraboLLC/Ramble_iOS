@@ -12,6 +12,7 @@
 #import "LocalFileManager.h"
 #import "TrackListItem.h"
 #import "StraboTrack.h"
+#import "Constants.h"
 
 @interface LocalTracksViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
     LocalFileManager * localFileManager;

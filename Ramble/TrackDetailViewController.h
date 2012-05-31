@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "PreferencesViewController.h"
 #import "Constants.h"
 #import "StraboTrack.h"
@@ -19,9 +20,10 @@
     UploadManager * uploadManager;
     StraboTrack * straboTrack;
     LoginManager * loginManager;
+    
+    MPMoviePlayerViewController * previewPlayer;
 
     // Detail View Outlets
-    IBOutlet UILabel * titleLabel;
     IBOutlet UILabel * dateLabel;
     IBOutlet UITextField * titleTextField;
     IBOutlet UIButton * uploadButton;
@@ -38,7 +40,7 @@
 
 @property(nonatomic, strong)StraboTrack * straboTrack;
 
-
+-(IBAction)playButtonPressed:(id)sender;
 -(IBAction)uploadButtonPressed:(id)sender;
 -(IBAction)actionButtonPressed:(id)sender;
 

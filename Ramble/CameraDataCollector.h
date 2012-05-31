@@ -10,13 +10,20 @@
 #import <AVFoundation/AVFoundation.h>
 #import "Constants.h"
 
+/**
+ Undocumented pending reorganization with the New Ramble.
+ */
 @protocol CameraDataCollectorDelegate
 @optional
 -(void)videoRecordingFailedWithError:(NSError *)error;
 -(void)videoRecordingDidBegin;
 -(void)videoRecordingDidEnd;
+-(void)videoRecordingWasCanceled;
 @end
 
+/**
+ Undocumented pending reorganization with the New Ramble.
+ */
 @interface CameraDataCollector : NSObject {
     id delegate;
     
@@ -41,6 +48,7 @@
 -(id)init;
 -(void)startRecording;
 -(void)stopRecording;
+-(void)cancelRecording;
 -(BOOL)isRecording;
 +(AVCaptureConnection *)connectionWithMediaType:(NSString *)mediaType fromConnections:(NSArray *)connections;
 

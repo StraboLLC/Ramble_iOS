@@ -76,6 +76,10 @@
     [[self movieFileOutput] stopRecording];
 }
 
+-(void)cancelRecording {
+    [[self movieFileOutput] stopRecording];
+}
+
 -(BOOL)isRecording {
     return [[self movieFileOutput] isRecording];
 }

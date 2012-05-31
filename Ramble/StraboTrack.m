@@ -8,9 +8,45 @@
 
 #import "StraboTrack.h"
 
+@interface StraboTrack (InternalMethods)
+
+// Class extension to define setters for readonly synthesized properties
+
+-(NSString *)sanitizeFileName:(NSString *)string;
+
+@end
+
+@interface StraboTrack ()
+
+// Specify that internally, we should be able to write these properties
+// This action will be necessary to create StraboTrack objects.
+
+@property(readwrite) NSURL * trackPath;
+@property(readwrite) NSURL * jsonPath;
+@property(readwrite) NSURL * mediaPath;
+@property(readwrite) NSURL * thumbnailPath;
+@property(readwrite) NSString * trackName;
+@property(readwrite) NSNumber * latitude;
+@property(readwrite) NSNumber * longitude;
+@property(readwrite) NSString * trackType;
+@property(readwrite) NSDate * captureDate;
+
+@end
+
 @implementation StraboTrack
 
-@synthesize trackPath, jsonPath, videoPath, thumbnailPath, trackName, trackTitle, trackType, latitude, longitude, captureDate, taggedPeople, taggedPlaces, uploadedDate;
+// Synthesize all readonly properties
+@synthesize trackPath, jsonPath, mediaPath, thumbnailPath, trackName, latitude, longitude, trackType, captureDate;
+// Synthesize all user-defined, readwrite properties
+@synthesize trackTitle, taggedPeople, taggedPlaces, uploadedDate;
+
+#pragma mark - Custom Setters
+
+-(void)setTrackTitle:(NSString *)titleString {
+    
+    NSLog(@"Scrubbing and setting track title");
+    trackTitle = [self sanitizeFileName:titleString];
+}
 
 +(StraboTrack *)straboTrackFromFileWithName:(NSString *)trackName {
     StraboTrack * straboTrack = [[StraboTrack alloc] init];
@@ -30,16 +66,32 @@
         straboTrack.trackName = trackName;
         straboTrack.trackPath = [NSURL URLWithString:trackFilePath];
         straboTrack.jsonPath = [NSURL URLWithString:jsonFilePath];
-        straboTrack.videoPath = [NSURL URLWithString:[trackFilePath stringByAppendingFormat:[NSString stringWithFormat:@"%@.mov", trackName]]];
+        straboTrack.mediaPath = [NSURL URLWithString:[trackFilePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mov", trackName]]];
         straboTrack.thumbnailPath = [straboTrack.trackPath URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", straboTrack.trackName]];
-        straboTrack.trackTitle = [trackDictionary objectForKey:@"title"];
-        straboTrack.trackType = [trackDictionary objectForKey:@"tracktype"];
-        straboTrack.latitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"latitude"];
-        straboTrack.longitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"longitude"];
-        straboTrack.captureDate = [NSDate dateWithTimeIntervalSince1970:[[trackDictionary objectForKey:@"captureDate"] integerValue]];
-        straboTrack.taggedPeople = [trackDictionary objectForKey:@"taggedPeople"];
-        straboTrack.taggedPlaces = [trackDictionary objectForKey:@"taggedPlaces"];
-        straboTrack.uploadedDate = [NSDate dateWithTimeIntervalSince1970:[[trackDictionary objectForKey:@"uploadDate"] integerValue]];
+        
+        if ([[trackDictionary objectForKey:@"points"] count] > 0) {
+            
+            straboTrack.trackTitle = [trackDictionary objectForKey:@"title"];
+            straboTrack.trackType = [trackDictionary objectForKey:@"tracktype"];
+            straboTrack.latitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"latitude"];
+            straboTrack.longitude = [[[trackDictionary objectForKey:@"points"] objectAtIndex:0] objectForKey:@"longitude"];
+            straboTrack.captureDate = [NSDate dateWithTimeIntervalSince1970:[[trackDictionary objectForKey:@"captureDate"] integerValue]];
+            straboTrack.taggedPeople = [trackDictionary objectForKey:@"taggedPeople"];
+            straboTrack.taggedPlaces = [trackDictionary objectForKey:@"taggedPlaces"];
+            straboTrack.uploadedDate = [NSDate dateWithTimeIntervalSince1970:[[trackDictionary objectForKey:@"uploadDate"] integerValue]];
+            
+        } else {
+            
+            straboTrack.trackTitle = @"Corrupted";
+            straboTrack.trackType = nil;
+            straboTrack.latitude = nil;
+            straboTrack.longitude = nil;
+            straboTrack.captureDate = [NSDate date];
+            straboTrack.taggedPeople = nil;
+            straboTrack.taggedPlaces = nil;
+            straboTrack.uploadedDate = 0;
+            
+        }
         
         return straboTrack;
         
@@ -48,7 +100,9 @@
     }
 }
 
--(BOOL)save {
+-(BOOL)saveChanges {
+    
+    NSLog(@"Saving StraboTrack updates");
     
     // Find the associated JSON file
     NSString * jsonFilePath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:[self.trackName stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json", self.trackName]]];
@@ -64,7 +118,10 @@
     [trackDictionary setObject:self.trackTitle forKey:@"title"];
     [trackDictionary setObject:self.taggedPeople forKey:@"taggedPeople"];
     [trackDictionary setObject:self.taggedPlaces forKey:@"taggedPlaces"];
-    [trackDictionary setObject:[NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]] forKey:@"uploadDate"];
+    
+    NSLog(@"Saving new uploadedDate: %.0f", [self.uploadedDate timeIntervalSince1970]);
+    
+    [trackDictionary setObject:[NSString stringWithFormat:@"%.0f", [self.uploadedDate timeIntervalSince1970]] forKey:@"uploadDate"];
     
     NSDictionary * jsonDictionary = [NSDictionary dictionaryWithObject:trackDictionary forKey:@"track"];
     
@@ -119,6 +176,19 @@
     } else {
         return nil;
     }
+}
+
+@end
+
+@implementation StraboTrack (InternalMethods)
+
+-(NSString *)sanitizeFileName:(NSString *)string {
+
+    // Only allow alpha characters
+    NSCharacterSet* illegalFileNameChars = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+    NSString* sanitizedString = [string stringByTrimmingCharactersInSet:illegalFileNameChars];
+    
+    return sanitizedString;
 }
 
 @end

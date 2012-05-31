@@ -15,10 +15,14 @@
     PreferencesManager * preferencesManager;
     LoginManager * loginManager;
     
+    IBOutlet UIView * buttonPanelView;
+    
     IBOutlet UISwitch * locationModeSwitch;
     IBOutlet UISwitch * videoModeSwitch;
     IBOutlet UISwitch * launchScreenSwitch;
     IBOutlet UISegmentedControl * headingSelector;
+    
+    IBOutlet UIActivityIndicatorView * activityIndicator;
     
     IBOutlet UIButton * logInButton;
 }

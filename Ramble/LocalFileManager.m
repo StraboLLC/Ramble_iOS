@@ -114,16 +114,18 @@
 //#warning Not very good error handling here. Complete with blocking in the tableviewcontroller
     StraboTrack * track = [StraboTrack straboTrackFromFileWithName:trackName];
     NSError * error = nil;
-    NSLog(@"Track to remove: %@", track.trackPath);
+    NSLog(@"Removing track: %@", track.trackPath);
     [fileManager removeItemAtPath:track.trackPath.absoluteString error:&error];
     if (error) {
         NSLog(@"An error occurred deleting the file: %@", error);
+    } else {
+        NSLog(@"File deletion successful");
     }
 }
 
 -(StraboTrack *)mostRecentTrack {
     NSArray * directoryContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:self.docsDirectoryPath error:nil];
-    NSLog(@"Getting strabo file from: %@", directoryContents);
+    NSLog(@"Retrieving most recent track.");
     return [StraboTrack straboTrackFromFileWithName:directoryContents.lastObject];
 }
 
