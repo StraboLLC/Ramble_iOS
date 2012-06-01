@@ -52,8 +52,8 @@
 		96C17D0114CDDDFA00C96702 /* TrackDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C17D0014CDDDFA00C96702 /* TrackDetailViewController.m */; };
 		96C84D611579238B00229BE8 /* compassFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 96C84D601579238B00229BE8 /* compassFrame.png */; };
 		96C84D631579241800229BE8 /* recordON.png in Resources */ = {isa = PBXBuildFile; fileRef = 96C84D621579241800229BE8 /* recordON.png */; };
-		96C84D661579249D00229BE8 /* recordDOWN.png in Resources */ = {isa = PBXBuildFile; fileRef = 96C84D641579249D00229BE8 /* recordDOWN.png */; };
-		96C84D671579249D00229BE8 /* recordUP.png in Resources */ = {isa = PBXBuildFile; fileRef = 96C84D651579249D00229BE8 /* recordUP.png */; };
+		96C84D6A1579272700229BE8 /* recordDOWN.png in Resources */ = {isa = PBXBuildFile; fileRef = 96C84D681579272700229BE8 /* recordDOWN.png */; };
+		96C84D6B1579272700229BE8 /* recordUP.png in Resources */ = {isa = PBXBuildFile; fileRef = 96C84D691579272700229BE8 /* recordUP.png */; };
 		96CD7B9214D3D39F00976367 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96CD7B9114D3D39F00976367 /* MediaPlayer.framework */; };
 		96CFE00514D3581100F7E7F6 /* TrackListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 96CFE00414D3581100F7E7F6 /* TrackListItem.m */; };
 		96CFE00814D358A800F7E7F6 /* TrackListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96CFE00714D358A800F7E7F6 /* TrackListItem.xib */; };
@@ -160,8 +160,8 @@
 		96C17D0014CDDDFA00C96702 /* TrackDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackDetailViewController.m; sourceTree = "<group>"; };
 		96C84D601579238B00229BE8 /* compassFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compassFrame.png; sourceTree = "<group>"; };
 		96C84D621579241800229BE8 /* recordON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordON.png; sourceTree = "<group>"; };
-		96C84D641579249D00229BE8 /* recordDOWN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordDOWN.png; sourceTree = "<group>"; };
-		96C84D651579249D00229BE8 /* recordUP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordUP.png; sourceTree = "<group>"; };
+		96C84D681579272700229BE8 /* recordDOWN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordDOWN.png; sourceTree = "<group>"; };
+		96C84D691579272700229BE8 /* recordUP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordUP.png; sourceTree = "<group>"; };
 		96CD7B9114D3D39F00976367 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		96CFE00314D3581100F7E7F6 /* TrackListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackListItem.h; sourceTree = "<group>"; };
 		96CFE00414D3581100F7E7F6 /* TrackListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackListItem.m; sourceTree = "<group>"; };
@@ -418,8 +418,8 @@
 		96D9EF14152011580079C357 /* Record Button */ = {
 			isa = PBXGroup;
 			children = (
-				96C84D641579249D00229BE8 /* recordDOWN.png */,
-				96C84D651579249D00229BE8 /* recordUP.png */,
+				96C84D681579272700229BE8 /* recordDOWN.png */,
+				96C84D691579272700229BE8 /* recordUP.png */,
 				96C84D621579241800229BE8 /* recordON.png */,
 			);
 			name = "Record Button";
@@ -629,8 +629,8 @@
 				96C041E61577EDA6000F6E4A /* iTunesArtwork in Resources */,
 				96C84D611579238B00229BE8 /* compassFrame.png in Resources */,
 				96C84D631579241800229BE8 /* recordON.png in Resources */,
-				96C84D661579249D00229BE8 /* recordDOWN.png in Resources */,
-				96C84D671579249D00229BE8 /* recordUP.png in Resources */,
+				96C84D6A1579272700229BE8 /* recordDOWN.png in Resources */,
+				96C84D6B1579272700229BE8 /* recordUP.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

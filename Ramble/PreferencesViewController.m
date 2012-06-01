@@ -51,7 +51,6 @@
     // Set the UI inputs appropriately
     [locationModeSwitch setOn:[preferencesManager precisionLocationModeOn] animated:NO];
     [videoModeSwitch setOn:[preferencesManager videoModeIsHigh] animated:NO];
-    [launchScreenSwitch setOn:[preferencesManager launchToCaptureMode] animated:NO];
     if ([preferencesManager compassModeMagnetic]) {
         headingSelector.selectedSegmentIndex = 1;
     } else {
@@ -105,10 +104,6 @@
 
 -(IBAction)videoModeSwitchDidChange:(id)sender {
     [preferencesManager setVideoModeIsHigh:videoModeSwitch.on];
-}
-
--(IBAction)launchScreenSwitchDidChange:(id)sender {
-    [preferencesManager setLaunchToCaptureMode:launchScreenSwitch.on];
 }
 
 -(IBAction)headingSelectorDidChange:(id)sender {

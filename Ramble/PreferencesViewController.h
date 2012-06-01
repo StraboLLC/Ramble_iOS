@@ -19,7 +19,6 @@
     
     IBOutlet UISwitch * locationModeSwitch;
     IBOutlet UISwitch * videoModeSwitch;
-    IBOutlet UISwitch * launchScreenSwitch;
     IBOutlet UISegmentedControl * headingSelector;
     
     IBOutlet UIActivityIndicatorView * activityIndicator;
@@ -29,7 +28,6 @@
 
 -(IBAction)locationModeSwitchDidChange:(id)sender;
 -(IBAction)videoModeSwitchDidChange:(id)sender;
--(IBAction)launchScreenSwitchDidChange:(id)sender;
 -(IBAction)headingSelectorDidChange:(id)sender;
 -(IBAction)doneButtonPressed:(id)sender;
 
