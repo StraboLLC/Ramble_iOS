@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 Strabo LLC. All rights reserved.
 //
 
-// An alteration
-
 #import "RootViewController.h"
 
 @interface RootViewController (InternalMethods)

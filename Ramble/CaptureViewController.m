@@ -229,7 +229,7 @@
 }
 
 -(void)animateRecordingLight {
-    recordLight.image = [UIImage imageNamed:@"recordON"];
+    recordLight.hidden = NO;
     flashTimer = [NSTimer scheduledTimerWithTimeInterval:1.5 
                                                   target:self
                                                 selector:@selector(flashRecordingLight) 
@@ -239,13 +239,13 @@
 
 -(void)stopAnimatingRecordingLight {
     [flashTimer invalidate];
-    recordLight.image = [UIImage imageNamed:@"recordOFF"];
+    recordLight.hidden = YES;
 }
 
 -(void)flashRecordingLight {
     if (isRecording) {
-        if (recordLight.image == [UIImage imageNamed:@"recordON"]) {
-            recordLight.image = [UIImage imageNamed:@"recordOFF"];
+        if (!recordLight.hidden) {
+            recordLight.hidden = YES;
             
             // Turn back on shortly
             [NSTimer scheduledTimerWithTimeInterval:0.4 
@@ -254,7 +254,7 @@
                                            userInfo:nil 
                                             repeats:NO];
         } else {
-            recordLight.image = [UIImage imageNamed:@"recordON"];
+            recordLight.hidden = NO;
         }
     }
 }
