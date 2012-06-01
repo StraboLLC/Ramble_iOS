@@ -27,7 +27,6 @@
 		964F746514C7D382006B5B6D /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F745714C7D382006B5B6D /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		964F746B14C7D445006B5B6D /* LoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F746A14C7D444006B5B6D /* LoginManager.m */; };
 		964F747214C7E5C0006B5B6D /* StraboTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F747114C7E5C0006B5B6D /* StraboTrack.m */; };
-		966961F114CF27730084926C /* Compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 966961F014CF27730084926C /* Compass.png */; };
 		966961F614CF46730084926C /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 966961F514CF46730084926C /* PreferencesManager.m */; };
 		966961F914CF468D0084926C /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 966961F814CF468D0084926C /* PreferencesViewController.m */; };
 		967E01FF14D3BFB7006C2E96 /* ramble.png in Resources */ = {isa = PBXBuildFile; fileRef = 967E01FE14D3BFB7006C2E96 /* ramble.png */; };
@@ -131,7 +130,6 @@
 		964F746A14C7D444006B5B6D /* LoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginManager.m; sourceTree = "<group>"; };
 		964F747014C7E5C0006B5B6D /* StraboTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StraboTrack.h; sourceTree = "<group>"; };
 		964F747114C7E5C0006B5B6D /* StraboTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StraboTrack.m; sourceTree = "<group>"; };
-		966961F014CF27730084926C /* Compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Compass.png; sourceTree = "<group>"; };
 		966961F414CF46720084926C /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesManager.h; sourceTree = "<group>"; };
 		966961F514CF46730084926C /* PreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesManager.m; sourceTree = "<group>"; };
 		966961F714CF468D0084926C /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
@@ -360,7 +358,6 @@
 				96CFE01114D3B3FF00F7E7F6 /* Corner Buttons */,
 				967E020214D3BFC4006C2E96 /* Toolbar Items */,
 				96D9EF14152011580079C357 /* Record Button */,
-				966961F014CF27730084926C /* Compass.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -587,7 +584,6 @@
 				96F4826D14C6243F00096933 /* InfoPlist.strings in Resources */,
 				96F4827614C6243F00096933 /* MainStoryboard.storyboard in Resources */,
 				964F745C14C7D382006B5B6D /* FBDialog.bundle in Resources */,
-				966961F114CF27730084926C /* Compass.png in Resources */,
 				96CFE00814D358A800F7E7F6 /* TrackListItem.xib in Resources */,
 				967E01FF14D3BFB7006C2E96 /* ramble.png in Resources */,
 				96381B1F14D74EB200F171C7 /* cellBackground.png in Resources */,

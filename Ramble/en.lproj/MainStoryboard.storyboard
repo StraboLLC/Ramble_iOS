@@ -103,11 +103,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="compassFrame.png" id="B7E-mw-4MJ">
-                                <rect key="frame" x="9" y="375" width="300" height="85"/>
+                                <rect key="frame" x="10" y="376" width="300" height="84"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Urv-eC-19d">
-                                <rect key="frame" x="59" y="419" width="199" height="41"/>
+                                <rect key="frame" x="65" y="424" width="190" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" backgroundImage="recordUP.png">
@@ -122,7 +122,7 @@
                                 </connections>
                             </button>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="recordON.png" id="ftL-Je-xA1">
-                                <rect key="frame" x="67" y="424" width="183" height="36"/>
+                                <rect key="frame" x="68" y="427" width="183" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -591,14 +591,12 @@
             <relationships>
                 <relationship kind="action" name="doneButtonPressed:"/>
                 <relationship kind="action" name="headingSelectorDidChange:"/>
-                <relationship kind="action" name="launchScreenSwitchDidChange:"/>
                 <relationship kind="action" name="locationModeSwitchDidChange:"/>
                 <relationship kind="action" name="logInButtonPressed:"/>
                 <relationship kind="action" name="videoModeSwitchDidChange:"/>
                 <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="buttonPanelView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="headingSelector" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="launchScreenSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="locationModeSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="logInButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="videoModeSwitch" candidateClass="UISwitch"/>
