@@ -69,7 +69,7 @@
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",stringBoundary];
     [postRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
     
-    NSLog(@"Uploading using authToken: %@, and userID: %@", authToken, userID);
+    NSLog(@"Uploading using authToken: %@, and userID: %@ to facebook: %@", authToken, userID, uploadToFacebookString);
     
     // setting up the body:
     NSMutableData *postBody = [NSMutableData data];
