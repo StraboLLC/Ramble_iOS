@@ -33,7 +33,7 @@
 @interface CaptureViewController (InternalMethods)
 -(void)animateCompassFrom:(UIInterfaceOrientation)oldOrientation to:(UIInterfaceOrientation)newOrientation;
 -(void)animateCompassOutFrom:(UIInterfaceOrientation)oldOrientation;
--(void)animateCompassInTo:(UIInterfaceOrientation)newOrientation;
+-(void)animateCompassInTo:(NSNumber *)newOrientation;
 -(void)recordLocationIfRecording;
 -(void)startRecording;
 -(void)stopRecording;
@@ -198,25 +198,57 @@
 
 -(void)animateCompassFrom:(UIInterfaceOrientation)oldOrientation to:(UIInterfaceOrientation)newOrientation {
     // Animate the compass out
+    [self animateCompassOutFrom:oldOrientation];
+    
+    // Animate the compass in
+    [self performSelector:@selector(animateCompassInTo:) withObject:[NSNumber numberWithInt:newOrientation] afterDelay:(0.5)];
+}
+
+-(void)animateCompassOutFrom:(UIInterfaceOrientation)oldOrientation {
     if (oldOrientation == 1) {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationDelay:0.0];
         
-    } else if (oldOrientation == 2) {
+        CGRect tempFrame = compassElementsView.frame;
+        tempFrame.origin.y = self.view.bounds.size.height;
         
-    } else if (oldOrientation == 3) {
+        compassElementsView.frame = tempFrame;
+        
+        [UIView commitAnimations];
+    }
+    
+    
+}
+
+-(void)animateCompassInTo:(NSNumber *)newOrientation {
+    UIInterfaceOrientation orientation = newOrientation.intValue;
+    if (orientation == 1) {
+        
+    } else if (orientation == 2) {
+        
+    } else if (orientation == 3) {
+        
+        compassElementsView.transform = CGAffineTransformMakeRotation(90);
+        CGRect tempFrame = compassElementsView.frame;
+        tempFrame.origin.y = 0;
+        tempFrame.origin.x = 0;
+        compassElementsView.frame = tempFrame;
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationDelay:0.0];
+        
+        CGRect newFrame = tempFrame;
+        newFrame.origin.x = 84;
+        
+        compassElementsView.frame = newFrame;
+        
+        [UIView commitAnimations];
         
     } else {
         
     }
-    
-    // Animate the compass in
-}
-
--(void)animateCompassOutFrom:(UIInterfaceOrientation)oldOrientation {
-    
-}
-
--(void)animateCompassInTo:(UIInterfaceOrientation)newOrientation {
-    
 }
 
 -(void)recordLocationIfRecording {

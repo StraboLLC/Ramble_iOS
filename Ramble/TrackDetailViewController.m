@@ -84,8 +84,10 @@ static const CGFloat VERTICAL_SLIDE_DISTANCE = 50;
     dateLabel.text = [formatter stringFromDate:straboTrack.captureDate];
     
     // Load the thumbnail image
-    // [thumbnailButton setBackgroundImage:[UIImage imageWithContentsOfFile:self.straboTrack.thumbnailPath.absoluteString] forState:UIControlStateNormal];
     thumbnailImage.image = [UIImage imageWithContentsOfFile:self.straboTrack.thumbnailPath.absoluteString];
+    
+    // Set the standard shouldUploadToFacebook value
+    shouldUploadToFacebook = NO;
 }
 
 - (void)viewDidUnload
@@ -102,6 +104,16 @@ static const CGFloat VERTICAL_SLIDE_DISTANCE = 50;
 }
 
 #pragma mark Button Handling
+
+-(IBAction)facebookButtonPressed:(id)sender {
+    if (shouldUploadToFacebook) {
+        [facebookUploadButton setImage:[UIImage imageNamed:@"facebookNO"] forState:UIControlStateNormal];
+        shouldUploadToFacebook = NO;
+    } else {
+        [facebookUploadButton setImage:[UIImage imageNamed:@"facebookYES"] forState:UIControlStateNormal];
+        shouldUploadToFacebook = YES;
+    }
+}
 
 -(IBAction)playButtonPressed:(id)sender {
     
@@ -136,10 +148,8 @@ static const CGFloat VERTICAL_SLIDE_DISTANCE = 50;
     NSString * authToken = appDelegate.loginManager.currentUser.authToken;
     NSString * userID = [NSString stringWithFormat:@"%@", appDelegate.loginManager.currentUser.userID];
     NSLog(@"Requesting Upload to: %@", userID);
-    [uploadManager generateUploadRequestFor:[straboTrack trackName] inAlbum:@"Mobile Uploads" withAuthtoken:authToken withID:userID toFacebook:facebookUploadSwitch.on];
+    [uploadManager generateUploadRequestFor:[straboTrack trackName] inAlbum:@"Mobile Uploads" withAuthtoken:authToken withID:userID toFacebook:shouldUploadToFacebook];
     [uploadManager startUpload];
-    
-    
     
 }
 

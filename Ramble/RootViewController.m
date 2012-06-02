@@ -82,27 +82,31 @@
 	[super viewDidDisappear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    NSLog(@"Root controller autorotate called: %i", interfaceOrientation);
-    // Change the orientation of the capture view controller
-    [captureViewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
-    
-    // The root view controller should not change its orientation.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+- (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers {
+    return YES;
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    
-}
-
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration {
-    
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    
-}
+//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+//{
+//    NSLog(@"Root controller autorotate called: %i", interfaceOrientation);
+//    // Change the orientation of the capture view controller
+//    [captureViewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
+//    
+//    // The root view controller should not change its orientation.
+//    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+//}
+//
+//- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+//    
+//}
+//
+//- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration {
+//    
+//}
+//
+//- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+//    
+//}
 
 #pragma mark Button Handling
 

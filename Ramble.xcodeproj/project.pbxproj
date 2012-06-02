@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		9617830C1520089300D54414 /* arrowIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9617830A1520089300D54414 /* arrowIcon.png */; };
 		9617830D1520089300D54414 /* gearIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9617830B1520089300D54414 /* gearIcon.png */; };
+		961B4D2E1579C50B005A10DE /* facebookDEPRESSED.png in Resources */ = {isa = PBXBuildFile; fileRef = 961B4D2B1579C50B005A10DE /* facebookDEPRESSED.png */; };
+		961B4D2F1579C50B005A10DE /* facebookNO.png in Resources */ = {isa = PBXBuildFile; fileRef = 961B4D2C1579C50B005A10DE /* facebookNO.png */; };
+		961B4D301579C50B005A10DE /* facebookYES.png in Resources */ = {isa = PBXBuildFile; fileRef = 961B4D2D1579C50B005A10DE /* facebookYES.png */; };
 		96381B1F14D74EB200F171C7 /* cellBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 96381B1E14D74EB200F171C7 /* cellBackground.png */; };
 		96381B2814D8A85400F171C7 /* LocalTracksNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96381B2714D8A85300F171C7 /* LocalTracksNavigationController.m */; };
 		964183EC157552E9007224A3 /* AppledocSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 964183EB157552E9007224A3 /* AppledocSettings.plist */; };
@@ -95,6 +98,9 @@
 /* Begin PBXFileReference section */
 		9617830A1520089300D54414 /* arrowIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowIcon.png; sourceTree = "<group>"; };
 		9617830B1520089300D54414 /* gearIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gearIcon.png; sourceTree = "<group>"; };
+		961B4D2B1579C50B005A10DE /* facebookDEPRESSED.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookDEPRESSED.png; sourceTree = "<group>"; };
+		961B4D2C1579C50B005A10DE /* facebookNO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookNO.png; sourceTree = "<group>"; };
+		961B4D2D1579C50B005A10DE /* facebookYES.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookYES.png; sourceTree = "<group>"; };
 		96381B1E14D74EB200F171C7 /* cellBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellBackground.png; sourceTree = "<group>"; };
 		96381B2614D8A85300F171C7 /* LocalTracksNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalTracksNavigationController.h; sourceTree = "<group>"; };
 		96381B2714D8A85300F171C7 /* LocalTracksNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalTracksNavigationController.m; sourceTree = "<group>"; };
@@ -241,6 +247,16 @@
 			name = "Custom UI";
 			sourceTree = "<group>";
 		};
+		961B4D2A1579C371005A10DE /* Post To Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				961B4D2B1579C50B005A10DE /* facebookDEPRESSED.png */,
+				961B4D2C1579C50B005A10DE /* facebookNO.png */,
+				961B4D2D1579C50B005A10DE /* facebookYES.png */,
+			);
+			name = "Post To Facebook";
+			sourceTree = "<group>";
+		};
 		96381B2114D74ECD00F171C7 /* Table Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +366,7 @@
 			children = (
 				96AE939F1577EAFC00A450B3 /* LaunchImage.png */,
 				96AE93A01577EAFC00A450B3 /* LaunchImage@2x.png */,
+				961B4D2A1579C371005A10DE /* Post To Facebook */,
 				96FA240015215405004D8C9A /* Prefs View */,
 				968B68E7152243CC00624AAD /* Detail View */,
 				9649DBB4151FFD8000FFE1F3 /* Icon Images */,
@@ -627,6 +644,9 @@
 				96C84D631579241800229BE8 /* recordON.png in Resources */,
 				96C84D6A1579272700229BE8 /* recordDOWN.png in Resources */,
 				96C84D6B1579272700229BE8 /* recordUP.png in Resources */,
+				961B4D2E1579C50B005A10DE /* facebookDEPRESSED.png in Resources */,
+				961B4D2F1579C50B005A10DE /* facebookNO.png in Resources */,
+				961B4D301579C50B005A10DE /* facebookYES.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

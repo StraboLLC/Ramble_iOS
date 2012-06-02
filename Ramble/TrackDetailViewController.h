@@ -21,6 +21,8 @@
     StraboTrack * straboTrack;
     LoginManager * loginManager;
     
+    BOOL shouldUploadToFacebook;
+    
     MPMoviePlayerViewController * previewPlayer;
 
     // Detail View Outlets
@@ -28,7 +30,7 @@
     IBOutlet UITextField * titleTextField;
     IBOutlet UIButton * uploadButton;
     IBOutlet UILabel * statusLabel;
-    IBOutlet UISwitch * facebookUploadSwitch;
+    IBOutlet UIButton * facebookUploadButton;
     
     // Uploading View Outlets
     IBOutlet UIView * uploadView;
@@ -41,6 +43,7 @@
 
 @property(nonatomic, strong)StraboTrack * straboTrack;
 
+-(IBAction)facebookButtonPressed:(id)sender;
 -(IBAction)playButtonPressed:(id)sender;
 -(IBAction)uploadButtonPressed:(id)sender;
 -(IBAction)actionButtonPressed:(id)sender;
