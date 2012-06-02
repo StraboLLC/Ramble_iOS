@@ -87,50 +87,58 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="GlC-H5-Cku">
+                                        <rect key="frame" x="142" y="221" width="37" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="GlC-H5-Cku">
-                                <rect key="frame" x="141" y="212" width="37" height="37"/>
+                            <view contentMode="scaleToFill" id="Dye-R7-HPf" userLabel="Compass View">
+                                <rect key="frame" x="0.0" y="376" width="320" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="compassface.png" id="8qy-zs-qbn">
-                                <rect key="frame" x="-10" y="393" width="339" height="339"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="compassCenter.png" id="ANl-di-roc">
-                                <rect key="frame" x="143" y="394" width="32" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="compassFrame.png" id="B7E-mw-4MJ">
-                                <rect key="frame" x="10" y="376" width="300" height="84"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Urv-eC-19d">
-                                <rect key="frame" x="65" y="424" width="190" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" backgroundImage="recordUP.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted" backgroundImage="recordDOWN.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="recordButtonPressed:" destination="Tks-0X-fok" eventType="touchUpInside" id="1Dd-0O-JCi"/>
-                                </connections>
-                            </button>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="recordON.png" id="ftL-Je-xA1">
-                                <rect key="frame" x="68" y="427" width="183" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="compassface.png" id="8qy-zs-qbn">
+                                        <rect key="frame" x="-10" y="14" width="339" height="339"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="compassCenter.png" id="ANl-di-roc">
+                                        <rect key="frame" x="144" y="17" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="compassFrame.png" id="B7E-mw-4MJ">
+                                        <rect key="frame" x="10" y="0.0" width="300" height="84"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Urv-eC-19d">
+                                        <rect key="frame" x="65" y="48" width="190" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" backgroundImage="recordUP.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" backgroundImage="recordDOWN.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="recordButtonPressed:" destination="Tks-0X-fok" eventType="touchUpInside" id="1Dd-0O-JCi"/>
+                                        </connections>
+                                    </button>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="recordON.png" id="ftL-Je-xA1">
+                                        <rect key="frame" x="68" y="52" width="183" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <connections>
                         <outlet property="activityIndicator" destination="GlC-H5-Cku" id="MBJ-LZ-qiD"/>
+                        <outlet property="compassElementsView" destination="Dye-R7-HPf" id="oas-Ih-8xr"/>
                         <outlet property="compassImage" destination="8qy-zs-qbn" id="BFy-nf-cRD"/>
                         <outlet property="recordButton" destination="Urv-eC-19d" id="8jj-yS-agG"/>
                         <outlet property="recordLight" destination="ftL-Je-xA1" id="OCR-TD-YP0"/>
@@ -507,6 +515,10 @@
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="eYp-N1-nFW">
+                                <rect key="frame" x="121" y="379" width="79" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -515,6 +527,7 @@
                     <connections>
                         <outlet property="actionButton" destination="MX8-oI-MT2" id="PRn-72-yOp"/>
                         <outlet property="dateLabel" destination="c1Y-Os-8et" id="NAG-5c-vTh"/>
+                        <outlet property="facebookUploadSwitch" destination="eYp-N1-nFW" id="JH5-xG-MNI"/>
                         <outlet property="statusLabel" destination="Xzx-CB-KDs" id="D48-2o-tT5"/>
                         <outlet property="thumbnailImage" destination="KcO-5t-VPM" id="TBK-od-92D"/>
                         <outlet property="titleTextField" destination="Sjq-66-pFm" id="CNv-U5-E1R"/>
@@ -562,6 +575,7 @@
             <relationships>
                 <relationship kind="action" name="recordButtonPressed:"/>
                 <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="compassElementsView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="compassImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="recordButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="recordLight" candidateClass="UIImageView"/>
@@ -619,6 +633,7 @@
                 <relationship kind="action" name="uploadButtonPressed:"/>
                 <relationship kind="outlet" name="actionButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="facebookUploadSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="thumbnailImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="titleTextField" candidateClass="UITextField"/>

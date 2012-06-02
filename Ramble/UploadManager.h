@@ -92,8 +92,18 @@
  Builds a post request with all of the necessary information for a specific track.
  
  It should be noted that this method does not actually upload the track itself. The pre-processed request should be sent with startUpload.
+ 
+ @param trackName The name of the track to be uploaded (the filename without an extension).
+ 
+ @param album The album into which the track should be placed.
+ 
+ @param authToken The user's authoken, taken from the current logged in user (should be the [currentUser](CurrentUser) object).
+ 
+ @param userID The user's userID, taken from the current logged in user (should be the [currentUser](CurrentUser) object).
+ 
+ @param uploadToFacebook A boolean to tell the server whether to upload the one-off video to the currently logged in user's facebook timeline.
  */
--(void)generateUploadRequestFor:(NSString *)trackName inAlbum:(NSString *)album withAuthtoken:(NSString *)authToken withID:(NSString *)userID;
+-(void)generateUploadRequestFor:(NSString *)trackName inAlbum:(NSString *)album withAuthtoken:(NSString *)authToken withID:(NSString *)userID toFacebook:(BOOL)uploadToFacebook;
 
 /**
  Sends a post request to the server (specified in Constants.h) built with generateUploadRequestFor:inAlbum:withAuthToken:withID:. 

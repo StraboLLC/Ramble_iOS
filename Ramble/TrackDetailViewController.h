@@ -28,6 +28,7 @@
     IBOutlet UITextField * titleTextField;
     IBOutlet UIButton * uploadButton;
     IBOutlet UILabel * statusLabel;
+    IBOutlet UISwitch * facebookUploadSwitch;
     
     // Uploading View Outlets
     IBOutlet UIView * uploadView;

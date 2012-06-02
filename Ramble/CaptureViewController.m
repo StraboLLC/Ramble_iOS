@@ -31,13 +31,17 @@
 @end
 
 @interface CaptureViewController (InternalMethods)
+-(void)animateCompassFrom:(UIInterfaceOrientation)oldOrientation to:(UIInterfaceOrientation)newOrientation;
+-(void)animateCompassOutFrom:(UIInterfaceOrientation)oldOrientation;
+-(void)animateCompassInTo:(UIInterfaceOrientation)newOrientation;
 -(void)recordLocationIfRecording;
 -(void)startRecording;
 -(void)stopRecording;
 -(void)cancelRecording;
 -(void)animateRecordingLight;
 -(void)stopAnimatingRecordingLight;
--(void)flashRecordingLight;
+-(void)flashRecordingLightOn;
+-(void)flashRecordingLightOff;
 @end
 
 @implementation CaptureViewController
@@ -91,6 +95,9 @@
     // Start updating the location
     [locationManager startUpdatingLocation];
     [locationManager startUpdatingHeading];
+    
+    // Set the duration of the flashing rec button
+    flashDuration = (double)2.0;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -141,8 +148,7 @@
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [super viewDidUnload];
     // Turn off the location updater
     [locationManager stopUpdatingLocation];
@@ -156,9 +162,19 @@
     
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // We don't actually want to rotate anything here...
+    // we just want to move the compass to the proper side
+    // and take care of the video recording orientation change
+    NSLog(@"Capture view controller should change orientation to: %i", interfaceOrientation);
+    
+    // Animate the compass to the proper side
+    [self animateCompassFrom:currentOrientation to:interfaceOrientation];
+    
+    // Finally, change our local variable for orientation
+    currentOrientation = interfaceOrientation;
+    
+    // Don't acutally rotate the screen!
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
@@ -167,11 +183,11 @@
 -(IBAction)recordButtonPressed:(id)sender {
     if (isRecording) {
         [self stopRecording];
-        //[recordButton setTitle:@"Rec" forState:UIControlStateNormal];
+        [recordButton setImage:[UIImage imageNamed:@"recordUP"] forState:UIControlStateNormal];
         [self stopAnimatingRecordingLight];
     } else {
         [self startRecording];
-        //[recordButton setTitle:@"Stop" forState:UIControlStateNormal];
+        [recordButton setImage:[UIImage imageNamed:@"recordDOWN"] forState:UIControlStateNormal];
         [self animateRecordingLight];       
     }
 }
@@ -179,6 +195,29 @@
 @end
 
 @implementation CaptureViewController (InternalMethods)
+
+-(void)animateCompassFrom:(UIInterfaceOrientation)oldOrientation to:(UIInterfaceOrientation)newOrientation {
+    // Animate the compass out
+    if (oldOrientation == 1) {
+        
+    } else if (oldOrientation == 2) {
+        
+    } else if (oldOrientation == 3) {
+        
+    } else {
+        
+    }
+    
+    // Animate the compass in
+}
+
+-(void)animateCompassOutFrom:(UIInterfaceOrientation)oldOrientation {
+    
+}
+
+-(void)animateCompassInTo:(UIInterfaceOrientation)newOrientation {
+    
+}
 
 -(void)recordLocationIfRecording {
     if (isRecording) {
@@ -200,7 +239,7 @@
 
 -(void)startRecording {
     NSLog(@"Starting recording");
-    [cameraDataCollector startRecording];
+    [cameraDataCollector startRecordingWithOrientation:self.interfaceOrientation];
     [locationDataCollector clearDataPoints];
     recordingStartTime = [NSDate date];
     isRecording = YES;
@@ -216,7 +255,12 @@
     [activityIndicator startAnimating];
     
     [cameraDataCollector stopRecording];
-    [locationDataCollector writeJSONFileForTracktype:@"video" withCompassMode:@"mode" withOrientation:@"vertical"];
+    
+    // Set up the proper strings to pass to the LocationDataCollector
+    NSString * compassModeString = (preferencesManager.compassModeMagnetic) ? @"magnetic" : @"true";
+    NSString * currentOrientationString = ((currentOrientation == UIInterfaceOrientationPortrait) || (currentOrientation == UIInterfaceOrientationPortraitUpsideDown)) ? @"vertical" : @"horizontal";
+    
+    [locationDataCollector writeJSONFileForTracktype:@"video" withCompassMode:compassModeString withOrientation:currentOrientationString];
 }
 
 -(void)cancelRecording {
@@ -230,9 +274,10 @@
 
 -(void)animateRecordingLight {
     recordLight.hidden = NO;
-    flashTimer = [NSTimer scheduledTimerWithTimeInterval:1.5 
+    [self flashRecordingLightOn];
+    flashTimer = [NSTimer scheduledTimerWithTimeInterval:flashDuration 
                                                   target:self
-                                                selector:@selector(flashRecordingLight) 
+                                                selector:@selector(flashRecordingLightOn) 
                                                 userInfo:nil 
                                                  repeats:YES];
 }
@@ -242,20 +287,37 @@
     recordLight.hidden = YES;
 }
 
--(void)flashRecordingLight {
+-(void)flashRecordingLightOn {
     if (isRecording) {
-        if (!recordLight.hidden) {
-            recordLight.hidden = YES;
-            
-            // Turn back on shortly
-            [NSTimer scheduledTimerWithTimeInterval:0.4 
-                                             target:self 
-                                           selector:@selector(flashRecordingLight)
-                                           userInfo:nil 
-                                            repeats:NO];
-        } else {
-            recordLight.hidden = NO;
-        }
+        //[NSTimer scheduledTimerWithTimeInterval:(flashDuration/2) target:self selector:@selector(flashRecordingLightOff) userInfo:nil repeats:NO];
+        [self performSelector:@selector(flashRecordingLightOff) withObject:self afterDelay:(flashDuration/2)];
+        // Animate on
+        recordLight.alpha = 0.0;
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:(flashDuration/2)];
+        [UIView setAnimationDelay:0];
+        [UIView setAnimationCurve:UIViewAnimationCurveLinear];
+        
+        recordLight.alpha = 1.0;
+        
+        [UIView commitAnimations];
+    }
+}
+
+-(void)flashRecordingLightOff {
+    if (isRecording) {
+        // Animate off
+        recordLight.alpha = 1.0;
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:(flashDuration/2)];
+        [UIView setAnimationDelay:0];
+        [UIView setAnimationCurve:UIViewAnimationCurveLinear];
+        
+        recordLight.alpha = 0.0;
+        
+        [UIView commitAnimations];
     }
 }
 
@@ -338,7 +400,7 @@
 }
 
 -(void)videoRecordingFailedWithError:(NSError *)error {
-    
+    NSLog(@"Video recording failed: %@", error);
 }
 
 @end

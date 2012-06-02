@@ -30,13 +30,18 @@
     NSDate * recordingStartTime;
     BOOL isRecording;
     
+    UIInterfaceOrientation currentOrientation;
+    
+    // Flashing record button animation support
     NSTimer * flashTimer;
+    NSTimeInterval flashDuration;
     
     // Variables to hold the current device location information
     CLLocation * currentLocation;
     CLHeading * currentHeading;
     
     // UI Outlets
+    IBOutlet UIView * compassElementsView;
     IBOutlet UIButton * recordButton;
     IBOutlet UIImageView * recordLight;
     IBOutlet UIView * videoPreviewView;

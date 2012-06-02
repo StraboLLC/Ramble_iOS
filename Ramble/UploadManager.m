@@ -38,7 +38,7 @@
     return self;
 }
 
--(void)generateUploadRequestFor:(NSString *)trackName inAlbum:(NSString *)album withAuthtoken:(NSString *)authToken withID:(NSString *)userID{
+-(void)generateUploadRequestFor:(NSString *)trackName inAlbum:(NSString *)album withAuthtoken:(NSString *)authToken withID:(NSString *)userID toFacebook:(BOOL)uploadToFacebook {
     
     LocalFileManager * localFileManager = [[LocalFileManager alloc] init];
     
@@ -57,10 +57,12 @@
         return;
     }
     
+    NSString * uploadToFacebookString = (uploadToFacebook) ? @"true" : @"false";
+    
     // Create the request
     NSMutableURLRequest * postRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:uploadServerURL]];
     
-    // Create the request
+    // Set the request method to post
     [postRequest setHTTPMethod:@"POST"];
     
     NSString *stringBoundary = [NSString stringWithString:@"0xKhTmLbOuNdArY"];
@@ -80,6 +82,9 @@
     [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"filename\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithString:trackName] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"upload_to_facebook\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithString:uploadToFacebookString] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"id\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
     [postBody appendData:[[NSString stringWithString:userID] dataUsingEncoding:NSUTF8StringEncoding]];

@@ -50,6 +50,7 @@
 -(void)writeJSONFileForTracktype:(NSString *)trackType 
                  withCompassMode:(NSString *)compassMode 
                  withOrientation:(NSString *)orientation {
+    
     NSLog(@"About to write JSON file");
     // Create a new object to represent the device
     UIDevice * myDevice = [UIDevice currentDevice];

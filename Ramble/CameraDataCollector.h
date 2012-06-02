@@ -46,7 +46,7 @@
 @property (nonatomic,readonly,getter=isRecording) BOOL recording;
 
 -(id)init;
--(void)startRecording;
+-(void)startRecordingWithOrientation:(AVCaptureVideoOrientation)deviceOrientation;
 -(void)stopRecording;
 -(void)cancelRecording;
 -(BOOL)isRecording;
