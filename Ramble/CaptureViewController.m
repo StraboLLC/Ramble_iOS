@@ -42,6 +42,7 @@
 -(void)stopAnimatingRecordingLight;
 -(void)flashRecordingLightOn;
 -(void)flashRecordingLightOff;
+-(void)updateCompassRotationTo:(double)direction;
 @end
 
 @implementation CaptureViewController
@@ -479,6 +480,30 @@
     [UIView commitAnimations];
 }
 
+-(void)updateCompassRotationTo:(double)direction {
+    if (currentOrientation == UIInterfaceOrientationPortrait) {
+        [self rotateImage:compassImage 
+                 duration:0.1 
+                    curve:UIViewAnimationCurveLinear 
+                  degrees:-direction];
+    } else if (currentOrientation == UIInterfaceOrientationLandscapeRight) {
+        [self rotateImage:compassImage 
+                 duration:0.1 
+                    curve:UIViewAnimationCurveLinear 
+                  degrees:-(direction+90)];
+    } else if (currentOrientation == UIInterfaceOrientationLandscapeLeft) {
+        [self rotateImage:compassImage 
+                 duration:0.1 
+                    curve:UIViewAnimationCurveLinear 
+                  degrees:-(direction-90)];
+    } else if (currentOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+        [self rotateImage:compassImage 
+                 duration:0.1 
+                    curve:UIViewAnimationCurveLinear 
+                  degrees:-(direction+180)];
+    }
+}
+
 @end
 
 @implementation CaptureViewController (CLLocationManagerDelegate)
@@ -502,8 +527,8 @@
     }
     
     [self recordLocationIfRecording];
-    [self rotateImage:compassImage duration:0.1 
-                curve:UIViewAnimationCurveLinear degrees:-direction];
+    [self updateCompassRotationTo:direction];
+    
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
