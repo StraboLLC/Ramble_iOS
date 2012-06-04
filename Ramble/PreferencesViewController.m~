@@ -63,6 +63,13 @@
     // Check the user's login status and
     // update the login button appropriately
     [self resetButtonGraphics];
+    
+//    if (loginManager.currentUser == nil) {
+//        [logInButton setTitle:@"Log In" forState:UIControlStateNormal];
+//        NSLog(@"User is not logged in.");
+//    } else {
+//        [logInButton setTitle:@"Log Out" forState:UIControlStateNormal];
+//    }
 }
 
 - (void)viewDidUnload
