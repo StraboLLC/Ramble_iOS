@@ -12,7 +12,7 @@
 
 -(NSString *)tempDirectoryPath;
 -(NSString *)createStraboFileDocumentsSubDirectoryWithName:(NSString *)directoryName;
--(void)generateVideoThumbnailAtPath:(NSString *)outputPath error:(NSError **)error;
+-(void)generateVideoThumbnailAtPath:(NSString *)outputPath forOrientation:(NSString *)orientation withError:(NSError *__autoreleasing *)error;
 -(CGImageRef)CGImageRotatedByAngle:(CGImageRef)imgRef angle:(CGFloat)angle;
 
 @end
@@ -61,7 +61,9 @@
     [fileManager copyItemAtPath:jsonFilePath toPath:[newDirectoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.json", trackName]] error:&error];
     
     // Generate a thumbnail image
-    [self generateVideoThumbnailAtPath:[newDirectoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", trackName]] error:&error];
+    [self generateVideoThumbnailAtPath:[newDirectoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", trackName]] 
+                        forOrientation:[[StraboTrack straboTrackFromFileWithName:trackName] orientation] 
+                             withError:&error];
     
     if (error) {
         if ([self.delegate respondsToSelector:@selector(saveTemporaryFilesFailedWithError:)]) {
@@ -154,28 +156,33 @@
     return fullPath;
 }
 
--(void)generateVideoThumbnailAtPath:(NSString *)outputPath error:(NSError *__autoreleasing *)error{
+-(void)generateVideoThumbnailAtPath:(NSString *)outputPath forOrientation:(NSString *)orientation withError:(NSError *__autoreleasing *)error {
     
     NSURL * temporaryMovieFilePath = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"output.mov"]];
     
     AVURLAsset * theFileAsset = [AVURLAsset URLAssetWithURL:temporaryMovieFilePath options:nil];
     
     AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:theFileAsset];
+    
     // Set the maximum size of the image. Constrained to aspect ratio
     generator.maximumSize = CGSizeMake(300, 300);
     
     NSError *err = nil;
     CMTime time = CMTimeMakeWithSeconds(0,30);
     CGImageRef imgRef = [generator copyCGImageAtTime:time actualTime:NULL error:&err];
+    UIImage * image;
     
-    UIImage * image = [UIImage imageWithCGImage:[self CGImageRotatedByAngle:imgRef angle:-90]];
+    if ([orientation isEqualToString:@"vertical"]) {
+        NSLog(@"Generating vertical thumbnail.");
+        image = [UIImage imageWithCGImage:[self CGImageRotatedByAngle:imgRef angle:-90]];
+    } else {
+        NSLog(@"Generating horizontal thumbnail.");
+        image = [UIImage imageWithCGImage:imgRef];
+    }
     
     if (err) {
         // Set the error
     }
-    
-    // Set the image orientation
-    //UIImage *currentImage = [UIImage imageWithCGImage:imgRef scale:1.0 orientation:UIImageOrientationDown];
     
     // Write image to PNG
     [UIImagePNGRepresentation(image) writeToFile:outputPath atomically:YES];

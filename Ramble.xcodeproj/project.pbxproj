@@ -737,12 +737,12 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Thomas Beatty";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Thomas Beatty (HAF49YT948)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ramble/Ramble-Prefix.pch";
 				INFOPLIST_FILE = "Ramble/Ramble-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F25F11FF-CB94-4D24-9B65-54FFA7694E0D";
+				PROVISIONING_PROFILE = "1F2A9501-8500-4746-9CAD-F6D6BBE9C8EE";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "Ad Hoc";

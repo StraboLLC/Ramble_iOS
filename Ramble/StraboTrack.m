@@ -30,13 +30,14 @@
 @property(readwrite) NSNumber * longitude;
 @property(readwrite) NSString * trackType;
 @property(readwrite) NSDate * captureDate;
+@property(readwrite) NSString * orientation;
 
 @end
 
 @implementation StraboTrack
 
 // Synthesize all readonly properties
-@synthesize trackPath, jsonPath, mediaPath, thumbnailPath, trackName, latitude, longitude, trackType, captureDate;
+@synthesize trackPath, jsonPath, mediaPath, thumbnailPath, trackName, latitude, longitude, trackType, captureDate, orientation;
 // Synthesize all user-defined, readwrite properties
 @synthesize trackTitle, taggedPeople, taggedPlaces, uploadedDate;
 
@@ -79,6 +80,7 @@
             straboTrack.taggedPeople = [trackDictionary objectForKey:@"taggedPeople"];
             straboTrack.taggedPlaces = [trackDictionary objectForKey:@"taggedPlaces"];
             straboTrack.uploadedDate = [NSDate dateWithTimeIntervalSince1970:[[trackDictionary objectForKey:@"uploadDate"] integerValue]];
+            straboTrack.orientation = [trackDictionary objectForKey:@"orientation"];
             
         } else {
             

@@ -142,6 +142,13 @@
  */
 @property(readonly) NSDate * captureDate;
 
+/**
+ The orientation of the video.
+ 
+ The orientation of the video, determined by the orientation of the device at the start of capture. The two possible values are "vertical" or "horizontal."
+ */
+@property(readonly) NSString * orientation;
+
 ///---------------------------------------------------------------------------------------
 /// @name Class Methods
 ///---------------------------------------------------------------------------------------
