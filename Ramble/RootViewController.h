@@ -32,8 +32,6 @@
 -(IBAction)toggleViewButtonPressed:(id)sender;
 -(IBAction)recentCaptureViewButtonPressed:(id)sender;
 
--(void)deviceDidRotate:(NSNotification *)notification;
-
 -(void)transitionToFeedList;
 -(void)transitionToCaptureMode;
 

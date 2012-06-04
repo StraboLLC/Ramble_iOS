@@ -93,13 +93,6 @@
 
 #pragma mark Instance Methods
 
--(void)deviceDidRotate:(NSNotification *)notification {
-    // Pass the orientation notification on to the captureViewController child
-    if (captureViewController) {
-        [captureViewController deviceDidRotate:notification];
-    }
-}
-
 -(void)transitionToFeedList {
     [self transitionFromViewController:captureViewController toViewController:feedViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil]; 
     [self updateButtonIcon];
