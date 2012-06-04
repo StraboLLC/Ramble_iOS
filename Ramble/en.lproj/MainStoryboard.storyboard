@@ -74,10 +74,10 @@
         <scene sceneID="tWw-u0-Qii">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmB-gI-s7I" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="Capture" id="Tks-0X-fok" customClass="CaptureViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Capture" autoresizesArchivedViewToFullSize="NO" id="Tks-0X-fok" customClass="CaptureViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L83-Ic-aRn">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="Ui9-go-TNU">
                                 <rect key="frame" x="0.0" y="-20" width="320" height="480"/>
@@ -94,9 +94,9 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" id="Dye-R7-HPf" userLabel="Compass View">
+                            <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" id="Dye-R7-HPf" userLabel="Compass View">
                                 <rect key="frame" x="0.0" y="376" width="320" height="84"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="compassface.png" id="8qy-zs-qbn">
                                         <rect key="frame" x="-10" y="14" width="339" height="339"/>
@@ -136,6 +136,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="GlC-H5-Cku" id="MBJ-LZ-qiD"/>
                         <outlet property="compassElementsView" destination="Dye-R7-HPf" id="oas-Ih-8xr"/>
@@ -476,7 +477,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view hidden="YES" opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" id="WUD-gT-gTP">
-                                <rect key="frame" x="0.0" y="-182" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="-50" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Uploading Video..." lineBreakMode="tailTruncation" minimumFontSize="10" id="cZm-XX-6TM">

@@ -50,7 +50,7 @@
     // Error Handling... Make sure the files exist
     NSFileManager * fileManager = [NSFileManager defaultManager];
     if (![fileManager fileExistsAtPath:videoFilePath] || ![fileManager fileExistsAtPath:jsonFilePath] || ![fileManager fileExistsAtPath:thumbnailFilePath]) {
-        NSLog(@"Files to upload do not exist.");
+        NSLog(@"Files not found while generating request.");
         if ([self.delegate respondsToSelector:@selector(uploadStopped:withError:)]) {
             [self.delegate uploadStopped:NO withError:nil];
         }
@@ -58,6 +58,12 @@
     }
     
     NSString * uploadToFacebookString = (uploadToFacebook) ? @"true" : @"false";
+    
+    if (uploadToFacebook) {
+        NSLog(@"Post request requires facebook upload."); 
+    } else {
+        NSLog(@"Post request does not require facebook upload.");
+    }
     
     // Create the request
     NSMutableURLRequest * postRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:uploadServerURL]];
@@ -69,7 +75,7 @@
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",stringBoundary];
     [postRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
     
-    NSLog(@"Uploading using authToken: %@, and userID: %@ to facebook: %@", authToken, userID, uploadToFacebookString);
+    NSLog(@"Uploading using authToken: %@, and userID: %@ to facebook: %@.", authToken, userID, uploadToFacebookString);
     
     // setting up the body:
     NSMutableData *postBody = [NSMutableData data];

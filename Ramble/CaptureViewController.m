@@ -98,6 +98,7 @@
     
     // Set the duration of the flashing rec button
     flashDuration = (double)2.0;
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -107,6 +108,9 @@
     // Make sure the status bar is translucent
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent
                                                 animated:YES];
+    
+    // Hide the status bar
+    //[[UIApplication sharedApplication] setStatusBarHidden:YES];
     
     // Prevent the screen from going black while recording
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
@@ -131,6 +135,10 @@
     
     [locationManager startUpdatingLocation];
     [locationManager startUpdatingHeading];
+    
+    // Reload the compass
+    currentOrientation = [[UIDevice currentDevice] orientation];
+    [self deviceDidRotate:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -143,6 +151,9 @@
     NSLog(@"Turning location off");
     [locationManager stopUpdatingLocation];
     [locationManager stopUpdatingHeading];
+    
+    // Show the status bar
+    //[[UIApplication sharedApplication] setStatusBarHidden:NO];
     
     // Allow the idle timer to take over when the user is not capturing video
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
@@ -163,19 +174,25 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // We don't actually want to rotate anything here...
-    // we just want to move the compass to the proper side
-    // and take care of the video recording orientation change
-    NSLog(@"Capture view controller should change orientation to: %i", interfaceOrientation);
     
-    // Animate the compass to the proper side
-    [self animateCompassFrom:currentOrientation to:interfaceOrientation];
-    
-    // Finally, change our local variable for orientation
-    currentOrientation = interfaceOrientation;
-    
-    // Don't acutally rotate the screen!
+    // We are using our custom deviceDidRotate method here...
+    // Don't autorotate for any orientation change
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark Instance Methods
+
+-(void)deviceDidRotate:(NSNotification *)notification {
+    
+    NSLog(@"CaptureViewController orientation change requested.");
+    
+    UIDeviceOrientation newOrientation = [[UIDevice currentDevice] orientation];
+    
+    // Make the necessary orientation changes
+    [self animateCompassFrom:currentOrientation to:newOrientation];
+    
+    // Update currentOrientation to keep track of the old orientation
+    currentOrientation = newOrientation;
 }
 
 #pragma mark Button Handling
@@ -196,58 +213,149 @@
 
 @implementation CaptureViewController (InternalMethods)
 
+#define COMPASS_ANIMATION_DURATION 0.5
+
 -(void)animateCompassFrom:(UIInterfaceOrientation)oldOrientation to:(UIInterfaceOrientation)newOrientation {
-    // Animate the compass out
-    [self animateCompassOutFrom:oldOrientation];
     
-    // Animate the compass in
-    [self performSelector:@selector(animateCompassInTo:) withObject:[NSNumber numberWithInt:newOrientation] afterDelay:(0.5)];
+    if ((oldOrientation != newOrientation) && (!isRecording)) {
+        
+        NSLog(@"Capture view controller animating compass for orientation change.");
+        
+        // Animate the compass out
+        [self animateCompassOutFrom:oldOrientation];
+        
+        // Animate the compass in after delay
+        [self performSelector:@selector(animateCompassInTo:) withObject:[NSNumber numberWithInt:newOrientation] afterDelay:(COMPASS_ANIMATION_DURATION/2)];
+    }
 }
 
 -(void)animateCompassOutFrom:(UIInterfaceOrientation)oldOrientation {
-    if (oldOrientation == 1) {
+    
+    if (oldOrientation == UIInterfaceOrientationPortrait) {            
         [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationDuration:(COMPASS_ANIMATION_DURATION/2)];
         [UIView setAnimationDelay:0.0];
         
         CGRect tempFrame = compassElementsView.frame;
-        tempFrame.origin.y = self.view.bounds.size.height;
+        tempFrame.origin.y = self.view.frame.size.height;
+        compassElementsView.frame = tempFrame;
         
+        [UIView commitAnimations];
+        
+    } else if  (oldOrientation == UIInterfaceOrientationLandscapeRight) {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:(COMPASS_ANIMATION_DURATION/2)];
+        [UIView setAnimationDelay:0.0];
+        
+        CGRect tempFrame = compassElementsView.frame;
+        tempFrame.origin.x = -compassElementsView.frame.size.width;
+        compassElementsView.frame = tempFrame;
+        
+        [UIView commitAnimations];
+        
+    } else if (oldOrientation == UIInterfaceOrientationLandscapeLeft) {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:(COMPASS_ANIMATION_DURATION/2)];
+        [UIView setAnimationDelay:0.0];
+        
+        CGRect tempFrame = compassElementsView.frame;
+        tempFrame.origin.x = (self.view.frame.size.width + compassElementsView.frame.size.width);
+        compassElementsView.frame = tempFrame;
+        
+        [UIView commitAnimations];
+        
+    } else if (oldOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:(COMPASS_ANIMATION_DURATION/2)];
+        [UIView setAnimationDelay:0.0];
+        
+        CGRect tempFrame = compassElementsView.frame;
+        tempFrame.origin.y = -compassElementsView.frame.size.height;
         compassElementsView.frame = tempFrame;
         
         [UIView commitAnimations];
     }
-    
-    
 }
 
 -(void)animateCompassInTo:(NSNumber *)newOrientation {
+    
+    // This rotation needs to go before we calculate new widths.
+    compassElementsView.transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(0));
+    
     UIInterfaceOrientation orientation = newOrientation.intValue;
-    if (orientation == 1) {
+    
+    CGFloat compassViewHeight = compassElementsView.frame.size.height;
+    CGFloat compassViewWidth = compassElementsView.frame.size.width;
+    
+    if (orientation == UIInterfaceOrientationPortrait) {
         
-    } else if (orientation == 2) {
-        
-    } else if (orientation == 3) {
-        
-        compassElementsView.transform = CGAffineTransformMakeRotation(90);
         CGRect tempFrame = compassElementsView.frame;
-        tempFrame.origin.y = 0;
-        tempFrame.origin.x = 0;
+        tempFrame.origin.y = self.view.frame.size.height;
+        tempFrame.origin.x = ((self.view.frame.size.width/2) - (compassViewWidth/2));
         compassElementsView.frame = tempFrame;
         
         [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationDuration:(COMPASS_ANIMATION_DURATION/2)];
         [UIView setAnimationDelay:0.0];
         
         CGRect newFrame = tempFrame;
-        newFrame.origin.x = 84;
-        
+        newFrame.origin.y = (self.view.frame.size.height - compassViewHeight);
         compassElementsView.frame = newFrame;
         
         [UIView commitAnimations];
         
-    } else {
+    } else if (orientation == UIInterfaceOrientationLandscapeRight) {
         
+        compassElementsView.transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(90));
+        CGRect tempFrame = compassElementsView.frame;
+        tempFrame.origin.y = ((self.view.frame.size.height/2)-(compassViewWidth/2));
+        tempFrame.origin.x = -compassViewHeight;
+        compassElementsView.frame = tempFrame;
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:(COMPASS_ANIMATION_DURATION/2)];
+        [UIView setAnimationDelay:0.0];
+        
+        CGRect newFrame = tempFrame;
+        newFrame.origin.x = 0;
+        compassElementsView.frame = newFrame;
+        
+        [UIView commitAnimations];
+        
+    } else if (orientation == UIInterfaceOrientationLandscapeLeft) {
+        
+        compassElementsView.transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(-90));
+        CGRect tempFrame = compassElementsView.frame;
+        tempFrame.origin.y = ((self.view.frame.size.height/2)-(compassViewWidth/2));
+        tempFrame.origin.x = (self.view.frame.size.width);
+        compassElementsView.frame = tempFrame;
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:(COMPASS_ANIMATION_DURATION/2)];
+        [UIView setAnimationDelay:0.0];
+        
+        CGRect newFrame = tempFrame;
+        newFrame.origin.x = (self.view.frame.size.width - compassViewHeight);
+        compassElementsView.frame = newFrame;
+        
+        [UIView commitAnimations];
+        
+    } else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
+        compassElementsView.transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(180));
+        CGRect tempFrame = compassElementsView.frame;
+        tempFrame.origin.y = -compassViewHeight;
+        tempFrame.origin.x = ((self.view.frame.size.width/2) - (compassViewWidth/2));
+        compassElementsView.frame = tempFrame;
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:(COMPASS_ANIMATION_DURATION/2)];
+        [UIView setAnimationDelay:0.0];
+        
+        CGRect newFrame = tempFrame;
+        newFrame.origin.y = 0;
+        compassElementsView.frame = newFrame;
+        
+        [UIView commitAnimations];
     }
 }
 
@@ -271,7 +379,7 @@
 
 -(void)startRecording {
     NSLog(@"Starting recording");
-    [cameraDataCollector startRecordingWithOrientation:self.interfaceOrientation];
+    [cameraDataCollector startRecordingWithOrientation:currentOrientation];
     [locationDataCollector clearDataPoints];
     recordingStartTime = [NSDate date];
     isRecording = YES;

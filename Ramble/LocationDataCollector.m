@@ -85,6 +85,9 @@
                         @"",
                         dataPoints, 
                         nil];
+    
+    NSLog(@"JSON file written with orientation: %@", orientation);
+    
     // Enter the values into a dictionary
     NSDictionary * track = [NSDictionary dictionaryWithObject:[NSDictionary dictionaryWithObjects:values forKeys:keys] forKey:@"track"];
     

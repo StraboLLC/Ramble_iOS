@@ -86,27 +86,29 @@
     return YES;
 }
 
-//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-//{
-//    NSLog(@"Root controller autorotate called: %i", interfaceOrientation);
-//    // Change the orientation of the capture view controller
-//    [captureViewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
-//    
-//    // The root view controller should not change its orientation.
-//    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-//}
-//
-//- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-//    
-//}
-//
-//- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration {
-//    
-//}
-//
-//- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-//    
-//}
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    
+    return (interfaceOrientation==UIInterfaceOrientationPortrait);
+}
+
+#pragma mark Instance Methods
+
+-(void)deviceDidRotate:(NSNotification *)notification {
+    // Pass the orientation notification on to the captureViewController child
+    if (captureViewController) {
+        [captureViewController deviceDidRotate:notification];
+    }
+}
+
+-(void)transitionToFeedList {
+    [self transitionFromViewController:captureViewController toViewController:feedViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil]; 
+    [self updateButtonIcon];
+}
+
+-(void)transitionToCaptureMode {
+    [self transitionFromViewController:feedViewController toViewController:captureViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];
+    [self updateButtonIcon];
+}
 
 #pragma mark Button Handling
 
@@ -118,18 +120,6 @@
 -(IBAction)recentCaptureViewButtonPressed:(id)sender {
     LocalTracksNavigationController * tracksNavController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocalTracksNavigation"];
     [self presentViewController:tracksNavController animated:YES completion:NULL];
-}
-
-#pragma mark Methods
-
--(void)transitionToFeedList {
-    [self transitionFromViewController:captureViewController toViewController:feedViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil]; 
-    [self updateButtonIcon];
-}
-
--(void)transitionToCaptureMode {
-    [self transitionFromViewController:feedViewController toViewController:captureViewController duration:0 options:UIViewAnimationTransitionFlipFromLeft animations:^{} completion:nil];
-    [self updateButtonIcon];
 }
 
 @end

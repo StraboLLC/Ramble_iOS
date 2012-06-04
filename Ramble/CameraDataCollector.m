@@ -64,7 +64,8 @@
 -(void)startRecordingWithOrientation:(AVCaptureVideoOrientation)deviceOrientation {
     AVCaptureConnection *videoConnection = [CameraDataCollector connectionWithMediaType:AVMediaTypeVideo fromConnections:[[self movieFileOutput] connections]];
     if ([videoConnection isVideoOrientationSupported]) {
-        // Hardcoded video recording device orientation - this will need to be dynamic later.
+        NSLog(@"Formatting video orientation to: %i", deviceOrientation);
+        
         [videoConnection setVideoOrientation:deviceOrientation];
     }
     

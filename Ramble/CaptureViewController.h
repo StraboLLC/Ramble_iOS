@@ -51,6 +51,8 @@
 
 @property(strong) id delegate;
 
+-(void)deviceDidRotate:(NSNotification *)notification;
+
 /*!
  @method recordButtonPressed:
  @abstract Handler for the record button.

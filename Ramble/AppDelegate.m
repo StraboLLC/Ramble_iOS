@@ -20,7 +20,12 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
     [UIApplication sharedApplication].keyWindow.frame=CGRectMake(0, 20, 320, 460); //move down 20px.
     
+    // Set up the login manager
     self.loginManager = [[LoginManager alloc] init];
+    
+    // Set up device changes
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter] addObserver:self.window.rootViewController selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
     
     return YES;
 }
