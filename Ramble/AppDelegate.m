@@ -23,10 +23,6 @@
     // Set up the login manager
     self.loginManager = [[LoginManager alloc] init];
     
-    // Set up device changes
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-    [[NSNotificationCenter defaultCenter] addObserver:self.window.rootViewController selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
-    
     return YES;
 }
 							

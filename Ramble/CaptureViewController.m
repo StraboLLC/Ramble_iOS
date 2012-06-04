@@ -100,6 +100,11 @@
     // Set the duration of the flashing rec button
     flashDuration = (double)2.0;
     
+    // Collect rotation updates
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
