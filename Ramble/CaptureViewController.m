@@ -189,11 +189,18 @@
     
     UIDeviceOrientation newOrientation = [[UIDevice currentDevice] orientation];
     
-    // Make the necessary orientation changes
-    [self animateCompassFrom:currentOrientation to:newOrientation];
-    
-    // Update currentOrientation to keep track of the old orientation
-    currentOrientation = newOrientation;
+    if ((currentOrientation != newOrientation) 
+        && (!isRecording) 
+        && (newOrientation != UIDeviceOrientationFaceUp)
+        && (newOrientation != UIDeviceOrientationFaceDown)) {
+        
+        // Make the necessary orientation changes
+        [self animateCompassFrom:currentOrientation to:newOrientation];
+        
+        // Update currentOrientation to keep track of the old orientation
+        currentOrientation = newOrientation;
+        
+    }
 }
 
 #pragma mark Button Handling
@@ -218,16 +225,13 @@
 
 -(void)animateCompassFrom:(UIInterfaceOrientation)oldOrientation to:(UIInterfaceOrientation)newOrientation {
     
-    if ((oldOrientation != newOrientation) && (!isRecording)) {
-        
-        NSLog(@"Capture view controller animating compass for orientation change.");
-        
-        // Animate the compass out
-        [self animateCompassOutFrom:oldOrientation];
-        
-        // Animate the compass in after delay
-        [self performSelector:@selector(animateCompassInTo:) withObject:[NSNumber numberWithInt:newOrientation] afterDelay:(COMPASS_ANIMATION_DURATION/2)];
-    }
+    NSLog(@"Capture view controller animating compass for orientation change.");
+    
+    // Animate the compass out
+    [self animateCompassOutFrom:oldOrientation];
+    
+    // Animate the compass in after delay
+    [self performSelector:@selector(animateCompassInTo:) withObject:[NSNumber numberWithInt:newOrientation] afterDelay:(COMPASS_ANIMATION_DURATION/2)];
 }
 
 -(void)animateCompassOutFrom:(UIInterfaceOrientation)oldOrientation {
@@ -481,6 +485,8 @@
 }
 
 -(void)updateCompassRotationTo:(double)direction {
+    
+    // Vary the rotation angle based on device orientation.
     if (currentOrientation == UIInterfaceOrientationPortrait) {
         [self rotateImage:compassImage 
                  duration:0.1 
