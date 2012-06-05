@@ -194,7 +194,9 @@
     
     UIDeviceOrientation newOrientation = [[UIDevice currentDevice] orientation];
     
-    if ((currentOrientation != newOrientation) 
+    if (currentOrientation
+        && newOrientation
+        && (currentOrientation != newOrientation) 
         && (!isRecording) 
         && (newOrientation != UIDeviceOrientationFaceUp)
         && (newOrientation != UIDeviceOrientationFaceDown)) {
@@ -205,6 +207,9 @@
         // Update currentOrientation to keep track of the old orientation
         currentOrientation = newOrientation;
         
+        // Update the Location Manager with the new orientation setting.
+        locationManager.headingOrientation = currentOrientation;
+        
     }
 }
 
@@ -213,11 +218,11 @@
 -(IBAction)recordButtonPressed:(id)sender {
     if (isRecording) {
         [self stopRecording];
-        [recordButton setImage:[UIImage imageNamed:@"recordUP"] forState:UIControlStateNormal];
+        [recordButton setBackgroundImage:[UIImage imageNamed:@"recordUP"] forState:UIControlStateNormal];
         [self stopAnimatingRecordingLight];
     } else {
         [self startRecording];
-        [recordButton setImage:[UIImage imageNamed:@"recordDOWN"] forState:UIControlStateNormal];
+        [recordButton setBackgroundImage:[UIImage imageNamed:@"recordDOWN"] forState:UIControlStateNormal];
         [self animateRecordingLight];       
     }
 }
@@ -225,6 +230,8 @@
 @end
 
 @implementation CaptureViewController (InternalMethods)
+
+#pragma mark Compass Animation Methods
 
 #define COMPASS_ANIMATION_DURATION 0.5
 
@@ -369,59 +376,6 @@
     }
 }
 
--(void)recordLocationIfRecording {
-    if (isRecording) {
-        
-        double direction;
-        if ([preferencesManager compassModeMagnetic]) {
-            direction = currentHeading.magneticHeading;
-        } else {
-            direction = currentHeading.trueHeading;
-        }
-        
-        [locationDataCollector addDataPointWithLatitude:[currentLocation coordinate].latitude 
-                                          withLongitude:[currentLocation coordinate].longitude 
-                                            withHeading:direction
-                                          withTimestamp:[[NSDate date] timeIntervalSinceDate:recordingStartTime]
-                                           withAccuracy:[currentLocation horizontalAccuracy]];
-    }
-}
-
--(void)startRecording {
-    NSLog(@"Starting recording");
-    [cameraDataCollector startRecordingWithOrientation:currentOrientation];
-    [locationDataCollector clearDataPoints];
-    recordingStartTime = [NSDate date];
-    isRecording = YES;
-    
-    // Force record first datapoint
-    [self recordLocationIfRecording];
-}
-
--(void)stopRecording {
-    NSLog(@"Stopping recording");
-    isRecording = NO;
-    // Once the user hits the stop button, start a loading screen
-    [activityIndicator startAnimating];
-    
-    [cameraDataCollector stopRecording];
-    
-    // Set up the proper strings to pass to the LocationDataCollector
-    NSString * compassModeString = (preferencesManager.compassModeMagnetic) ? @"magnetic" : @"true";
-    NSString * currentOrientationString = ((currentOrientation == UIInterfaceOrientationPortrait) || (currentOrientation == UIInterfaceOrientationPortraitUpsideDown)) ? @"vertical" : @"horizontal";
-    
-    [locationDataCollector writeJSONFileForTracktype:@"video" withCompassMode:compassModeString withOrientation:currentOrientationString];
-}
-
--(void)cancelRecording {
-    
-    NSLog(@"Stopping recording");
-    isRecording = NO;
-    
-    [cameraDataCollector stopRecording];
-    [locationDataCollector writeJSONFileForTracktype:@"video" withCompassMode:@"mode" withOrientation:@"vertical"];
-}
-
 -(void)animateRecordingLight {
     recordLight.hidden = NO;
     [self flashRecordingLightOn];
@@ -471,6 +425,16 @@
     }
 }
 
+-(void)updateCompassRotationTo:(double)direction {
+    // Vary the rotation angle based on device orientation
+    [self rotateImage:compassImage 
+             duration:0.1 
+                curve:UIViewAnimationCurveLinear 
+              degrees:-(direction)];
+}
+
+# pragma mark Animation Helper Methods
+
 - (void)rotateImage:(UIImageView *)image duration:(NSTimeInterval)duration 
               curve:(int)curve degrees:(CGFloat)degrees
 {
@@ -489,29 +453,60 @@
     [UIView commitAnimations];
 }
 
--(void)updateCompassRotationTo:(double)direction {
+#pragma mark Recording Methods
+
+-(void)startRecording {
+    NSLog(@"Starting recording");
+    [cameraDataCollector startRecordingWithOrientation:currentOrientation];
+    [locationDataCollector clearDataPoints];
+    isRecording = YES;
+    recordingStartTime = [NSDate date];
     
-    // Vary the rotation angle based on device orientation.
-    if (currentOrientation == UIInterfaceOrientationPortrait) {
-        [self rotateImage:compassImage 
-                 duration:0.1 
-                    curve:UIViewAnimationCurveLinear 
-                  degrees:-direction];
-    } else if (currentOrientation == UIInterfaceOrientationLandscapeRight) {
-        [self rotateImage:compassImage 
-                 duration:0.1 
-                    curve:UIViewAnimationCurveLinear 
-                  degrees:-(direction+90)];
-    } else if (currentOrientation == UIInterfaceOrientationLandscapeLeft) {
-        [self rotateImage:compassImage 
-                 duration:0.1 
-                    curve:UIViewAnimationCurveLinear 
-                  degrees:-(direction-90)];
-    } else if (currentOrientation == UIInterfaceOrientationPortraitUpsideDown) {
-        [self rotateImage:compassImage 
-                 duration:0.1 
-                    curve:UIViewAnimationCurveLinear 
-                  degrees:-(direction+180)];
+    // Force record first datapoint
+    [self recordLocationIfRecording];
+}
+
+-(void)stopRecording {
+    NSLog(@"Stopping recording");
+    isRecording = NO;
+    // Once the user hits the stop button, start a loading screen
+    [activityIndicator startAnimating];
+    
+    [cameraDataCollector stopRecording];
+    
+    // Set up the proper strings to pass to the LocationDataCollector
+    NSString * compassModeString = (preferencesManager.compassModeMagnetic) ? @"magnetic" : @"true";
+    NSString * currentOrientationString = ((currentOrientation == UIInterfaceOrientationPortrait) || (currentOrientation == UIInterfaceOrientationPortraitUpsideDown)) ? @"vertical" : @"horizontal";
+    
+    [locationDataCollector writeJSONFileForTracktype:@"video" withCompassMode:compassModeString withOrientation:currentOrientationString];
+}
+
+-(void)cancelRecording {
+    
+    NSLog(@"Stopping recording");
+    isRecording = NO;
+    
+    [cameraDataCollector stopRecording];
+    [locationDataCollector writeJSONFileForTracktype:@"video" withCompassMode:@"mode" withOrientation:@"vertical"];
+}
+
+#pragma mark Data Handling Methods
+
+-(void)recordLocationIfRecording {
+    if (isRecording) {
+        
+        double direction;
+        if ([preferencesManager compassModeMagnetic]) {
+            direction = currentHeading.magneticHeading;
+        } else {
+            direction = currentHeading.trueHeading;
+        }
+        
+        [locationDataCollector addDataPointWithLatitude:[currentLocation coordinate].latitude 
+                                          withLongitude:[currentLocation coordinate].longitude 
+                                            withHeading:direction
+                                          withTimestamp:[[NSDate date] timeIntervalSinceDate:recordingStartTime]
+                                           withAccuracy:[currentLocation horizontalAccuracy]];
     }
 }
 
