@@ -16,10 +16,8 @@
 
 @end
 
+// Category to extend StraboTrack and make variables internally writable.
 @interface StraboTrack ()
-
-// Specify that internally, we should be able to write these properties
-// This action will be necessary to create StraboTrack objects.
 
 @property(readwrite) NSURL * trackPath;
 @property(readwrite) NSURL * jsonPath;
